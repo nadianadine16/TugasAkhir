@@ -43,8 +43,9 @@
               <div class="form-group mb-4">
                 <input type="password" name="pwd1" placeholder="Password" class="form-control border-0 shadow form-control-lg text-violet">
               </div>
-              <button type="submit" class="btn btn-primary shadow px-5" style="width:300px; margin-left:55px;">Log in</button>
-            </form><br>
+              <button type="submit" class="btn btn-primary shadow px-5" style="width:200px; margin-left:100px; margin-bottom:10px">Log in</button>
+            </form>
+            <a href="<?= base_url();?>Tutor/Daftar_Tutor" class="btn btn-primary shadow px-5" style="width:200px; margin-left:100px; margin-top:10px;">Daftar Tutor</a>
             <div class="alert alert-info" role="alert">
               <?php
               if(isset($pesan)) {
