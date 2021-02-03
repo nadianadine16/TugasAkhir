@@ -52,9 +52,11 @@ class Admin_model extends CI_Model {
         return $this->db->delete('mahasiswa',array("id_mahasiswa"=>$id));
     }
     public function getAllTutor(){
+        $status = 2;
         $this->db->select('*');
         $this->db->from('tutor');
         $this->db->join('mahasiswa', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');        
+        $this->db->where(array('status'=>$status));
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -87,6 +89,22 @@ class Admin_model extends CI_Model {
             "nama_kategori" => $this->input->post('nama_kategori', true),
         ];
         $this->db->insert('kategori_materi', $data);
+    }
+    public function getUnregPendaftaran() {
+        $status = 1;
+        $this->db->select('*');
+        $this->db->from('tutor');
+        $this->db->join('mahasiswa', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');        
+        $this->db->where(array('status'=>$status));
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    public function status_pendaftaran($id) {
+        $data = [
+            "status" => $this->input->post("status", true)
+        ];
+        $this->db->where('id_tutor', $this->input->post('id_tutor'));
+        $this->db->update('tutor', $data);
     }
 }
 ?>

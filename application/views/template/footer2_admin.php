@@ -66,7 +66,7 @@
     <script src="<?= base_url()?>/assets_admin1/js/main.js"></script>
     <!-- tawk chat JS
 		============================================ -->
-    <script src="<?= base_url()?>/assets_admin1/js/tawk-chat.js"></script>
+    <!-- <script src="<?= base_url()?>/assets_admin1/js/tawk-chat.js"></script> -->
 </body>
 
 </html>

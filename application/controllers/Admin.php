@@ -135,4 +135,40 @@ class Admin extends CI_Controller {
             redirect('Admin/data_kategori_materi','refresh');
         }    
     }
+    public function data_tutor_belum_verifikasi()
+    {
+        $data['title'] = 'Data Tutor Belum Terverifikasi';
+        $data['tutor'] = $this->Admin_model->getUnregPendaftaran();
+        $this->load->view('template/header2_admin',$data);
+        $this->load->view('Admin/Verifikasi_Tutor',$data);
+        $this->load->view('template/footer2_admin',$data);
+    }
+    public function status_pendaftaran($id) {
+        $data['title'] = 'Data Tutor Belum Terverifikasi';
+        $data['unreg'] = $this->Admin_model->getUnregPendaftaran();
+
+        $this->form_validation->set_rules('status', 'Status', 'required');
+
+        $action = $this->input->post('action');
+
+
+        if($this->form_validation->run() == FALSE) {
+            $this->load->view('template/header2_admin',$data);
+            $this->load->view('Admin/Verifikasi_Tutor',$data);
+            $this->load->view('template/footer2_admin',$data);
+        }
+        else {
+            if($action == 'terima') {
+                // execute code to log in
+                $this->Admin_model->status_pendaftaran($id);
+                redirect('admin/data_tutor', 'refresh');
+            }
+            if($action == 'tolak') {
+                // execute code to forget the password
+                $this->Admin_model->hapus_data_tutor($id);
+                redirect('admin/data_tutor', 'refresh');
+            }
+            
+        }
+    }
 }

@@ -31,7 +31,16 @@ class Login extends CI_Controller {
             $this->session->set_userdata('id_tutor',$data['id_tutor']);
             $this->session->set_userdata('nama',$data['nama']);
             $this->session->set_userdata('nim',$data['nim']);
-            redirect('tutor/index');
+            $this->session->set_userdata('status',$data['status']);
+            if($this->session->userdata('status') == 1) {
+                $data['title'] = 'Login';
+                $data['pesan'] = 'Status Pendaftaran Sedang Diproses';
+                $this->load->view('login/index', $data);
+            }
+            else if($this->session->userdata('status') == 2) {
+                redirect('tutor/index');
+            }
+            
         }
         else if($cek_mahasiswa->num_rows() > 0){
             $data=$cek_mahasiswa->row_array();

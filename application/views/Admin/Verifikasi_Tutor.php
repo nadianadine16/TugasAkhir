@@ -34,7 +34,7 @@
                 <div class="sparkline13-list">
                     <div class="sparkline13-hd">
                         <div class="main-sparkline13-hd">
-                            <h1>Data <span class="table-project-n">Tutor</span></h1>
+                            <h1>Data <span class="table-project-n">Tutor Belum Terverifikasi</span></h1>
                         </div>
                     </div>
                     <div class="sparkline13-graph">
@@ -45,11 +45,12 @@
                             data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
                                 <thead>
                                     <tr>
-                                        <th data-field="id">No</th>
-                                        <th data-field="name" data-editable="true">Nim</th>
-                                        <th data-field="email" data-editable="true">Nama</th>
-                                        <th data-field="phone" data-editable="true">Prodi</th>
-                                        <th data-field="complete">Kelas</th>
+                                        <th>No</th>
+                                        <th data-editable="true">Nim</th>
+                                        <th data-editable="true">Nama</th>
+                                        <th data-editable="true">Prodi</th>
+                                        <th>Kelas</th>
+                                        <th>File</th>
                                         <th data-field="action">Action</th>
                                     </tr>
                                 </thead>
@@ -61,8 +62,14 @@
                                         <td><?=$m["nama"];?></td>
                                         <td><?=$m["prodi"];?></td>
                                         <td><?=$m["kelas"];?></td>
+                                        <td><?=$m["file"];?></td>
                                         <td class="datatable-ct">
-                                            <a onclick="return konfirmasi()" href="<?= base_url();?>admin/hapus_data_tutor/<?=$m['id_tutor'];?>" class="pd-setting-ed" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                        <form action ="<?= base_url();?>admin/status_pendaftaran/<?=$m["id_tutor"];?>" method="post">
+                                        <input type="hidden" name="id_tutor" value="<?= $m["id_tutor"];?>">
+                                        <input type="hidden" name="status" value="2">
+                                        <button class="btn btn-success" type="submit" name="action" value="terima"><i class="fa fa-check"></i></button>
+                                        <button class="btn btn-danger" type="submit" name="action" value="tolak"><i class="fa fa-times"></i></button>
+                                        </form>
                                         </td>
                                     </tr>
                                     <?php endforeach;?>     

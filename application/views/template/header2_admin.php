@@ -105,7 +105,7 @@
                             <a class="has-arrow" href="all-professors.html" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Tutor</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="All Professors" href="<?= base_url();?>admin/data_tutor"><span class="mini-sub-pro">Data Tutor</span></a></li>
-                                <li><a title="Add Professor" href="#"><span class="mini-sub-pro">Verifikasi Tutor</span></a></li>
+                                <li><a title="Add Professor" href="<?= base_url();?>admin/data_tutor_belum_verifikasi"><span class="mini-sub-pro">Verifikasi Tutor</span></a></li>
                             </ul>
                         </li>                        
                         <li>
