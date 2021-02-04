@@ -53,5 +53,10 @@ class Tutor extends CI_Controller {
             // }
         }
     }
+    public function Cek_Status_Pendaftaran(){
+        $data['title'] = 'Cek Stats Pendaftaran Tutor';
+        
+        $this->load->view('Tutor/Cek_Status_Pendaftaran', $data);
+    }
     
 }
