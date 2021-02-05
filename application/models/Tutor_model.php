@@ -37,5 +37,36 @@ class Tutor_model extends CI_Model {
         ];
         $this->db->insert('tutor', $data);
     }
+    public function search1($keyword){
+        $status = 2;
+        // $query=$this->db->query("SELECT * FROM mahasiswa m JOIN tutor t on t.id_mahasiswa = m.id_mahasiswa where m.nim = '$keyword' and t.status = '2' LIMIT 1 ");
+		// return $query;
+        $this->db->select('*');
+        $this->db->from("mahasiswa AS t2");
+        $this->db->join("tutor AS t1", "t2.id_mahasiswa = t1.id_mahasiswa");  # confirm user_order_id in both table
+        $this->db->where('nim',$keyword);
+        $this->db->where(array('status'=>$status));
+        $this->db->limit(1);
+        
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function search2($keyword){
+        $status = 1;
+        $this->db->select('*');
+        $this->db->from("mahasiswa AS t2");
+        $this->db->join("tutor AS t1", "t2.id_mahasiswa = t1.id_mahasiswa");  # confirm user_order_id in both table
+        $this->db->where('nim',$keyword);
+        $this->db->where(array('status'=>$status));
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function search3(){
+        $this->db->select('*');
+        $this->db->from('tutor');
+        $this->db->join('mahasiswa', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }
 ?>
