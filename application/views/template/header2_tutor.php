@@ -97,8 +97,8 @@
                         <li>
                             <a class="has-arrow" href="all-students.html" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Materi</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
-                                <li><a title="All Students" href="#"><span class="mini-sub-pro">Data Materi</span></a></li>
-                                <li><a title="Add Students" href="#"><span class="mini-sub-pro">Tambah Materi</span></a></li>
+                                <li><a title="All Students" href="<?= base_url()?>Tutor/Data_Materi"><span class="mini-sub-pro">Data Materi</span></a></li>
+                                <li><a title="Add Students" href="<?= base_url()?>Tutor/Tambah_Materi"><span class="mini-sub-pro">Tambah Materi</span></a></li>
                             </ul>
                         </li>
                         <li>
