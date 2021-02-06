@@ -107,8 +107,46 @@ class Tutor extends CI_Controller {
         }
         else {
             $this->Tutor_model->Edit_Materi($id_materi);
-            // die();
             redirect('Tutor/Data_Materi','refresh');
+        }
+    }
+
+    public function Tugas_Mahasiswa() {
+        $data['title'] = 'Pengumpulan Tugas Mahasiswa';
+        $data['tugas'] = $this->Tutor_model->getAllTugasUnVerif();
+        $data['tugasverif'] = $this->Tutor_model->getAllTugasVerif();
+
+        $this->load->view('template/header2_tutor',$data);
+        $this->load->view('Tutor/Tugas_mahasiswa', $data);
+        $this->load->view('template/footer2_tutor',$data);
+    }
+
+    public function Verifikasi_Tugas($id_tugas) {
+        $this->Tutor_model->Verifikasi_Tugas($id_tugas);
+        redirect('Tutor/Tugas_Mahasiswa', 'refresh');
+    }
+
+    public function Hapus_Tugas($id_tugas) {
+        $this->Tutor_model->Hapus_Tugas($id_tugas);
+        redirect('Tutor/Tugas_Mahasiswa', 'refresh');
+    }
+
+    public function Kritik_Saran() {
+        $data['title'] = 'Kritik dan Saran';
+
+        $this->form_validation->set_rules('kritik_saran', 'Kritik dan Saran', 'required');
+        $this->form_validation->set_rules('subject', 'Subject', 'required');
+        $this->form_validation->set_rules('id_tutor', 'id_tutor', 'required');
+
+        if($this->form_validation->run() == FALSE) {
+            $this->load->view('template/header2_tutor',$data);
+            $this->load->view('Tutor/Kritik_Saran', $data);
+            $this->load->view('template/footer2_tutor',$data);
+        }
+        else {
+            $this->Tutor_model->Kritik_Saran();
+            echo"<script>alert('Kritik dan Saran Anda Berhasil Dikirim');</script>";
+            redirect('Tutor/Kritik_Saran','refresh');
         }
     }
     

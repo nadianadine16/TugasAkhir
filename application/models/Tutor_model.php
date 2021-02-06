@@ -94,5 +94,50 @@
             
             $this->db->update('materi',$this, array('id_materi' => $post['id_materi']));
         }
+
+        public function getAllTugasUnVerif() {
+            $status = 1;
+
+            $this->db->select('*');
+            $this->db->from('tugas');
+            $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');
+            $this->db->join('materi', 'materi.id_materi = tugas.id_materi');
+            $this->db->where('tugas.status', $status);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+
+        public function getAllTugasVerif() {
+            $status = 2;
+
+            $this->db->select('*');
+            $this->db->from('tugas');
+            $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');
+            $this->db->join('materi', 'materi.id_materi = tugas.id_materi');
+            $this->db->where('tugas.status', $status);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+
+        public function Verifikasi_Tugas($id_tugas) {
+            $this->db->set('status', 2);
+            $this->db->where('id_tugas',$id_tugas);
+        
+            $this->db->update("tugas");
+        }
+
+        public function Hapus_Tugas($id_tugas) {
+            return $this->db->delete('tugas',array("id_tugas"=>$id_tugas));
+        }
+
+        public function Kritik_Saran() {
+            $this->id_kritiksaran = uniqid();
+            $data = [
+                "subject" => $this->input->post('subject', true),
+                "id_tutor" => $this->input->post('id_tutor', true),
+                "kritik_saran" => $this->input->post('kritik_saran', true)
+            ];
+            $this->db->insert('kritik_saran', $data);
+        }
     }
 ?>

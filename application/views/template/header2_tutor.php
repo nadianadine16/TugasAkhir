@@ -102,10 +102,13 @@
                             </ul>
                         </li>
                         <li>
+                            <a class="" href="<?= base_url()?>Tutor/Tugas_mahasiswa" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Tugas Mahasiswa</span></a>
+                        </li>
+                        <li>
                             <a class="" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Private Chat</span></a>
                         </li>
                         <li>
-                            <a class="" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Kritik & Saran</span></a>
+                            <a class="" href="<?= base_url()?>Tutor/Kritik_Saran" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Kritik & Saran</span></a>
                         </li>
                         <li>
                             <a class="" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Forum</span></a>
