@@ -106,5 +106,12 @@ class Admin_model extends CI_Model {
         $this->db->where('id_tutor', $this->input->post('id_tutor'));
         $this->db->update('tutor', $data);
     }
+    public function getAllKritikSaran(){
+        $this->db->select('*');
+        $this->db->from('kritik_saran');
+        $this->db->join('mahasiswa', 'kritik_saran.id_mahasiswa = mahasiswa.id_mahasiswa');        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }
 ?>

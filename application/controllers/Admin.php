@@ -171,4 +171,12 @@ class Admin extends CI_Controller {
             
         }
     }
+    public function data_kritik_saran()
+    {
+        $data['title'] = 'Data Kritik Saran';
+        $data['kritik_saran'] = $this->Admin_model->getAllKritikSaran();
+        $this->load->view('template/header2_admin',$data);
+        $this->load->view('Admin/Data_Kritik_Saran',$data);
+        $this->load->view('template/footer2_admin',$data);
+    }
 }
