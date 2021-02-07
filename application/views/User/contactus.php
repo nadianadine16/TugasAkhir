@@ -42,10 +42,10 @@
 
             <form action="<?=base_url('user/prosesContactus')?>" method="post" >
             <input type="hidden" name="id_mahasiswa" value="<?= $this->session->userdata('id_mahasiswa');?>">
-              <!-- <div class="form-group">
+              <div class="form-group">
                 <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
                 <div class="validate"></div>
-              </div> -->
+              </div>
               <div class="form-group">
                 <textarea class="form-control" name="kritik_saran" rows="5" data-rule="required" data-msg="Silahkan Tuliskan Kritik Saran Anda" placeholder="Kritik Saran"></textarea>
                 <div class="validate"></div>

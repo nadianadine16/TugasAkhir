@@ -12,6 +12,7 @@
         public function cekNim($nim) {
             $mahasiswaNim=$this->db->query("SELECT m.id_mahasiswa FROM mahasiswa m WHERE m.nim= $nim AND NOT EXISTS (SELECT * FROM tutor t WHERE t.id_mahasiswa = m.id_mahasiswa)");		
             if($mahasiswaNim->num_rows()==1) {
+                return $mahasiswaNim->result_array();
                 $this->id_tutor = uniqid();
                 
             $data = [
