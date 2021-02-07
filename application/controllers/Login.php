@@ -56,6 +56,7 @@ class Login extends CI_Controller {
         }
         else if($cek_admin->num_rows() > 0){
             $data=$cek_admin->row_array();
+            $this->session->set_userdata('id_admin',$data['id_admin']);
             $this->session->set_userdata('nama',$data['nama']);
             $this->session->set_userdata('username',$data['username']);
             $this->session->set_userdata('password',$data['password']);

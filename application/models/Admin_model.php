@@ -113,5 +113,23 @@ class Admin_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+    public function checkPasswordLama($password_lama){
+        $id_admin = $this->input->post('id_admin');
+        $this->db->where('id_admin', $id_admin);
+        $this->db->where('password', $password_lama);
+        $query = $this->db->get('admin');
+        if($query->num_rows() > 0)
+            return 1;
+        else
+            return 0;
+    }
+    public function Update_Password($password_baru){
+        $data = array(
+            'password' => $password_baru
+         );
+        $this->db->where('id_admin', $this->input->post('id_admin'));
+        $this->db->update('admin', $data);
+        return true;
+    }
 }
 ?>
