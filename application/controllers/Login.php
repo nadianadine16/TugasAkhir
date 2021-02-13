@@ -14,6 +14,7 @@ class Login extends CI_Controller {
     public function index()
     {
         $data['title'] = 'Login';
+        // session_destroy();
         $this->load->view('login/index',$data);
     }
     public function prosesLogin(){

@@ -10,33 +10,38 @@
         }
 
         public function cekNim($nim) {
-            $mahasiswaNim=$this->db->query("SELECT m.id_mahasiswa FROM mahasiswa m WHERE m.nim= $nim AND NOT EXISTS (SELECT * FROM tutor t WHERE t.id_mahasiswa = m.id_mahasiswa)");		
-            if($mahasiswaNim->num_rows()==1) {
-                $this->id_tutor = uniqid();
+            $query=$this->db->query("SELECT m.id_mahasiswa FROM mahasiswa m WHERE m.nim= $nim AND NOT EXISTS (SELECT * FROM tutor t WHERE t.id_mahasiswa = m.id_mahasiswa)");
+            return $query;		
+            // if($mahasiswaNim->num_rows()==1) {
+            //     $this->id_tutor = uniqid();
                 
-            $data = [
-                "id_mahasiswa" => $this->input->post($mahasiswaNim),
-                "id_kategori_materi" => $this->input->post('id_kategori_materi', true),
-                "status" => $this->input->post('status', true),
+            // $data = [
+            //     "id_mahasiswa" => $this->input->post($mahasiswaNim),
+            //     "id_kategori_materi" => $this->input->post('id_kategori_materi', true),
+            //     "status" => $this->input->post('status', true),
                 
-            ];
-            $this->db->insert('tutor', $data);
+            // ];
+            // $this->db->insert('tutor', $data);
                 // return $mahasiswaNim->result();
-            }
-            else {
-                return false;
-            }
+            // }
+            // else {
+            //     return false;
+            // }
         }
 
-        public function Tambah_Tutor(){
+        public function Tambah_Tutor($nim){
+            $status = 1;
+
             $this->id_tutor = uniqid();
-            
             $data = [
                 "id_mahasiswa" => $this->input->post('id_mahasiswa', true),
                 "id_kategori_materi" => $this->input->post('id_kategori_materi', true),
+                "status" => $this->input->post('status', $status)
             ];
+
             $this->db->insert('tutor', $data);
         }
+
         
         public function Tambah_Materi() {
             $this->id_materi = uniqid();
