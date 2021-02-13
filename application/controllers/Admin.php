@@ -179,4 +179,31 @@ class Admin extends CI_Controller {
         $this->load->view('Admin/Data_Kritik_Saran',$data);
         $this->load->view('template/footer2_admin',$data);
     }
+    public function profile()
+    {
+        $data['title'] = 'Ganti Password';
+        $this->form_validation->set_rules('id_admin', 'id_admin', 'required');
+        $this->form_validation->set_rules('password_lama', 'password_lama', 'required');
+        $this->form_validation->set_rules('password_baru', 'password_baru', 'required');
+        // $password_lama = $this->input->post('password_lama');
+        // $password_baru = $this->input->post('password_baru');
+        // $konfirmasi_password = $this->input->post('konfirmasi_password');
+        if($this->form_validation->run() == FALSE) {
+            $this->load->view('template/header2_admin',$data);
+            $this->load->view('Admin/Ganti_Password',$data);
+            $this->load->view('template/footer2_admin',$data);
+        }
+        else {
+            $query = $this->Admin_model->checkPasswordLama($this->input->post('password_lama'));
+            if($query){
+                $query = $this->Admin_model->Update_Password($this->input->post('password_baru'));
+                if($query){
+                    redirect('Admin/index','refresh');
+                }
+                else{
+                    redirect('Admin/index','refresh');
+                }
+            }    
+        }
+    }
 }

@@ -48,10 +48,16 @@ class Login extends CI_Controller {
             $this->session->set_userdata('id_mahasiswa',$data['id_mahasiswa']);
             $this->session->set_userdata('nama',$data['nama']);
             $this->session->set_userdata('nim',$data['nim']);
+            $this->session->set_userdata('jurusan',$data['jurusan']);
+            $this->session->set_userdata('prodi',$data['prodi']);
+            $this->session->set_userdata('kelas',$data['kelas']);
+            $this->session->set_userdata('tahun_masuk',$data['tahun_masuk']);
+            $this->session->set_userdata('github',$data['github']);
             redirect('user/index');
         }
         else if($cek_admin->num_rows() > 0){
             $data=$cek_admin->row_array();
+            $this->session->set_userdata('id_admin',$data['id_admin']);
             $this->session->set_userdata('nama',$data['nama']);
             $this->session->set_userdata('username',$data['username']);
             $this->session->set_userdata('password',$data['password']);
