@@ -80,4 +80,53 @@ class User extends CI_Controller {
             redirect('user/index','refresh');
         }
     }
+    public function kategoriMateri(){
+        $data['title'] ='Daftar Kategori Materi';
+        $data['kategori_materi'] = $this->User_model->getAllKategoriMateri();
+        $this->load->view('template/header_user', $data);
+        $this->load->view('user/Kategori_Materi', $data);
+        $this->load->view('template/footer_user', $data);
+    }
+    public function daftarMateri($id){
+        $data['title'] ='Daftar Materi';
+        $data['daftar_materi'] = $this->User_model->daftar_materi($id);
+        // $data['kategori_materi'] = $this->User_model->getAllKategoriMateri();
+        $this->load->view('template/header_user', $data);
+        $this->load->view('user/Daftar_Materi', $data);
+        $this->load->view('template/footer_user', $data);
+    }
+    public function detailMateri($id){
+        $data['title'] ='Detail Materi';
+        $data['detail_materi'] = $this->User_model->detail_materi($id);
+        // $data['kategori_materi'] = $this->User_model->getAllKategoriMateri();
+        $this->load->view('template/header_user', $data);
+        $this->load->view('user/Detail_Materi', $data);
+        $this->load->view('template/footer_user', $data);
+    }
+    public function kumpulkanTugas($id){
+        $data['title'] ='Detail Materi';
+        $data['detail_materi'] = $this->User_model->detail_materi($id);
+        $data['tampil'] = $this->User_model->tampil_tugas($id);
+        // $data['kategori_materi'] = $this->User_model->getAllKategoriMateri();
+        $this->load->view('template/header_user', $data);
+        $this->load->view('user/Kumpulkan_Tugas', $data);
+        $this->load->view('template/footer_user', $data);
+    }
+    public function tambah_tugas(){
+        $data['title'] = 'Tambah Tugas';
+
+        $this->form_validation->set_rules('id_materi', 'id_materi', 'required');
+        $this->form_validation->set_rules('tugas', 'tugas', 'required');
+        $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');
+
+        if($this->form_validation->run() == FALSE) {
+            $this->load->view('template/header_user', $data);
+            $this->load->view('user/Kumpulkan_Tugas', $data);
+            $this->load->view('template/footer_user', $data);
+        }
+        else {
+            $this->User_model->tambah_tugas();
+            redirect('User/index','refresh');
+        }    
+    }
 }
