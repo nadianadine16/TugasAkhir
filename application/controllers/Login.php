@@ -32,6 +32,7 @@ class Login extends CI_Controller {
             $this->session->set_userdata('id_tutor',$data['id_tutor']);
             $this->session->set_userdata('nama',$data['nama']);
             $this->session->set_userdata('nim',$data['nim']);
+            $this->session->set_userdata('id_kategori_materi',$data['id_kategori_materi']);
             $this->session->set_userdata('status',$data['status']);
             if($this->session->userdata('status') == 1) {
                 $data['title'] = 'Login';

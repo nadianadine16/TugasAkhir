@@ -69,6 +69,15 @@
             }
         } 
 
+        public function detail_materi($id_materi) {
+            $this->db->select('*');
+            $this->db->from('materi');
+            $this->db->join('kategori_materi', 'materi.id_kategori_materi = kategori_materi.id_kategori_materi');
+            $this->db->where('materi.id_materi', $id_materi);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+
         public function getMateriByIdTutor($id_tutor) {
             $this->db->select('*');
             $this->db->from('materi');
@@ -143,6 +152,17 @@
                 "kritik_saran" => $this->input->post('kritik_saran', true)
             ];
             $this->db->insert('kritik_saran', $data);
+        }
+
+        public function Cari_Materi($kayword) {
+            $keyword=$this->input->post('keyword');
+
+            $this->db->select('*');
+            $this->db->from('materi');
+            $this->db->join('kategori_materi', 'materi.id_kategori_materi = kategori_materi.id_kategori_materi');
+            $this->db->like('materi.nama_materi', $keyword);
+            $query = $this->db->get();
+            return $query->result_array();
         }
     }
 ?>

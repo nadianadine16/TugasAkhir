@@ -32,20 +32,20 @@ class Tutor extends CI_Controller {
         $data['title'] = 'Daftar Tutor';
         $data['KategoriMateri'] = $this->Tutor_model->getAllKategoriMateri();
 
-        $this->form_validation->set_rules('nim', 'nim', 'required');
-        $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');
-        $this->form_validation->set_rules('id_kategori_materi', 'id_kategori_materi', 'required');
-        $this->form_validation->set_rules('status', 'status', 'required');
+        // $this->form_validation->set_rules('nim', 'nim', 'required');
+        // $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');
+        // $this->form_validation->set_rules('id_kategori_materi', 'id_kategori_materi', 'required');
+        // $this->form_validation->set_rules('status', 'status', 'required');
 
         $nim=htmlspecialchars($this->input->post('nim'));
         $cek_nim = $this->Tutor_model->cekNim($nim);
 
-        if($this->form_validation->run() == FALSE) {
-            $this->session->sess_destroy();
-            $this->load->view('Tutor/Daftar_Tutor', $data);
-            $this->load->view('template/footer_tutor',$data);
-        }
-        else {
+        // if($this->form_validation->run() == FALSE) {
+        //     // $this->session->sess_destroy();
+        //     $this->load->view('Tutor/Daftar_Tutor', $data);
+        //     $this->load->view('template/footer_tutor',$data);
+        // }
+        // else {
             if($cek_nim) {
                 $data=$cek_nim->row_array();
                 $this->session->set_userdata('id_mahasiswa',$data['id_mahasiswa']);
@@ -57,7 +57,7 @@ class Tutor extends CI_Controller {
             else {
                 echo"<script>alert('NIM Tidak Terdaftar');</script>";
             }
-        }
+        // }
         
         
         
@@ -98,7 +98,7 @@ class Tutor extends CI_Controller {
         $data['kategori_materi'] = $this->Tutor_model->getAllKategoriMateri();
 
         $this->form_validation->set_rules('nama_materi', 'nama_materi', 'required');
-        $this->form_validation->set_rules('id_kategori_materi', 'id_kategori_materi', 'required');
+        // $this->form_validation->set_rules('id_kategori_materi', 'id_kategori_materi', 'required');
         $this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
         $this->form_validation->set_rules('id_tutor', 'id_tutor', 'required');
 
@@ -137,6 +137,31 @@ class Tutor extends CI_Controller {
             $this->Tutor_model->Edit_Materi($id_materi);
             redirect('Tutor/Data_Materi','refresh');
         }
+    }
+
+    public function Detail_Materi($id_materi) {
+        $data['title'] = 'Detail Materi';
+        $data['materi'] = $this->Tutor_model->detail_materi($id_materi);
+
+        $this->load->view('template/header2_tutor',$data);
+        $this->load->view('Tutor/Detail_Materi', $data);
+        $this->load->view('template/footer2_tutor',$data);
+    }
+
+    public function Cari_Materi() {
+        $data['title'] = 'Data Materi';
+        
+        $id_tutor = $this->session->userdata('id_tutor');
+        $data['materi'] = $this->Tutor_model->getMateriByIdTutor($id_tutor);
+        
+        if($this->input->post('submit')){
+            $keyword =  $this->input->post('keyword');
+
+            $data['materi'] = $this->Tutor_model->Cari_Materi($keyword);
+        }
+        $this->load->view('template/header2_tutor',$data);
+        $this->load->view('Tutor/Hasil_Cari_Materi', $data);
+        $this->load->view('template/footer2_tutor',$data);
     }
 
     public function Tugas_Mahasiswa() {

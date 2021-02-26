@@ -37,7 +37,7 @@
                     <label for="nama_materi">Judul Materi</label>
                         <input type="text" class="form-control" id="nama_materi" name="nama_materi">
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="kategori_materi">Kategori Materi</label>
                     <select class="form-control" id="id_kategori_materi" name="id_kategori_materi">
                         <option value="none" selected="" disabled="">Pilih Kategori Materi</option>
@@ -45,7 +45,7 @@
                             <option value="<?=$km["id_kategori_materi"];?>"><?=$km["nama_kategori"];?></option>
                         <?php endforeach;?>
                     </select>
-                </div>  
+                </div>   -->
                 <div class="form-group">
                     <label for="video">Unggah Video</label>
                         <input type="file" class="form-control" id="video" name="video">
@@ -55,6 +55,7 @@
                     <label for="deskripsi">Deskripsi</label>
                     <textarea name="deskripsi"></textarea>
                 </div>
+                <input type="hidden" class="form-control" id="id_kategori_materi" name="id_kategori_materi" value="<?= $this->session->userdata('id_kategori_materi');?>">
                 <center><button type="submit" name="submit" class="btn btn-primary float-right">Tambah</button></center>
             </form>
             </div>
