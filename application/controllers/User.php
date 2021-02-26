@@ -23,6 +23,8 @@ class User extends CI_Controller {
     public function forum()
     {
         $data['title'] ='Forum';
+        $data['forum'] = $this->User_model->getAllForum();
+
         $this->load->view('template/header_user', $data);
         $this->load->view('user/forum', $data);
         $this->load->view('template/footer_user', $data);
@@ -52,6 +54,7 @@ class User extends CI_Controller {
             redirect('user/index','refresh');
         }
     }
+    
     public function profile()
     {
         $data['title'] ='Profile';
@@ -59,6 +62,7 @@ class User extends CI_Controller {
         $this->load->view('user/profile', $data);
         $this->load->view('template/footer_user', $data);
     }
+
     public function prosesEditProfile()
     {
         $data['title'] = 'Profile';
@@ -80,6 +84,7 @@ class User extends CI_Controller {
             redirect('user/index','refresh');
         }
     }
+
     public function kategoriMateri(){
         $data['title'] ='Daftar Kategori Materi';
         $data['kategori_materi'] = $this->User_model->getAllKategoriMateri();
@@ -87,31 +92,35 @@ class User extends CI_Controller {
         $this->load->view('user/Kategori_Materi', $data);
         $this->load->view('template/footer_user', $data);
     }
+
     public function daftarMateri($id){
         $data['title'] ='Daftar Materi';
         $data['daftar_materi'] = $this->User_model->daftar_materi($id);
-        // $data['kategori_materi'] = $this->User_model->getAllKategoriMateri();
+
         $this->load->view('template/header_user', $data);
         $this->load->view('user/Daftar_Materi', $data);
         $this->load->view('template/footer_user', $data);
     }
+
     public function detailMateri($id){
         $data['title'] ='Detail Materi';
         $data['detail_materi'] = $this->User_model->detail_materi($id);
-        // $data['kategori_materi'] = $this->User_model->getAllKategoriMateri();
+
         $this->load->view('template/header_user', $data);
         $this->load->view('user/Detail_Materi', $data);
         $this->load->view('template/footer_user', $data);
     }
+
     public function kumpulkanTugas($id){
         $data['title'] ='Detail Materi';
         $data['detail_materi'] = $this->User_model->detail_materi($id);
         $data['tampil'] = $this->User_model->tampil_tugas($id);
-        // $data['kategori_materi'] = $this->User_model->getAllKategoriMateri();
+
         $this->load->view('template/header_user', $data);
         $this->load->view('user/Kumpulkan_Tugas', $data);
         $this->load->view('template/footer_user', $data);
     }
+
     public function tambah_tugas(){
         $data['title'] = 'Tambah Tugas';
 
@@ -129,4 +138,51 @@ class User extends CI_Controller {
             redirect('User/index','refresh');
         }    
     }
+
+    public function Tanya_Forum() {
+        $data['title'] ='Forum';
+        $data['KategoriMateri'] = $this->User_model->getAllKategoriMateri();
+
+        $this->form_validation->set_rules('pertanyaan', 'pertanyaan', 'required');
+
+        if($this->form_validation->run() == FALSE) {
+            $this->load->view('template/header_user', $data);
+            $this->load->view('user/Tanya_Forum', $data);
+            $this->load->view('template/footer_user', $data);
+        }
+        else {
+            $this->User_model->Tanya_Forum();
+            echo"<script>alert('Pertanyaan Anda Berhasil Dikirim');</script>";
+            redirect('User/Forum','refresh');
+        }
+    }
+
+    public function Detail_Forum($id) {
+        $data['title'] ='Forum';
+        $data['detail_pertanyaan'] = $this->User_model->detail_pertanyaan($id);
+        $data['jawaban'] = $this->User_model->jawaban($id);
+
+        $this->load->view('template/header_user', $data);
+        $this->load->view('user/Detail_Forum', $data);
+        $this->load->view('template/footer_user', $data);
+    }
+
+    public function Jawab_Forum($id) {
+        $data['title'] ='Forum';
+        $data['detail_pertanyaan'] = $this->User_model->detail_pertanyaan($id);
+
+        $this->form_validation->set_rules('chat', 'chat', 'required');
+
+        if($this->form_validation->run() == FALSE) {
+            $this->load->view('template/header_user', $data);
+            $this->load->view('user/Detail_Forum', $data);
+            $this->load->view('template/footer_user', $data);
+        }
+        else {
+            $this->User_model->Jawab_Forum($id);
+            echo"<script>alert('Jawaban Anda Berhasil Dikirim');</script>";
+            redirect('User/Detail_Forum/'.$id ,'refresh');
+        }
+    }
 }
+?>

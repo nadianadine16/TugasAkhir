@@ -46,40 +46,17 @@ class Tutor extends CI_Controller {
         //     $this->load->view('template/footer_tutor',$data);
         // }
         // else {
-            if($cek_nim) {
-                $data=$cek_nim->row_array();
-                $this->session->set_userdata('id_mahasiswa',$data['id_mahasiswa']);
-                $this->Tutor_model->Tambah_Tutor($nim);
-                echo"<script>alert('Terdaftar');</script>";
-                redirect('Login/Index','refresh');
-                $this->session->sess_destroy();
-            }
-            else {
-                echo"<script>alert('NIM Tidak Terdaftar');</script>";
-            }
-        // }
-        
-        
-        
-
-        // if($this->form_validation->run() == FALSE) {
-        //     $this->load->view('Tutor/Daftar_Tutor', $data);
-        //     $this->load->view('template/footer_tutor',$data);
-        // }
-        // else {
-        //     if($cek_nim->num_rows() > 0){
-        //         $this->Tutor_model->Tambah_Tutor($nim);
-                // echo"<script>alert('Kritik dan Saran Anda Berhasil Dikirim');</script>";
-            //     redirect('Login/Index','refresh');
-            // }
-            // $cek_nim = $this->Tutor_model->cekNim($nim, $id_kategori_materi, $status);
-            // $cek = $this->db->query("SELECT m.id_mahasiswa FROM mahasiswa m WHERE m.nim='".$this->input->post('nim')."' AND NOT EXISTS (SELECT * FROM tutor t WHERE t.id_mahasiswa = m.id_mahasiswa)")->num_rows();
-            // if($cek==1){
-            //     $this->Tutor_model->Tambah_Tutor();
-            //     $this->load->view('login/index');
-
-            // }
-        // }
+        if($cek_nim) {
+            $data=$cek_nim->row_array();
+            $this->session->set_userdata('id_mahasiswa',$data['id_mahasiswa']);
+            $this->Tutor_model->Tambah_Tutor($nim);
+            echo"<script>alert('Terdaftar');</script>";
+            redirect('Login/Index','refresh');
+            $this->session->sess_destroy();
+        }
+        else {
+            echo"<script>alert('NIM Tidak Terdaftar');</script>";
+        }
     }
 
     public function Data_Materi() {
@@ -98,7 +75,6 @@ class Tutor extends CI_Controller {
         $data['kategori_materi'] = $this->Tutor_model->getAllKategoriMateri();
 
         $this->form_validation->set_rules('nama_materi', 'nama_materi', 'required');
-        // $this->form_validation->set_rules('id_kategori_materi', 'id_kategori_materi', 'required');
         $this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
         $this->form_validation->set_rules('id_tutor', 'id_tutor', 'required');
 
@@ -202,4 +178,42 @@ class Tutor extends CI_Controller {
             redirect('Tutor/Kritik_Saran','refresh');
         }
     }
+
+    public function Forum() {
+        $data['title'] = 'Forum';
+        $data['forum'] = $this->Tutor_model->getAllForum();
+
+        $this->load->view('template/header2_tutor',$data);
+        $this->load->view('Tutor/Forum', $data);
+        $this->load->view('template/footer2_tutor',$data);
+    }
+
+    public function Detail_Forum($id) {
+        $data['title'] ='Forum';
+        $data['detail_pertanyaan'] = $this->Tutor_model->detail_pertanyaan($id);
+        $data['jawaban'] = $this->Tutor_model->jawaban($id);
+
+        $this->load->view('template/header2_tutor', $data);
+        $this->load->view('Tutor/Detail_Forum', $data);
+        $this->load->view('template/footer2_tutor', $data);
+    }
+
+    public function Jawab_Forum($id) {
+        $data['title'] ='Forum';
+        $data['detail_pertanyaan'] = $this->Tutor_model->detail_pertanyaan($id);
+
+        $this->form_validation->set_rules('chat', 'chat', 'required');
+
+        if($this->form_validation->run() == FALSE) {
+            $this->load->view('template/header2_tutor', $data);
+            $this->load->view('user/Detail_Forum', $data);
+            $this->load->view('template/footer2_tutor', $data);
+        }
+        else {
+            $this->Tutor_model->Jawab_Forum($id);
+            echo"<script>alert('Jawaban Anda Berhasil Dikirim');</script>";
+            redirect('Tutor/Detail_Forum/'.$id ,'refresh');
+        }
+    }
 }
+?>

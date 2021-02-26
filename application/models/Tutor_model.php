@@ -4,7 +4,7 @@
 
     class Tutor_model extends CI_Model {
 
-        public function getAllKategoriMateri(){
+        public function getAllKategoriMateri() {
             $query = $this->db->get('kategori_materi');
             return $query->result_array();
         }
@@ -29,7 +29,7 @@
             // }
         }
 
-        public function Tambah_Tutor($nim){
+        public function Tambah_Tutor($nim) {
             $status = 1;
 
             $this->id_tutor = uniqid();
@@ -58,9 +58,7 @@
         public function upload_video() {
             $config['upload_path'] = './upload/materi/';
             $config['allowed_types'] = 'mp4|3gp|flv';
-            // $config['file_name'] = $this->id_materi;
             $config['overwrite'] = true;
-            // $config['max_size'] = 1024;
 
             $this->upload->initialize($config);
             $this->load->library('upload',$config);
@@ -161,6 +159,48 @@
             $this->db->from('materi');
             $this->db->join('kategori_materi', 'materi.id_kategori_materi = kategori_materi.id_kategori_materi');
             $this->db->like('materi.nama_materi', $keyword);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+
+        public function getAllForum(){
+            $this->db->select('*');
+            $this->db->from('forum');
+            $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+
+        public function detail_pertanyaan($id_forum) {
+            $this->db->select('*');
+            $this->db->from('forum');
+            $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
+            $this->db->where('forum.id_forum', $id_forum);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+    
+        public function Jawab_Forum($id) {
+            $this->id_chat_forum = uniqid();
+            date_default_timezone_set('Asia/Jakarta');
+    
+            $data = [
+                "id_forum" => $this->input->post('id_forum', $id),
+                "id_user" => $this->input->post('id_user', true),
+                "chat" => $this->input->post('chat', true),
+                "created_at" => date('Y-m-d H:i:s', time())
+            ];
+    
+            $this->db->insert('chat_forum', $data);
+        }
+    
+        public function jawaban($id) {
+            $this->db->select('*');
+            $this->db->from('chat_forum');
+            $this->db->join('mahasiswa', 'chat_forum.id_user = mahasiswa.id_mahasiswa');
+            $this->db->join('forum', 'forum.id_forum = chat_forum.id_forum');
+            $this->db->where('forum.id_forum', $id);
+            $this->db->order_by('chat_forum.created_at','ASC');
             $query = $this->db->get();
             return $query->result_array();
         }
