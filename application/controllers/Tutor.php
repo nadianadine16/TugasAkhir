@@ -202,5 +202,4 @@ class Tutor extends CI_Controller {
             redirect('Tutor/Kritik_Saran','refresh');
         }
     }
-    
 }
