@@ -57,7 +57,7 @@
           <a href="<?=base_url()?>/user/index">Home</a></li>
           <li <?php if ($title == 'Daftar Kategori Materi'  || $title == 'Daftar Materi') echo 'class="active"';?>><a href="<?=base_url()?>/user/kategoriMateri">Materi</a></li>
           <li><a href="#services">Private Chat</a></li>
-          <li <?php if ($title == 'Forum') echo 'class="active"'; ?>><a href="<?= base_url()?>/user/forum">Forum</a></li>
+          <li <?php if ($title == 'Forum') echo 'class="active"'; ?>><a href="<?= base_url()?>user/Forum">Forum</a></li>
           <li <?php if ($title == 'Contact Us') echo 'class="active"'; ?>><a href="<?= base_url()?>/user/contactus">Contact Us</a></li>
           <li class="drop-down"><a href="">Akun</a>
             <ul>

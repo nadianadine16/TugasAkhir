@@ -19,7 +19,7 @@
         </form>
       </div>
     </div>
-        <div class="row" style="margin-rop:15px;">
+        <div class="row" style="margin-rop:15px;">        
         <?php $no=1; foreach($forum as $p):?>
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="card">
@@ -33,11 +33,5 @@
           </div>
         <?php endforeach;?>
         </div>
-        <div class="row">
-        <div class="col">
-            <!--Tampilkan pagination-->
-            <?php echo $pagination; ?>
-        </div>
-    </div>
       </div>
     </section><!-- End Team Section -->

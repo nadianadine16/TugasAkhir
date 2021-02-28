@@ -5,6 +5,7 @@
       <div class="breadcome-heading">
         <form action ="<?= base_url('tutor/cari');?>" method="post" role="search" class="sr-input-func">
           <input type="text" placeholder="Search..." class="search-int form-control" name="keyword" autocomplete="off">
+            <a href="#"><i class="fa fa-search"></i></a>
         </form>
       </div>
     </div> 
@@ -25,12 +26,5 @@
       </div>
     <?php endforeach;?>
     </div>
-  </div>
-  <div class="row">
-        <div class="col">
-            <!--Tampilkan pagination-->
-            <?php echo $pagination; ?>
-        </div>
-    </div>
+  </div>  
 </div>  
-   

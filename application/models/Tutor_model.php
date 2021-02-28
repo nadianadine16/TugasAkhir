@@ -163,10 +163,12 @@
             return $query->result_array();
         }
 
-        public function getAllForum(){
+        public function getAllForum($limit, $start){
             $this->db->select('*');
             $this->db->from('forum');
             $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
+            $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');  
+            $this->db->limit($limit,$start);                                              
             $query = $this->db->get();
             return $query->result_array();
         }
@@ -201,6 +203,26 @@
             $this->db->join('forum', 'forum.id_forum = chat_forum.id_forum');
             $this->db->where('forum.id_forum', $id);
             $this->db->order_by('chat_forum.created_at','ASC');
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+        public function getAllKategoriForum(){
+            $this->db->select('kategori_materi.id_kategori_materi, kategori_materi.nama_kategori, COUNT(forum.id_kategori_materi) AS total');
+            $this->db->from('kategori_materi');
+            $this->db->join('forum', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
+            $this->db->group_by('forum.id_kategori_materi');         
+            $query = $this->db->get();
+            return $query->result_array();            
+        }        
+        public function search(){
+            $keyword=$this->input->post('keyword');
+            $this->db->select('*');
+            $this->db->from('forum');
+            $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
+            $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');            
+            $this->db->like('kategori_materi.nama_kategori', $keyword);        
+            $this->db->or_like('forum.pertanyaan', $keyword);
+            $this->db->order_by('forum.created_at', 'DESC');        
             $query = $this->db->get();
             return $query->result_array();
         }
