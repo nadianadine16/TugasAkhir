@@ -15,7 +15,12 @@ class Tutor extends CI_Controller {
     public function index()
     {
         $data['title'] = 'Dashboard Tutor';
+        $data['materi'] = $this->Tutor_model->Hitung_Materi($this->session->userdata('id_tutor'));
+        // $data['private_chat'] = $this->Tutor_model->Hitung_Private_Chat();
+        $data['forum'] = $this->Tutor_model->Hitung_Forum();
+
         $this->load->view('template/header2_tutor',$data);
+        $this->load->view('Tutor/Index',$data);
         $this->load->view('template/footer2_tutor',$data);
     }
 
@@ -180,7 +185,7 @@ class Tutor extends CI_Controller {
 
         $this->form_validation->set_rules('kritik_saran', 'Kritik dan Saran', 'required');
         $this->form_validation->set_rules('subject', 'Subject', 'required');
-        $this->form_validation->set_rules('id_tutor', 'id_tutor', 'required');
+        $this->form_validation->set_rules('id_user', 'id_user', 'required');
 
         if($this->form_validation->run() == FALSE) {
             $this->load->view('template/header2_tutor',$data);

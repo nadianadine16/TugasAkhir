@@ -4,6 +4,18 @@
 
     class Tutor_model extends CI_Model {
 
+        public function Hitung_Forum() {
+            return $this->db->count_all('forum');
+        }
+
+        public function Hitung_Materi() {
+            return $this->db->get_where('materi', array('id_tutor' => $this->session->userdata('id_tutor') ))->num_rows();
+        }
+
+        public function Hitung_Tugas_Mahasiswa() {
+            return $this->db->get_where('tugas', array('id_materi' => $this->session->userdata('id_materi') ))->num_rows();
+        }
+        
         public function getAllKategoriMateri() {
             $query = $this->db->get('kategori_materi');
             return $query->result_array();
@@ -16,22 +28,7 @@
 
         public function cekNim($nim) {
             $query=$this->db->query("SELECT m.id_mahasiswa FROM mahasiswa m WHERE m.nim= $nim AND NOT EXISTS (SELECT * FROM tutor t WHERE t.id_mahasiswa = m.id_mahasiswa)");
-            return $query;		
-            // if($mahasiswaNim->num_rows()==1) {
-            //     $this->id_tutor = uniqid();
-                
-            // $data = [
-            //     "id_mahasiswa" => $this->input->post($mahasiswaNim),
-            //     "id_kategori_materi" => $this->input->post('id_kategori_materi', true),
-            //     "status" => $this->input->post('status', true),
-                
-            // ];
-            // $this->db->insert('tutor', $data);
-                // return $mahasiswaNim->result();
-            // }
-            // else {
-            //     return false;
-            // }
+            return $query;
         }
 
         public function Tambah_Tutor() {
@@ -164,7 +161,7 @@
             $this->id_kritiksaran = uniqid();
             $data = [
                 "subject" => $this->input->post('subject', true),
-                "id_tutor" => $this->input->post('id_tutor', true),
+                "id_user" => $this->input->post('id_user', true),
                 "kritik_saran" => $this->input->post('kritik_saran', true)
             ];
             $this->db->insert('kritik_saran', $data);

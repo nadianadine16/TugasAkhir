@@ -166,7 +166,7 @@
                                                 <li class="nav-item">
                                                     <a href="<?= base_url()?>/assets_admin1/#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
 															<img src="<?= base_url()?>/assets_admin1/img/product/pro4.jpg" alt="" />
-															<span class="admin-name"><?= $this->session->userdata('nama');?></span>
+															<span class="admin-name">Halo Admin, <?= $this->session->userdata('nama');?></span>
 															<i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
 														</a>
                                                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
