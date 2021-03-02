@@ -1,6 +1,9 @@
 <section id="hero" class="d-flex align-items-center">
     <div class="container">
-        <div class="col-lg-8 mt-5 mt-lg-0">
+    <div class="section-title">
+      <h2>Tanyakan Pada Forum</h2>
+    </div> 
+        <div class="col-lg-12 mt-5 mt-lg-0">
             <form action="<?=base_url('User/Tanya_Forum')?>" method="post" >
                 <input type="hidden" name="id_mahasiswa" value="<?= $this->session->userdata('id_mahasiswa');?>">
                 <div class="form-group">
