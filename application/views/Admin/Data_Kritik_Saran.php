@@ -39,9 +39,9 @@
                                 <thead>
                                     <tr>
                                         <th data-field="id">No</th>
-                                        <th data-field="name" data-editable="true">Nim</th>
-                                        <th data-field="email" data-editable="true">Nama</th>
-                                        <th data-field="phone" data-editable="true">Subject</th>
+                                        <th data-field="name">Nim</th>
+                                        <th data-field="email">Nama</th>
+                                        <th data-field="phone">Subject</th>
                                         <th data-field="complete">Kritik Saran</th>
                                     </tr>
                                 </thead>

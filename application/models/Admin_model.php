@@ -109,7 +109,7 @@ class Admin_model extends CI_Model {
     public function getAllKritikSaran(){
         $this->db->select('*');
         $this->db->from('kritik_saran');
-        $this->db->join('mahasiswa', 'kritik_saran.id_mahasiswa = mahasiswa.id_mahasiswa');        
+        $this->db->join('mahasiswa', 'kritik_saran.id_user = mahasiswa.id_mahasiswa');              
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -130,6 +130,21 @@ class Admin_model extends CI_Model {
         $this->db->where('id_admin', $this->input->post('id_admin'));
         $this->db->update('admin', $data);
         return true;
+    }
+    public function getCountMahasiswa() {
+        return $this->db->count_all('mahasiswa');
+    }
+    public function getCountTutor() {
+        return $this->db->count_all('tutor');
+    }
+    public function getCountKategoriMateri() {
+        return $this->db->count_all('kategori_materi');
+    }
+    public function getCountKritikSaran() {
+        return $this->db->count_all('kritik_saran');
+    }
+    public function getCountForum() {
+        return $this->db->count_all('forum');
     }
 }
 ?>
