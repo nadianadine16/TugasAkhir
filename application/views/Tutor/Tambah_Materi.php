@@ -37,15 +37,6 @@
                     <label for="nama_materi">Judul Materi</label>
                         <input type="text" class="form-control" id="nama_materi" name="nama_materi">
                 </div>
-                <!-- <div class="form-group">
-                    <label for="kategori_materi">Kategori Materi</label>
-                    <select class="form-control" id="id_kategori_materi" name="id_kategori_materi">
-                        <option value="none" selected="" disabled="">Pilih Kategori Materi</option>
-                        <?php foreach($kategori_materi as $km) : ?>
-                            <option value="<?=$km["id_kategori_materi"];?>"><?=$km["nama_kategori"];?></option>
-                        <?php endforeach;?>
-                    </select>
-                </div>   -->
                 <div class="form-group">
                     <label for="video">Unggah Video</label>
                         <input type="file" class="form-control" id="video" name="video">

@@ -32,7 +32,7 @@
                 </div>
             <?php endif; ?>
                 <form action="<?= base_url('Tutor/Kritik_Saran')?>" method="post">
-                <input type="hidden" class="form-control" id="id_tutor" name="id_tutor" value="<?= $this->session->userdata('id_tutor');?>">
+                <input type="hidden" class="form-control" id="id_user" name="id_user" value="<?= $this->session->userdata('id_tutor');?>">
                 <div class="form-group">
                     <label for="subject">Subject</label>
                         <input type="text" class="form-control" id="subject" name="subject">

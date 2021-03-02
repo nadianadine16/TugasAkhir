@@ -7,7 +7,7 @@ class User_model extends CI_Model {
     public function tambah_kritik() {
         $this->id_kritiksaran=uniqid();
         $data = [
-            "id_mahasiswa" => $this->input->post('id_mahasiswa', true),
+            "id_user" => $this->input->post('id_user', true),
             "subject" => $this->input->post('subject', true),
             "kritik_saran" => $this->input->post('kritik_saran', true),
         ];

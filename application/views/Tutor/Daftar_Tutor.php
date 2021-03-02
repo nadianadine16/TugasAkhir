@@ -10,10 +10,18 @@
                     <h5> Silahkan download file surat pernyataan berikut terlebih dahulu :</h5>
                     <a href="<?= base_url('assets_tutor/pdf/Surat_Pernyataan.pdf')?>">Download File</a><br><br>
                     <form action="<?=base_url('Tutor/Tambah_Tutor')?>" method="post">
+                        <!-- <div class="form-group">
+                            <label for="nim">NIM</label>
+                                <input type="text" class="id_mahasiswa" id="nim" name="id_mahasiswa">
+                        </div>   -->
                         <div class="form-group">
                             <label for="nim">NIM</label>
-                                <input type="text" class="form-control" id="nim" name="nim">
-                        </div>  
+                            <select class="form-control" id="id_mahasiswa" name="id_mahasiswa">
+                                <?php foreach($mahasiswa as $m) : ?>
+                                    <option value="<?=$m["id_mahasiswa"];?>"><?=$m["nim"];?></option>
+                                <?php endforeach;?>
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label for="status">Kategori Materi yang Dipilih</label>
                             <select class="form-control" id="id_kategori_materi" name="id_kategori_materi">
@@ -22,13 +30,12 @@
                                 <?php endforeach;?>
                             </select>
                         </div>
-                <!-- <div class="form-group">
-                    <label for="file">Unggah Surat Pernyataan</label>
-                        <input type="file" class="form-control" id="file" name="file">
-                        <p style="color:#808080;">Format .pdf</p>
-                </div> -->
+                        <div class="form-group">
+                            <label for="video">Unggah Surat Pernyataan</label>
+                                <input type="file" class="form-control" id="file" name="file">
+                                <p style="color:#808080;">Format .pdf</p>
+                        </div>
                         <input type="hidden" name="status" value="1">
-                        <input type="hidden" class="form-control" id="id_mahasiswa" name="id_mahasiswa" value="<?= $this->session->userdata('id_mahasiswa');?>">
                         <button type="submit" name="submit" class="btn btn-primary float-right">Submit</button>
                     </form>
                 </div>

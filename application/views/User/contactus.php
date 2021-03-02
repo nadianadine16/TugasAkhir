@@ -21,27 +21,11 @@
                 <h4>Location:</h4>
                 <p>Jl. Soekarno Hatta No.9, Jatimulyo, Kec. Lowokwaru, Kota Malang, Jawa Timur 65141</p>
               </div>
-
-              <!-- <div class="email">
-                <i class="icofont-envelope"></i>
-                <h4>Email:</h4>
-                <p>info@example.com</p>
-              </div>
-
-              <div class="phone">
-                <i class="icofont-phone"></i>
-                <h4>Call:</h4>
-                <p>+1 5589 55488 55s</p>
-              </div> -->
-
             </div>
-
           </div>
-
           <div class="col-lg-8 mt-5 mt-lg-0">
-
             <form action="<?=base_url('user/prosesContactus')?>" method="post" >
-            <input type="hidden" name="id_mahasiswa" value="<?= $this->session->userdata('id_mahasiswa');?>">
+            <input type="hidden" name="id_user" value="<?= $this->session->userdata('id_mahasiswa');?>">
               <div class="form-group">
                 <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
                 <div class="validate"></div>
@@ -52,10 +36,7 @@
               </div>
               <div class="text-center"><button type="submit" class="btn btn-primary">Kirim Pesan</button></div>
             </form>
-
           </div>
-
         </div>
-
       </div>
-    </section><!-- End Contact Section -->
+    </section>

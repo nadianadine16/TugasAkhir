@@ -72,7 +72,7 @@ class User extends CI_Controller {
     {
         $data['title'] = 'Contact Us';
      
-        $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');
+        $this->form_validation->set_rules('id_user', 'id_user', 'required');
         $this->form_validation->set_rules('subject', 'subject', 'required');   
         $this->form_validation->set_rules('kritik_saran', 'kritik_saran', 'required');   
         
@@ -87,7 +87,7 @@ class User extends CI_Controller {
     
     public function profile()
     {
-        $data['title'] ='Profile';
+        $data['title'] ='Profil';
         $this->load->view('template/header_user', $data);
         $this->load->view('user/profile', $data);
         $this->load->view('template/footer_user', $data);
@@ -95,7 +95,7 @@ class User extends CI_Controller {
 
     public function prosesEditProfile()
     {
-        $data['title'] = 'Profile';
+        $data['title'] = 'Profil';
      
         $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');        
         $this->form_validation->set_rules('nim', 'nim', 'required');        

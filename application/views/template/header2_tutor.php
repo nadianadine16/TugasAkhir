@@ -7,78 +7,36 @@
     <title><?=$title?></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- favicon
-		============================================ -->
     <link rel="shortcut icon" type="image/x-icon" href="<?= base_url()?>/assets_admin1/<?= base_url()?>/assets_admin1/img/favicon.ico">
-    <!-- Google Fonts
-		============================================ -->
     <link href="<?= base_url()?>/assets_admin1/https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
-    <!-- Bootstrap CSS
-		============================================ -->
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/bootstrap.min.css">
-    <!-- Bootstrap CSS
-		============================================ -->
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/font-awesome.min.css">
-    <!-- owl.carousel CSS
-		============================================ -->
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/owl.carousel.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/owl.theme.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/owl.transitions.css">
-    <!-- animate CSS
-		============================================ -->
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/animate.css">
-    <!-- normalize CSS
-		============================================ -->
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/normalize.css">
-    <!-- meanmenu icon CSS
-		============================================ -->
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/meanmenu.min.css">
-    <!-- main CSS
-		============================================ -->
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/main.css">
-    <!-- educate icon CSS
-		============================================ -->
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/educate-custon-icon.css">
-    <!-- morrisjs CSS
-		============================================ -->
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/morrisjs/morris.css">
-    <!-- mCustomScrollbar CSS
-		============================================ -->
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/scrollbar/jquery.mCustomScrollbar.min.css">
-    <!-- metisMenu CSS
-		============================================ -->
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/metisMenu/metisMenu.min.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/metisMenu/metisMenu-vertical.css">
-    <!-- calendar CSS
-		============================================ -->
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/calendar/fullcalendar.min.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/calendar/fullcalendar.print.min.css">
-    <!-- x-editor CSS
-		============================================ -->
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/editor/select2.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/editor/datetimepicker.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/editor/bootstrap-editable.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/editor/x-editor-style.css">
-    <!-- normalize CSS
-		============================================ -->
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/data-table/bootstrap-table.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/data-table/bootstrap-editable.css">
-    <!-- style CSS
-		============================================ -->
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/style.css">
-    <!-- responsive CSS
-		============================================ -->
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/responsive.css">
-    <!-- modernizr JS
-		============================================ -->
     <script src="<?= base_url()?>/assets_admin1/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body>
-    <!--[if lt IE 8]>
-		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="<?= base_url()?>/assets_admin1/http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-	<![endif]-->
-    <!-- Start Left menu area -->
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header">
@@ -88,14 +46,14 @@
             <div class="left-custom-menu-adp-wrap comment-scrollbar">
                 <nav class="sidebar-nav left-sidebar-menu-pro">
                     <ul class="metismenu" id="menu1">
-                    <li>
-                            <a class="mini-click-non" href="<?= base_url()?>admin/index">
-								   <span class="educate-icon educate-home icon-wrap"></span>
-								   <span class="mini-click-non">Dashboard</span>
-								</a>
+                        <li>
+                            <a class="mini-click-non" href="<?= base_url()?>Tutor/index">
+                                <span class="educate-icon educate-home icon-wrap"></span>
+                                <span class="mini-click-non">Dashboard</span>
+							</a>
                         </li>
                         <li>
-                            <a class="has-arrow" href="all-students.html" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Materi</span></a>
+                            <a class="has-arrow" href="all-students.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Materi</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="All Students" href="<?= base_url()?>Tutor/Data_Materi"><span class="mini-sub-pro">Data Materi</span></a></li>
                                 <li><a title="Add Students" href="<?= base_url()?>Tutor/Tambah_Materi"><span class="mini-sub-pro">Tambah Materi</span></a></li>
@@ -105,21 +63,20 @@
                             <a class="" href="<?= base_url()?>Tutor/Tugas_mahasiswa" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Tugas Mahasiswa</span></a>
                         </li>
                         <li>
-                            <a class="" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Private Chat</span></a>
+                            <a class="" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-message icon-wrap"></span> <span class="mini-click-non">Private Chat</span></a>
+                        </li>
+                        <li>
+                            <a class="" href="<?= base_url()?>Tutor/Forum" aria-expanded="false"><span class="educate-icon educate-interface icon-wrap"></span> <span class="mini-click-non">Forum</span></a>
                         </li>
                         <li>
                             <a class="" href="<?= base_url()?>Tutor/Kritik_Saran" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Kritik & Saran</span></a>
-                        </li>
-                        <li>
-                            <a class="" href="<?= base_url()?>Tutor/Forum" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Forum</span></a>
                         </li>
                     </ul>
                 </nav>
             </div>
         </nav>
     </div>
-    <!-- End Left menu area -->
-    <!-- Start Welcome area -->
+
     <div class="all-content-wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -158,7 +115,7 @@
                                                 <li class="nav-item">
                                                     <a href="<?= base_url()?>/assets_admin1/#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
 															<img src="<?= base_url()?>/assets_admin1/img/product/pro4.jpg" alt="" />
-															<span class="admin-name"><?= $this->session->userdata('nama');?></span>
+															<span class="admin-name">Halo Tutor, <?= $this->session->userdata('nama');?></span>
 															<i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
 														</a>
                                                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
@@ -177,7 +134,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Mobile Menu start -->
+
             <div class="mobile-menu-area">
                 <div class="container">
                     <div class="row">

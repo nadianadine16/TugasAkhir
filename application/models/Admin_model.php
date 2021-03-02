@@ -1,8 +1,8 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+    defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin_model extends CI_Model {
+    class Admin_model extends CI_Model {
 
     public function getAllMahasiswa(){
         $this->db->select('*');
