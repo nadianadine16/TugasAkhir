@@ -11,12 +11,14 @@ class Admin extends CI_Controller {
             $this->load->model('Admin_model');
             $this->load->library('form_validation');
     }
+
     public function index()
     {
         $data['title'] = 'Dashboard Admin';
         $this->load->view('template/header2_admin',$data);
         $this->load->view('template/footer2_admin',$data);
     }
+
     public function data_mahasiswa()
     {
         $data['title'] = 'Data Mahasiswa';
@@ -25,6 +27,7 @@ class Admin extends CI_Controller {
         $this->load->view('Admin/Data_Mahasiswa',$data);
         $this->load->view('template/footer2_admin',$data);
     }
+
     public function detail_data_mahasiswa($id)
     {
         $data['title'] = 'Detail Data Mahasiswa';
@@ -33,6 +36,7 @@ class Admin extends CI_Controller {
         $this->load->view('Admin/Detail_Mahasiswa',$data);
         $this->load->view('template/footer2_admin',$data);
     }
+
     public function edit_data_mahasiswa($id) {
         $data['title'] = 'Edit Data Mahasiswa';
         $data['mahasiswa'] = $this->Admin_model->getMahasiswaById($id);
@@ -55,6 +59,7 @@ class Admin extends CI_Controller {
             redirect('Admin/data_mahasiswa','refresh');
         }
     }
+
     public function tambah_data_mahasiswa(){
         $data['title'] = 'Tambah Data Mahasiswa';
         $data['prodi'] = ['Manajemen Informatika', 'Teknik Informatika'];
@@ -76,10 +81,12 @@ class Admin extends CI_Controller {
             redirect('Admin/data_mahasiswa','refresh');
         }    
     }
+
     public function hapus_data_mahasiswa($id) {
         $this->Admin_model->hapus_data_mahasiswa($id);
         redirect('Admin/data_mahasiswa','refresh');
     }
+
     public function data_tutor()
     {
         $data['title'] = 'Data Tutor';
@@ -88,10 +95,12 @@ class Admin extends CI_Controller {
         $this->load->view('Admin/Data_Tutor',$data);
         $this->load->view('template/footer2_admin',$data);
     }
+
     public function hapus_data_tutor($id) {
         $this->Admin_model->hapus_data_tutor($id);
         redirect('Admin/data_tutor','refresh');
     }
+
     public function data_kategori_materi()
     {
         $data['title'] = 'Data Kategori Materi';
@@ -100,6 +109,7 @@ class Admin extends CI_Controller {
         $this->load->view('Admin/Data_Kategori_Materi',$data);
         $this->load->view('template/footer2_admin',$data);
     }
+    
     public function edit_data_kategori_materi($id) {
         $data['title'] = 'Edit Data Kategori Materi';
         $data['kategoriMateri'] = $this->Admin_model->getKategoriMateriById($id);
@@ -116,10 +126,12 @@ class Admin extends CI_Controller {
             redirect('Admin/data_kategori_materi','refresh');
         }
     }
+
     public function hapus_data_kategori_materi($id) {
         $this->Admin_model->hapus_data_kategori_materi($id);
         redirect('Admin/data_kategori_materi','refresh');
     }
+
     public function tambah_kategori_materi(){
         $data['title'] = 'Tambah Kategori Materi';
 
@@ -135,6 +147,7 @@ class Admin extends CI_Controller {
             redirect('Admin/data_kategori_materi','refresh');
         }    
     }
+
     public function data_tutor_belum_verifikasi()
     {
         $data['title'] = 'Data Tutor Belum Terverifikasi';
@@ -143,6 +156,7 @@ class Admin extends CI_Controller {
         $this->load->view('Admin/Verifikasi_Tutor',$data);
         $this->load->view('template/footer2_admin',$data);
     }
+
     public function status_pendaftaran($id) {
         $data['title'] = 'Data Tutor Belum Terverifikasi';
         $data['unreg'] = $this->Admin_model->getUnregPendaftaran();
@@ -171,6 +185,7 @@ class Admin extends CI_Controller {
             
         }
     }
+
     public function data_kritik_saran()
     {
         $data['title'] = 'Data Kritik Saran';
@@ -179,15 +194,14 @@ class Admin extends CI_Controller {
         $this->load->view('Admin/Data_Kritik_Saran',$data);
         $this->load->view('template/footer2_admin',$data);
     }
+
     public function profile()
     {
-        $data['title'] = 'Ganti Password';
+        $data['title'] = 'Ubah Password';
         $this->form_validation->set_rules('id_admin', 'id_admin', 'required');
         $this->form_validation->set_rules('password_lama', 'password_lama', 'required');
         $this->form_validation->set_rules('password_baru', 'password_baru', 'required');
-        // $password_lama = $this->input->post('password_lama');
-        // $password_baru = $this->input->post('password_baru');
-        // $konfirmasi_password = $this->input->post('konfirmasi_password');
+
         if($this->form_validation->run() == FALSE) {
             $this->load->view('template/header2_admin',$data);
             $this->load->view('Admin/Ganti_Password',$data);
@@ -205,5 +219,29 @@ class Admin extends CI_Controller {
                 }
             }    
         }
+    }
+
+    public function forum() {
+        $data['title'] = 'Forum';
+        $data['forum'] = $this->Admin_model->getAllForum();
+
+        $this->load->view('template/header2_admin',$data);
+        $this->load->view('Admin/Forum',$data);
+        $this->load->view('template/footer2_admin',$data);
+    }
+
+    public function Detail_Forum($id) {
+        $data['title'] = 'Forum';
+        $data['detail_forum'] = $this->Admin_model->getForumById($id);
+        $data['jawaban_forum'] = $this->Admin_model->jawaban_forum($id);
+
+        $this->load->view('template/header2_admin',$data);
+        $this->load->view('Admin/Detail_Forum',$data);
+        $this->load->view('template/footer2_admin',$data);
+    }
+
+    public function hapus_forum($id) {
+        $this->Admin_model->hapus_forum($id);
+        redirect('Admin/Forum','refresh');
     }
 }

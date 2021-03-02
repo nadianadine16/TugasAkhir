@@ -9,6 +9,11 @@
             return $query->result_array();
         }
 
+        public function getNim() {
+            $query = $this->db->get('mahasiswa');
+            return $query->result_array();
+        }
+
         public function cekNim($nim) {
             $query=$this->db->query("SELECT m.id_mahasiswa FROM mahasiswa m WHERE m.nim= $nim AND NOT EXISTS (SELECT * FROM tutor t WHERE t.id_mahasiswa = m.id_mahasiswa)");
             return $query;		
@@ -29,17 +34,30 @@
             // }
         }
 
-        public function Tambah_Tutor($nim) {
+        public function Tambah_Tutor() {
             $status = 1;
 
             $this->id_tutor = uniqid();
             $data = [
                 "id_mahasiswa" => $this->input->post('id_mahasiswa', true),
                 "id_kategori_materi" => $this->input->post('id_kategori_materi', true),
-                "status" => $this->input->post('status', $status)
+                "status" => $this->input->post('status', $status),
+                "file" => $this->uploadFile()
             ];
 
             $this->db->insert('tutor', $data);
+        }
+
+        public function uploadFile() {
+            $config['upload_path'] = './upload/surat_pernyataan/';
+            $config['allowed_types'] = 'pdf';
+            $config['overwrite'] = true;
+
+            $this->upload->initialize($config);
+            $this->load->library('upload',$config);
+            if($this->upload->do_upload('file')) {
+                return $this->upload->data("file_name");
+            }
         }
 
         

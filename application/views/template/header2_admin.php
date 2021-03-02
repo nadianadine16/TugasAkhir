@@ -119,7 +119,7 @@
                             <a class="" href="<?= base_url();?>admin/data_kritik_saran" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Kritik & Saran</span></a>
                         </li>
                         <li>
-                            <a class="" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Forum</span></a>
+                            <a class="" href="<?= base_url();?>admin/Forum" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Forum</span></a>
                         </li>
                     </ul>
                 </nav>

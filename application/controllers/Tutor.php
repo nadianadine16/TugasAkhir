@@ -22,6 +22,7 @@ class Tutor extends CI_Controller {
     {
         $data['title'] = 'Daftar Tutor';
         $this->session->sess_destroy();
+        $data['mahasiswa'] = $this->Tutor_model->getNim();
         $data['KategoriMateri'] = $this->Tutor_model->getAllKategoriMateri();
         $this->load->view('Tutor/Daftar_Tutor', $data);
         $this->load->view('template/footer_tutor',$data);
@@ -30,15 +31,29 @@ class Tutor extends CI_Controller {
     public function Tambah_Tutor()
     {
         $data['title'] = 'Daftar Tutor';
-        $data['KategoriMateri'] = $this->Tutor_model->getAllKategoriMateri();
+
+        $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');
+        $this->form_validation->set_rules('file', 'File', 'required'); 
+        
+        if($this->form_validation->run() == FALSE) {
+            echo"<script>alert('Tidak Terdaftar');</script>";
+            redirect('Tutor/Daftar_Tutor','refresh');
+        }
+        else {
+            $this->Tutor_model->Tambah_Tutor();
+            echo"<script>alert('Terdaftar');</script>";
+            redirect('Login/index','refresh');
+        }
+        // $data['mahasiswa'] = $this->Tutor_model->getNim();
+        // $data['KategoriMateri'] = $this->Tutor_model->getAllKategoriMateri();
 
         // $this->form_validation->set_rules('nim', 'nim', 'required');
         // $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');
         // $this->form_validation->set_rules('id_kategori_materi', 'id_kategori_materi', 'required');
         // $this->form_validation->set_rules('status', 'status', 'required');
 
-        $nim=htmlspecialchars($this->input->post('nim'));
-        $cek_nim = $this->Tutor_model->cekNim($nim);
+        // $nim=htmlspecialchars($this->input->post('id_mahasiswa'));
+        // $cek_nim = $this->Tutor_model->cekNim($nim);
 
         // if($this->form_validation->run() == FALSE) {
         //     // $this->session->sess_destroy();
@@ -46,17 +61,16 @@ class Tutor extends CI_Controller {
         //     $this->load->view('template/footer_tutor',$data);
         // }
         // else {
-        if($cek_nim) {
-            $data=$cek_nim->row_array();
-            $this->session->set_userdata('id_mahasiswa',$data['id_mahasiswa']);
-            $this->Tutor_model->Tambah_Tutor($nim);
-            echo"<script>alert('Terdaftar');</script>";
-            redirect('Login/Index','refresh');
-            $this->session->sess_destroy();
-        }
-        else {
-            echo"<script>alert('NIM Tidak Terdaftar');</script>";
-        }
+        // if($cek_nim) {
+        //     $data=$cek_nim->row_array();
+            // $this->session->set_userdata('id_mahasiswa',$data['id_mahasiswa']);
+        //     $this->Tutor_model->Tambah_Tutor($nim);
+        //     echo"<script>alert('Terdaftar');</script>";
+        //     redirect('Login/Index','refresh');
+        //     $this->session->sess_destroy();
+        // }
+        // else {
+        //     echo"<script>alert('NIM Tidak Terdaftar');</script>";
     }
 
     public function Data_Materi() {
