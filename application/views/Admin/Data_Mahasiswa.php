@@ -46,9 +46,9 @@
                                 <thead>
                                     <tr>
                                         <th data-field="id">No</th>
-                                        <th data-field="name" data-editable="true">Nim</th>
-                                        <th data-field="email" data-editable="true">Nama</th>
-                                        <th data-field="phone" data-editable="true">Prodi</th>
+                                        <th data-field="name">Nim</th>
+                                        <th data-field="email">Nama</th>
+                                        <th data-field="phone">Prodi</th>
                                         <th data-field="complete">Kelas</th>
                                         <th data-field="action">Action</th>
                                     </tr>

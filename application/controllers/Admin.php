@@ -15,7 +15,13 @@ class Admin extends CI_Controller {
     public function index()
     {
         $data['title'] = 'Dashboard Admin';
+        $data['mahasiswa'] = $this->Admin_model->getCountMahasiswa();
+        $data['tutor'] = $this->Admin_model->getCountTutor();
+        $data['kategori_materi'] = $this->Admin_model->getCountKategoriMateri();
+        $data['kritik_saran'] = $this->Admin_model->getCountKritikSaran();
+        $data['forum'] = $this->Admin_model->getCountForum();
         $this->load->view('template/header2_admin',$data);
+        $this->load->view('Admin/index',$data);
         $this->load->view('template/footer2_admin',$data);
     }
 
