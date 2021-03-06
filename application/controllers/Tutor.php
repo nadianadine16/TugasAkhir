@@ -96,6 +96,7 @@ class Tutor extends CI_Controller {
 
         $this->form_validation->set_rules('nama_materi', 'nama_materi', 'required');
         $this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
+        $this->form_validation->set_rules('soal', 'soal', 'required');
         $this->form_validation->set_rules('id_tutor', 'id_tutor', 'required');
 
         if($this->form_validation->run() == FALSE) {
@@ -105,6 +106,7 @@ class Tutor extends CI_Controller {
         }
         else {
             $this->Tutor_model->Tambah_Materi();
+            echo"<script>alert('Materi Berhasil Ditambahkan!');</script>";
             redirect('Tutor/Data_Materi','refresh');
         }
     }
@@ -122,6 +124,7 @@ class Tutor extends CI_Controller {
         $this->form_validation->set_rules('nama_materi', 'nama_materi', 'required');
         $this->form_validation->set_rules('id_kategori_materi', 'id_kategori_materi', 'required');
         $this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
+        $this->form_validation->set_rules('soal', 'soal', 'required');
         $this->form_validation->set_rules('id_tutor', 'id_tutor', 'required');
 
         if($this->form_validation->run() == FALSE) {
@@ -131,6 +134,7 @@ class Tutor extends CI_Controller {
         }
         else {
             $this->Tutor_model->Edit_Materi($id_materi);
+            echo"<script>alert('Materi Berhasil Diubah!');</script>";
             redirect('Tutor/Data_Materi','refresh');
         }
     }
@@ -172,11 +176,13 @@ class Tutor extends CI_Controller {
 
     public function Verifikasi_Tugas($id_tugas) {
         $this->Tutor_model->Verifikasi_Tugas($id_tugas);
+        echo"<script>alert('Verifikasi Tugas Berhasil!');</script>";
         redirect('Tutor/Tugas_Mahasiswa', 'refresh');
     }
 
     public function Hapus_Tugas($id_tugas) {
         $this->Tutor_model->Hapus_Tugas($id_tugas);
+        echo"<script>alert('Tugas Berhasil Dihapus!');</script>";
         redirect('Tutor/Tugas_Mahasiswa', 'refresh');
     }
 
@@ -199,47 +205,10 @@ class Tutor extends CI_Controller {
         }
     }
 
-    public function KategoriForum() {
-        $data['title'] = 'Kategori Forum';
-        $data['Kategori_forum'] = $this->Tutor_model->getAllKategoriForum();        
-
-        $this->load->view('template/header2_tutor',$data);
-        $this->load->view('Tutor/Kategori_Forum', $data);
-        $this->load->view('template/footer2_tutor',$data);
-    }
-
     public function Forum() {
-        $config['base_url'] = site_url('tutor/forum'); //site url
-        $config['total_rows'] = $this->db->count_all('forum'); //total row
-        $config['per_page'] = 8;  //show record per halaman
-        $config["uri_segment"] = 3;  // uri parameter
-        $choice = $config["total_rows"] / $config["per_page"];
-        $config["num_links"] = floor($choice);
-
-        $config['first_link']       = 'First';
-        $config['last_link']        = 'Last';
-        $config['next_link']        = 'Next';
-        $config['prev_link']        = 'Prev';
-        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
-        $config['full_tag_close']   = '</ul></nav></div>';
-        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
-        $config['num_tag_close']    = '</span></li>';
-        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
-        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
-        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
-        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
-        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
-        $config['prev_tagl_close']  = '</span>Next</li>';
-        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
-        $config['first_tagl_close'] = '</span></li>';
-        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
-        $config['last_tagl_close']  = '</span></li>';
-
-        $this->pagination->initialize($config);
-        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $data['title'] = 'Forum';
-        $data['forum'] = $this->Tutor_model->getAllForum($config["per_page"], $data['page']);
-        $data['pagination'] = $this->pagination->create_links();
+        $data['title'] ='Forum';
+        $data['forum'] = $this->Tutor_model->getAllForum();
+        $data['kategori_forum'] = $this->Tutor_model->getAllKategoriForum();
 
         $this->load->view('template/header2_tutor',$data);
         $this->load->view('Tutor/Forum', $data);
@@ -273,13 +242,18 @@ class Tutor extends CI_Controller {
             redirect('Tutor/Detail_Forum/'.$id ,'refresh');
         }
     }
-    public function cari(){
-        $keyword=  $this->input->post('keyword');        
-        $data['title'] = 'Forum';        
-        $data['forum'] = $this->Tutor_model->search();
+    public function Cari_Forum(){
+        $data['title'] = 'Forum';
+        $data['kategori_forum'] = $this->Tutor_model->getAllKategoriForum();
+
+        if($this->input->post('submit')){
+            $kategori = $this->input->post('id_kategori');
+
+            $data['forum'] = $this->Tutor_model->Search($kategori);
+        }
 
         $this->load->view('template/header2_tutor', $data);
-        $this->load->view("tutor/Search",$data);
+        $this->load->view("tutor/Hasil_Cari_Forum",$data);
         $this->load->view('template/footer2_tutor', $data);     
     }
 }

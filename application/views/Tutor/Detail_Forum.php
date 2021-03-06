@@ -1,6 +1,4 @@
 <?php $no=1; foreach($detail_pertanyaan as $p):?>
-<h4 style="margin-top:50px;margin-left:14px">Pertanyaan : <?=$p["pertanyaan"];?></h4>
-<?php endforeach;?>
 <div class="col-md-12 col-sm-8 col-xs-12">
   <div class="product-payment-inner-st res-mg-t-30 analysis-progrebar-ctn">
     <div id="myTabContent" class="tab-content custom-product-edit">
@@ -8,6 +6,10 @@
         <div class="col-md-12 col-sm-8 col-xs-12">
           <div class="review-content-section">
             <div class="chat-discussion" style="height: auto;">
+            <p style="font-size:15px;"><b><?=$p["nama"];?></b></p>
+            <p style="font-size:20px;"><?=$p["pertanyaan"];?></p>
+            <p style="font-size:11px;">Diunggah pada: <?=$p["created_at"];?></p>
+            <?php endforeach;?>
             <?php $no=1; foreach($jawaban as $m):?>
               <div class="chat-message">							
                 <div class="message" style="width:870px">

@@ -56,7 +56,6 @@
                 return $this->upload->data("file_name");
             }
         }
-
         
         public function Tambah_Materi() {
             $this->id_materi = uniqid();
@@ -64,6 +63,7 @@
                 "nama_materi" => $this->input->post('nama_materi', true),
                 "id_tutor" => $this->input->post('id_tutor', true),
                 "deskripsi" => $this->input->post('deskripsi', true),
+                "soal" => $this->input->post('soal', true),
                 "id_kategori_materi" => $this->input->post('id_kategori_materi', true),
                 "video" => $this->upload_video()
             ];
@@ -115,6 +115,7 @@
             $this->id_materi = $post["id_materi"];
             $this->nama_materi = $post["nama_materi"];
             $this->deskripsi = $post["deskripsi"];
+            $this->soal = $post["soal"];
             $this->id_tutor = $post["id_tutor"];
             $this->id_kategori_materi = $post["id_kategori_materi"];
             $this->video = $this->upload_video();
@@ -178,12 +179,12 @@
             return $query->result_array();
         }
 
-        public function getAllForum($limit, $start){
+        public function getAllForum(){
             $this->db->select('*');
             $this->db->from('forum');
             $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
             $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');  
-            $this->db->limit($limit,$start);                                              
+            // $this->db->limit($limit,$start);                                              
             $query = $this->db->get();
             return $query->result_array();
         }
@@ -192,6 +193,7 @@
             $this->db->select('*');
             $this->db->from('forum');
             $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
+            $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');  
             $this->db->where('forum.id_forum', $id_forum);
             $query = $this->db->get();
             return $query->result_array();
@@ -221,6 +223,7 @@
             $query = $this->db->get();
             return $query->result_array();
         }
+
         public function getAllKategoriForum(){
             $this->db->select('kategori_materi.id_kategori_materi, kategori_materi.nama_kategori, COUNT(forum.id_kategori_materi) AS total');
             $this->db->from('kategori_materi');
@@ -229,14 +232,14 @@
             $query = $this->db->get();
             return $query->result_array();            
         }        
-        public function search(){
-            $keyword=$this->input->post('keyword');
+
+        public function search($keyword){
+            $keyword=$this->input->post('id_kategori');
             $this->db->select('*');
             $this->db->from('forum');
             $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
             $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');            
-            $this->db->like('kategori_materi.nama_kategori', $keyword);        
-            $this->db->or_like('forum.pertanyaan', $keyword);
+            $this->db->like('kategori_materi.id_kategori_materi', $keyword);        
             $this->db->order_by('forum.created_at', 'DESC');        
             $query = $this->db->get();
             return $query->result_array();

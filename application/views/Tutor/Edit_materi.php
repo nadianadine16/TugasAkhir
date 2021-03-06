@@ -34,19 +34,11 @@
                 <form action="<?=base_url('Tutor/Edit_Materi/'.$materi['id_materi'])?>" method="post" enctype="multipart/form-data" >
                 <input type="hidden" name="id_materi" value="<?=$materi['id_materi'];?>">
                 <input type="hidden" class="form-control" id="id_tutor" name="id_tutor" value="<?= $this->session->userdata('id_tutor');?>">
+                <input type="hidden" class="form-control" id="id_kategori_materi" name="id_kategori_materi" value="<?= $this->session->userdata('id_kategori_materi');?>">
                 <div class="form-group">
                     <label for="nama_materi">Judul Materi</label>
                         <input type="text" class="form-control" id="nama_materi" name="nama_materi" value="<?=$materi['nama_materi'];?>">
                 </div>
-                <div class="form-group">
-                    <label for="kategori_materi">Kategori Materi</label>
-                    <select class="form-control" id="id_kategori_materi" name="id_kategori_materi">
-                        <option value="none" selected="" disabled="">Pilih Kategori Materi</option>
-                        <?php foreach($kategori_materi as $km) : ?>
-                            <option value="<?=$km["id_kategori_materi"];?>"><?=$km["nama_kategori"];?></option>
-                        <?php endforeach;?>
-                    </select>
-                </div>  
                 <div class="form-group">
                     <label for="video">Unggah Video</label>
                         <input type="file" class="form-control" id="video" name="video">
@@ -54,9 +46,13 @@
                 </div>
                 <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>
-                    <textarea name="deskripsi" value="<?=$materi['deskripsi'];?>"></textarea>
+                    <textarea name="deskripsi"><?=$materi['deskripsi'];?></textarea>
                 </div>
-                <center><button type="submit" name="submit" class="btn btn-primary float-right">Tambah</button></center>
+                <div class="form-group">
+                    <label for="soal">Soal</label>
+                    <textarea name="soal"><?=$materi['soal'];?></textarea>
+                </div>
+                <center><button type="submit" name="submit" class="btn btn-primary float-right">Edit</button></center>
             </form>
             </div>
         </div>

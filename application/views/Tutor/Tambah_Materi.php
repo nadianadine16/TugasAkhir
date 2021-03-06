@@ -46,6 +46,10 @@
                     <label for="deskripsi">Deskripsi</label>
                     <textarea name="deskripsi"></textarea>
                 </div>
+                <div class="form-group">
+                    <label for="soal">Soal</label>
+                    <textarea name="soal"></textarea>
+                </div>
                 <input type="hidden" class="form-control" id="id_kategori_materi" name="id_kategori_materi" value="<?= $this->session->userdata('id_kategori_materi');?>">
                 <center><button type="submit" name="submit" class="btn btn-primary float-right">Tambah</button></center>
             </form>
