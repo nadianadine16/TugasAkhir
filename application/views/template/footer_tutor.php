@@ -136,7 +136,7 @@
     <script src="<?= base_url()?>/assets_admin1/js/plugins.js"></script>
     <!-- main JS
 		============================================ -->
-    <script src="<?= base_url()?>/assets_admin1/js/main.js"></script>
+    <script src="<?= base_url()?>/assets_admin1/js/main.js"></script>    
     <!-- tawk chat JS
 		============================================ --    
 </body>

@@ -256,5 +256,31 @@ class Tutor extends CI_Controller {
         $this->load->view("tutor/Hasil_Cari_Forum",$data);
         $this->load->view('template/footer2_tutor', $data);     
     }
+    public function Cek_Status_Pendaftaran(){
+        $data['title'] = 'Cek Stats Pendaftaran Tutor';
+        $data['title'] = 'Cek Status Pendaftaran Tutor';
+
+        $this->load->view('Tutor/Cek_Status_Pendaftaran', $data);
+    }
+    public function cari() {
+
+        // $keyword = $this->input->post('keyword');
+        // $berhasil['cekPendaftaranBerhasil']=$this->Tutor_model->search1($keyword);
+        // $proses['cekPendaftaranProses']=$this->Tutor_model->search2($keyword);
+        // $gagal['cekPendaftaranTolak']=$this->Tutor_model->search3($keyword);
+
+        if($query = $this->Tutor_model->search1($this->input->post('keyword'))){
+
+            $berhasil['cekPendaftaranBerhasil'] = $query;
+            $this->load->view('tutor/hasil_search_berhasil',$berhasil);
+        }
+        else if($query = $this->Tutor_model->search2($this->input->post('keyword'))){
+            $proses['cekPendaftaranProses'] = $query;
+            $this->load->view('tutor/hasil_search_proses',$proses);
+        }
+        else{
+            $this->load->view('tutor/hasil_search_gagal');
+        }
+    }
 }
 ?>

@@ -11,7 +11,7 @@
       <div class="col-md-5">
         <form action ="<?= base_url('user/cari');?>" method="post">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search.." name="keyword" autocomplete="off">
+            <input type="text" class="form-control" placeholder="Search.." name="keyword" autocomplete="off" autofocus>
             <div class="input-group-append">
               <input class="btn btn-primary" type="submit" name="submit"></button>
             </div>

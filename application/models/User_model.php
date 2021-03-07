@@ -150,5 +150,45 @@ class User_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+    public function countMateri($id){
+        $this->db->select('COUNT(id_materi)');
+        $this->db->from('materi');
+        $this->db->where('id_kategori_materi', $id);
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+    public function getData($rowno,$rowperpage,$search="") {
+ 
+        $this->db->select('*');
+        $this->db->from('posts');
+    
+        if($search != ''){
+          $this->db->like('title', $search);
+          $this->db->or_like('content', $search);
+        }
+    
+        $this->db->limit($rowperpage, $rowno); 
+        $query = $this->db->get();
+     
+        return $query->result_array();
+      }
+    
+      // Select total records
+      public function getrecordCount($search = '') {
+    
+        $this->db->select('count(*) as allcount');
+        $this->db->from('posts');
+     
+        if($search != ''){
+          $this->db->like('title', $search);
+          $this->db->or_like('content', $search);
+        }
+    
+        $query = $this->db->get();
+        $result = $query->result_array();
+     
+        return $result[0]['allcount'];
+      }
+    
 }
 ?>
