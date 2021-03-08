@@ -39,20 +39,20 @@
                 "id_mahasiswa" => $this->input->post('id_mahasiswa', true),
                 "id_kategori_materi" => $this->input->post('id_kategori_materi', true),
                 "status" => $this->input->post('status', $status),
-                "file" => $this->uploadFile()
+                "surat_pernyataan" => $this->upload_surat_pernyataan()
             ];
 
             $this->db->insert('tutor', $data);
         }
 
-        public function uploadFile() {
-            $config['upload_path'] = './upload/surat_pernyataan/';
-            $config['allowed_types'] = 'pdf';
+        public function upload_surat_pernyataan() {
+            $config['upload_path'] = './upload/';
+            $config['allowed_types'] = 'pdf|docx';
             $config['overwrite'] = true;
 
             $this->upload->initialize($config);
             $this->load->library('upload',$config);
-            if($this->upload->do_upload('file')) {
+            if($this->upload->do_upload('surat_pernyataan')) {
                 return $this->upload->data("file_name");
             }
         }

@@ -39,7 +39,7 @@ class Tutor extends CI_Controller {
         $data['title'] = 'Daftar Tutor';
 
         $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');
-        $this->form_validation->set_rules('file', 'File', 'required'); 
+        $this->form_validation->set_rules('id_kategori_materi', 'id_kategori_materi', 'required');
         
         if($this->form_validation->run() == FALSE) {
             echo"<script>alert('Tidak Terdaftar');</script>";
