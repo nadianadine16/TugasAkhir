@@ -142,7 +142,7 @@ class User extends CI_Controller {
     }
 
     public function kumpulkanTugas($id){
-        $data['title'] ='Detail Materi';
+        $data['title'] ='Kumpulkan Tugas';
         $data['detail_materi'] = $this->User_model->detail_materi($id);
         $data['tampil'] = $this->User_model->tampil_tugas($id);
 
@@ -188,7 +188,7 @@ class User extends CI_Controller {
     }
 
     public function Detail_Forum($id) {
-        $data['title'] ='Forum';
+        $data['title'] ='Chat Forum';
         $data['detail_pertanyaan'] = $this->User_model->detail_pertanyaan($id);
         $data['jawaban'] = $this->User_model->jawaban($id);
 

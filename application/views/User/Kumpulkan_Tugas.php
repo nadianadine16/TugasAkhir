@@ -17,22 +17,31 @@
             <input type="hidden" class="form-control" id="id_materi" name="id_materi" value="<?= $d["id_materi"]?>">
             
             <?php foreach($tampil as $p):?>
-              <?php if($p["tugas"]!= ""){?>
+              <?php if($p["status"]== "1"){?>
               <div class="form-group">            
                 <label for="nim">Jawaban Tugas</label>
                 <input type="text" class="form-control" id="tugas" name="tugas" value="<?= $p["tugas"]?>">
+                <p style="font-size:15px">Jawaban anda sedang diperiksa</p>
             </div>
             <button type="submit" class="btn btn-primary" disabled id= "button" name="submit"class="btn btn-primary float-right">Submit</button>
             <?php
               } 
-              else{?>
+              else if ($p["status"] == "2"){?>
               <div class="form-group">            
                 <label for="nim">Jawaban Tugas</label>
-                <input type="text" class="form-control" id="tugas" name="tugas">
-                <button type="submit" class="btn btn-primary" id= "button" name="submit"class="btn btn-primary float-right">Submit</button>
+                <input type="text" class="form-control" id="tugas" name="tugas" value="<?= $p["tugas"]?>">                
+                <button type="submit" class="btn btn-primary" id= "button" name="submit"disabled class="btn btn-primary float-right">Submit</button>
             </div>
               <?php
-              } ?>
+              } 
+              else{?>
+                <div class="form-group">            
+                <label for="nim">Jawaban Tugas</label>
+                <input type="text" class="form-control" id="tugas" name="tugas">                
+                <button type="submit" class="btn btn-primary" id= "button" name="submit" class="btn btn-primary float-right">Submit</button>
+            </div>
+            <?php
+              }?>
             <?php endforeach;?>
             
             </form>

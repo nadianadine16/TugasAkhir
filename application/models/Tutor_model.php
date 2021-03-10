@@ -207,7 +207,7 @@
                 "id_forum" => $this->input->post('id_forum', $id),
                 "id_user" => $this->input->post('id_user', true),
                 "chat" => $this->input->post('chat', true),
-                "created_at" => date('Y-m-d H:i:s', time())
+                "created" => date('Y-m-d H:i:s', time())
             ];
     
             $this->db->insert('chat_forum', $data);
@@ -219,7 +219,7 @@
             $this->db->join('mahasiswa', 'chat_forum.id_user = mahasiswa.id_mahasiswa');
             $this->db->join('forum', 'forum.id_forum = chat_forum.id_forum');
             $this->db->where('forum.id_forum', $id);
-            $this->db->order_by('chat_forum.created_at','ASC');
+            $this->db->order_by('chat_forum.created','ASC');
             $query = $this->db->get();
             return $query->result_array();
         }

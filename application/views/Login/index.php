@@ -38,10 +38,10 @@
             <p class="text-muted">Belajar menyenangkan dengan metode tutor sebaya</p>
             <form id="loginForm" action="<?= base_url();?>login/prosesLogin" class="mt-4" method="post">
               <div class="form-group mb-4">
-                <input type="text" name="uname1" placeholder="Username" class="form-control border-0 shadow form-control-lg">
+                <input type="text" name="uname1" placeholder="Username" class="form-control border-0 shadow form-control-lg" autocomplete="off">
               </div>
               <div class="form-group mb-4">
-                <input type="password" name="pwd1" placeholder="Password" class="form-control border-0 shadow form-control-lg text-violet">
+                <input type="password" name="pwd1" placeholder="Password" class="form-control border-0 shadow form-control-lg text-violet" autocomplete="off">
               </div>
               <button type="submit" class="btn btn-primary shadow px-5" style="width:250px; margin-left:100px;">Log in</button>
             </form>

@@ -7,12 +7,13 @@
     <?php endforeach;?>
     <hr>
     <div class ="kotak" style="margin-top:20px">
-    <?php foreach($jawaban as $m):?>
+    <!-- <?php foreach($jawaban as $m):?> -->
+      <?php $tanggal = $m["created"]?>
       <div class="card border-secondary mb-2" style="max-width: 80%;margin-left:100px;">
         <div class="card-header"><b><?=$m["nama"]?></b></div>
         <div class="card-body text-secondary">
-          <p class="card-text"><?=$m["chat"]?></p>
-          <p class="card-text" style="font-size:12px; text-align: right; "><?=$m["created_at"]?></p>
+          <p class="card-text"><?=$m["chat"]?></p>          
+          <p class="card-text" style="font-size:12px; text-align: right; "><?php echo date("d-F-Y h:i:s", strtotime($tanggal));?></p>
         </div>
       </div>
       <?php endforeach;?>

@@ -21,12 +21,13 @@
     </div>
         <div class="row" style="margin-rop:15px;">
         <?php $no=1; foreach($forum as $p):?>
+          <?php $tanggal = $p["created_at"]?>
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title" style="font-size:15px;"><b>Nama Penanya : </b> <?=$p["nama"];?></h5>
                 <p class="card-text" style="font-size:13px;"><b>Pertanyaan : </b><?=$p["pertanyaan"];?></p>
-                <p class="card-text" style="font-size:13px;text-align: right;"><?=$p["created_at"];?></p>
+                <p class="card-text" style="font-size:13px;text-align: right;"><?php echo date("d-F-Y", strtotime($tanggal));?></p>
                 <a href="<?= base_url();?>user/Detail_Forum/<?=$p['id_forum'];?>" class="btn btn-primary" style="float:right">Lihat Forum</a>
               </div>
             </div>

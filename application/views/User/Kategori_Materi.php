@@ -1,21 +1,22 @@
-<section id="gallery" class="gallery">
-      <div class="container" style="margin-top:50px">
-
+<section id="team" class="team section-bg" style="margin-top:50px">
+      <div class="container">
         <div class="section-title">
-          <h2>Daftar Kategori Materi</h2>
-          <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
+          <h2>Kategori Materi</h2>          
         </div>
-
-        <div class="row no-gutters">
-        <div class="card" style="margin-left: 50px">
-        <?php $no=1; foreach($kategori_materi as $m):?>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="width: 1000px;"><a href="<?= base_url();?>user/daftarMateri/<?=$m['id_kategori_materi'];?>"><?=$m["nama_kategori"];?></a></li>
-            <!-- <a href="#" class="btn btn-primary" type="submit">Pilih</a> -->
-        </ul>
+        <div class="col-lg-12 pt-12 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">        
+      </div>      
+        <div class="row" style="margin-rop:15px;">
+        <?php foreach($kategori_materi as $m):?>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="card">
+              <div class="card-body">
+              <img src="<?= base_url()?>/assets_user/img/materi.png" style="width:50px;height:50px">
+                <h5 class="card-title" style="font-size:20px;"><b>Kategori Materi : </b> <?=$m["nama_kategori"];?></h5>                
+                <a href="<?= base_url();?>user/daftarMateri/<?=$m['id_kategori_materi'];?>" class="btn btn-primary" style="float:right">Daftar Materi</a>
+              </div>
+            </div>
+          </div>
         <?php endforeach;?>
-        </div>
-        </div>
-
+        </div>      
       </div>
-    </section><!-- End Gallery Section -->                                         
+    </section><!-- End Team Section -->

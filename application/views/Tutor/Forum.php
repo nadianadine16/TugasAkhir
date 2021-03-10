@@ -32,13 +32,14 @@
 <center><h3>- Forum -</h3></center><br>
   <div class="row">
     <?php $no=1; foreach($forum as $p):?>
+      <?php $tanggal = $p["created_at"];?>
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <div class="courses-inner res-mg-b-30">
           <div class="course-des">
           <p style="font-size:20px;"><span><i class="fa fa-clock"></i></span> <?=$p["pertanyaan"];?></p><br>
           <p><span><i class="fa fa-clock"></i></span> <b>Kategori:</b> <?=$p["nama_kategori"];?></p>
-            <p><span><i class="fa fa-clock"></i></span> <b>Nama Penanya:</b> <?=$p["nama"];?></p>
-            <p><span><i class="fa fa-clock"></i></span> <b>Dibuat pada:</b> <?=$p["created_at"];?></p>
+            <p><span><i class="fa fa-clock"></i></span> <b>Nama Penanya:</b> <?=$p["nama"];?></p>            
+            <p><span><i class="fa fa-clock"></i></span> <b>Dibuat pada:</b><?php echo date("d-F-Y", strtotime($tanggal));?></p>
           </div>
           <div class="product-buttons" style="margin-left:400px;">
           <a href="<?= base_url();?>Tutor/Detail_Forum/<?=$p['id_forum'];?>" type="button" class="btn btn-primary">Lihat Forum</a>
