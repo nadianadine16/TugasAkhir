@@ -28,7 +28,7 @@
                 <form action="<?=base_url('Admin/tambah_kategori_materi')?>" method="post">
                 <div class="form-group">
                     <label for="nama_kategori">Nama</label>
-                        <input type="text" class="form-control" id="nama_kategori" name="nama_kategori">
+                        <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" required autocomplete="off">
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary float-right">Submit</button>
             </form>

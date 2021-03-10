@@ -146,5 +146,36 @@
     public function getCountForum() {
         return $this->db->count_all('forum');
     }
+    public function getAllForum(){
+        $this->db->select('*');
+        $this->db->from('forum');
+        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');
+        $this->db->join('kategori_materi', 'kategori_materi.id_kategori_materi = forum.id_kategori_Materi');        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    public function getForumById($id){
+        $this->db->select('*');
+        $this->db->from('forum');
+        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');
+        $this->db->join('kategori_materi', 'kategori_materi.id_kategori_materi = forum.id_kategori_Materi');        
+        $this->db->where('forum.id_forum', $id);
+        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    public function jawaban_forum($id) {
+        $this->db->select('*');
+        $this->db->from('chat_forum');
+        $this->db->join('mahasiswa', 'chat_forum.id_user = mahasiswa.id_mahasiswa');
+        $this->db->join('forum', 'forum.id_forum = chat_forum.id_forum');
+        $this->db->where('forum.id_forum', $id);
+        $this->db->order_by('chat_forum.created_at','ASC');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    public function hapus_forum($id){
+        return $this->db->delete('forum',array("id_forum"=>$id));
+    }
 }
 ?>

@@ -75,7 +75,7 @@ class Admin extends CI_Controller {
         $this->form_validation->set_rules('nama', 'nama', 'required');
         $this->form_validation->set_rules('kelas', 'kelas', 'required');
         $this->form_validation->set_rules('tahun_masuk', 'tahun_masuk', 'required');
-        $this->form_validation->set_rules('github', 'github', 'required');
+        $this->form_validation->set_rules('github', 'github');
 
         if($this->form_validation->run() == FALSE) {
             $this->load->view('template/header2_admin',$data);

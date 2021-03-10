@@ -5,7 +5,8 @@
         <div class="card" style="margin-left: 50px">
         <?php $no=1; foreach($detail_forum as $df):?>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="width: 1000px;"><?=$df["id_forum"];?>.&nbsp;<?=$df["pertanyaan"];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=$df["nama_kategori"];?></li>
+            <li class="list-group-item" style="width: 1000px;"><b>Pertanyaan : </b> <?=$df["pertanyaan"];?></li>
+            <li class="list-group-item" style="width: 1000px;"><b>Kategori : </b><?=$df["nama_kategori"];?></li>
         </ul>
         <?php endforeach;?>
         </div>

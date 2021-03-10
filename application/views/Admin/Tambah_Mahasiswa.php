@@ -28,11 +28,11 @@
                 <form action="<?=base_url('Admin/tambah_data_mahasiswa')?>" method="post">
                 <div class="form-group">
                     <label for="nim">NIM</label>
-                        <input type="text" class="form-control" id="nim" name="nim">
+                        <input type="text" class="form-control" id="nim" name="nim" required autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="nama">Nama</label>
-                        <input type="text" class="form-control" id="nama" name="nama">
+                        <input type="text" class="form-control" id="nama" name="nama" required autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="status">Jurusan</label>
@@ -52,15 +52,15 @@
                 </div>  
                 <div class="form-group">
                     <label for="kelas">Kelas</label>
-                        <input type="text" class="form-control" id="kelas" name="kelas">
+                        <input type="text" class="form-control" id="kelas" name="kelas" required autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="tahun_masuk">Tahun Masuk</label>
-                        <input type="text" class="form-control" id="tahun_masuk" name="tahun_masuk">
+                        <input type="text" class="form-control" id="tahun_masuk" name="tahun_masuk" required autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="github">Github</label>
-                        <input type="text" class="form-control" id="github" name="github">
+                        <input type="text" class="form-control" id="github" name="github" autocomplete="off">
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary float-right">Submit</button>
             </form>
