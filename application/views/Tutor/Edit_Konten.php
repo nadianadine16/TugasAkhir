@@ -11,7 +11,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
                                 <li><a href="#">Home</a> <span class="bread-slash">/</span></li>
-                                <li><span class="bread-blod">Edit Materi</span></li>
+                                <li><span class="bread-blod">Edit Konten</span></li>
                             </ul>
                         </div>
                     </div>
@@ -25,31 +25,32 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-payment-inner-st">
-                <center><h4>Edit Materi</h4></center>
+                <center><h4>Edit Konten</h4></center>
                 <?php if (validation_errors()): ?>
                 <div class="alert alert-danger" role="alert">
                     <?php echo validation_errors(); ?>
                 </div>
             <?php endif; ?>
-                <form action="<?=base_url('Tutor/Edit_Materi/'.$materi['id_materi'])?>" method="post" enctype="multipart/form-data" >
-                <input type="hidden" name="id_materi" value="<?=$materi['id_materi'];?>">
-                <input type="hidden" class="form-control" id="id_tutor" name="id_tutor" value="<?= $this->session->userdata('id_tutor');?>">
-                <input type="hidden" class="form-control" id="id_kategori_materi" name="id_kategori_materi" value="<?= $this->session->userdata('id_kategori_materi');?>">
+                <form action="<?= base_url('Tutor/Edit_Konten/'.$konten['id_konten'])?>" method="post" enctype="multipart/form-data" >
+                <input type="hidden" class="form-control" id="id_materi" name="id_materi" value="<?=$konten["id_materi"];?>">
+                <input type="hidden" name="id_konten" value="<?=$konten['id_konten'];?>">
                 <div class="form-group">
-                    <label for="nama_materi">Judul Materi</label>
-                        <input type="text" class="form-control" id="nama_materi" name="nama_materi" value="<?=$materi['nama_materi'];?>">
+                    <label for="judul">Judul</label>
+                        <input type="text" class="form-control" id="judul" name="judul" autocomplete="off" value="<?=$konten["judul"];?>">
                 </div>
                 <div class="form-group">
-                    <label for="deskripsi">Deskripsi</label>
-                    <textarea name="deskripsi"><?=$materi['deskripsi'];?></textarea>
+                    <label for="video">Unggah Video</label>
+                        <input type="file" class="form-control" id="video" name="video">
+                        <p style="color:#808080;">Format .mp4</p>
                 </div>
                 <div class="form-group">
-                    <label for="requirement">Hal yang Di Butuhkan</label>
-                    <textarea name="requirement"><?=$materi['requirement'];?></textarea>
+                    <label for="file_pendukung">Unggah File Pendukung</label>
+                        <input type="file" class="form-control" id="file_pendukung" name="file_pendukung">
+                        <p style="color:#808080;">Format .pdf</p>
                 </div>
                 <div class="form-group">
-                    <label for="isi">Hal yang Di Pelajari</label>
-                    <textarea name="isi"><?=$materi['isi'];?></textarea>
+                    <label for="soal">Soal Latihan</label>
+                    <textarea name="soal"><?=$konten['soal'];?></textarea>
                 </div>
                 <center><button type="submit" name="submit" class="btn btn-primary float-right">Edit</button></center>
             </form>

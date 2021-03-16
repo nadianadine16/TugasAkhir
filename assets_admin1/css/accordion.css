@@ -1,0 +1,33 @@
+.card {
+  width: 150px;                 /* Set width of cards */
+  display: flex;                /* Children use Flexbox */
+  flex-direction: column;       /* Rotate Axis */
+  border: 1px solid #0275d8 ;    /* Set up Border */
+  overflow: hidden;             /* Fixes the corners */
+  margin: 5px;                  /* Add space between cards */
+}
+
+.card-header {
+  color: #ffff ;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 1px solid #0275d8;
+  background-color: #0275d8 ;
+  padding: 5px 10px;
+}
+
+.card-main {
+  display: flex;              /* Children use Flexbox */
+  flex-direction: column;     /* Rotate Axis to Vertical */
+  justify-content: left;    /* Group Children in Center */
+  align-items: left;        /* Group Children in Center (on cross axis) */
+  padding: 15px 0;            /* Add padding to the top/bottom */
+}
+
+.main-description {
+  color: #292b2c;
+  font-size: 16px;
+  text-align: left;
+  margin-left: 20px;
+}

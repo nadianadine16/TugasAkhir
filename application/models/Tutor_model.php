@@ -63,30 +63,27 @@
                 "nama_materi" => $this->input->post('nama_materi', true),
                 "id_tutor" => $this->input->post('id_tutor', true),
                 "deskripsi" => $this->input->post('deskripsi', true),
-                "soal" => $this->input->post('soal', true),
-                "id_kategori_materi" => $this->input->post('id_kategori_materi', true),
-                "video" => $this->upload_video()
+                "requirement" => $this->input->post('requirement', true),
+                "isi" => $this->input->post('isi', true),
+                "id_kategori_materi" => $this->input->post('id_kategori_materi', true)
             ];
             $this->db->insert('materi', $data);
         }
 
-        public function upload_video() {
-            $config['upload_path'] = './upload/materi/';
-            $config['allowed_types'] = 'mp4|3gp|flv';
-            $config['overwrite'] = true;
-
-            $this->upload->initialize($config);
-            $this->load->library('upload',$config);
-            if($this->upload->do_upload('video')) {
-                return $this->upload->data("file_name");
-            }
-        } 
-
-        public function detail_materi($id_materi) {
+        public function Detail_materi($id_materi) {
             $this->db->select('*');
-            $this->db->from('materi');
+            $this->db->from('konten');
             $this->db->join('kategori_materi', 'materi.id_kategori_materi = kategori_materi.id_kategori_materi');
             $this->db->where('materi.id_materi', $id_materi);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+
+        public function Konten($id_materi) {
+            $this->db->select('*');
+            $this->db->from('konten');
+            $this->db->join('materi', 'materi.id_materi = konten.id_materi');
+            $this->db->where('konten.id_materi', $id_materi);
             $query = $this->db->get();
             return $query->result_array();
         }
@@ -101,12 +98,66 @@
             return $query->result_array();
         }
 
+        public function getMateriByIdMateri($id_materi) {
+            $this->db->select('*');
+            $this->db->from('materi');
+            $this->db->join('kategori_materi', 'materi.id_kategori_materi = kategori_materi.id_kategori_materi');
+            $this->db->where('materi.id_materi', $id_materi);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+
+        public function Tambah_Konten() {
+            $this->id_konten = uniqid();
+            $data = [
+                "judul" => $this->input->post('judul', true),
+                "id_materi" => $this->input->post('id_materi', true),
+                "soal" => $this->input->post('soal', true),
+                "video" => $this->upload_video(),
+                "file_pendukung" => $this->upload_file_pendukung(),
+            ];
+            $this->db->insert('konten', $data);
+        }
+
+        public function upload_video() {
+            $config['upload_path'] = './upload/materi/';
+            $config['allowed_types'] = 'mp4|3gp|flv';
+            $config['overwrite'] = true;
+
+            $this->upload->initialize($config);
+            $this->load->library('upload',$config);
+            if($this->upload->do_upload('video')) {
+                return $this->upload->data("file_name");
+            }
+        } 
+
+        public function upload_file_pendukung() {
+            $config['upload_path'] = './upload/materi/';
+            $config['allowed_types'] = 'pdf';
+            $config['overwrite'] = true;
+
+            $this->upload->initialize($config);
+            $this->load->library('upload',$config);
+            if($this->upload->do_upload('file_pendukung')) {
+                return $this->upload->data("file_name");
+            }
+        } 
+
         public function Hapus_materi($id_materi) {
             return $this->db->delete('materi',array("id_materi"=>$id_materi));
         }
 
+        public function Hapus_Konten($id_konten) {
+            return $this->db->delete('konten',array("id_konten"=>$id_konten));
+        }
+
         public function getMateriById($id_materi) {
             $query=$this->db->get_where('materi',array('id_materi'=>$id_materi));
+            return $query->row_array();
+        }
+
+        public function getKontenById($id_konten) {
+            $query=$this->db->get_where('konten',array('id_konten'=>$id_konten));
             return $query->row_array();
         }
 
@@ -115,12 +166,23 @@
             $this->id_materi = $post["id_materi"];
             $this->nama_materi = $post["nama_materi"];
             $this->deskripsi = $post["deskripsi"];
-            $this->soal = $post["soal"];
+            $this->isi = $post["isi"];
+            $this->requirement = $post["requirement"];
             $this->id_tutor = $post["id_tutor"];
             $this->id_kategori_materi = $post["id_kategori_materi"];
-            $this->video = $this->upload_video();
             
             $this->db->update('materi',$this, array('id_materi' => $post['id_materi']));
+        }
+
+        public function Edit_Konten($id_konten) {
+            $post=$this->input->post();
+            $this->id_konten = $post["id_konten"];
+            $this->id_materi = $post["id_materi"];
+            $this->soal = $post["soal"];
+            $this->video = $this->upload_video();
+            $this->file_pendukung = $this->upload_file_pendukung();
+            
+            $this->db->update('konten',$this, array('id_konten' => $post['id_konten']));
         }
 
         public function getAllTugasUnVerif() {

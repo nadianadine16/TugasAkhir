@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/owl.carousel.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/accordion.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/owl.theme.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/owl.transitions.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/animate.css">
@@ -33,6 +34,7 @@
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/data-table/bootstrap-editable.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/style.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/responsive.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <script src="<?= base_url()?>/assets_admin1/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
@@ -53,11 +55,7 @@
 							</a>
                         </li>
                         <li>
-                            <a class="has-arrow" href="all-students.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Materi</span></a>
-                            <ul class="submenu-angle" aria-expanded="false">
-                                <li><a title="All Students" href="<?= base_url()?>Tutor/Data_Materi"><span class="mini-sub-pro">Data Materi</span></a></li>
-                                <li><a title="Add Students" href="<?= base_url()?>Tutor/Tambah_Materi"><span class="mini-sub-pro">Tambah Materi</span></a></li>
-                            </ul>
+                            <a class="" href="<?= base_url()?>Tutor/Data_Materi" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Materi</span></a>
                         </li>
                         <li>
                             <a class="" href="<?= base_url()?>Tutor/Tugas_mahasiswa" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Tugas Mahasiswa</span></a>
