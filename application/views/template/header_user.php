@@ -51,7 +51,7 @@
           <li><a href="#">Private Chat</a></li>
           <li <?php if ($title == 'Forum' || $title == 'Chat Forum') echo 'class="active"'; ?>><a href="<?= base_url()?>User/Forum">Forum</a></li>
           <li <?php if ($title == 'Contact Us') echo 'class="active"'; ?>><a href="<?= base_url()?>User/contactus">Contact Us</a></li>
-          <li class="drop-down">Akun
+          <li class="drop-down"><a>Akun</a>
             <ul>
               <li><a href="<?= base_url();?>User/profile">Edit Profil</a></li>
               <li><a href="<?= base_url();?>Login/logout">Logout</a></li>
