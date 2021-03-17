@@ -46,10 +46,11 @@ class User_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
-
-    public function detail_materi($id) {
+    
+    public function daftar_konten($id) {
         $this->db->select('*');
-        $this->db->from('materi');
+        $this->db->from('konten');
+        $this->db->join('materi', 'materi.id_materi = konten.id_materi');
         $this->db->join('kategori_materi', 'materi.id_kategori_materi = kategori_materi.id_kategori_materi');
         $this->db->join('tutor', 'materi.id_tutor = tutor.id_tutor');
         $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');
@@ -58,14 +59,41 @@ class User_model extends CI_Model {
         return $query->result_array();
     }
 
+    public function detail_konten($id) {
+        $this->db->select('*');
+        $this->db->from('konten');
+        $this->db->join('materi', 'materi.id_materi = konten.id_materi');
+        $this->db->join('kategori_materi', 'materi.id_kategori_materi = kategori_materi.id_kategori_materi');
+        $this->db->join('tutor', 'materi.id_tutor = tutor.id_tutor');
+        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');
+        $this->db->where('konten.id_konten', $id);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function tampil_tugas($id) {
         $this->db->select('*');
         $this->db->from('tugas');
         $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');
-        $this->db->join('materi', 'tugas.id_materi = materi.id_materi');
-        $this->db->where('materi.id_materi', $id);
+        $this->db->join('konten', 'tugas.id_konten = konten.id_konten');
+        $this->db->where('konten.id_konten', $id);
         $query = $this->db->get();
         return $query->result_array();
+    }
+    public function cek_tugas($id) {
+        $this->db->select('*');
+        $this->db->from('tugas');
+        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');
+        $this->db->join('konten', 'tugas.id_konten = konten.id_konten');
+        $this->db->where('konten.id_konten', $id);
+        $query = $this->db->get();
+        if($query->num_rows()==1) {
+            return $query->result_array();
+        }
+        else {
+            return false;
+        }
+        // return $query->result_array();
     }
 
     public function tambah_tugas() {

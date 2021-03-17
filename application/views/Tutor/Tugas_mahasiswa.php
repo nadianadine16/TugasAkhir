@@ -49,7 +49,7 @@
                                         <th data-field="id">No</th>
                                         <th data-field="nim" data-editable="true">NIM</th>
                                         <th data-field="nama_mahasiswa" data-editable="true">Nama Mahasiswa</th>
-                                        <th data-field="nama_materi" data-editable="true">Judul Materi</th>
+                                        <th data-field="nama_materi" data-editable="true">Judul Konten</th>
                                         <th data-field="tugas" data-editable="true">Link Pengumpulan</th>
                                         <th data-field="action">Action</th>
                                     </tr>
@@ -60,7 +60,7 @@
                                         <td><?=$no++?></td>
                                         <td><?=$t["nim"];?></td>
                                         <td><?=$t["nama"];?></td>
-                                        <td><?=$t["nama_materi"];?></td>
+                                        <td><?=$t["judul"];?></td>
                                         <td><?=$t["tugas"];?></td>
                                         <td class="datatable-ct">
                                             <a href="<?= base_url();?>Tutor/Verifikasi_Tugas/<?=$t['id_tugas'];?>" class="pd-setting-ed"><i class="fa fa-check" aria-hidden="true"></i></a>
@@ -99,7 +99,7 @@
                                         <th data-field="id">No</th>
                                         <th data-field="nim" data-editable="true">NIM</th>
                                         <th data-field="nama_mahasiswa" data-editable="true">Nama Mahasiswa</th>
-                                        <th data-field="nama_materi" data-editable="true">Judul Materi</th>
+                                        <th data-field="nama_materi" data-editable="true">Judul Konten</th>
                                         <th data-field="tugas" data-editable="true">Link Pengumpulan</th>
                                         <th data-field="action">Action</th>
                                     </tr>
@@ -110,7 +110,7 @@
                                         <td><?=$no++?></td>
                                         <td><?=$tv["nim"];?></td>
                                         <td><?=$tv["nama"];?></td>
-                                        <td><?=$tv["nama_materi"];?></td>
+                                        <td><?=$tv["judul"];?></td>
                                         <td><?=$tv["tugas"];?></td>
                                         <td class="datatable-ct">
                                             <a onclick="return konfirmasi()" href="<?= base_url();?>Tutor/Hapus_Tugas/<?=$tv['id_tugas'];?>" class="pd-setting-ed" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>

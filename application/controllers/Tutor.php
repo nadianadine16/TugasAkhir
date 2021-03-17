@@ -260,27 +260,31 @@ class Tutor extends CI_Controller {
         $data['title'] = 'Cek Stats Pendaftaran Tutor';
         $data['title'] = 'Cek Status Pendaftaran Tutor';
 
-        $this->load->view('Tutor/Cek_Status_Pendaftaran', $data);
+        $this->load->view('Tutor/Cek_Status', $data);        
     }
     public function cari() {
 
-        // $keyword = $this->input->post('keyword');
-        // $berhasil['cekPendaftaranBerhasil']=$this->Tutor_model->search1($keyword);
-        // $proses['cekPendaftaranProses']=$this->Tutor_model->search2($keyword);
-        // $gagal['cekPendaftaranTolak']=$this->Tutor_model->search3($keyword);
+        $keyword = $this->input->post('keyword');
+        $berhasil=$this->Tutor_model->search1($keyword);
+        $data['tampil']=$this->Tutor_model->search2($keyword);
+        $gagal['cekPendaftaranTolak']=$this->Tutor_model->search3($keyword);
 
-        if($query = $this->Tutor_model->search1($this->input->post('keyword'))){
-
-            $berhasil['cekPendaftaranBerhasil'] = $query;
-            $this->load->view('tutor/hasil_search_berhasil',$berhasil);
-        }
-        else if($query = $this->Tutor_model->search2($this->input->post('keyword'))){
-            $proses['cekPendaftaranProses'] = $query;
-            $this->load->view('tutor/hasil_search_proses',$proses);
+        if($berhasil){
+            $this->load->view('tutor/hasil_search_berhasil',$data);
         }
         else{
-            $this->load->view('tutor/hasil_search_gagal');
+            $this->load->view('tutor/hasil_search_gagal',$data);
         }
+        // if($query = $this->Tutor_model->search1($this->input->post('keyword'))){
+
+        //     $berhasil['cekPendaftaranBerhasil'] = $query;
+        //     $this->load->view('tutor/hasil_search_berhasil',$berhasil);
+        // }
+        // else if($query = $this->Tutor_model->search2($this->input->post('keyword'))){
+        //     $proses['cekPendaftaranProses'] = $query;
+        //     $this->load->view('tutor/hasil_search_proses',$proses);
+        // }
+        
     }
 }
 ?>

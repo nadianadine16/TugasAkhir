@@ -41,7 +41,7 @@
             <p><span><i class="fa fa-clock"></i></span> <b>Nama Penanya:</b> <?=$p["nama"];?></p>            
             <p><span><i class="fa fa-clock"></i></span> <b>Dibuat pada:</b><?php echo date("d-F-Y", strtotime($tanggal));?></p>
           </div>
-          <div class="product-buttons" style="margin-left:400px;">
+          <div class="product-buttons" style="margin-left:350px;">
           <a href="<?= base_url();?>Tutor/Detail_Forum/<?=$p['id_forum'];?>" type="button" class="btn btn-primary">Lihat Forum</a>
           </div>
         </div>
