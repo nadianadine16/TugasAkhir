@@ -100,7 +100,7 @@ class User_model extends CI_Model {
         $this->id_tugas = uniqid();
         $data = [
             "id_mahasiswa" => $this->input->post('id_mahasiswa', true),
-            "id_materi" => $this->input->post('id_materi', true),
+            "id_konten" => $this->input->post('id_konten', true),
             "tugas" => $this->input->post('tugas', true),
         ];
         $this->db->insert('tugas', $data);

@@ -172,7 +172,7 @@ class User extends CI_Controller {
     public function tambah_tugas(){
         $data['title'] = 'Tambah Tugas';
 
-        $this->form_validation->set_rules('id_materi', 'id_materi', 'required');
+        $this->form_validation->set_rules('id_konten', 'id_konten', 'required');
         $this->form_validation->set_rules('tugas', 'tugas', 'required');
         $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');
 

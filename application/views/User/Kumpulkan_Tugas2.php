@@ -14,7 +14,7 @@
             <p class="card-text"><?= $d["soal"]?></p>                
             <form action="<?=base_url('user/tambah_tugas')?>" method="post">
             <input type="hidden" class="form-control" id="id_mahasiswa" name="id_mahasiswa" value="<?= $this->session->userdata('id_mahasiswa');?>">
-            <input type="hidden" class="form-control" id="id_materi" name="id_materi" value="<?= $d["id_materi"]?>">            
+            <input type="hidden" class="form-control" id="id_materi" name="id_konten" value="<?= $d["id_konten"]?>">            
             <div class="form-group">            
               <label for="nim">Jawaban Tugas</label>
               <input type="text" class="form-control" id="tugas" name="tugas">                
