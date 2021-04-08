@@ -47,7 +47,7 @@
         <ul>
           <li <?php if ($title == 'Dashboard User') echo 'class="active"'; ?>>
           <a href="<?=base_url()?>User/index">Home</a></li>
-          <li <?php if ($title == 'Daftar Kategori Materi'  || $title == 'Daftar Materi' || $title == 'Detail Materi' || $title == 'Kumpulkan Tugas') echo 'class="active"';?>><a href="<?=base_url()?>User/kategoriMateri">Materi</a></li>
+          <li <?php if ($title == 'Daftar Kategori Materi'  || $title == 'Daftar Materi' || $title == 'Daftar Konten' || $title == 'Kumpulkan Tugas') echo 'class="active"';?>><a href="<?=base_url()?>User/daftarMateri">Materi</a></li>
           <li><a href="#">Private Chat</a></li>
           <li <?php if ($title == 'Forum' || $title == 'Chat Forum') echo 'class="active"'; ?>><a href="<?= base_url()?>User/Forum">Forum</a></li>
           <li <?php if ($title == 'Contact Us') echo 'class="active"'; ?>><a href="<?= base_url()?>User/contactus">Contact Us</a></li>

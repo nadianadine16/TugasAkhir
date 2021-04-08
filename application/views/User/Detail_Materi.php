@@ -6,9 +6,16 @@
     <?php foreach($detail_materi as $d):?>
     <div class="card" style="margin-top:10px;">
     <div class="card-title" style="margin-top:20px; font-size:40px;"><center><h4 style="font-size:40px; color:black"><?= $d["judul"]?></h4></center></div>   
-    <video src="<?= base_url('upload/materi/'.$d["video"])?>" controls  style="width:500px; height:300px;margin-left:300px; margin-top:20px;"></video>
         <div class="card-body">
-             
+        <?php if($d["video"] != NULL){?>
+        <p><b>Video</b><br><a href="<?= base_url('upload/materi/'.$d["video"])?>"><?=$d["video"];?></a></p>
+        <?php
+        } 
+        else { ?>
+        <p><b>Video</b><br>-</p>
+        <?php
+        } 
+        ?>             
           <b>Nama Pengajar: </b><br>
           <p class="card-text"><?= $d["nama"]?></p>      
           <b>Deskripsi Materi: </b><br>

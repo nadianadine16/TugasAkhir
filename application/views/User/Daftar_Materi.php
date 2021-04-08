@@ -1,17 +1,28 @@
-<section id="team" class="team section-bg">
-  <div class="container" style="margin-top:80px">
-    <div class="section-title">
-      <h2>Daftar Materi</h2>
-    </div>        
-    <?php foreach($daftar_materi as $d):?>
-    <div class="card" style="margin-top:10px;">
-    <video src="<?= base_url('upload/materi/'.$d["video"])?>" controls  style="width:500px; height:300px;margin-left:300px; margin-top:20px;"></video>
-        <div class="card-body">
-          <div class="card-title"><h4><?= $d["nama_materi"]?></h4></div>      
-          <p class="card-text"><?= $d["nama"]?></p>      
-          <a href="<?= base_url();?>user/daftarKonten/<?=$d['id_materi'];?>" class="btn btn-primary">Lihat</a>
-        </div>      
+<section id="team" class="team section-bg" style="margin-top:50px">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Daftar Materi</h2>        
+        </div>
+
+        <div class="row">
+        <?php foreach($daftar_materi as $d):?>
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+          <a href="<?= base_url();?>user/daftarKonten/<?=$d['id_materi'];?>">
+            <div class="member">
+              <div class="member-img">
+                <img src="<?= base_url()?>/assets_user/img/team/team-1.jpg" class="img-fluid" alt="">               
+              </div>
+              <div class="member-info">
+                <h4><?= $d["nama_materi"]?></h4>
+                <h4><?= $d["nama_kategori"]?></h4>
+                <hr>
+                <span style="float:right"><?= $d["nama"]?></span>
+              </div>
+            </div>
+          </a>
+          </div>          
+        <?php endforeach;?>
+        </div>
       </div>
-      <?php endforeach;?>
-  </div>
-</section><!-- End Team Section -->
+    </section><!-- End Team Section -->

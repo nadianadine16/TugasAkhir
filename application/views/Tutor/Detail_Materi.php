@@ -76,7 +76,7 @@
                                     <?php endforeach;?>
                                     </div><br>
                                     <?php $no=1; foreach($konten as $k):?>
-                                        <div class="card" style="width:1080px;">
+                                        <div class="card" style="width:200%;">
                                             <div class="card-header"><?=$no++;?>.&nbsp;<?=$k["judul"];?></div>
                                             <div class="card-main">
                                                 <div class="main-description">
