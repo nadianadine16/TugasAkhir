@@ -53,6 +53,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="user-comment">
                                 <div class="comment-details">
+<<<<<<< HEAD
                                 <?php foreach($materi as $m):?>
                                 <a href="<?=base_url('Tutor/Tambah_Konten/'.$m['id_materi'])?>" class="btn btn-primary btn-icon-split">
                                     <span class="icon text-white-50">
@@ -98,6 +99,39 @@
                                                         <p><b>File Pendukung</b><br><a href="<?= base_url('upload/materi/'.$k["file_pendukung"])?>"><?=$k["file_pendukung"];?></a></p>
                                                     <?php
                                                         } 
+=======
+                                    <?php foreach($materi as $m):?>
+                                    <p><?=$m["isi"];?></span></p>
+                                     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     
+                    <div class="row">
+                        <div class="coment-area">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="admin-pro-accordion-wrap shadow-inner">
+                                    <div class="alert-title">
+                                    <br><h2>Kontenmu</h2>
+                                    <a href="<?=base_url('Tutor/Tambah_Konten/'.$m['id_materi'])?>" class="btn btn-primary btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fa fa-plus"></i>
+                                        </span>
+                                        <span class="text">Tambah Konten</span>
+                                    </a>
+                                    <?php endforeach;?>
+                                    </div><br>
+                                    <?php $no=1; foreach($konten as $k):?>
+                                        <div class="card" style="width:200%;">
+                                            <div class="card-header"><?=$no++;?>.&nbsp;<?=$k["judul"];?></div>
+                                            <div class="card-main">
+                                                <div class="main-description">
+                                                <?php if($k["video"] != NULL){?>
+                                                <p><b>Video</b><br><a href="<?= base_url('upload/materi/'.$k["video"])?>"><?=$k["video"];?></a></p>
+                                                <?php
+                                                    } 
+>>>>>>> 35816550702ead67ce61c444181c41794c381fa1
                                                     else { ?>
                                                         <p><b>File Pendukung</b><br>-</p>
                                                     <?php

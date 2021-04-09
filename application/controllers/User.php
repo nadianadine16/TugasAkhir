@@ -123,9 +123,9 @@ class User extends CI_Controller {
         $this->load->view('template/footer_user', $data);
     }
 
-    public function daftarMateri($id){
+    public function daftarMateri(){
         $data['title'] ='Daftar Materi';
-        $data['daftar_materi'] = $this->User_model->daftar_materi($id);
+        $data['daftar_materi'] = $this->User_model->daftar_materi();
 
         $this->load->view('template/header_user', $data);
         $this->load->view('user/Daftar_Materi', $data);
@@ -134,6 +134,7 @@ class User extends CI_Controller {
     public function daftarKonten($id){
         $data['title'] ='Daftar Konten';
         $data['daftar_konten'] = $this->User_model->daftar_konten($id);
+        $data['materi'] = $this->User_model->getMateriByIdMateri($id);
 
         $this->load->view('template/header_user', $data);
         $this->load->view('user/Daftar_Konten', $data);

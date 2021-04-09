@@ -209,7 +209,7 @@
             $this->db->select('*');
             $this->db->from('tugas');
             $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');
-            $this->db->join('konten', 'konten.id_konten = konten.id_konten');
+            $this->db->join('konten', 'konten.id_konten = tugas.id_konten');
             $this->db->where('tugas.status', $status);
             $query = $this->db->get();
             return $query->result_array();
@@ -221,7 +221,7 @@
             $this->db->select('*');
             $this->db->from('tugas');
             $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');            
-            $this->db->join('konten', 'konten.id_materi = tugas.id_konten');
+            $this->db->join('konten', 'konten.id_konten = tugas.id_konten');
             $this->db->where('tugas.status', $status);
             $query = $this->db->get();
             return $query->result_array();
