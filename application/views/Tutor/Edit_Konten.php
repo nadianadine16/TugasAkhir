@@ -31,17 +31,21 @@
                     <?php echo validation_errors(); ?>
                 </div>
             <?php endif; ?>
-                <form action="<?= base_url('Tutor/Edit_Konten/'.$konten['id_konten'])?>" method="post" enctype="multipart/form-data" >
+                <form action="<?= base_url('Tutor/Edit_Konten/'.$konten['id_konten'].'/'.$konten['id_materi'])?>" method="post" enctype="multipart/form-data" >
                 <input type="hidden" class="form-control" id="id_materi" name="id_materi" value="<?=$konten["id_materi"];?>">
                 <input type="hidden" name="id_konten" value="<?=$konten['id_konten'];?>">
                 <div class="form-group">
                     <label for="judul">Judul</label>
                         <input type="text" class="form-control" id="judul" name="judul" autocomplete="off" value="<?=$konten["judul"];?>">
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="video">Unggah Video</label>
                         <input type="file" class="form-control" id="video" name="video">
                         <p style="color:#808080;">Format .mp4</p>
+                </div> -->
+                <div class="form-group">
+                    <label for="video">Link Video</label>
+                        <input type="text" class="form-control" id="video" name="video" autocomplete="off" value="<?=$konten["video"];?>">
                 </div>
                 <div class="form-group">
                     <label for="file_pendukung">Unggah File Pendukung</label>

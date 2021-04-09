@@ -44,10 +44,14 @@
                     <label for="judul">Judul</label>
                         <input type="text" class="form-control" id="judul" name="judul" autocomplete="off">
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="video">Unggah Video</label>
                         <input type="file" class="form-control" id="video" name="video">
                         <p style="color:#808080;">Format .mp4</p>
+                </div> -->
+                <div class="form-group">
+                    <label for="video">Link Video</label>
+                        <input type="text" class="form-control" id="video" name="video" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="file_pendukung">Unggah File Pendukung</label>

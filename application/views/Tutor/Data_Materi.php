@@ -53,8 +53,8 @@
                                 <thead>
                                     <tr>
                                         <th data-field="no">No</th>
+                                        <th data-field="cover">Gambar</th>
                                         <th data-field="nama_materi">Judul Materi</th>
-                                        <th data-field="deskripsi">Deskripsi</th>
                                         <th data-field="action">Action</th>
                                     </tr>
                                 </thead>
@@ -62,8 +62,8 @@
                                     <?php $no=1; foreach($materi as $m):?>
                                     <tr>
                                         <td><?=$no++?></td>
+                                        <td><img src="<?= base_url('upload/cover_materi/'.$m['cover'])?>" style="height: 70px; width: 70px;"></td>
                                         <td><?=$m["nama_materi"];?></td>
-                                        <td><?=$m["deskripsi"];?></td>
                                         <td class="datatable-ct">
                                             <a href="<?= base_url();?>Tutor/Detail_Materi/<?=$m["id_materi"];?>" class="pd-setting-ed"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                             <a href="<?= base_url();?>Tutor/Edit_Materi/<?=$m['id_materi'];?>" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

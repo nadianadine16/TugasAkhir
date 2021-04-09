@@ -38,11 +38,6 @@
                     <label for="nama_materi">Judul Materi</label>
                         <input type="text" class="form-control" id="nama_materi" name="nama_materi" autocomplete="off">
                 </div>
-                <!-- <div class="form-group">
-                    <label for="video">Unggah Video</label>
-                        <input type="file" class="form-control" id="video" name="video">
-                        <p style="color:#808080;">Format .mp4</p>
-                </div> -->
                 <div class="form-group">
                     <label for="deskripsi">Deskripsi Singkat</label>
                     <textarea name="deskripsi"></textarea>
@@ -52,8 +47,9 @@
                     <textarea name="requirement"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="isi">Hal yang Di Pelajari</label>
-                    <textarea name="isi"></textarea>
+                    <label for="cover">Unggah Gambar</label>
+                        <input type="file" class="form-control" id="cover" name="cover">
+                        <p style="color:#808080;">Format .jpg .png</p>
                 </div>
                 <center><button type="submit" name="submit" class="btn btn-primary float-right">Tambah</button></center>
             </form>

@@ -96,7 +96,6 @@ class Tutor extends CI_Controller {
         $this->form_validation->set_rules('nama_materi', 'nama_materi', 'required');
         $this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
         $this->form_validation->set_rules('requirement', 'requirement', 'required');
-        $this->form_validation->set_rules('isi', 'isi', 'required');
         $this->form_validation->set_rules('id_tutor', 'id_tutor', 'required');
 
         if($this->form_validation->run() == FALSE) {
@@ -124,7 +123,6 @@ class Tutor extends CI_Controller {
         $this->form_validation->set_rules('nama_materi', 'nama_materi', 'required');
         $this->form_validation->set_rules('id_kategori_materi', 'id_kategori_materi', 'required');
         $this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
-        $this->form_validation->set_rules('isi', 'isi', 'required');
         $this->form_validation->set_rules('requirement', 'requirement', 'required');
         $this->form_validation->set_rules('id_tutor', 'id_tutor', 'required');
 
@@ -144,6 +142,7 @@ class Tutor extends CI_Controller {
         $data['title'] = 'Detail Materi';
         $data['materi'] = $this->Tutor_model->getMateriByIdMateri($id_materi);
         $data['konten'] = $this->Tutor_model->Konten($id_materi);
+        // $data['hitung_konten'] = $this->Tutor_model->Hitung_Konten($id_materi);
 
         $this->load->view('template/header2_tutor',$data);
         $this->load->view('Tutor/Detail_Materi', $data);
@@ -156,6 +155,7 @@ class Tutor extends CI_Controller {
 
         $this->form_validation->set_rules('judul', 'judul', 'required');
         $this->form_validation->set_rules('soal', 'soal', 'required');
+        $this->form_validation->set_rules('video', 'video', 'required');
 
         if($this->form_validation->run() == FALSE) {
             $this->load->view('template/header2_tutor',$data);
@@ -165,16 +165,17 @@ class Tutor extends CI_Controller {
         else {
             $this->Tutor_model->Tambah_Konten();
             echo"<script>alert('Konten Berhasil Ditambahkan!');</script>";
-            redirect('Tutor/Data_Materi','refresh');
+            redirect('Tutor/Detail_Materi/'.$id_materi ,'refresh');
         }
     }
 
-    public function Edit_Konten($id_konten) {
+    public function Edit_Konten($id_konten, $id_materi) {
         $data['title'] = 'Form Edit Konten';
         $data['konten'] = $this->Tutor_model->getKontenById($id_konten);
 
         $this->form_validation->set_rules('judul', 'judul', 'required');
         $this->form_validation->set_rules('soal', 'soal', 'required');
+        $this->form_validation->set_rules('video', 'video', 'required');
 
         if($this->form_validation->run() == FALSE) {
             $this->load->view('template/header2_tutor',$data);
@@ -183,15 +184,15 @@ class Tutor extends CI_Controller {
         }
         else {
             $this->Tutor_model->Edit_Konten($id_konten);
-            echo"<script>alert('Konten Berhasil Di Edit!');</script>";
-            redirect('Tutor/Data_Materi','refresh');
+            // echo"<script>alert('Konten Berhasil Di Edit!');</script>";
+            redirect('Tutor/Detail_Materi/'.$id_materi ,'refresh');
         }
     }
 
-    public function Hapus_Konten($id_konten) {
-        $this->Tutor_model->Hapus_Konten($id_konten);
+    public function Hapus_Konten($id_konten, $id_materi) {
+        $this->Tutor_model->Hapus_Konten($id_konten, $id_materi);
         echo"<script>alert('Konten Berhasil Dihapus!');</script>";
-        redirect('Tutor/Data_Materi', 'refresh');
+        redirect('Tutor/Detail_Materi/'.$id_materi ,'refresh');
     }
 
     public function Cari_Materi() {

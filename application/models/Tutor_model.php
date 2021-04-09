@@ -12,6 +12,10 @@
             return $this->db->get_where('materi', array('id_tutor' => $this->session->userdata('id_tutor') ))->num_rows();
         }
 
+        public function Hitung_Konten($id_konten) {
+            return $this->db->get_where('konten', array('id_konten' => $this->session->userdata('id_materi') ))->num_rows();
+        }
+
         public function Hitung_Tugas_Mahasiswa() {
             return $this->db->get_where('tugas', array('id_materi' => $this->session->userdata('id_materi') ))->num_rows();
         }
@@ -64,10 +68,22 @@
                 "id_tutor" => $this->input->post('id_tutor', true),
                 "deskripsi" => $this->input->post('deskripsi', true),
                 "requirement" => $this->input->post('requirement', true),
-                "isi" => $this->input->post('isi', true),
-                "id_kategori_materi" => $this->input->post('id_kategori_materi', true)
+                "id_kategori_materi" => $this->input->post('id_kategori_materi', true),
+                "cover" => $this->upload_cover()
             ];
             $this->db->insert('materi', $data);
+        }
+
+        public function upload_cover() {
+            $config['upload_path'] = './upload/cover_materi/';
+            $config['allowed_types'] = 'jpg|png';
+            $config['overwrite'] = true;
+
+            $this->upload->initialize($config);
+            $this->load->library('upload',$config);
+            if($this->upload->do_upload('cover')) {
+                return $this->upload->data("file_name");
+            }
         }
 
         public function Detail_materi($id_materi) {
@@ -113,8 +129,9 @@
                 "judul" => $this->input->post('judul', true),
                 "id_materi" => $this->input->post('id_materi', true),
                 "soal" => $this->input->post('soal', true),
-                "video" => $this->upload_video(),
-                "file_pendukung" => $this->upload_file_pendukung(),
+                // "video" => $this->upload_video(),
+                "video" => $this->input->post('video', true),
+                "file_pendukung" => $this->upload_file_pendukung()
             ];
             $this->db->insert('konten', $data);
         }
@@ -166,10 +183,10 @@
             $this->id_materi = $post["id_materi"];
             $this->nama_materi = $post["nama_materi"];
             $this->deskripsi = $post["deskripsi"];
-            $this->isi = $post["isi"];
             $this->requirement = $post["requirement"];
             $this->id_tutor = $post["id_tutor"];
             $this->id_kategori_materi = $post["id_kategori_materi"];
+            $this->cover = $this->upload_cover();
             
             $this->db->update('materi',$this, array('id_materi' => $post['id_materi']));
         }
@@ -178,8 +195,9 @@
             $post=$this->input->post();
             $this->id_konten = $post["id_konten"];
             $this->id_materi = $post["id_materi"];
+            $this->judul = $post["judul"];
             $this->soal = $post["soal"];
-            $this->video = $this->upload_video();
+            $this->video = $post["video"];
             $this->file_pendukung = $this->upload_file_pendukung();
             
             $this->db->update('konten',$this, array('id_konten' => $post['id_konten']));

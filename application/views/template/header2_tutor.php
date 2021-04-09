@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/owl.carousel.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/accordion.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/owl.theme.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/owl.transitions.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/animate.css">
