@@ -7,8 +7,8 @@
     <?php endforeach;?>
     <hr>
     <div class ="kotak" style="margin-top:20px">
-    <!-- <?php foreach($jawaban as $m):?> -->
-      <?php $tanggal = $m["created"]?>
+    <?php foreach($jawaban as $m):?>
+      <?php $tanggal = $m["created_at"]?>
       <div class="card border-secondary mb-2" style="max-width: 80%;margin-left:100px;">
         <div class="card-header"><b><?=$m["nama"]?></b></div>
         <div class="card-body text-secondary">

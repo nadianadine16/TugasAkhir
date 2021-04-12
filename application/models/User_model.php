@@ -35,6 +35,24 @@ class User_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+    public function daftar_tutor() {
+        $this->db->select('*');
+        $this->db->from('tutor');
+        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    public function daftar_materi_limit() {
+        $this->db->select('*');
+        $this->db->from('materi');
+        $this->db->join('kategori_materi', 'materi.id_kategori_materi = kategori_materi.id_kategori_materi');
+        $this->db->join('tutor', 'materi.id_tutor = tutor.id_tutor');
+        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');        
+        $this->db->limit(4);
+        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
     public function daftar_materi() {
         $this->db->select('*');
@@ -42,6 +60,17 @@ class User_model extends CI_Model {
         $this->db->join('kategori_materi', 'materi.id_kategori_materi = kategori_materi.id_kategori_materi');
         $this->db->join('tutor', 'materi.id_tutor = tutor.id_tutor');
         $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    public function daftar_materi_byKategori($id) {
+        $this->db->select('*');
+        $this->db->from('materi');
+        $this->db->join('kategori_materi', 'materi.id_kategori_materi = kategori_materi.id_kategori_materi');
+        $this->db->join('tutor', 'materi.id_tutor = tutor.id_tutor');
+        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');        
+        $this->db->where('kategori_materi.id_kategori_materi', $id);
+        
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -163,13 +192,24 @@ class User_model extends CI_Model {
         $this->db->insert('chat_forum', $data);
     }
 
+    public function detailTutor($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tutor');
+        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');                        
+        $this->db->join('kategori_materi', 'kategori_materi.id_kategori_materi = tutor.id_kategori_materi');        
+        $this->db->where('tutor.id_tutor', $id);
+        $query = $this->db->get();
+        return $query->result_array();                        
+    }
+
     public function jawaban($id) {
         $this->db->select('*');
         $this->db->from('chat_forum');
         $this->db->join('mahasiswa', 'chat_forum.id_user = mahasiswa.id_mahasiswa');
         $this->db->join('forum', 'forum.id_forum = chat_forum.id_forum');
         $this->db->where('forum.id_forum', $id);
-        $this->db->order_by('chat_forum.created','ASC');
+        $this->db->order_by('chat_forum.created_at','ASC');
         $query = $this->db->get();
         return $query->result_array();
     }             

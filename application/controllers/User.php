@@ -16,6 +16,10 @@ class User extends CI_Controller {
     public function index()
     {
         $data['title'] ='Dashboard User';
+        $data['kategori_materi'] = $this->User_model->getAllKategoriMateri();
+        $data['nama_tutor'] = $this->User_model->daftar_tutor();
+        $data['daftar_materi_limit'] = $this->User_model->daftar_materi_limit();
+
         $this->load->view('template/header_user', $data);
         $this->load->view('user/index', $data);
         $this->load->view('template/footer_user', $data);
@@ -131,6 +135,14 @@ class User extends CI_Controller {
         $this->load->view('user/Daftar_Materi', $data);
         $this->load->view('template/footer_user', $data);
     }
+    public function daftarMateribyKategori($id){
+        $data['title'] ='Daftar Materi';
+        $data['daftar_materi'] = $this->User_model->daftar_materi_byKategori($id);
+
+        $this->load->view('template/header_user', $data);
+        $this->load->view('user/Daftar_Materi', $data);
+        $this->load->view('template/footer_user', $data);
+    }
     public function daftarKonten($id){
         $data['title'] ='Daftar Konten';
         $data['daftar_konten'] = $this->User_model->daftar_konten($id);
@@ -213,6 +225,22 @@ class User extends CI_Controller {
 
         $this->load->view('template/header_user', $data);
         $this->load->view('user/Detail_Forum', $data);
+        $this->load->view('template/footer_user', $data);
+    }
+    public function Detail_Tutor($id) {
+        $data['title'] ='Detail Tutor';        
+        $data['detail'] = $this->User_model->detailTutor($id);
+
+        $this->load->view('template/header_user', $data);
+        $this->load->view('user/Detail_Tutor', $data);
+        $this->load->view('template/footer_user', $data);
+    }
+    public function SeeAllTutor() {
+        $data['title'] ='List Tutor';
+        $data['nama_tutor'] = $this->User_model->daftar_tutor();
+
+        $this->load->view('template/header_user', $data);
+        $this->load->view('user/SeeAllTutor', $data);
         $this->load->view('template/footer_user', $data);
     }
 
