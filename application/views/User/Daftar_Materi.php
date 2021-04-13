@@ -11,7 +11,7 @@
           <a href="<?= base_url();?>user/daftarKonten/<?=$d['id_materi'];?>">
             <div class="member">
               <div class="member-img">
-                <img src="<?= base_url()?>/assets_user/img/team/team-1.jpg" class="img-fluid" alt="">               
+                <img src="<?= base_url('upload/cover_materi/'.$d['cover'])?>" class="img-fluid" alt="">               
               </div>
               <div class="member-info">
                 <h4><?= $d["nama_materi"]?></h4>

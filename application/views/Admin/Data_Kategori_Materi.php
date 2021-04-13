@@ -34,9 +34,15 @@
                 <div class="sparkline13-list">
                     <div class="sparkline13-hd">
                         <div class="main-sparkline13-hd">
-                            <h1>Data <span class="table-project-n">Kategori Materi</span></h1>
+                            <center><h1>Data <span class="table-project-n">Kategori Materi</span></h1></center>
                         </div>
                     </div>
+                    <a href="<?= base_url()?>/Admin/tambah_kategori_materi" class="btn btn-primary btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fa fa-plus"></i>
+                        </span>
+                        <span class="text">Tambah Kategori Materi</span>
+                    </a>
                     <div class="sparkline13-graph">
                         <div class="datatable-dashv1-list custom-datatable-overright">
                             <div id="toolbar">

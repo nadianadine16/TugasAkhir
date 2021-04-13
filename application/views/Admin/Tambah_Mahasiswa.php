@@ -24,6 +24,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="product-payment-inner-st">
+                <center><h4>Tambah Data Mahasiswa</h4></center>
+                <?php if (validation_errors()): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo validation_errors(); ?>
+                </div>
+                <?php endif; ?>
                 <div class="product-payment-inner-st">
                 <form action="<?=base_url('Admin/tambah_data_mahasiswa')?>" method="post">
                 <div class="form-group">
@@ -59,10 +66,10 @@
                         <input type="text" class="form-control" id="tahun_masuk" name="tahun_masuk" required autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <label for="github">Github</label>
+                    <label for="github">Alamat Github</label>
                         <input type="text" class="form-control" id="github" name="github" autocomplete="off">
                 </div>
-                <button type="submit" name="submit" class="btn btn-primary float-right">Submit</button>
+                <center><button type="submit" name="submit" class="btn btn-primary float-right">Tambah</button></center>
             </form>
             </div>
         </div>

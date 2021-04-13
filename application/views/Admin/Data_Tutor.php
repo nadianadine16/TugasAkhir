@@ -34,7 +34,7 @@
                 <div class="sparkline13-list">
                     <div class="sparkline13-hd">
                         <div class="main-sparkline13-hd">
-                            <h1>Data <span class="table-project-n">Tutor</span></h1>
+                            <center><h1>Data <span class="table-project-n">Tutor</span></h1></center>
                         </div>
                     </div>
                     <div class="sparkline13-graph">

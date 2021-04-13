@@ -62,6 +62,7 @@ class Admin extends CI_Controller {
         }
         else {
             $this->Admin_model->edit_data_mahasiswa($id);
+            echo"<script>alert('Data Mahasiswa Berhasil Diedit!');</script>";
             redirect('Admin/data_mahasiswa','refresh');
         }
     }
@@ -84,12 +85,14 @@ class Admin extends CI_Controller {
         }
         else {
             $this->Admin_model->tambah_data_mahasiswa();
+            echo"<script>alert('Data Mahasiswa Berhasil Ditambahkan!');</script>";
             redirect('Admin/data_mahasiswa','refresh');
         }    
     }
 
     public function hapus_data_mahasiswa($id) {
         $this->Admin_model->hapus_data_mahasiswa($id);
+        echo"<script>alert('Data Mahasiswa Berhasil Dihapus!');</script>";
         redirect('Admin/data_mahasiswa','refresh');
     }
 
@@ -104,6 +107,7 @@ class Admin extends CI_Controller {
 
     public function hapus_data_tutor($id) {
         $this->Admin_model->hapus_data_tutor($id);
+        echo"<script>alert('Data Tutor Berhasil Dihapus!');</script>";
         redirect('Admin/data_tutor','refresh');
     }
 
@@ -129,12 +133,14 @@ class Admin extends CI_Controller {
         }
         else {
             $this->Admin_model->edit_data_kategori_materi($id);
+            echo"<script>alert('Kategori Materi Berhasil Diedit!');</script>";
             redirect('Admin/data_kategori_materi','refresh');
         }
     }
 
     public function hapus_data_kategori_materi($id) {
         $this->Admin_model->hapus_data_kategori_materi($id);
+        echo"<script>alert('Kategori Materi Berhasil Dihapus!');</script>";
         redirect('Admin/data_kategori_materi','refresh');
     }
 
@@ -150,6 +156,7 @@ class Admin extends CI_Controller {
         }
         else {
             $this->Admin_model->tambah_kategori_materi();
+            echo"<script>alert('Kategori Materi Berhasil Ditambahkan!');</script>";
             redirect('Admin/data_kategori_materi','refresh');
         }    
     }
@@ -181,11 +188,13 @@ class Admin extends CI_Controller {
             if($action == 'terima') {
                 // execute code to log in
                 $this->Admin_model->status_pendaftaran($id);
+                echo"<script>alert('Tutor Telah Diterima!');</script>";
                 redirect('admin/data_tutor', 'refresh');
             }
             if($action == 'tolak') {
                 // execute code to forget the password
                 $this->Admin_model->hapus_data_tutor($id);
+                echo"<script>alert('Tutor Telah Ditolak!');</script>";
                 redirect('admin/data_tutor', 'refresh');
             }
             
@@ -199,6 +208,12 @@ class Admin extends CI_Controller {
         $this->load->view('template/header2_admin',$data);
         $this->load->view('Admin/Data_Kritik_Saran',$data);
         $this->load->view('template/footer2_admin',$data);
+    }
+
+    public function hapus_kritik_saran($id) {
+        $this->Admin_model->hapus_kritik_saran($id);
+        echo"<script>alert('Kritik dan Saran Berhasil Dihapus!');</script>";
+        redirect('Admin/Data_Kritik_Saran','refresh');
     }
 
     public function profile()
@@ -218,11 +233,17 @@ class Admin extends CI_Controller {
             if($query){
                 $query = $this->Admin_model->Update_Password($this->input->post('password_baru'));
                 if($query){
+                    echo"<script>alert('Password Berhasil Diubah!');</script>";
                     redirect('Admin/index','refresh');
                 }
                 else{
+                    echo"<script>alert('Ubah Password Gagal!');</script>";
                     redirect('Admin/index','refresh');
                 }
+            }
+            else{
+                echo"<script>alert('Password yang Anda Masukkan Salah!');</script>";
+                redirect('Admin/index','refresh');
             }    
         }
     }
@@ -248,6 +269,7 @@ class Admin extends CI_Controller {
 
     public function hapus_forum($id) {
         $this->Admin_model->hapus_forum($id);
+        echo"<script>alert('Forum Berhasil Dihapus!');</script>";
         redirect('Admin/Forum','refresh');
     }
 }

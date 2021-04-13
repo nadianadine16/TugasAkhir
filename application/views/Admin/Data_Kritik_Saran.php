@@ -1,4 +1,12 @@
-<!-- Mobile Menu end -->
+<script type="text/javascript" language="JavaScript">
+    function konfirmasi()
+    {
+        tanya = confirm("Anda Yakin Akan Menghapus Data?");
+        if (tanya == true) return true;
+        else return false;
+    }
+ </script>
+
 <div class="breadcome-area">
     <div class="container-fluid">
         <div class="row">
@@ -27,7 +35,7 @@
                 <div class="sparkline13-list">
                     <div class="sparkline13-hd">
                         <div class="main-sparkline13-hd">
-                            <h1>Data <span class="table-project-n">Kritik & Saran</span></h1>
+                            <center><h1>Kritik dan Saran</span></h1></center>
                         </div>
                     </div>
                     <div class="sparkline13-graph">
@@ -38,11 +46,12 @@
                             data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
                                 <thead>
                                     <tr>
-                                        <th data-field="id">No</th>
-                                        <th data-field="name">Nim</th>
-                                        <th data-field="email">Nama</th>
-                                        <th data-field="phone">Subject</th>
-                                        <th data-field="complete">Kritik Saran</th>
+                                        <th data-field="no">No</th>
+                                        <th data-field="nim">NIM</th>
+                                        <th data-field="nama">Nama</th>
+                                        <th data-field="subject">Subject</th>
+                                        <th data-field="kritik_saran">Kritik Saran</th>
+                                        <th data-field="action">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -52,7 +61,10 @@
                                         <td><?=$k["nim"];?></td>
                                         <td><?=$k["nama"];?></td>
                                         <td><?=$k["subject"];?></td>
-                                        <td><?=$k["kritik_saran"];?></td>                                        
+                                        <td><?=$k["kritik_saran"];?></td>
+                                        <td>
+                                        <a onclick="return konfirmasi()" href="<?= base_url();?>admin/hapus_kritik_saran/<?=$k['id_kritiksaran'];?>" class="pd-setting-ed" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                        </td>                                        
                                     </tr>
                                     <?php endforeach;?>     
                                 </tbody>
