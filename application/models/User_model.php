@@ -264,6 +264,31 @@ class User_model extends CI_Model {
      
         return $result[0]['allcount'];
       }
+
+    public function Konten($id_materi) {
+        $this->db->select('*');
+        $this->db->from('konten');
+        $this->db->join('materi', 'materi.id_materi = konten.id_materi');
+        $this->db->where('konten.id_materi', $id_materi);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function jumlah_tutor() {
+        return $this->db->count_all('tutor');
+    }
+
+    public function jumlah_materi() {
+        return $this->db->count_all('materi');
+    }
+
+    public function jumlah_konten() {
+        return $this->db->count_all('konten');
+    }
+
+    public function jumlah_kategori() {
+        return $this->db->count_all('kategori_materi');
+    }
     
 }
 ?>
