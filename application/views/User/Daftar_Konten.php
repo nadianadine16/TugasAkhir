@@ -76,17 +76,13 @@ ul > li{
             <?php foreach($materi as $p):?>
             <p><?=$p["deskripsi"]?></p>
             <?php endforeach;?>
-            </div>
             <hr>
             <h5><b>Requirement</b></h5>
             <?php foreach($materi as $p):?>
             <p><?=$p["requirement"]?></p>
-            <?php endforeach;?>
-            <hr>
-            <h5><b>Hal yang Dipelajari</b></h5>
-            <?php foreach($materi as $p):?>
-            <p><?=$p["isi"]?></p>
-            <?php endforeach;?>
+            <?php endforeach;?>    
+            </div>
+                    
             
           </div>
         </div>    
@@ -136,39 +132,3 @@ for (var i = 0; i < btns.length; i++) {
   });
 }
 </script>
-
-    
-<!-- <section id="team" class="team section-bg">
-  <div class="container" style="margin-top:80px">
-    <div class="section-title">
-      <h2>Daftar Materi</h2>
-    </div>        
-    <?php foreach($daftar_konten as $d):?>
-    <div class="card" style="margin-top:10px;">    
-        <div class="card-body">
-          <div class="card-title"><h4><?= $d["judul"]?></h4></div>      
-          <?php if($d["video"] != NULL){?>
-            <p><b>Video</b><br><a href="<?= base_url('upload/materi/'.$d["video"])?>"><?=$d["video"];?></a></p>
-            <?php
-            } 
-            else { ?>
-            <p><b>Video</b><br>-</p>
-            <?php
-            } 
-            ?>
-            <?php if($d["file_pendukung"] != NULL){?>
-            <p><b>File Pendukung</b><br><a href="<?= base_url('upload/materi/'.$d["file_pendukung"])?>"><?=$d["file_pendukung"];?></a></p>
-            <?php
-            } 
-            else { ?>
-            <p><b>File Pendukung</b><br>-</p>
-            <?php
-            } 
-            ?>
-          <p class="card-text"><?= $d["soal"]?></p>      
-          <a href="<?= base_url();?>user/detailKonten/<?=$d['id_konten'];?>" class="btn btn-primary">Lihat</a>
-        </div>      
-      </div>
-      <?php endforeach;?>
-  </div>
-</section>End Team Section -->

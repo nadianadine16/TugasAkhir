@@ -333,5 +333,43 @@ class Tutor extends CI_Controller {
         // }
         
     }
+
+    public function Private_Chat(){        
+        $data['title'] = 'Private Chat';      
+        $data['mahasiswa'] = $this->Tutor_model->Mahasiswa();
+
+        $this->load->view('template/header2_tutor', $data);
+        $this->load->view("Tutor/TPrivate_Chat",$data);
+        $this->load->view('template/footer2_tutor', $data);        
+    }
+
+    public function Detail_Private_Chat($send_to){
+        $data['title'] = 'Private Chat';
+        $pengirim = $this->session->userdata('id_tutor');
+
+        if ($this->input->server('REQUEST_METHOD') === 'POST') {
+			$isi_pesan = $this->input->post('isi_pesan');
+
+			$data  = [
+				'send_by' =>$pengirim,
+				'send_to' =>$send_to,
+				'isi_pesan'=>$isi_pesan
+			];
+
+			$this->db->insert('private_chat',$data);
+			redirect('Tutor/Detail_Private_Chat/'.$send_to);
+		} else {
+			$this->db->where_in('send_by', [$pengirim,$send_to]);
+			$this->db->where_in('send_to', [$pengirim,$send_to]);
+			$this->db->order_by('time', 'ASC');
+			$data['send_to'] = $send_to;
+			$data['chat'] = $this->db->get('private_chat')->result();
+            $data['nama_tujuan'] = $this->Tutor_model->namaTujuan($send_to);
+
+			$this->load->view('template/header2_tutor', $data);
+            $this->load->view('Tutor/TDetail_Private_Chat', $data);
+            $this->load->view('template/footer2_tutor', $data);
+		}
+    }
 }
 ?>
