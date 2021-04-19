@@ -1,19 +1,13 @@
 <section id="hero" class="d-flex align-items-center">
-<!-- <section id="contact" class="contact"> -->
       <div class="container">
-
         <div class="section-title">
           <h1>Contact</h1>
           <p>E-Learning dengan sistem tutor sebaya .....</p>
         </div>
-
         <div>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6278.651006289314!2d112.61430743024357!3d-7.945365988160625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78827687d272e7%3A0x789ce9a636cd3aa2!2sPoliteknik%20Negeri%20Malang!5e0!3m2!1sid!2sid!4v1612611699040!5m2!1sid!2sid" width="100%" height="270px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-          <!-- <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.co.id/maps/place/Politeknik+Negeri+Malang/@-7.9467083,112.6134797,17z/data=!3m1!4b1!4m5!3m4!1s0x2e78827687d272e7:0x789ce9a636cd3aa2!8m2!3d-7.9467136!4d112.6156684" frameborder="0" allowfullscreen></iframe> -->
         </div>
-
         <div class="row mt-5">
-
           <div class="col-lg-4">
             <div class="info">
               <div class="address">
@@ -34,7 +28,7 @@
                 <textarea class="form-control" name="kritik_saran" rows="5" data-rule="required" data-msg="Silahkan Tuliskan Kritik Saran Anda" placeholder="Kritik Saran"></textarea>
                 <div class="validate"></div>
               </div>
-              <div class="text-center"><button type="submit" class="btn btn-primary">Kirim Pesan</button></div>
+              <div class="text-center" style="margin-bottom:20px;"><button type="submit" class="btn btn-primary">Kirim Pesan</button></div>
             </form>
           </div>
         </div>

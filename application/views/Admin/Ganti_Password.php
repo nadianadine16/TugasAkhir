@@ -24,22 +24,25 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="product-payment-inner-st">
+                <center><h4>Halaman Ubah Password</h4></center>
+                <?php if (validation_errors()): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo validation_errors(); ?>
+                </div>
+                <?php endif; ?>
                 <div class="product-payment-inner-st">
                 <form action="<?=base_url('Admin/profile')?>" method="post">
                 <input type="hidden" name="id_admin" value="<?= $this->session->userdata('id_admin');?>">
                 <div class="form-group">
                     <label for="nama_kategori">Password Lama</label>
-                        <input type="text" class="form-control" id="password_lama" name="password_lama" >
+                        <input type="password" class="form-control" id="password_lama" name="password_lama" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="nama_kategori">Password Baru</label>
-                        <input type="password" class="form-control" id="password_baru" name="password_baru">
+                        <input type="password" class="form-control" id="password_baru" name="password_baru" autocomplete="off">
                 </div>
-                <!-- <div class="form-group">
-                    <label for="nama_kategori">Konfirmasi Password </label>
-                        <input type="text" class="form-control" id="password_baru" name="konfirmasi_password">
-                </div> -->
-                <button type="submit" name="submit" class="btn btn-primary float-right">Submit</button>
+                <center><button type="submit" name="submit" class="btn btn-primary float-right">Ubah Password</button></center>
             </form>
             </div>
         </div>

@@ -11,6 +11,7 @@
       </div>
     </div>
 </section><!-- End Hero -->
+
 <section id="portfolio" class="portfolio">
   <div class="row">
     <div class="col-lg-12 d-flex justify-content-center">
@@ -22,34 +23,63 @@
     </div>
   </div>
 </section><!-- End Hero -->
-<section id="team" class="team section-bg">
+
+<!-- ======= Counts Section ======= -->
+<section id="counts" class="counts">
       <div class="container">
 
-        <div class="section-title">
-          <h2>Daftar Materi</h2>        
+        <div class="text-center title">
+          <h3>Apa yang Kita Punya</h3>
+          <p>Iusto et labore modi qui sapiente xpedita tempora et aut non ipsum consequatur illo.</p>
         </div>
-
-        <div class="row">
-        <?php foreach($daftar_materi_limit as $d):?>
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-          <a href="<?= base_url();?>user/daftarKonten/<?=$d['id_materi'];?>">
-            <div class="member">
-              <div class="member-img">
-                <img src="<?= base_url()?>/assets_user/img/team/team-1.jpg" class="img-fluid" alt="">               
-              </div>
-              <div class="member-info">
-                <h4><?= $d["nama_materi"]?></h4>
-                <h4><?= $d["nama_kategori"]?></h4>
-                <hr>
-                <span style="float:right"><?= $d["nama"]?></span>
-              </div>
-            </div>
-          </a>
-          </div>          
-        <?php endforeach;?>
+        <div class="row counters">
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up"><?=$jumlah_tutor?></span>
+            <p>Tutor</p>
+          </div>
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up"><?=$jumlah_materi?></span>
+            <p>Materi</p>
+          </div>
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up"><?=$jumlah_konten?></span>
+            <p>Konten</p>
+          </div>
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up"><?=$forum?></span>
+            <p>Kategori Materi</p>
+          </div>
         </div>
       </div>
-    </section><!-- End Team Section -->
+    </section><!-- End Counts Section -->
+
+<section id="team" class="team section-bg">
+  <div class="container">
+    <div class="section-title">
+      <h2>Daftar Materi</h2>        
+    </div>
+    <div class="row">
+    <?php foreach($daftar_materi_limit as $d):?>
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+      <a href="<?= base_url();?>user/daftarKonten/<?=$d['id_materi'];?>">
+        <div class="member">
+          <div class="member-img">
+            <img src="<?= base_url('upload/cover_materi/'.$d['cover'])?>" class="img-fluid" alt="">               
+          </div>
+          <div class="member-info">
+            <h4><?= $d["nama_materi"]?></h4>
+            <p style="color:black;">Kategori : <?= $d["nama_kategori"]?></p>
+            <hr>
+            <span style="float:right; margin-bottom: 13px;">Tutor : <?= $d["nama"]?></span>
+          </div>
+        </div>
+      </a>
+      </div>          
+    <?php endforeach;?>
+    </div>
+  </div>
+</section><!-- End Team Section -->
+
 <section id="team" class="team section-bg" style="background-color:white;">
       <div class="container">
       <div class="section-title">
@@ -69,6 +99,6 @@
           </div>          
           <?php endforeach;?>          
         </div>
-        <a href="<?=base_url()?>User/SeeAllTutor"><center>See All Tutor</center></a>
+        <a href="<?=base_url()?>User/SeeAllTutor"><center>Lihat Semua Tutor</center></a>
       </div>
 </section><!-- End Team Section -->    

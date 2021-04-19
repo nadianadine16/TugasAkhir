@@ -41,8 +41,7 @@
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header">
-                <a href="<?= base_url()?>/assets_admin1/index.html"><img class="main-logo" src="<?= base_url()?>/assets_admin1/img/logo/logo.png" alt="" /></a>
-                <strong><a href="<?= base_url()?>/assets_admin1/index.html"><img src="<?= base_url()?>/assets_admin1/img/logo/logosn.png" alt="" /></a></strong>
+                <a href="<?= base_url()?>Tutor/index"><img class="main-logo" src="<?= base_url()?>/assets_admin1/img/logo/cjti.png" style="width:170px;height:50px;margin-top:10px;margin-bottom:10px;" /></a>
             </div>
             <div class="left-custom-menu-adp-wrap comment-scrollbar">
                 <nav class="sidebar-nav left-sidebar-menu-pro">
@@ -79,7 +78,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="logo-pro">
-                        <a href="<?= base_url()?>/assets_admin1/index.html"><img class="main-logo" src="<?= base_url()?>/assets_admin1/img/logo/logo.png" alt="" /></a>
+                        <img class="main-logo" src="<?= base_url()?>/assets_admin1/img/logo/logo.png" alt="" /></a>
                     </div>
                 </div>
             </div>
@@ -111,7 +110,7 @@
                                                 </li>
                                                 <li class="nav-item">
                                                     <a href="<?= base_url()?>/assets_admin1/#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-															<img src="<?= base_url()?>/assets_admin1/img/product/pro4.jpg" alt="" />
+															<img src="<?= base_url()?>/assets_admin1/img/product/admin.png" style="width:30px; height:30px;" />
 															<span class="admin-name">Halo Tutor, <?= $this->session->userdata('nama');?></span>
 															<i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
 														</a>

@@ -24,6 +24,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="product-payment-inner-st">
+                <center><h4>Edit Kategori Materi</h4></center>
+                <?php if (validation_errors()): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo validation_errors(); ?>
+                </div>
+                <?php endif; ?>
                 <div class="product-payment-inner-st">
                 <form action="<?=base_url('admin/edit_data_kategori_materi/'.$kategoriMateri['id_kategori_materi'])?>" method="post">
                 <input type="hidden" name="id_kategori_materi" value="<?=$kategoriMateri['id_kategori_materi'];?>">
@@ -31,7 +38,7 @@
                     <label for="nama_kategori">Nama</label>
                         <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" value="<?=$kategoriMateri['nama_kategori'];?>">
                 </div>
-                <button type="submit" name="submit" class="btn btn-primary float-right">Submit</button>
+                <center><button type="submit" name="submit" class="btn btn-primary float-right">Edit</button></center>
             </form>
             </div>
         </div>

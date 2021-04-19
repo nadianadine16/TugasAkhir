@@ -1,10 +1,11 @@
 <script type="text/javascript" language="JavaScript">
- function konfirmasi()
- {
- tanya = confirm("Anda Yakin Akan Menghapus Data ?");
- if (tanya == true) return true;
- else return false;
- }</script>
+    function konfirmasi()
+    {
+        tanya = confirm("Anda Yakin Akan Menghapus Data?");
+        if (tanya == true) return true;
+        else return false;
+    }
+ </script>
 <!-- Mobile Menu end -->
 <div class="breadcome-area">
     <div class="container-fluid">
@@ -34,9 +35,15 @@
                 <div class="sparkline13-list">
                     <div class="sparkline13-hd">
                         <div class="main-sparkline13-hd">
-                            <h1>Data <span class="table-project-n">Mahasiswa</span></h1>
+                            <center><h1>Data <span class="table-project-n">Mahasiswa</span></h1></center>
                         </div>
                     </div>
+                    <a href="<?= base_url()?>/Admin/tambah_data_mahasiswa" class="btn btn-primary btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fa fa-plus"></i>
+                        </span>
+                        <span class="text">Tambah Mahasiswa</span>
+                    </a>
                     <div class="sparkline13-graph">
                         <div class="datatable-dashv1-list custom-datatable-overright">
                             <div id="toolbar">

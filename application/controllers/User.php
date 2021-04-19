@@ -19,6 +19,10 @@ class User extends CI_Controller {
         $data['kategori_materi'] = $this->User_model->getAllKategoriMateri();
         $data['nama_tutor'] = $this->User_model->daftar_tutor();
         $data['daftar_materi_limit'] = $this->User_model->daftar_materi_limit();
+        $data['jumlah_tutor'] = $this->User_model->jumlah_tutor();
+        $data['jumlah_konten'] = $this->User_model->jumlah_konten();
+        $data['jumlah_materi'] = $this->User_model->jumlah_materi();
+        $data['jumlah_kategori'] = $this->User_model->jumlah_kategori();
 
         $this->load->view('template/header_user', $data);
         $this->load->view('user/index', $data);
@@ -143,19 +147,22 @@ class User extends CI_Controller {
         $this->load->view('user/Daftar_Materi', $data);
         $this->load->view('template/footer_user', $data);
     }
+
     public function daftarKonten($id){
         $data['title'] ='Daftar Konten';
-        $data['daftar_konten'] = $this->User_model->daftar_konten($id);
+        // $data['daftar_konten'] = $this->User_model->daftar_konten($id);
+        // $data['materi'] = $this->User_model->getMateriByIdMateri($id);
         $data['materi'] = $this->User_model->getMateriByIdMateri($id);
+        $data['konten'] = $this->User_model->Konten($id);
 
         $this->load->view('template/header_user', $data);
-        $this->load->view('user/Daftar_Konten', $data);
+        $this->load->view('user/Daftar_Konten2', $data);
         $this->load->view('template/footer_user', $data);
     }
 
     public function detailKonten($id){
         $data['title'] ='Detail Materi';
-        $data['detail_materi'] = $this->User_model->detail_konten($id);        
+        $data['detail_materi'] = $this->User_model->detail_konten($id);    
 
         $this->load->view('template/header_user', $data);
         $this->load->view('user/Detail_Materi', $data);

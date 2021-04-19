@@ -12,7 +12,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
                                 <li><a href="#">Home</a> <span class="bread-slash">/</span></li>
-                                <li><span class="bread-blod">Detail</span></li>
+                                <li><span class="bread-blod">Detail Mahasiswa</span></li>
                             </ul>
                         </div>
                     </div>
@@ -21,62 +21,50 @@
         </div>
     </div>
 </div>
+
 <div class="single-pro-review-area mt-t-30 mg-b-15">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="margin-left:23px;width:1000px">
-                        <div class="profile-info-inner">
-                            <div class="profile-details-hr">
-                            <?php foreach ($mahasiswa as $m) :?>
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-                                        <div class="address-hr">
-                                            <p><b>Nim</b><br /> <?=($m['nim']); ?></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-                                        <div class="address-hr tb-sm-res-d-n dps-tb-ntn">
-                                            <p><b>Nama</b><br /> <?=($m['nama']); ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-                                        <div class="address-hr">
-                                            <p><b>Jurusan</b><br /> <?=($m['jurusan']); ?></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-                                        <div class="address-hr tb-sm-res-d-n dps-tb-ntn">
-                                            <p><b>Prodi</b><br /> <?=($m['prodi']); ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="address-hr">
-                                            <p><b>Github</b><br /><?=($m['github']); ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                        <div class="address-hr">
-                                        <p><b>Kelas</b><br /><?=($m['kelas']); ?></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                        <div class="address-hr">
-                                          
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                        <div class="address-hr">
-                                        <p><b>Tahun Masuk</b><br /><?=($m['tahun_masuk']); ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php endforeach; ?>
-                            </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            
+            <div class="product-payment-inner-st">
+            <div class="sparkline13-hd">
+                        <div class="main-sparkline13-hd">
+                            <center><h1>Detail <span class="table-project-n">Mahasiswa</span></h1></center>
                         </div>
                     </div>
+            <?php foreach ($mahasiswa as $m) :?>
+                <div class="product-payment-inner-st">
+                <div class="form-group">
+                    <label for="nim">NIM</label>
+                    <p><?=($m['nim']); ?></p>
+                </div>
+                <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <p><?=($m['nama']); ?></p>
+                </div>
+                <div class="form-group">
+                    <label for="status">Jurusan</label>
+                    <p><?=($m['jurusan']); ?></p>
+                </div> 
+                <div class="form-group">
+                    <label for="status">Prodi</label>
+                    <p><?=($m['prodi']); ?></p>
+                </div>  
+                <div class="form-group">
+                    <label for="kelas">Kelas</label>
+                    <p><?=($m['kelas']); ?></p>
+                </div>
+                <div class="form-group">
+                    <label for="tahun_masuk">Tahun Masuk</label>
+                    <p><?=($m['tahun_masuk']); ?></p>
+                </div>
+                <div class="form-group">
+                    <label for="github">Alamat Github</label>
+                    <p><?=($m['github']); ?></p>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>
