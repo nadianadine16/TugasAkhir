@@ -1,10 +1,10 @@
-<section id="team" class="team section-bg" style="margin-top:50px">
-      <div class="container">
 
+
+<section id="team" class="team section" style="margin-top:50px;">
+      <div class="container" style="background-color: #f4fbfe; margin-top: -30px;">
         <div class="section-title">
-          <h2>Daftar Materi</h2>        
+          <br><br><h2>Daftar Materi</h2>        
         </div>
-
         <div class="row">
         <?php foreach($daftar_materi as $d):?>
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
@@ -15,9 +15,9 @@
               </div>
               <div class="member-info">
                 <h4><?= $d["nama_materi"]?></h4>
-                <h4><?= $d["nama_kategori"]?></h4>
+                <p style="color:black;">Kategori : <?= $d["nama_kategori"]?></p>
                 <hr>
-                <span style="float:right"><?= $d["nama"]?></span>
+                <span style="float:right; margin-bottom:15px;">Tutor : <?= $d["nama"]?></span>
               </div>
             </div>
           </a>
@@ -25,4 +25,4 @@
         <?php endforeach;?>
         </div>
       </div>
-    </section><!-- End Team Section -->
+    </section>

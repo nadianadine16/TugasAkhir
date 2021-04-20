@@ -90,6 +90,8 @@ class User_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('materi');
         $this->db->join('kategori_materi', 'materi.id_kategori_materi = kategori_materi.id_kategori_materi');
+        $this->db->join('tutor', 'tutor.id_tutor = materi.id_tutor');
+        $this->db->join('mahasiswa', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');
         $this->db->where('materi.id_materi', $id_materi);
         $query = $this->db->get();
         return $query->result_array();

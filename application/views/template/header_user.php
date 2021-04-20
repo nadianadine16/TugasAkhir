@@ -34,7 +34,6 @@
   <link href="<?= base_url()?>/assets_user/css/style.css" rel="stylesheet">
 
 </head>
-
 <body>
 
   <!-- ======= Header ======= -->
@@ -43,7 +42,7 @@
 
       <a href="<?=base_url()?>/user/index" class="logo mr-auto"><img src="<?= base_url()?>/assets_user/img/cjti.png" alt="" class="img-fluid"></a>
 
-      <nav class="nav-menu d-none d-lg-block">
+      <!-- <nav class="nav">
         <ul>
           <li <?php if ($title == 'Dashboard User') echo 'class="active"'; ?>>
           <a href="<?=base_url()?>User/index">Home</a></li>
@@ -58,6 +57,36 @@
             </ul>
           </li>
         </ul>
+      </nav> -->
+      <nav class="navbar navbar-expand-lg navbar-light" style="margin-right:-40px;">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li <?php if ($title == 'Dashboard User') echo 'class="nav-item active"'; ?>>
+          <a class="nav-link" href="<?=base_url()?>User/index" style="font-family: Arial, Helvetica, sans-serif; "><b>Home </b><span class="sr-only">(current)</span></a>
+        </li>
+        <li <?php if ($title == 'Daftar Kategori Materi'  || $title == 'Daftar Materi' || $title == 'Daftar Konten' || $title == 'Kumpulkan Tugas') echo 'class="nav-item active"';?>>
+          <a class="nav-link" href="<?=base_url()?>User/daftarMateri" style="font-family: Arial, Helvetica, sans-serif;"><b>Materi </b><span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="font-family: Arial, Helvetica, sans-serif;"><b>Private Chat </b><span class="sr-only">(current)</span></a>
+        </li>
+        <li <?php if ($title == 'Forum' || $title == 'Chat Forum') echo 'class="nav-item active"'; ?>>
+          <a class="nav-link" href="<?= base_url()?>User/Forum" style="font-family: Arial, Helvetica, sans-serif;"><b>Forum </b><span class="sr-only">(current)</span></a>
+        </li>
+        <li <?php if ($title == 'Contact Us') echo 'class="nav-item active"'; ?>>
+          <a class="nav-link" href="<?= base_url()?>User/contactus" style="font-family: Arial, Helvetica, sans-serif;"><b>Contact Us </b><span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-family: Arial, Helvetica, sans-serif;">
+          <b>Akun</b>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="<?= base_url();?>User/profile">Ubah Akun</a>
+            <a class="dropdown-item" href="<?= base_url();?>Login/logout">Logout</a>
+          </div>
+        </li>
+      </ul>
+      </div>
       </nav>
     </div>
   </header>

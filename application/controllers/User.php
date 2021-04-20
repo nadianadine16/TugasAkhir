@@ -184,12 +184,10 @@ class User extends CI_Controller {
             $this->load->view('template/header_user', $data);
             $this->load->view('user/Kumpulkan_Tugas2', $data);
             $this->load->view('template/footer_user', $data);
-        }
-
-        
+        }   
     }
 
-    public function tambah_tugas(){
+    public function tambah_tugas($id_konten){
         $data['title'] = 'Tambah Tugas';
 
         $this->form_validation->set_rules('id_konten', 'id_konten', 'required');
@@ -203,7 +201,8 @@ class User extends CI_Controller {
         }
         else {
             $this->User_model->tambah_tugas();
-            redirect('User/index','refresh');
+            echo"<script>alert('Tugas Berhasil Dikirim! Jawaban akan Segera Diperiksa.');</script>";
+            redirect('User/kumpulkanTugas/'.$id_konten,'refresh');
         }    
     }
 
