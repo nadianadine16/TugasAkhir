@@ -30,7 +30,7 @@
 
         <div class="text-center title">
           <h3>Apa yang Kita Punya</h3>
-          <p>Iusto et labore modi qui sapiente xpedita tempora et aut non ipsum consequatur illo.</p>
+          <!-- <p>Iusto et labore modi qui sapiente xpedita tempora et aut non ipsum consequatur illo.</p> -->
         </div>
         <div class="row counters">
           <div class="col-lg-3 col-6 text-center">

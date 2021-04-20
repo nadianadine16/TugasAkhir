@@ -90,7 +90,7 @@ class User_model extends CI_Model {
         return $query->result_array();
     }
     
-    public function daftar_konten($id) {
+    public function Konten($id) {
         $this->db->select('*');
         $this->db->from('konten');
         $this->db->join('materi', 'materi.id_materi = konten.id_materi');
@@ -310,6 +310,22 @@ class User_model extends CI_Model {
         $this->db->where_in('to', [$id,$to]);
         $this->db->order_by('created_at', 'ASC');
         
+      }
+
+      public function jumlah_tutor() {
+        return $this->db->count_all('tutor');
+      }
+
+      public function jumlah_materi() {
+        return $this->db->count_all('materi');
+      }
+
+      public function jumlah_kategori() {
+        return $this->db->count_all('kategori_materi');
+      }
+
+      public function jumlah_konten() {
+        return $this->db->count_all('konten');
       }
     
 }
