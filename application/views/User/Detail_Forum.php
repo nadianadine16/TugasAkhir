@@ -6,7 +6,7 @@
     <h5 style="margin-left:60px"><b>Pertanyaan : <?=$p["pertanyaan"];?> </b></h5>
     <?php endforeach;?>
     <hr>
-    <div class ="kotak" style="margin-top:20px">
+    <div class ="kotak" id= "kotak"style="margin-top:20px ; background-color:#e1f1f7; height:400px; display:block;  overflow:auto;">
     <?php foreach($jawaban as $m):?>
       <?php $tanggal = $m["created_at"]?>
       <div class="card border-secondary mb-2" style="max-width: 80%;margin-left:100px;">
@@ -32,3 +32,6 @@
         </div>
       </div>
     </section>
+  <script type="text/javascript">
+ $('#kotak').scrollTop($('#kotak')[0].scrollHeight);
+</script>

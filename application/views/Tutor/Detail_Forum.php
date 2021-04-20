@@ -12,7 +12,7 @@
             <p style="font-size:11px;">Diunggah pada: <?php echo date("d-F-Y H:i:s", strtotime($tanggal));?></p>
             <?php endforeach;?>
             <?php $no=1; foreach($jawaban as $m):?>
-              <?php $tgl = $m["created"];?>
+              <?php $tgl = $m["created_at"];?>
               <div class="chat-message">							
                 <div class="message" style="width:870px">
                   <a class="message-author"> <?=$m["nama"];?> </a>

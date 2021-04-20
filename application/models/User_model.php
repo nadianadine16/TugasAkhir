@@ -42,6 +42,21 @@ class User_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+    public function tutor(){
+        $this->db->select('*');
+        $this->db->from('mahasiswa');
+        $this->db->join('tutor', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');                        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    public function namaTujuan($send_to){
+        $this->db->select('nama');
+        $this->db->from('mahasiswa');
+        $this->db->where('id_mahasiswa', $send_to);
+        $query = $this->db->get();
+        return $query->result_array();        
+        
+    }
     public function daftar_materi_limit() {
         $this->db->select('*');
         $this->db->from('materi');
@@ -188,10 +203,23 @@ class User_model extends CI_Model {
             "id_forum" => $this->input->post('id_forum', $id),
             "id_user" => $this->input->post('id_user', true),
             "chat" => $this->input->post('chat', true),
-            "created" => date('Y-m-d H:i:s', time())
+            "created_at" => date('Y-m-d H:i:s', time())
         ];
 
         $this->db->insert('chat_forum', $data);
+    }
+    public function Jawab_Private_Chat($id_mahasiswa, $id_tutor) {
+        $this->id_pesan = uniqid();
+        date_default_timezone_set('Asia/Jakarta');
+
+        $data = [
+            "id_mahasiswa" => $this->input->post('id_mahasiswa', $id_mahasiswa),
+            "id_tutor" => $this->input->post('id_tutor', $id_tutor),
+            "isi_pesan" => $this->input->post('isi_pesan', true),
+            "time" => date('Y-m-d H:i:s', time())
+        ];
+
+        $this->db->insert('private_chat', $data);
     }
 
     public function detailTutor($id)
@@ -214,6 +242,16 @@ class User_model extends CI_Model {
         $this->db->order_by('chat_forum.created_at','ASC');
         $query = $this->db->get();
         return $query->result_array();
+    } 
+    public function pesan_private_chat($id, $pengirim) {
+        $condition= "`send_to`= '$id' AND `send_by` = '$pengirim' OR `send_to`= '$pengirim' AND `send_by` = '$id'";
+        $this->db->select('*');
+        $this->db->from('private_chat');    
+        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = private_chat.send_to');
+        
+        $this->db->where($condition);        
+        $query = $this->db->get();
+        return $query->result_array();                        
     }             
     public function search(){
         $keyword=$this->input->post('keyword');
@@ -267,30 +305,12 @@ class User_model extends CI_Model {
         return $result[0]['allcount'];
       }
 
-    public function Konten($id_materi) {
-        $this->db->select('*');
-        $this->db->from('konten');
-        $this->db->join('materi', 'materi.id_materi = konten.id_materi');
-        $this->db->where('konten.id_materi', $id_materi);
-        $query = $this->db->get();
-        return $query->result_array();
-    }
-
-    public function jumlah_tutor() {
-        return $this->db->count_all('tutor');
-    }
-
-    public function jumlah_materi() {
-        return $this->db->count_all('materi');
-    }
-
-    public function jumlah_konten() {
-        return $this->db->count_all('konten');
-    }
-
-    public function jumlah_kategori() {
-        return $this->db->count_all('kategori_materi');
-    }
+      public function GetChat($send_to,$pengirim) {
+        $this->db->where_in('from', [$id,$to]);
+        $this->db->where_in('to', [$id,$to]);
+        $this->db->order_by('created_at', 'ASC');
+        
+      }
     
 }
 ?>

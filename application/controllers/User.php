@@ -233,6 +233,69 @@ class User extends CI_Controller {
         $this->load->view('user/Detail_Forum', $data);
         $this->load->view('template/footer_user', $data);
     }
+    public function Detail_Private_Chat($send_to){
+        $data['title'] = 'Private Chat';
+        $pengirim = $this->session->userdata('id_mahasiswa');
+        
+        // $tampil_chat = $this->User_model->GetChat($send_to,$pengirim);
+        // $data['nama_tutor'] = $this->User_model->daftar_tutor();        
+        // $data['jawaban'] = $this->User_model->pesan_private_chat($send_to,$pengirim);
+        // $data['to'] = $id;
+
+        // $this->load->view('template/header_user', $data);
+        // $this->load->view('user/Detail_Private_Chat', $data);
+        // $this->load->view('template/footer_user', $data);
+        if ($this->input->server('REQUEST_METHOD') === 'POST') {
+			$isi_pesan = $this->input->post('isi_pesan');
+            date_default_timezone_set('Asia/Jakarta');
+			$data  = [
+				'send_by' =>$pengirim,
+				'send_to' =>$send_to,
+				'isi_pesan'=>$isi_pesan,
+                "time" => date('Y-m-d H:i:s', time())
+			];
+
+			$this->db->insert('private_chat',$data);
+			redirect('User/Detail_Private_Chat/'.$send_to);
+		} else {
+			$this->db->where_in('send_by', [$pengirim,$send_to]);
+			$this->db->where_in('send_to', [$pengirim,$send_to]);
+			$this->db->order_by('time', 'ASC');
+			$data['send_to'] = $send_to;
+			$data['chat'] = $this->db->get('private_chat')->result();
+            $data['nama_tujuan'] = $this->User_model->namaTujuan($send_to);
+
+			$this->load->view('template/header_user', $data);
+            $this->load->view('user/Detail_Private_Chat', $data);
+            $this->load->view('template/footer_user', $data);
+		}
+
+    }
+
+    public function ajax($send_to){
+		$id = $this->session->userdata('id');
+
+		$this->db->where_in('from', [$id,$to]);
+		$this->db->where_in('to', [$id,$to]);
+		$this->db->order_by('created_at', 'ASC');
+		$data['to'] = $to;
+		$data['chats'] = $this->db->get('chats')->result();
+
+		$result = '<div class="border rounded">';
+		
+		foreach ($data['chats'] as $item) { 
+			if ($item->from == $id) {
+				$result .= '<div class="text-right"><span class="mr-2 text-primary" style="font-size:22px;">'.$item->message.'</span><br><span style="font-size:11px;" class="text-secondary mr-2">'.date('d-m-Y H:i:s',strtotime($item->created_at)).'</span></div>';
+			} 
+			else {
+				$result .= '<div class="text-left"><span class="ml-2" style="font-size:22px;">'.$item->message.'</span><br><span style="font-size:11px;" class="text-secondary ml-2">'.date('d-m-Y H:i:s',strtotime($item->created_at)).'</span></div>';
+			}
+
+		}
+		$result .= '</div>';
+		echo $result;
+	}
+
     public function Detail_Tutor($id) {
         $data['title'] ='Detail Tutor';        
         $data['detail'] = $this->User_model->detailTutor($id);
@@ -266,6 +329,22 @@ class User extends CI_Controller {
             echo"<script>alert('Jawaban Anda Berhasil Dikirim');</script>";
             redirect('User/Detail_Forum/'.$id ,'refresh');
         }
+    }
+    public function Jawab_Private_Chat($id_mahasiswa, $id_tutor) {
+        $data['title'] ='Private Chat';        
+
+        $this->form_validation->set_rules('isi_pesan', 'isi_pesan', 'required');
+
+        if($this->form_validation->run() == FALSE) {
+            $this->load->view('template/header_user', $data);
+            $this->load->view('user/Detail_Private_Chat', $data);
+            $this->load->view('template/footer_user', $data);
+        }
+        else {
+            $this->User_model->Jawab_Private_Chat($id_mahasiswa, $id_tutor);
+            echo"<script>alert('Pesan Anda Berhasil Dikirim');</script>";
+            redirect('User/Detail_Private_Chat/'.$id_tutor ,'refresh');
+        }
     }    
     public function cari(){
         $keyword=  $this->input->post('keyword');        
@@ -274,6 +353,14 @@ class User extends CI_Controller {
 
         $this->load->view('template/header_user', $data);
         $this->load->view("user/Search",$data);
+        $this->load->view('template/footer_user', $data);        
+    }
+    public function Private_Chat(){        
+        $data['title'] = 'Private Chat';      
+        $data['nama_tutor'] = $this->User_model->tutor();
+
+        $this->load->view('template/header_user', $data);
+        $this->load->view("user/Private_Chat",$data);
         $this->load->view('template/footer_user', $data);        
     }
 }
