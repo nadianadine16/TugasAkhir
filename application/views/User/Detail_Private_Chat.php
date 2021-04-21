@@ -11,13 +11,14 @@
 		foreach ($chat as $m) {
 		?>
 			<?php if ($m->send_by == $id) {?>
-				<div class="text-right"><span class="mr-2 text-primary" style="font-size:15px;"><?= $m->isi_pesan ?></span><br>
-					<span style="font-size:11px;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($m->time)) ?></span>
-				</div>
-			<?php }else { ?>
-				<div class="text-left"><span class="ml-2" style="font-size:15px;"><?= $m->isi_pesan ?></span><br>
+				<div class="text-left"><span class="ml-2" style="font-size:15px;" ><?= $m->isi_pesan ?></span><br>
 					<span style="font-size:11px;" class="text-secondary ml-2"><?= date('d-m-Y H:i:s',strtotime($m->time)) ?></span>
 				</div>
+			<?php }else { ?>
+        <div class="text-right"><span class="mr-2 text-primary" style="font-size:15px;"><?= $m->isi_pesan ?></span><br>
+					<span style="font-size:11px;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($m->time)) ?></span>
+				</div>
+				
 			<?php } ?>
 		<?php } ?>
     </div>

@@ -29,6 +29,7 @@ class Login extends CI_Controller {
         if($cek_tutor->num_rows() > 0){
             $data=$cek_tutor->row_array();
             $this->session->set_userdata('id_tutor',$data['id_tutor']);
+            $this->session->set_userdata('id_mahasiswa',$data['id_mahasiswa']);
             $this->session->set_userdata('nama',$data['nama']);
             $this->session->set_userdata('nim',$data['nim']);
             $this->session->set_userdata('id_kategori_materi',$data['id_kategori_materi']);

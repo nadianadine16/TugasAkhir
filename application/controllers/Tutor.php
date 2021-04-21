@@ -353,7 +353,8 @@ class Tutor extends CI_Controller {
 			$data  = [
 				'send_by' =>$pengirim,
 				'send_to' =>$send_to,
-				'isi_pesan'=>$isi_pesan
+				'isi_pesan'=>$isi_pesan,
+                "time" => date('Y-m-d H:i:s', time())
 			];
 
 			$this->db->insert('private_chat',$data);

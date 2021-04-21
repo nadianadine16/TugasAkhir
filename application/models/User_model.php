@@ -308,7 +308,6 @@ class User_model extends CI_Model {
         $this->db->where_in('to', [$id,$to]);
         $this->db->order_by('created_at', 'ASC');
         
-      }
-    
+      }     
 }
 ?>
