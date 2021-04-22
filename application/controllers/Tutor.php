@@ -15,6 +15,7 @@ class Tutor extends CI_Controller {
     public function index()
     {
         $data['title'] = 'Dashboard Tutor';
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
         $data['materi'] = $this->Tutor_model->Hitung_Materi($this->session->userdata('id_tutor'));
         $data['forum'] = $this->Tutor_model->Hitung_Forum();
 
@@ -80,7 +81,7 @@ class Tutor extends CI_Controller {
 
     public function Data_Materi() {
         $data['title'] = 'Data Materi';
-        
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
         $id_tutor = $this->session->userdata('id_tutor');
         $data['materi'] = $this->Tutor_model->getMateriByIdTutor($id_tutor);
 
@@ -92,7 +93,7 @@ class Tutor extends CI_Controller {
     public function Tambah_Materi() {
         $data['title'] = 'Form Tambah Materi';
         $data['kategori_materi'] = $this->Tutor_model->getAllKategoriMateri();
-
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
         $this->form_validation->set_rules('nama_materi', 'nama_materi', 'required');
         $this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
         $this->form_validation->set_rules('requirement', 'requirement', 'required');
@@ -117,9 +118,10 @@ class Tutor extends CI_Controller {
 
     public function Edit_Materi($id_materi) {
         $data['title'] = 'Form Edit Materi';
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
         $data['materi'] = $this->Tutor_model->getMateriById($id_materi);
         $data['kategori_materi'] = $this->Tutor_model->getAllKategoriMateri();
-
+        
         $this->form_validation->set_rules('nama_materi', 'nama_materi', 'required');
         $this->form_validation->set_rules('id_kategori_materi', 'id_kategori_materi', 'required');
         $this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
@@ -140,6 +142,7 @@ class Tutor extends CI_Controller {
 
     public function Detail_Materi($id_materi) {
         $data['title'] = 'Detail Materi';
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
         $data['materi'] = $this->Tutor_model->getMateriByIdMateri($id_materi);
         $data['konten'] = $this->Tutor_model->Konten($id_materi);
         // $data['hitung_konten'] = $this->Tutor_model->Hitung_Konten($id_materi);
@@ -151,6 +154,7 @@ class Tutor extends CI_Controller {
 
     public function Tambah_Konten($id_materi) {
         $data['title'] = 'Form Tambah Konten';
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
         $data['materi'] = $this->Tutor_model->getMateriByIdMateri($id_materi);
 
         $this->form_validation->set_rules('judul', 'judul', 'required');
@@ -171,6 +175,7 @@ class Tutor extends CI_Controller {
 
     public function Edit_Konten($id_konten, $id_materi) {
         $data['title'] = 'Form Edit Konten';
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
         $data['konten'] = $this->Tutor_model->getKontenById($id_konten);
 
         $this->form_validation->set_rules('judul', 'judul', 'required');
@@ -197,7 +202,8 @@ class Tutor extends CI_Controller {
 
     public function Cari_Materi() {
         $data['title'] = 'Data Materi';
-        
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
+
         $id_tutor = $this->session->userdata('id_tutor');
         $data['materi'] = $this->Tutor_model->getMateriByIdTutor($id_tutor);
         
@@ -213,6 +219,7 @@ class Tutor extends CI_Controller {
 
     public function Tugas_Mahasiswa() {
         $data['title'] = 'Pengumpulan Tugas Mahasiswa';
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
         $data['tugas'] = $this->Tutor_model->getAllTugasUnVerif();
         $data['tugasverif'] = $this->Tutor_model->getAllTugasVerif();
 
@@ -235,6 +242,7 @@ class Tutor extends CI_Controller {
 
     public function Kritik_Saran() {
         $data['title'] = 'Kritik dan Saran';
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
 
         $this->form_validation->set_rules('kritik_saran', 'Kritik dan Saran', 'required');
         $this->form_validation->set_rules('subject', 'Subject', 'required');
@@ -254,6 +262,7 @@ class Tutor extends CI_Controller {
 
     public function Forum() {
         $data['title'] ='Forum';
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
         $data['forum'] = $this->Tutor_model->getAllForum();
         $data['kategori_forum'] = $this->Tutor_model->getAllKategoriForum();
 
@@ -264,6 +273,7 @@ class Tutor extends CI_Controller {
 
     public function Detail_Forum($id) {
         $data['title'] ='Forum';
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
         $data['detail_pertanyaan'] = $this->Tutor_model->detail_pertanyaan($id);
         $data['jawaban'] = $this->Tutor_model->jawaban($id);
 
@@ -274,6 +284,7 @@ class Tutor extends CI_Controller {
 
     public function Jawab_Forum($id) {
         $data['title'] ='Forum';
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
         $data['detail_pertanyaan'] = $this->Tutor_model->detail_pertanyaan($id);
 
         $this->form_validation->set_rules('chat', 'chat', 'required');
@@ -291,6 +302,7 @@ class Tutor extends CI_Controller {
     }
     public function Cari_Forum(){
         $data['title'] = 'Forum';
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
         $data['kategori_forum'] = $this->Tutor_model->getAllKategoriForum();
 
         if($this->input->post('submit')){
@@ -303,14 +315,15 @@ class Tutor extends CI_Controller {
         $this->load->view("tutor/Hasil_Cari_Forum",$data);
         $this->load->view('template/footer2_tutor', $data);     
     }
+
     public function Cek_Status_Pendaftaran(){
         $data['title'] = 'Cek Stats Pendaftaran Tutor';
-        $data['title'] = 'Cek Status Pendaftaran Tutor';
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
 
         $this->load->view('Tutor/Cek_Status', $data);        
     }
-    public function cari() {
 
+    public function cari() {
         $keyword = $this->input->post('keyword');
         $berhasil=$this->Tutor_model->search1($keyword);
         $data['tampil']=$this->Tutor_model->search2($keyword);
@@ -335,7 +348,8 @@ class Tutor extends CI_Controller {
     }
 
     public function Private_Chat(){        
-        $data['title'] = 'Private Chat';      
+        $data['title'] = 'Private Chat';  
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));    
         $data['mahasiswa'] = $this->Tutor_model->Mahasiswa();
 
         $this->load->view('template/header2_tutor', $data);
@@ -345,6 +359,7 @@ class Tutor extends CI_Controller {
 
     public function Detail_Private_Chat($send_to){
         $data['title'] = 'Private Chat';
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
         $pengirim = $this->session->userdata('id_tutor');
 
         if ($this->input->server('REQUEST_METHOD') === 'POST') {

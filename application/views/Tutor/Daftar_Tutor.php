@@ -17,7 +17,7 @@
                             <label for="nim">NIM</label><br>
                             <select class="myselect" style="width:500px;" id="id_mahasiswa" name="id_mahasiswa">
                                 <?php foreach($mahasiswa as $m) : ?>
-                                    <option value="<?=$m["id_mahasiswa"];?>"><?=$m["nim"];?></option>
+                                    <option value="<?=$m["nim"];?></option>
                                 <?php endforeach;?>
                             </select>
                         </div>

@@ -61,6 +61,7 @@ class User extends CI_Controller {
         $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $data['title'] ='Forum';
         $data['forum'] = $this->User_model->getAllForum($config["per_page"], $data['page']);
+        $data['cek_forum'] = $this->User_model->cek_forum();
         $data['pagination'] = $this->pagination->create_links();
 
         $this->load->view('template/header_user', $data);
