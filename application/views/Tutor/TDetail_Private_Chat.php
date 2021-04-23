@@ -4,19 +4,19 @@
       <h1 style="font-size : 20px;color:#223440; font-family: Times, Times New Roman, Georgia, serif; padding-top:10px;padding-left:30px"> <?=$n['nama'];?></h1>
     <?php endforeach;?> 
   </div>
-  <div class="tempat-chat" id="tempat-chat" style="background-color:#e6f3fa; border-style:solid; width:80%; height:400px; margin-top:10px; margin-left:40px;  display:block;  overflow:auto;">
+  <div class="tempat-chat" id="tempat-chat" style="background-color:#e6f3fa; border-style:solid; width:80%; height:400px; margin-top:10px; margin-left:40px;  display:block;  overflow:auto;">  
     <?php 
-		$id = $this->session->userdata('id_tutor');
+		$id = $this->session->userdata('id_mahasiswa');
 		foreach ($chat as $m) {
-		?>
+		?>  
 			<?php if ($m->send_by == $id) {?>
-        <div class="text-left"><span class="ml-2" style="font-size:15px;"><?= $m->isi_pesan ?></span><br>
-					<span style="font-size:11px;" class="text-secondary ml-2"><?= date('d-m-Y H:i:s',strtotime($m->time)) ?></span>
-				
-				</div>
-			<?php }else { ?>
-				<div class="text-right"><span class="mr-2 text-primary" style="font-size:15px;"><?= $m->isi_pesan ?></span><br>
+        <div class="text-right"><span class="mr-2 text-primary" style="font-size:15px;"><?= $m->isi_pesan ?></span><br>
 					<span style="font-size:11px;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($m->time)) ?></span>
+				</div>
+        
+			<?php }else { ?>
+				<div class="text-left"><span class="ml-2" style="font-size:15px;"><?= $m->isi_pesan ?></span><br>
+					<span style="font-size:11px;" class="text-secondary ml-2"><?= date('d-m-Y H:i:s',strtotime($m->time)) ?></span>				
 				</div>
 			<?php } ?>
 		<?php } ?>

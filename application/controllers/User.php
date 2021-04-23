@@ -273,22 +273,22 @@ class User extends CI_Controller {
     }
 
     public function ajax($send_to){
-		$id = $this->session->userdata('id');
+		$id = $this->session->userdata('id_mahasiswa');
 
-		$this->db->where_in('from', [$id,$to]);
-		$this->db->where_in('to', [$id,$to]);
-		$this->db->order_by('created_at', 'ASC');
-		$data['to'] = $to;
-		$data['chats'] = $this->db->get('chats')->result();
+		$this->db->where_in('send_by', [$id,$send_to]);
+		$this->db->where_in('send_to', [$id,$send_to]);
+		$this->db->order_by('time', 'ASC');
+		$data['send_to'] = $send_to;
+		$data['chat'] = $this->db->get('private_chat')->result();
 
 		$result = '<div class="border rounded">';
 		
-		foreach ($data['chats'] as $item) { 
-			if ($item->from == $id) {
-				$result .= '<div class="text-right"><span class="mr-2 text-primary" style="font-size:22px;">'.$item->message.'</span><br><span style="font-size:11px;" class="text-secondary mr-2">'.date('d-m-Y H:i:s',strtotime($item->created_at)).'</span></div>';
+		foreach ($data['chat'] as $item) { 
+			if ($item->send_by == $id) {
+				$result .= '<div class="text-right"><span class="mr-2 text-primary" style="font-size:22px;">'.$item->isi_pesan.'</span><br><span style="font-size:11px;" class="text-secondary mr-2">'.date('d-m-Y H:i:s',strtotime($item->time)).'</span></div>';
 			} 
 			else {
-				$result .= '<div class="text-left"><span class="ml-2" style="font-size:22px;">'.$item->message.'</span><br><span style="font-size:11px;" class="text-secondary ml-2">'.date('d-m-Y H:i:s',strtotime($item->created_at)).'</span></div>';
+				$result .= '<div class="text-left"><span class="ml-2" style="font-size:22px;">'.$item->isi_pesan.'</span><br><span style="font-size:11px;" class="text-secondary ml-2">'.date('d-m-Y H:i:s',strtotime($item->time)).'</span></div>';
 			}
 
 		}
