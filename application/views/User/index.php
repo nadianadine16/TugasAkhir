@@ -30,7 +30,7 @@
 
         <div class="text-center title">
           <h3>Apa yang Kita Punya</h3>
-          <p>Iusto et labore modi qui sapiente xpedita tempora et aut non ipsum consequatur illo.</p>
+          <!-- <p>Iusto et labore modi qui sapiente xpedita tempora et aut non ipsum consequatur illo.</p> -->
         </div>
         <div class="row counters">
           <div class="col-lg-3 col-6 text-center">
@@ -89,7 +89,10 @@
         <?php foreach($nama_tutor as $n):?>
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
           <a href="<?=base_url()?>User/Detail_Tutor/<?=$n['id_tutor'];?>">
-            <div class="member">              
+            <div class="member">
+              <div class="member-img">
+                <img src="<?= base_url();?>/assets_user/img/team/team-2.jpg" class="img-fluid" alt="">               
+              </div>          
               <div class="member-info">
                 <h4><?=$n['nama']?></h4>
                 <span><?=$n['tahun_masuk']?></span>

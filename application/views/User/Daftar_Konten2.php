@@ -32,7 +32,8 @@
     <div class="container">
         <div class="section-title">
         <?php foreach($materi as $d):?>
-            <h2><?=$d["nama_materi"];?></h2>      
+            <center><h2><?=$d["nama_materi"];?></h2></center>
+            <center><p style="margin-top:-10px; margin-bottom:20px;">Tutor : <?= $d["nama"]?></p></center>
                 <img src="<?= base_url('upload/cover_materi/'.$d['cover'])?>" style="height: 50%; width: 50%;">
             <?php endforeach;?>
         </div>                        
@@ -83,7 +84,7 @@
                                     ?>
                                     <?php foreach($materi as $m):?>
                                     <p><b>Soal Latihan</b><br><?=$k["soal"];?></p>
-                                    <a href="<?= base_url();?>user/kumpulkanTugas/<?=$k['id_konten'];?>"><i class="fa fa-plus" aria-hidden="true"></i>Kumpulkan Tugas Disini</a>
+                                    <a href="<?= base_url();?>user/kumpulkanTugas/<?=$k['id_konten'];?>"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Kumpulkan Tugas Disini</a>
                                 <?php endforeach;?>
                             </div>
                         </div>

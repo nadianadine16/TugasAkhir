@@ -1,13 +1,13 @@
 <section id="team" class="team section-bg" style="background-color:white; margin-top:70px">
   <div class="container">    
-    <!-- <?php foreach($detail as $n):?> -->
+    <?php foreach($detail as $n):?>
     <div class="kotak" style="width: 100%; height:100%;background-color:white;">  
     <h4 style="font-family: cursive;"><b><center><?=$n['nama']?></center></b></h4><hr><br>
     <h5 style="font-size:17px; color:black;"><center> <?=$n['jurusan']?></center></h4>
     <h5 style="font-size:17px; color:black;"><center> <?=$n['prodi']?></center></h5>
     <h5 style="font-size:17px; color:black;"><center> <?=$n['tahun_masuk']?></center></h5>
     </div>
-    <!-- <?php endforeach;?>   -->
+    <?php endforeach;?>  
   </div>
 </section>
 <!-- <section id="team" class="team section-bg" style="margin-top:80px">
