@@ -155,9 +155,22 @@ class User_model extends CI_Model {
         $data = [
             "id_mahasiswa" => $this->input->post('id_mahasiswa', true),
             "id_konten" => $this->input->post('id_konten', true),
-            "tugas" => $this->input->post('tugas', true),
+            "tugas" => $this->input->post('tugas', true)
         ];
         $this->db->insert('tugas', $data);
+    }
+
+    public function revisi_tugas($id_tugas) {
+        $data = [
+            "id_tugas" => $this->input->post('id_tugas', true),
+            "id_mahasiswa" => $this->input->post('id_mahasiswa', true),
+            "id_konten" => $this->input->post('id_konten', true),
+            "tugas" => $this->input->post('tugas', true),
+            "status" => $this->input->post('status', true),
+            "revisi" => NULL
+        ];
+        $this->db->where('id_tugas', $data['id_tugas']);
+        $this->db->update('tugas', $data);
     }
 
     public function Tanya_Forum() {
@@ -232,6 +245,35 @@ class User_model extends CI_Model {
         $this->db->where('tutor.id_tutor', $id);
         $query = $this->db->get();
         return $query->result_array();                        
+    }
+
+    public function Detail_Akun($id_mahasiswa)
+    {
+        $this->db->select('*');
+        $this->db->from('mahasiswa');       
+        $this->db->where('id_mahasiswa', $id_mahasiswa);
+        $query = $this->db->get();
+        return $query->result_array();                        
+    }
+
+    public function Tugas_Mahasiswa($id_mahasiswa) {
+        $this->db->select('*');
+        $this->db->from('tugas');
+        $this->db->join('konten', 'tugas.id_konten = konten.id_konten');       
+        $this->db->where('id_mahasiswa', $id_mahasiswa);
+        $this->db->order_by('tugas', 'DESC');
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function cek($id_konten) {
+        $this->db->select('*');
+        $this->db->from('tugas');     
+        $this->db->where('id_konten', $id_konten);
+        $this->db->where('id_mahasiswa', $this->session->userdata('id_mahasiswa'));
+        $query = $this->db->get();
+        return $query->result_array();
     }
 
     public function jawaban($id) {

@@ -81,7 +81,7 @@
           <b>Akun</b>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="<?= base_url();?>User/profile">Ubah Akun</a>
+            <a class="dropdown-item" href="<?= base_url();?>User/Detail_Akun/<?= $this->session->userdata('id_mahasiswa');?>">Kelola Akun</a>
             <a class="dropdown-item" href="<?= base_url();?>Login/logout">Logout</a>
           </div>
         </li>

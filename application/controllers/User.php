@@ -94,11 +94,21 @@ class User extends CI_Controller {
         }
     }
     
-    public function profile()
+    public function Edit_Profil($id_mahasiswa)
     {
-        $data['title'] ='Profil';
+        $data['title'] ='Edit Profil';
         $this->load->view('template/header_user', $data);
-        $this->load->view('user/profile', $data);
+        $this->load->view('User/Edit_Profil', $data);
+        $this->load->view('template/footer_user', $data);
+    }
+
+    public function Detail_Akun($id_mahasiswa) {
+        $data['title'] ='Detail Akun';        
+        $data['mahasiswa'] = $this->User_model->Detail_Akun($id_mahasiswa);
+        $data['tugas'] = $this->User_model->Tugas_Mahasiswa($id_mahasiswa);
+
+        $this->load->view('template/header_user', $data);
+        $this->load->view('user/Detail_Akun', $data);
         $this->load->view('template/footer_user', $data);
     }
 
@@ -174,11 +184,14 @@ class User extends CI_Controller {
         $data['title'] ='Kumpulkan Tugas';
         $data['detail_materi'] = $this->User_model->detail_konten($id);
         $data['tampil'] = $this->User_model->tampil_tugas($id);
+        $data['cek_tugas'] = $this->User_model->cek($id);
+        $data['tugas_by_id'] = $this->User_model->tampil_tugas($id);
+        $data['tugas'] = $this->User_model->Tugas_Mahasiswa($this->session->userdata('id_mahasiswa'));
 
         $cek = $this->User_model->cek_tugas($id);
         if($cek){
             $this->load->view('template/header_user', $data);
-            $this->load->view('user/Kumpulkan_Tugas', $data);
+            $this->load->view('user/Kumpulkan_Tugas3', $data);
             $this->load->view('template/footer_user', $data);    
         }
         else{
@@ -197,11 +210,31 @@ class User extends CI_Controller {
 
         if($this->form_validation->run() == FALSE) {
             $this->load->view('template/header_user', $data);
-            $this->load->view('user/Kumpulkan_Tugas', $data);
+            $this->load->view('user/Kumpulkan_Tugas2', $data);
             $this->load->view('template/footer_user', $data);
         }
         else {
             $this->User_model->tambah_tugas();
+            echo"<script>alert('Tugas Berhasil Dikirim! Jawaban akan Segera Diperiksa.');</script>";
+            redirect('User/kumpulkanTugas/'.$id_konten,'refresh');
+        }    
+    }
+
+    public function revisi_tugas($id_tugas, $id_konten) {
+        $data['title'] = 'Revisi Tugas';
+
+        $this->form_validation->set_rules('id_konten', 'id_konten', 'required');
+        $this->form_validation->set_rules('tugas', 'tugas', 'required');
+        $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');
+        $this->form_validation->set_rules('status', 'status', 'required');
+
+        if($this->form_validation->run() == FALSE) {
+            $this->load->view('template/header_user', $data);
+            $this->load->view('user/Kumpulkan_Tugas3', $data);
+            $this->load->view('template/footer_user', $data);
+        }
+        else {
+            $this->User_model->revisi_tugas($id_tugas);
             echo"<script>alert('Tugas Berhasil Dikirim! Jawaban akan Segera Diperiksa.');</script>";
             redirect('User/kumpulkanTugas/'.$id_konten,'refresh');
         }    

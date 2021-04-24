@@ -205,7 +205,19 @@
         }
 
         public function getAllTugasUnVerif() {
-            $status = 1;
+            $status = 'Diajukan';
+
+            $this->db->select('*');
+            $this->db->from('tugas');
+            $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');
+            $this->db->join('konten', 'konten.id_konten = tugas.id_konten');
+            $this->db->where('tugas.status', $status);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+
+        public function getAllRevisiTugas() {
+            $status = 'Revisi';
 
             $this->db->select('*');
             $this->db->from('tugas');
@@ -217,7 +229,7 @@
         }
 
         public function getAllTugasVerif() {
-            $status = 2;
+            $status = 'Disetujui';
 
             $this->db->select('*');
             $this->db->from('tugas');
@@ -229,7 +241,7 @@
         }
 
         public function Verifikasi_Tugas($id_tugas) {
-            $this->db->set('status', 2);
+            $this->db->set('status', 'Disetujui');
             $this->db->where('id_tugas',$id_tugas);
         
             $this->db->update("tugas");
@@ -379,6 +391,20 @@
             $this->db->where('id_kategori_materi', $id);
             $query = $this->db->get();
             return $query->result_array(); 
+        }
+
+        public function revisi($id_tugas) {
+            $post=$this->input->post();
+            $this->id_tugas = $post["id_tugas"];
+            $this->revisi = $post["revisi"];
+            $this->status = $post["status"];
+            
+            $this->db->update('tugas',$this, array('id_tugas' => $post['id_tugas']));
+        }
+
+        public function getTugasById($id_tugas) {
+            $query=$this->db->get_where('tugas',array('id_tugas'=>$id_tugas));
+            return $query->row_array();
         }
     }
     
