@@ -221,6 +221,7 @@ class Tutor extends CI_Controller {
         $data['title'] = 'Pengumpulan Tugas Mahasiswa';
         $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
         $data['tugas'] = $this->Tutor_model->getAllTugasUnVerif();
+        $data['revisi_tugas'] = $this->Tutor_model->getAllRevisiTugas();
         $data['tugasverif'] = $this->Tutor_model->getAllTugasVerif();
 
         $this->load->view('template/header2_tutor',$data);

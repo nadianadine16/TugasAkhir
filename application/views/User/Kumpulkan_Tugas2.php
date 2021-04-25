@@ -24,4 +24,4 @@
       </div>
       <?php endforeach;?>
   </div>
-</section><!-- End Team Section -->
+</section>
