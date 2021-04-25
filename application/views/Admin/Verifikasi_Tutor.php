@@ -34,7 +34,7 @@
                 <div class="sparkline13-list">
                     <div class="sparkline13-hd">
                         <div class="main-sparkline13-hd">
-                            <h1>Data <span class="table-project-n">Tutor Belum Terverifikasi</span></h1>
+                            <center><h1>Data <span class="table-project-n">Tutor Belum Terverifikasi</span></h1></center>
                         </div>
                     </div>
                     <div class="sparkline13-graph">
@@ -46,9 +46,9 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th data-editable="true">Nim</th>
-                                        <th data-editable="true">Nama</th>
-                                        <th data-editable="true">Prodi</th>
+                                        <th>Nim</th>
+                                        <th>Nama</th>
+                                        <th>Prodi</th>
                                         <th>Kelas</th>
                                         <th>File</th>
                                         <th data-field="action">Action</th>
@@ -62,7 +62,7 @@
                                         <td><?=$m["nama"];?></td>
                                         <td><?=$m["prodi"];?></td>
                                         <td><?=$m["kelas"];?></td>
-                                        <td><?=$m["file"];?></td>
+                                        <td><a href="<?= base_url('upload/'.$m["surat_pernyataan"])?>"><?=$m["surat_pernyataan"];?></a></td>
                                         <td class="datatable-ct">
                                         <form action ="<?= base_url();?>admin/status_pendaftaran/<?=$m["id_tutor"];?>" method="post">
                                         <input type="hidden" name="id_tutor" value="<?= $m["id_tutor"];?>">

@@ -39,6 +39,7 @@ class User_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('tutor');
         $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');
+        $this->db->limit(4);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -325,5 +326,14 @@ class User_model extends CI_Model {
       public function jumlah_konten() {
         return $this->db->count_all('konten');
       }
-    }
+
+      public function cek_forum() {
+        $this->db->select('*');
+        $this->db->from('forum');
+               
+        $query = $this->db->get();
+        return $query->result_array();
+      }
+    
+}
 ?>

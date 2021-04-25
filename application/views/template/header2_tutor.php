@@ -111,7 +111,9 @@
                                                 <li class="nav-item">
                                                     <a href="<?= base_url()?>/assets_admin1/#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
 															<img src="<?= base_url()?>/assets_admin1/img/product/admin.png" style="width:30px; height:30px;" />
-															<span class="admin-name">Halo Tutor, <?= $this->session->userdata('nama');?></span>
+                                                            <?php foreach($kategori_header as $kh):?>
+															<span class="admin-name">Halo Tutor <?=$kh['nama_kategori']?>, <?= $this->session->userdata('nama');?></span>
+                                                            <?php endforeach;?>
 															<i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
 														</a>
                                                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">

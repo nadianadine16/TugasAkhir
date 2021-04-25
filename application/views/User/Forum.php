@@ -1,11 +1,11 @@
-<section id="team" class="team section-bg" style="margin-top:50px">
+<section id="team" class="team section" style="margin-top:50px; ">
       <div class="container">
         <div class="section-title">
           <h2>Daftar Forum</h2>
           <p>Jika terdapat pertanyaan yang belum dibahas pada forum dapat menekan button tanya forum</p>
         </div>
         <div class="col-lg-12 pt-12 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-        <div><a href="<?= base_url();?>User/Tanya_Forum" class="btn btn-primary" style="margin-bottom:10px; float:right">Tanya Forum</a></div>        
+                
       </div>
       <div class="row">      
       <div class="col-md-5">
@@ -18,7 +18,12 @@
           </div>
         </form>
       </div>
-    </div>
+      <span><div><a href="<?= base_url();?>User/Tanya_Forum" class="btn btn-primary" style="margin-left:360%;">+ Tanya Forum</a></div></span>
+    </div><br>
+    <?php if($cek_forum == NULL) {?>
+        <center><p>Sayang sekali, forum ini belum ada :)</p></center>
+    <?php }
+    else {?>
         <div class="row" style="margin-rop:15px;">
         <?php $no=1; foreach($forum as $p):?>
           <?php $tanggal = $p["created_at"]?>
@@ -40,5 +45,7 @@
             <?php echo $pagination; ?>
         </div>
     </div>
+    <?php } ?>
       </div>
+
     </section><!-- End Team Section -->

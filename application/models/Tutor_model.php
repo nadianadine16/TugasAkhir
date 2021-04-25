@@ -26,7 +26,8 @@
         }
 
         public function getNim() {
-            $query = $this->db->get('mahasiswa');
+            // $query = $this->db->get('mahasiswa');
+            $query = $this->db->query("SELECT mahasiswa.nim FROM mahasiswa WHERE NOT EXISTS (SELECT * FROM tutor WHERE mahasiswa.id_mahasiswa = tutor.id_mahasiswa)");
             return $query->result_array();
         }
 
@@ -370,6 +371,14 @@
             $this->db->where('id_mahasiswa', $send_to);
             $query = $this->db->get();
             return $query->result_array();                    
+        }
+
+        public function kategori_header($id) {
+            $this->db->select('nama_kategori');
+            $this->db->from('kategori_materi');
+            $this->db->where('id_kategori_materi', $id);
+            $query = $this->db->get();
+            return $query->result_array(); 
         }
     }
     

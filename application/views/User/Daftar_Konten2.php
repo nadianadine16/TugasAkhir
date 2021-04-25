@@ -33,7 +33,7 @@
         <div class="section-title">
         <?php foreach($materi as $d):?>
             <center><h2><?=$d["nama_materi"];?></h2></center>
-            <center><p style="margin-top:-10px; margin-bottom:20px;">Tutor : <?= $d["nama"]?></p></center>
+            <center><p style="margin-top:-10px; margin-bottom:20px;">Tutor : <span><a href="<?=base_url()?>User/Detail_Tutor/<?=$d['id_tutor'];?>"><?=$d["nama"];?></span></a></p></center>
                 <img src="<?= base_url('upload/cover_materi/'.$d['cover'])?>" style="height: 50%; width: 50%;">
             <?php endforeach;?>
         </div>                        
