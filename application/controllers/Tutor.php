@@ -387,5 +387,58 @@ class Tutor extends CI_Controller {
             $this->load->view('template/footer2_tutor', $data);
 		}
     }
+    public function Chat($to)
+    {        
+        $data['title'] = 'Private Chat';  
+		$id = $this->session->userdata('id_mahasiswa');
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));    
+
+		if ($this->input->server('REQUEST_METHOD') === 'POST') {
+			$message = $this->input->post('message');
+
+			$data  = [
+				'from' =>$id,
+				'to' =>$to,
+				'message'=>$message,				
+			];
+
+			$this->db->insert('private_chat',$data);
+			redirect('Tutor/Chat/'.$to);
+		} else {
+			$this->db->where_in('from', [$id,$to]);
+			$this->db->where_in('to', [$id,$to]);
+			$this->db->order_by('created_at', 'ASC');
+			$data['to'] = $to;
+			$data['chats'] = $this->db->get('private_chat')->result();
+            $data['nama_tujuan'] = $this->Tutor_model->namaTujuan($to);
+
+			$this->load->view('template/header2_tutor', $data);
+            $this->load->view('Tutor/TChat', $data);
+            $this->load->view('template/footer2_tutor', $data);
+		}
+    }
+    public function ajax($to){
+		$id = $this->session->userdata('id_mahasiswa');
+
+		$this->db->where_in('from', [$id,$to]);
+		$this->db->where_in('to', [$id,$to]);
+		$this->db->order_by('created_at', 'ASC');
+		$data['to'] = $to;
+		$data['chats'] = $this->db->get('private_chat')->result();
+
+		$result = '<div class="border rounded" id="border_rounded" style="height:400px;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">';
+		
+		foreach ($data['chats'] as $item) { 
+			if ($item->from == $id) {
+				$result .= '<div class="text-right"><span class="mr-2 text-primary" style="font-size:18px;">'.$item->message.'</span><br><span style="font-size:11px;" class="text-secondary mr-2">'.date('d-m-Y H:i:s',strtotime($item->created_at)).'</span></div>';
+			} 
+			else {
+				$result .= '<div class="text-left"><span class="ml-2" style="font-size:18px;">'.$item->message.'</span><br><span style="font-size:11px;" class="text-secondary ml-2">'.date('d-m-Y H:i:s',strtotime($item->created_at)).'</span></div>';
+			}
+
+		}        
+		$result .= '</div>';
+		echo $result;
+	}
 }
 ?>

@@ -14,7 +14,7 @@
             <p><span><i class="fa fa-clock"></i></span> <b>Prodi:</b> <?=$n["jurusan"]?></p>
           </div>
           <div class="product-buttons">
-            <a type="button" href="<?= base_url();?>Tutor/Detail_Private_Chat/<?=$n['id_mahasiswa'];?>" class="btn btn-primary">Chat</a>
+            <a type="button" href="<?= base_url();?>Tutor/Chat/<?=$n['id_mahasiswa'];?>" class="btn btn-primary">Chat</a>
           </div>
         </div>
         

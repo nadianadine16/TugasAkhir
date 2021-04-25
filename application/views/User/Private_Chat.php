@@ -8,7 +8,7 @@
         <div class="row">
         <?php foreach($nama_tutor as $n):?>
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-          <a href="<?= base_url();?>user/Detail_Private_Chat/<?=$n['id_mahasiswa'];?>">
+          <a href="<?= base_url();?>user/Chat/<?=$n['id_mahasiswa'];?>">
             <div class="member">
               <div class="member-img">
                 <img src="<?= base_url()?>/assets_user/img/tutor.png" class="img-fluid" alt="">               

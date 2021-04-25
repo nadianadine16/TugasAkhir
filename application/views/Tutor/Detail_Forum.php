@@ -11,7 +11,7 @@
             <p style="font-size:20px;"><?=$p["pertanyaan"];?></p>
             <p style="font-size:11px;">Diunggah pada: <?php echo date("d-F-Y H:i:s", strtotime($tanggal));?></p>
             <?php endforeach;?>
-            <div class="kotak" style="height:340px;display:block;  overflow:auto;">
+            <div class="kotak" id="mydiv" style="height:340px;display:block;  overflow:auto;" >
             <?php $no=1; foreach($jawaban as $m):?>
               <?php $tgl = $m["created_at"];?>
               <div class="chat-message">							
@@ -43,3 +43,7 @@
     </div>    
   </div>  
 </div>
+<script type="text/javascript">
+ var objDiv = document.getElementById("mydiv");
+	objDiv.scrollTop = objDiv.scrollHeight;
+</script>

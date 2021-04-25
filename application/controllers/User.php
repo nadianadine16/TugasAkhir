@@ -234,9 +234,9 @@ class User extends CI_Controller {
         $this->load->view('user/Detail_Forum', $data);
         $this->load->view('template/footer_user', $data);
     }
-    public function Detail_Private_Chat($send_to){
-        $data['title'] = 'Private Chat';
-        $pengirim = $this->session->userdata('id_mahasiswa');
+    // public function Detail_Private_Chat($send_to){
+    //     $data['title'] = 'Private Chat';
+    //     $pengirim = $this->session->userdata('id_mahasiswa');
         
         // $tampil_chat = $this->User_model->GetChat($send_to,$pengirim);
         // $data['nama_tutor'] = $this->User_model->daftar_tutor();        
@@ -246,56 +246,56 @@ class User extends CI_Controller {
         // $this->load->view('template/header_user', $data);
         // $this->load->view('user/Detail_Private_Chat', $data);
         // $this->load->view('template/footer_user', $data);
-        if ($this->input->server('REQUEST_METHOD') === 'POST') {
-			$isi_pesan = $this->input->post('isi_pesan');
-            date_default_timezone_set('Asia/Jakarta');
-			$data  = [
-				'send_by' =>$pengirim,
-				'send_to' =>$send_to,
-				'isi_pesan'=>$isi_pesan,
-                "time" => date('Y-m-d H:i:s', time())
-			];
+    //     if ($this->input->server('REQUEST_METHOD') === 'POST') {
+	// 		$isi_pesan = $this->input->post('isi_pesan');
+    //         date_default_timezone_set('Asia/Jakarta');
+	// 		$data  = [
+	// 			'send_by' =>$pengirim,
+	// 			'send_to' =>$send_to,
+	// 			'isi_pesan'=>$isi_pesan,
+    //             "time" => date('Y-m-d H:i:s', time())
+	// 		];
 
-			$this->db->insert('private_chat',$data);
-			redirect('User/Detail_Private_Chat/'.$send_to);
-		} else {
-			$this->db->where_in('send_by', [$pengirim,$send_to]);
-			$this->db->where_in('send_to', [$pengirim,$send_to]);
-			$this->db->order_by('time', 'ASC');
-			$data['send_to'] = $send_to;
-			$data['chat'] = $this->db->get('private_chat')->result();
-            $data['nama_tujuan'] = $this->User_model->namaTujuan($send_to);
+	// 		$this->db->insert('private_chat',$data);
+	// 		redirect('User/Detail_Private_Chat/'.$send_to);
+	// 	} else {
+	// 		$this->db->where_in('send_by', [$pengirim,$send_to]);
+	// 		$this->db->where_in('send_to', [$pengirim,$send_to]);
+	// 		$this->db->order_by('time', 'ASC');
+	// 		$data['send_to'] = $send_to;
+	// 		$data['chat'] = $this->db->get('private_chat')->result();
+    //         $data['nama_tujuan'] = $this->User_model->namaTujuan($send_to);
 
-			$this->load->view('template/header_user', $data);
-            $this->load->view('user/Detail_Private_Chat', $data);
-            $this->load->view('template/footer_user', $data);
-		}
+	// 		$this->load->view('template/header_user', $data);
+    //         $this->load->view('user/Detail_Private_Chat', $data);
+    //         $this->load->view('template/footer_user', $data);
+	// 	}
 
-    }
+    // }
 
-    public function ajax($send_to){
-		$id = $this->session->userdata('id_mahasiswa');
+    // public function ajax($send_to){
+	// 	$id = $this->session->userdata('id_mahasiswa');
 
-		$this->db->where_in('send_by', [$id,$send_to]);
-		$this->db->where_in('send_to', [$id,$send_to]);
-		$this->db->order_by('time', 'ASC');
-		$data['send_to'] = $send_to;
-		$data['chat'] = $this->db->get('private_chat')->result();
+	// 	$this->db->where_in('send_by', [$id,$send_to]);
+	// 	$this->db->where_in('send_to', [$id,$send_to]);
+	// 	$this->db->order_by('time', 'ASC');
+	// 	$data['send_to'] = $send_to;
+	// 	$data['chat'] = $this->db->get('private_chat')->result();
 
-		$result = '<div class="border rounded">';
+	// 	$result = '<div class="border rounded">';
 		
-		foreach ($data['chat'] as $item) { 
-			if ($item->send_by == $id) {
-				$result .= '<div class="text-right"><span class="mr-2 text-primary" style="font-size:22px;">'.$item->isi_pesan.'</span><br><span style="font-size:11px;" class="text-secondary mr-2">'.date('d-m-Y H:i:s',strtotime($item->time)).'</span></div>';
-			} 
-			else {
-				$result .= '<div class="text-left"><span class="ml-2" style="font-size:22px;">'.$item->isi_pesan.'</span><br><span style="font-size:11px;" class="text-secondary ml-2">'.date('d-m-Y H:i:s',strtotime($item->time)).'</span></div>';
-			}
+	// 	foreach ($data['chat'] as $item) { 
+	// 		if ($item->send_by == $id) {
+	// 			$result .= '<div class="text-right"><span class="mr-2 text-primary" style="font-size:22px;">'.$item->isi_pesan.'</span><br><span style="font-size:11px;" class="text-secondary mr-2">'.date('d-m-Y H:i:s',strtotime($item->time)).'</span></div>';
+	// 		} 
+	// 		else {
+	// 			$result .= '<div class="text-left"><span class="ml-2" style="font-size:22px;">'.$item->isi_pesan.'</span><br><span style="font-size:11px;" class="text-secondary ml-2">'.date('d-m-Y H:i:s',strtotime($item->time)).'</span></div>';
+	// 		}
 
-		}
-		$result .= '</div>';
-		echo $result;
-	}
+	// 	}
+	// 	$result .= '</div>';
+	// 	echo $result;
+	// }
 
     public function Detail_Tutor($id) {
         $data['title'] ='Detail Tutor';        
@@ -363,6 +363,59 @@ class User extends CI_Controller {
         $this->load->view('template/header_user', $data);
         $this->load->view("user/Private_Chat",$data);
         $this->load->view('template/footer_user', $data);        
+    }    
+    public function Chat($to)
+    {        
+        $data['title'] = 'Private Chat';  
+		$id = $this->session->userdata('id_mahasiswa');
+
+		if ($this->input->server('REQUEST_METHOD') === 'POST') {
+			$message = $this->input->post('message');
+
+			$data  = [
+				'from' =>$id,
+				'to' =>$to,
+				'message'=>$message,				
+			];
+
+			$this->db->insert('private_chat',$data);
+			redirect('User/Chat/'.$to);
+		} else {
+			$this->db->where_in('from', [$id,$to]);
+			$this->db->where_in('to', [$id,$to]);
+			$this->db->order_by('created_at', 'ASC');
+			$data['to'] = $to;
+			$data['chats'] = $this->db->get('private_chat')->result();
+            $data['nama_tujuan'] = $this->User_model->namaTujuan($to);
+
+			$this->load->view('template/header_user', $data);                             
+            $this->load->view('User/Chat', $data);
+            $this->load->view('template/footer_user', $data);
+		}
     }
+    public function ajax($to){
+		$id = $this->session->userdata('id_mahasiswa');
+
+		$this->db->where_in('from', [$id,$to]);
+		$this->db->where_in('to', [$id,$to]);
+		$this->db->order_by('created_at', 'ASC');
+		$data['to'] = $to;
+		$data['chats'] = $this->db->get('private_chat')->result();
+
+		$result = '<div class="border rounded" id="border_rounded" style="height:400px;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">';
+		
+		foreach ($data['chats'] as $item) { 
+			if ($item->from == $id) {
+				$result .= '<div class="text-right"><span class="mr-2 text-primary" style="font-size:22px;">'.$item->message.'</span><br><span style="font-size:11px;" class="text-secondary mr-2">'.date('d-m-Y H:i:s',strtotime($item->created_at)).'</span></div>';
+			} 
+			else {
+				$result .= '<div class="text-left"><span class="ml-2" style="font-size:22px;">'.$item->message.'</span><br><span style="font-size:11px;" class="text-secondary ml-2">'.date('d-m-Y H:i:s',strtotime($item->created_at)).'</span></div>';
+			}
+
+		}
+		$result .= '</div>';
+		echo $result;
+	}
+    
 }
 ?>
