@@ -70,12 +70,14 @@ class User_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function daftar_materi() {
+    public function daftar_materi($id) {
         $this->db->select('*');
         $this->db->from('materi');
         $this->db->join('kategori_materi', 'materi.id_kategori_materi = kategori_materi.id_kategori_materi');
         $this->db->join('tutor', 'materi.id_tutor = tutor.id_tutor');
         $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');        
+        $this->db->where('kategori_materi.id_kategori_materi', $id);
+        
         $query = $this->db->get();
         return $query->result_array();
     }

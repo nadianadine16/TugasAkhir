@@ -317,6 +317,14 @@
             return $query->result_array();
         }
 
+        public function hitungJawaban($id)
+        {
+            $this->db->select('COUNT(id_chat_forum)');
+            $this->db->from('chat_forum');
+            $this->db->where('id_forum', $id);
+            $query = $this->db->get();
+            return $query->result_array();                                
+        }
         public function getAllKategoriForum(){
             $this->db->select('kategori_materi.id_kategori_materi, kategori_materi.nama_kategori, COUNT(forum.id_kategori_materi) AS total');
             $this->db->from('kategori_materi');

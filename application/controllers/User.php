@@ -142,9 +142,9 @@ class User extends CI_Controller {
         $this->load->view('template/footer_user', $data);
     }
 
-    public function daftarMateri(){
+    public function daftarMateri($id){
         $data['title'] ='Daftar Materi';
-        $data['daftar_materi'] = $this->User_model->daftar_materi();
+        $data['daftar_materi'] = $this->User_model->daftar_materi($id);
 
         $this->load->view('template/header_user', $data);
         $this->load->view('user/Daftar_Materi', $data);

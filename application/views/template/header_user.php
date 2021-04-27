@@ -65,7 +65,7 @@
           <a class="nav-link" href="<?=base_url()?>User/index" style="font-family: Arial, Helvetica, sans-serif; "><b>Home </b><span class="sr-only">(current)</span></a>
         </li>
         <li <?php if ($title == 'Daftar Kategori Materi'  || $title == 'Daftar Materi' || $title == 'Daftar Konten' || $title == 'Kumpulkan Tugas') echo 'class="nav-item active"';?>>
-          <a class="nav-link" href="<?=base_url()?>User/daftarMateri" style="font-family: Arial, Helvetica, sans-serif;"><b>Materi </b><span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="<?=base_url()?>User/kategoriMateri" style="font-family: Arial, Helvetica, sans-serif;"><b>Materi </b><span class="sr-only">(current)</span></a>
         </li>
         <li <?php if ($title == 'Private Chat') echo 'class="nav-item active"'; ?>>
           <a class="nav-link" href="<?=base_url()?>User/Private_Chat" style="font-family: Arial, Helvetica, sans-serif;"><b>Private Chat </b><span class="sr-only">(current)</span></a>
