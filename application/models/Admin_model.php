@@ -207,5 +207,14 @@
         public function hapus_forum($id){
             return $this->db->delete('forum',array("id_forum"=>$id));
         }
+        public function getTutorById($id){
+            $this->db->select('*');
+            $this->db->from('tutor');
+            $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');                        
+            $this->db->join('kategori_materi', 'kategori_materi.id_kategori_materi = tutor.id_kategori_materi');        
+            $this->db->where('tutor.id_tutor', $id);
+            $query = $this->db->get();
+            return $query->result_array();                             
+        }
     }
 ?>
