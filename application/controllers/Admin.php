@@ -53,7 +53,7 @@ class Admin extends CI_Controller {
         $this->form_validation->set_rules('nama', 'nama', 'required');
         $this->form_validation->set_rules('kelas', 'kelas', 'required');
         $this->form_validation->set_rules('tahun_masuk', 'tahun_masuk', 'required');
-        $this->form_validation->set_rules('github', 'github', 'required');
+        // $this->form_validation->set_rules('github', 'github', 'required');
 
         if($this->form_validation->run() == FALSE) {
             $this->load->view('template/header2_admin',$data);
@@ -238,12 +238,12 @@ class Admin extends CI_Controller {
                 }
                 else{
                     echo"<script>alert('Ubah Password Gagal!');</script>";
-                    redirect('Admin/index','refresh');
+                    redirect('Admin/profile','refresh');
                 }
             }
             else{
                 echo"<script>alert('Password yang Anda Masukkan Salah!');</script>";
-                redirect('Admin/index','refresh');
+                redirect('Admin/profile','refresh');
             }    
         }
     }
@@ -271,5 +271,13 @@ class Admin extends CI_Controller {
         $this->Admin_model->hapus_forum($id);
         echo"<script>alert('Forum Berhasil Dihapus!');</script>";
         redirect('Admin/Forum','refresh');
+    }
+    public function detail_data_tutor($id){
+        $data['title'] = 'Detail Tutor';
+        $data['detail_tutor'] = $this->Admin_model->getTutorById($id);        
+
+        $this->load->view('template/header2_admin',$data);
+        $this->load->view('Admin/Detail_Tutor',$data);
+        $this->load->view('template/footer2_admin',$data);
     }
 }

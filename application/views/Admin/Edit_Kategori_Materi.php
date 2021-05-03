@@ -36,7 +36,7 @@
                 <input type="hidden" name="id_kategori_materi" value="<?=$kategoriMateri['id_kategori_materi'];?>">
                 <div class="form-group">
                     <label for="nama_kategori">Nama</label>
-                        <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" value="<?=$kategoriMateri['nama_kategori'];?>">
+                        <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" value="<?=$kategoriMateri['nama_kategori'];?>" autocomplete="off">
                 </div>
                 <center><button type="submit" name="submit" class="btn btn-primary float-right">Edit</button></center>
             </form>

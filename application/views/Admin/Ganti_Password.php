@@ -42,7 +42,7 @@
                     <label for="nama_kategori">Password Baru</label>
                         <input type="password" class="form-control" id="password_baru" name="password_baru" autocomplete="off">
                 </div>
-                <center><button type="submit" name="submit" class="btn btn-primary float-right">Ubah Password</button></center>
+                <center><button type="submit" name="submit" class="btn btn-primary float-right">Simpan</button></center>
             </form>
             </div>
         </div>

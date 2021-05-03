@@ -96,7 +96,7 @@
                     <li>
                         <a class="mini-click-non" href="<?= base_url()?>admin/data_mahasiswa">
                             <span class="educate-icon educate-student icon-wrap"></span>
-                            <span class="mini-click-non">Data Mahasiswa</span>
+                            <span class="mini-click-non">Mahasiswa</span>
                         </a>
                     </li>
                     <li>

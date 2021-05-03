@@ -143,9 +143,9 @@ class User extends CI_Controller {
         $this->load->view('template/footer_user', $data);
     }
 
-    public function daftarMateri(){
+    public function daftarMateri($id){
         $data['title'] ='Daftar Materi';
-        $data['daftar_materi'] = $this->User_model->daftar_materi();
+        $data['daftar_materi'] = $this->User_model->daftar_materi($id);
 
         $this->load->view('template/header_user', $data);
         $this->load->view('user/Daftar_Materi', $data);
@@ -393,8 +393,9 @@ class User extends CI_Controller {
     }
     public function Private_Chat(){        
         $data['title'] = 'Private Chat';      
-        $data['nama_tutor'] = $this->User_model->tutor();
-
+        $id = $this->session->userdata('id_mahasiswa');
+        $data['nama_tutor'] = $this->User_model->tutor();        
+        
         $this->load->view('template/header_user', $data);
         $this->load->view("user/Private_Chat",$data);
         $this->load->view('template/footer_user', $data);        
@@ -422,6 +423,7 @@ class User extends CI_Controller {
 			$data['to'] = $to;
 			$data['chats'] = $this->db->get('private_chat')->result();
             $data['nama_tujuan'] = $this->User_model->namaTujuan($to);
+            
 
 			$this->load->view('template/header_user', $data);                             
             $this->load->view('User/Chat', $data);

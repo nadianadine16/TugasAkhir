@@ -66,6 +66,7 @@ class Login extends CI_Controller {
             redirect('admin/index');
         }
         else{
+            $data['title']= 'Login';
             $data['pesan'] = 'Username atau Password Anda Salah';
             $this->load->view('login/index', $data);
         }
