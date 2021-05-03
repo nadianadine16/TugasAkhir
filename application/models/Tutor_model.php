@@ -26,8 +26,7 @@
         }
 
         public function getNim() {
-            // $query = $this->db->get('mahasiswa');
-            $query = $this->db->query("SELECT mahasiswa.nim FROM mahasiswa WHERE NOT EXISTS (SELECT * FROM tutor WHERE mahasiswa.id_mahasiswa = tutor.id_mahasiswa)");
+            $query=$this->db->query("SELECT * FROM mahasiswa WHERE NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = mahasiswa.id_mahasiswa)");
             return $query->result_array();
         }
 

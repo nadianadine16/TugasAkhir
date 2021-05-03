@@ -17,7 +17,7 @@
             <input type="hidden" class="form-control" id="id_materi" name="id_konten" value="<?= $d["id_konten"]?>">            
             <div class="form-group">            
               <label for="nim"><b>Masukkan Link Github Tugas Anda</b></label>
-              <input type="text" class="form-control" id="tugas" name="tugas"><br>              
+              <input type="text" class="form-control" id="tugas" name="tugas" required><br>              
               <center><button type="submit" class="btn btn-primary" id= "button" name="submit" class="btn btn-primary float-right">Submit</button></center>                        
             </form>
         </div>      

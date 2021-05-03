@@ -41,23 +41,6 @@
     <div class="container d-flex align-items-center">
 
       <a href="<?=base_url()?>/user/index" class="logo mr-auto"><img src="<?= base_url()?>/assets_user/img/cjti.png" alt="" class="img-fluid"></a>
-
-      <!-- <nav class="nav">
-        <ul>
-          <li <?php if ($title == 'Dashboard User') echo 'class="active"'; ?>>
-          <a href="<?=base_url()?>User/index">Home</a></li>
-          <li <?php if ($title == 'Daftar Kategori Materi'  || $title == 'Daftar Materi' || $title == 'Daftar Konten' || $title == 'Kumpulkan Tugas') echo 'class="active"';?>><a href="<?=base_url()?>User/daftarMateri">Materi</a></li>
-          <li><a href="<?= base_url()?>User/Private_Chat">Private Chat</a></li>
-          <li <?php if ($title == 'Forum' || $title == 'Chat Forum') echo 'class="active"'; ?>><a href="<?= base_url()?>User/Forum">Forum</a></li>
-          <li <?php if ($title == 'Contact Us') echo 'class="active"'; ?>><a href="<?= base_url()?>User/contactus">Contact Us</a></li>
-          <li class="drop-down"><a>Akun</a>
-            <ul>
-              <li><a href="<?= base_url();?>User/profile">Edit Profil</a></li>
-              <li><a href="<?= base_url();?>Login/logout">Logout</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav> -->
       <nav class="navbar navbar-expand-lg navbar-light" style="margin-right:-40px;">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">

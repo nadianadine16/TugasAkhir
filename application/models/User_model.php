@@ -247,6 +247,14 @@ class User_model extends CI_Model {
         return $query->result_array();                        
     }
 
+    public function Daftar_Materi_by_tutor($id_tutor) {
+        $this->db->select('*');
+        $this->db->from('materi');     
+        $this->db->where('id_tutor', $id_tutor);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function Detail_Akun($id_mahasiswa)
     {
         $this->db->select('*');

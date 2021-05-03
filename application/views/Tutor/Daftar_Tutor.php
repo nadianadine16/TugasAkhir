@@ -15,9 +15,9 @@
                     <form action="<?=base_url('Tutor/Tambah_Tutor')?>" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="nim">NIM</label><br>
-                            <select class="myselect" style="width:500px;" id="id_mahasiswa" name="id_mahasiswa">
+                            <select class="myselect" style="width:100%;" id="id_mahasiswa" name="id_mahasiswa">
                                 <?php foreach($mahasiswa as $m) : ?>
-                                    <option value="<?=$m["nim"];?></option>
+                                    <option value="<?=$m["id_mahasiswa"];?>"><?=$m["nim"];?></option>
                                 <?php endforeach;?>
                             </select>
                         </div>

@@ -130,7 +130,8 @@ class User extends CI_Controller {
         }
         else {
             $this->User_model->edit_profile();
-            redirect('user/index','refresh');
+            echo"<script>alert('Akun Anda Berhasil Diedit!');</script>";
+            redirect('user/Detail_Akun/'.$this->session->userdata('id_mahasiswa'),'refresh');
         }
     }
 
@@ -333,6 +334,7 @@ class User extends CI_Controller {
     public function Detail_Tutor($id) {
         $data['title'] ='Detail Tutor';        
         $data['detail'] = $this->User_model->detailTutor($id);
+        $data['materi'] = $this->User_model->Daftar_Materi_by_tutor($id);
 
         $this->load->view('template/header_user', $data);
         $this->load->view('user/Detail_Tutor', $data);

@@ -32,7 +32,7 @@
                                 <p class="card-text"><?= $t["revisi"]?></p> 
                             <?php endforeach;?>
                             <label for="tugas"><b>Link Github Revisi Tugas Anda</b></label>
-                            <input type="text" class="form-control" id="tugas" name="tugas" autocomplete="off"><br>               
+                            <input type="text" class="form-control" id="tugas" name="tugas" autocomplete="off" required><br>               
                             <center><button type="submit" class="btn btn-primary" id= "button" name="submit" class="btn btn-primary float-right">Submit</button></center>
                         <?php }
                         else if($cek_tugas != NULL && $c["status"] == 'Diajukan') {?>
