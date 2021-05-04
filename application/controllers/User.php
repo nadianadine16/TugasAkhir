@@ -24,8 +24,9 @@ class User extends CI_Controller {
         $data['jumlah_materi'] = $this->User_model->jumlah_materi();
         $data['jumlah_kategori'] = $this->User_model->jumlah_kategori();
 
-        $this->load->view('template/header_user', $data);
-        $this->load->view('user/index', $data);
+        // $this->load->view('template/header_user', $data);
+        // $this->load->view('user/index', $data);
+        $this->load->view('user/Utama', $data);
         $this->load->view('template/footer_user', $data);
     }
 
@@ -151,7 +152,25 @@ class User extends CI_Controller {
         $this->load->view('user/Daftar_Materi', $data);
         $this->load->view('template/footer_user', $data);
     }
-    public function daftarMateribyKategori($id){
+    public function daftarMateribyKategori(){
+        $data['title'] ='Daftar Materi';
+        $kategori = htmlspecialchars($this->input->post('id_kategori_materi'));
+        $data_session = array(
+            'id_kategori_materi' => $kategori
+            );
+        $this->session->set_userdata($data_session);
+        $data['daftar_materi'] = $this->User_model->daftar_materi_byKategori($kategori);
+
+        if($this->input->post('submit')){
+            $data['daftar_materi'] = $this->User_model->daftar_materi_byKategori($kategori);
+        }
+
+        $this->load->view('template/header_user', $data);
+        $this->load->view('user/Daftar_Materi', $data);
+        $this->load->view('template/footer_user', $data);
+    }
+
+    public function daftar_materi($id) {
         $data['title'] ='Daftar Materi';
         $data['daftar_materi'] = $this->User_model->daftar_materi_byKategori($id);
 
@@ -341,7 +360,7 @@ class User extends CI_Controller {
         $this->load->view('template/footer_user', $data);
     }
     public function SeeAllTutor() {
-        $data['title'] ='List Tutor';
+        $data['title'] ='Daftar Tutor';
         $data['nama_tutor'] = $this->User_model->daftar_tutor();
 
         $this->load->view('template/header_user', $data);

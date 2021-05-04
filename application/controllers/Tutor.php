@@ -229,6 +229,25 @@ class Tutor extends CI_Controller {
         $this->load->view('template/footer2_tutor',$data);
     }
 
+    public function Revisi($id_tugas) {
+        $data['title'] = 'Revisi Tugas Mahasiswa';
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
+        $data['tugas'] = $this->Tutor_model->getTugasById($id_tugas);
+
+        $this->form_validation->set_rules('revisi', 'revisi', 'required');
+
+        if($this->form_validation->run() == FALSE) {
+            $this->load->view('template/header2_tutor',$data);
+            $this->load->view('Tutor/Revisi', $data);
+            $this->load->view('template/footer2_tutor', $data);
+        }
+        else {
+            $this->Tutor_model->Revisi($id_tugas);
+            echo"<script>alert('Revisi Berhasil Dikirim!');</script>";
+            redirect('Tutor/Tugas_mahasiswa','refresh');
+        }    
+    }
+
     public function Verifikasi_Tugas($id_tugas) {
         $this->Tutor_model->Verifikasi_Tugas($id_tugas);
         echo"<script>alert('Verifikasi Tugas Berhasil!');</script>";

@@ -81,7 +81,22 @@ class User_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function getAllMateri() {
+        $this->db->select('*');
+        $this->db->from('materi');
+        $this->db->join('kategori_materi', 'materi.id_kategori_materi = kategori_materi.id_kategori_materi');
+        $this->db->join('tutor', 'materi.id_tutor = tutor.id_tutor');
+        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');
+        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function daftar_materi_byKategori($id) {
+        // $id_kategori=$this->input->post('id_kategori_materi');
+        // $this->db->like('id_kategori', $kategori);
+        // return $this->db->get('materi')->result_array();
         $this->db->select('*');
         $this->db->from('materi');
         $this->db->join('kategori_materi', 'materi.id_kategori_materi = kategori_materi.id_kategori_materi');

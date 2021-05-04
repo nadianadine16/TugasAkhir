@@ -1,5 +1,3 @@
-
-
 <section id="team" class="team section" style="margin-top:50px;">
       <div class="container" style="background-color: #f4fbfe; margin-top: -30px;">
         <div class="section-title">
