@@ -35,7 +35,7 @@
                             <p style="color:#808080;">Format .pdf</p>
                         </div>
                         <input type="hidden" name="status" value="1">
-                        <button type="submit" name="submit" class="btn btn-primary float-right">Submit</button>
+                        <button type="submit" name="submit" class="btn btn-primary float-right">Daftar</button>
                     </form>
                 </div>
         </div>

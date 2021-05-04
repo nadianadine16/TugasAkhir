@@ -35,7 +35,7 @@
                 <input type="hidden" class="form-control" id="id_user" name="id_user" value="<?= $this->session->userdata('id_tutor');?>">
                 <div class="form-group">
                     <label for="subject">Subject</label>
-                        <input type="text" class="form-control" id="subject" name="subject">
+                        <input type="text" class="form-control" id="subject" name="subject" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="kritik_saran">Kritik dan Saran</label>

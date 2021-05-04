@@ -22,7 +22,7 @@
 					<div class="card-body">
 					<div class="brand-wrapper">
 						<!-- <img src="<?= base_url()?>/assets_search/assets/images/ecourse.png" alt="logo" class="logo" style="width:50px;"> -->
-						<h2><b>E-Course</b></h2>
+						<h2><b>Coding-JTI</b></h2>
 					</div>
 					<h2>Congratulation</h2>
 					<p class="login-card-description">Terimakasih <?php echo $p->nama ?> telah mendaftar sebagai tutor sebaya</p>              			  
@@ -47,7 +47,7 @@
 					<div class="card-body">
 					<div class="brand-wrapper">
 						<!-- <img src="<?= base_url()?>/assets_search/assets/images/ecourse.png" alt="logo" class="logo" style="width:50px;"> -->
-						<h2><b>E-Course</b></h2>
+						<h2><b>Coding-JTI</b></h2>
 					</div>
 					<h2>Harap Tunggu</h2>
 					<p class="login-card-description">Mohon maaf <?php echo $p->nama ?> proses pendaftaran anda masih di proses, harap tunggu.</p>              			  

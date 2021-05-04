@@ -337,7 +337,7 @@ class Tutor extends CI_Controller {
     }
 
     public function Cek_Status_Pendaftaran(){
-        $data['title'] = 'Cek Stats Pendaftaran Tutor';
+        $data['title'] = 'Cek Status Pendaftaran Tutor';
         $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
 
         $this->load->view('Tutor/Cek_Status', $data);        
@@ -353,7 +353,8 @@ class Tutor extends CI_Controller {
             $this->load->view('tutor/hasil_search_berhasil',$data);
         }
         else{
-            $this->load->view('tutor/hasil_search_gagal',$data);
+            echo"<script>alert('Mohon maaf anda gagal / belum mendaftar menjadi tutor');</script>";
+            redirect('Tutor/Cek_Status_pendaftaran','refresh');
         }
         // if($query = $this->Tutor_model->search1($this->input->post('keyword'))){
 
