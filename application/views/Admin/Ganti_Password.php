@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="product-payment-inner-st">
-                <center><h4>Halaman Ubah Password</h4></center>
+                <center><h4>Halaman Ganti Password</h4></center>
                 <?php if (validation_errors()): ?>
                 <div class="alert alert-danger" role="alert">
                     <?php echo validation_errors(); ?>

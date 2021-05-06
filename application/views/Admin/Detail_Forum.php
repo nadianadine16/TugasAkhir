@@ -12,7 +12,7 @@
         </div>
         </div>
 
-        <br><br>JAWABAN Teman
+        <br><br><b style="margin-left: 50px">Jawaban Teman</b>
         <div class="row no-gutters">
         <div class="card" style="margin-left: 50px">
        
