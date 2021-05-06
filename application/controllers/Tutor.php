@@ -24,6 +24,40 @@ class Tutor extends CI_Controller {
         $this->load->view('template/footer2_tutor',$data);
     }
 
+    public function Profil($id_tutor) {
+        $data['title'] ='Profil Tutor';        
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
+        $data['tutor'] = $this->Tutor_model->Profil($id_tutor);
+
+        $this->load->view('template/header2_tutor', $data);
+        $this->load->view('Tutor/Profil', $data);
+        $this->load->view('template/footer2_tutor', $data);
+    }
+
+    public function Edit_Profil() {
+        $data['title'] = 'Edit Profil';
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
+
+        $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');    
+        $this->form_validation->set_rules('nim', 'nim', 'required');        
+        $this->form_validation->set_rules('nama', 'nama', 'required');        
+        $this->form_validation->set_rules('jurusan', 'jurusan', 'required');        
+        $this->form_validation->set_rules('prodi', 'prodi', 'required');        
+        $this->form_validation->set_rules('kelas', 'kelas', 'required');        
+        $this->form_validation->set_rules('tahun_masuk', 'tahun_masuk', 'required'); 
+        $this->form_validation->set_rules('github', 'github', 'required');        
+        
+        if($this->form_validation->run() == FALSE) {
+            echo"<script>alert('Edit Profil Gagal!');</script>";
+            redirect('Tutor/Profil/'.$this->session->userdata('id_tutor'),'refresh');
+        }
+        else {
+            $this->Tutor_model->Edit_Profil();
+            echo"<script>alert('Akun Anda Berhasil Diedit!');</script>";
+            redirect('Tutor/Profil/'.$this->session->userdata('id_tutor'),'refresh');
+        }
+    }
+
     public function Daftar_Tutor()
     {
         $data['title'] = 'Daftar Tutor';
@@ -227,6 +261,25 @@ class Tutor extends CI_Controller {
         $this->load->view('template/header2_tutor',$data);
         $this->load->view('Tutor/Tugas_mahasiswa', $data);
         $this->load->view('template/footer2_tutor',$data);
+    }
+
+    public function Revisi($id_tugas) {
+        $data['title'] = 'Revisi Tugas Mahasiswa';
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
+        $data['tugas'] = $this->Tutor_model->getTugasById($id_tugas);
+
+        $this->form_validation->set_rules('revisi', 'revisi', 'required');
+
+        if($this->form_validation->run() == FALSE) {
+            $this->load->view('template/header2_tutor',$data);
+            $this->load->view('Tutor/Revisi', $data);
+            $this->load->view('template/footer2_tutor', $data);
+        }
+        else {
+            $this->Tutor_model->Revisi($id_tugas);
+            echo"<script>alert('Revisi Berhasil Dikirim!');</script>";
+            redirect('Tutor/Tugas_mahasiswa','refresh');
+        }    
     }
 
     public function Verifikasi_Tugas($id_tugas) {

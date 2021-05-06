@@ -400,6 +400,32 @@
             return $query->result_array(); 
         }
 
+        public function Profil($id_tutor)
+        {
+            $this->db->select('*');
+            $this->db->from('tutor'); 
+            $this->db->join('mahasiswa', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');
+            $this->db->join('kategori_materi', 'kategori_materi.id_kategori_materi = tutor.id_tutor');
+            $this->db->where('id_tutor', $id_tutor);
+            $query = $this->db->get();
+            return $query->result_array();                        
+        }
+
+        public function Edit_Profil() {
+            $data = [
+                "id_mahasiswa" => $this->input->post('id_mahasiswa', true),
+                "nim" => $this->input->post('nim', true),
+                "nama" => $this->input->post('nama', true),
+                "jurusan" => $this->input->post('jurusan', true),
+                "prodi" => $this->input->post('prodi', true),
+                "kelas" => $this->input->post('kelas', true),
+                "tahun_masuk" => $this->input->post('tahun_masuk', true),
+                "github" => $this->input->post('github', true),
+            ];
+            $this->db->where('id_mahasiswa', $data['id_mahasiswa']);
+            $this->db->update('mahasiswa', $data);
+        }
+
         public function revisi($id_tugas) {
             $post=$this->input->post();
             $this->id_tugas = $post["id_tugas"];

@@ -117,7 +117,7 @@
 															<i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
 														</a>
                                                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
-                                                        <li><a href="<?= base_url()?>/assets_admin1/#"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
+                                                        <li><a href="<?= base_url()?>Tutor/Profil/<?= $this->session->userdata('id_tutor');?>"><span class="edu-icon edu-user-rounded author-log-ic"></span>Kelola Akun</a>
                                                         </li>
                                                         <li><a href="<?= base_url();?>login/logout"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
                                                         </li>

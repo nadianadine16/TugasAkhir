@@ -107,7 +107,8 @@
             $status = 1;
             $this->db->select('*');
             $this->db->from('tutor');
-            $this->db->join('mahasiswa', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');        
+            $this->db->join('mahasiswa', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');
+            $this->db->join('kategori_materi', 'tutor.id_kategori_materi = kategori_materi.id_kategori_materi');        
             $this->db->where(array('status'=>$status));
             $query = $this->db->get();
             return $query->result_array();
