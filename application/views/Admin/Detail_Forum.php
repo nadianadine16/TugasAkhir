@@ -1,15 +1,24 @@
-<?php $no=1; foreach($detail_forum as $p):?>
-  <?php $tanggal = $p["created_at"]?>
-<div class="col-md-12 col-sm-8 col-xs-12">
-  <div class="product-payment-inner-st res-mg-t-30 analysis-progrebar-ctn">
-    <div id="myTabContent" class="tab-content custom-product-edit">
-      <div class="row"> 
-        <div class="col-md-12 col-sm-8 col-xs-12">
-          <div class="review-content-section">
-            <div class="chat-discussion" style="height: auto;">
-            <p style="font-size:15px;"><b><?=$p["nama"];?></b></p>
-            <p style="font-size:20px;"><?=$p["pertanyaan"];?></p>
-            <p style="font-size:11px;">Diunggah pada: <?php echo date("d-F-Y H:i:s", strtotime($tanggal));?></p>
+<section id="gallery" class="gallery">
+      <div class="container" style="margin-top:50px">
+
+        <div class="row no-gutters">
+        <div class="card" style="margin-left: 50px">
+        <?php $no=1; foreach($detail_forum as $df):?>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" style="width: 1000px;"><b>Pertanyaan : </b> <?=$df["pertanyaan"];?></li>
+            <li class="list-group-item" style="width: 1000px;"><b>Kategori : </b><?=$df["nama_kategori"];?></li>
+        </ul>
+        <?php endforeach;?>
+        </div>
+        </div>
+
+        <br><br><b style="margin-left: 50px">Jawaban Teman</b>
+        <div class="row no-gutters">
+        <div class="card" style="margin-left: 50px">
+       
+        <ul class="list-group list-group-flush">
+        <?php $no=1; foreach($jawaban_forum as $jf):?>
+            <li class="list-group-item" style="width: 1000px;"><?=$jf["nama"];?><br><?=$jf["chat"];?></li>
             <?php endforeach;?>
             <div class="kotak" id="mydiv" style="height:400px;display:block;  overflow:auto;" >
             <?php $no=1; foreach($jawaban_forum as $m):?>
