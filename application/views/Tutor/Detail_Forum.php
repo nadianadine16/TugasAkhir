@@ -27,13 +27,13 @@
           </div>
         </div>
         <h4 style="padding-top:5px; color:white;">....</h4>
-        <h4 style="padding-top:1px; padding-left:50px">Balas Forum</h4>
+        <center><h4 style="margin-left:-150px;">Balas Forum</h4></center>
         <div class="kolom-komentar" style="width:940px;margin-top:10px;">        
            <form action="<?=base_url('Tutor/Jawab_Forum/'.$p['id_forum'])?>" method="post" >
                 <input type="hidden" name="id_user" value="<?= $this->session->userdata('id_tutor');?>">
                 <input type="hidden" name="id_forum" value="<?=$p["id_forum"];?>">                
               <div class="form-group" style="margin-left:75px;">
-                <input class="form-control" name="chat" rows="5" data-rule="required" data-msg="Masukkan Jawaban Anda" placeholder="Tulis Jawaban Anda Disini . . . "></input>
+                <textarea class="form-control" name="chat" rows="5" data-rule="required" data-msg="Masukkan Jawaban Anda" placeholder="Tulis Jawaban Anda Disini . . . "></textarea>
                 <div class="validate"></div>
               </div>
               <div class="text-center"><button type="submit" class="btn btn-primary">Kirim</button></div>
