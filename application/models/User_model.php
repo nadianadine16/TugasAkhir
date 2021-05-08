@@ -72,6 +72,15 @@ class User_model extends CI_Model {
         return $query->result_array();
     }
 
+    public function Cek_Jawaban($id_forum) {
+        $this->db->select('*');
+        $this->db->from('chat_forum');
+        $this->db->join('forum', 'forum.id_forum = chat_forum.id_forum');
+        $this->db->where('chat_forum.id_forum', $id_forum);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function daftar_materi($id) {
         $this->db->select('*');
         $this->db->from('materi');
@@ -223,6 +232,7 @@ class User_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('forum');
         $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
+        $this->db->join('mahasiswa', 'forum.id_mahasiswa = mahasiswa.id_mahasiswa');
         $this->db->where('forum.id_forum', $id_forum);
         $query = $this->db->get();
         return $query->result_array();

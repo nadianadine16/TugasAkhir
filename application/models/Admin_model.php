@@ -206,6 +206,15 @@
             $query = $this->db->get();
             return $query->result_array();
         }
+
+        public function Cek_Jawaban($id_forum) {
+            $this->db->select('*');
+            $this->db->from('chat_forum');
+            $this->db->join('forum', 'forum.id_forum = chat_forum.id_forum');
+            $this->db->where('chat_forum.id_forum', $id_forum);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
         
         public function hapus_forum($id){
             return $this->db->delete('forum',array("id_forum"=>$id));

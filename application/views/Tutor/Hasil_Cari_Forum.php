@@ -10,7 +10,7 @@
                             <option value="">- Pilih Kategori Forum -</option>
                                 <?php foreach($kategori_forum as $kf) : ?>
                                     <option value="<?=$kf["id_kategori_materi"];?>"><?=$kf["nama_kategori"];?></option>
-                                <?php endforeach;?>
+                                    <?php endforeach;?>
                           </select>
                           <input class="btn btn-primary" type="submit" name="submit">
                         </form>
@@ -18,7 +18,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
                                 <li><a href="#">Home</a> <span class="bread-slash">/</span></li>
-                                <li><span class="bread-blod">Forum</span></li>
+                                <li><span class="bread-blod">Forum</span> </li>
                             </ul>
                         </div>
                     </div>
@@ -29,24 +29,31 @@
 </div>
 
 <div class="container-fluid">
-<center><h3>- Forum -</h3></center>
+<?php if($forum == NULL) {?>
+  <center><h3>Forum Diskusi</h3></center><br>
+        <center><p>Sayang sekali, belum ada yang membuat forum pada kategori ini:)</p></center>
+    <?php }
+    else {?>
   <div class="row">
-    <?php $no=1; foreach($forum as $p):?>
+  <center><h3>Forum Diskusi <?php foreach($forum as $p):?><?=$p["nama_kategori"];?><?php endforeach;?></h3></center>
+  <?php $no=1; foreach($forum as $p):?>
+      <?php $tanggal = $p["created_at"];?>
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <div class="courses-inner res-mg-b-30">
           <div class="course-des">
-            <p><span><i class="fa fa-clock"></i></span> <b>Nama Penanya:</b> <?=$p["nama"];?></p>
-            <p><span><i class="fa fa-clock"></i></span> <b>Kategori:</b> <?=$p["nama_kategori"];?></p>
-            <p><span><i class="fa fa-clock"></i></span> <b>Pertanyaan:</b> <?=$p["pertanyaan"];?></p>
-            <p><span><i class="fa fa-clock"></i></span> <b>Dibuat pada:</b> <?=$p["created_at"];?></p>
+          <p style="font-size:20px;"><?=$p["pertanyaan"];?></p><br>
+          <p><span><i class="fa fa-clock"></i></span> <b>Kategori:</b> <?=$p["nama_kategori"];?></p>
+            <p><span><i class="fa fa-clock"></i></span> <b>Nama Penanya:</b> <?=$p["nama"];?></p>            
+            <p><span><i class="fa fa-clock"></i></span> <b>Dibuat pada:</b> <?php echo date("d-F-Y", strtotime($tanggal));?></p>
           </div>
-          <div class="product-buttons" style="margin-left:400px;">
+          <div class="product-buttons" style="margin-left:80%;">
           <a href="<?= base_url();?>Tutor/Detail_Forum/<?=$p['id_forum'];?>" type="button" class="btn btn-primary">Lihat Forum</a>
           </div>
         </div>
       </div>
     <?php endforeach;?>
     </div>
+    <?php } ?>
   </div>
 </div>  
 </div>  

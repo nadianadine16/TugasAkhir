@@ -263,6 +263,7 @@ class Admin extends CI_Controller {
         $data['title'] = 'Forum';
         $data['detail_forum'] = $this->Admin_model->getForumById($id);
         $data['jawaban_forum'] = $this->Admin_model->jawaban_forum($id);
+        $data['cek_jawaban'] = $this->Admin_model->Cek_Jawaban($id);
 
         $this->load->view('template/header2_admin',$data);
         $this->load->view('Admin/Detail_Forum',$data);
