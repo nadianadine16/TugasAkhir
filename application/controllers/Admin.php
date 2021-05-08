@@ -48,6 +48,7 @@ class Admin extends CI_Controller {
         $data['mahasiswa'] = $this->Admin_model->getMahasiswaById($id);
         $data['prodi'] = ['Manajemen Informatika', 'Teknik Informatika'];
         $data['jurusan'] = ['Teknologi Informasi'];
+        $data['jenis_kelamin'] = ['Laki-laki', 'Perempuan'];
 
         $this->form_validation->set_rules('nim', 'nim', 'required');
         $this->form_validation->set_rules('nama', 'nama', 'required');
@@ -71,6 +72,7 @@ class Admin extends CI_Controller {
         $data['title'] = 'Tambah Data Mahasiswa';
         $data['prodi'] = ['Manajemen Informatika', 'Teknik Informatika'];
         $data['jurusan'] = ['Teknologi Informasi'];
+        $data['jenis_kelamin'] = ['Laki-laki', 'Perempuan'];
 
         $this->form_validation->set_rules('nim', 'nim', 'required');
         $this->form_validation->set_rules('nama', 'nama', 'required');

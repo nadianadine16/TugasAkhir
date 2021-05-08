@@ -52,11 +52,12 @@
                             data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
                                 <thead>
                                     <tr>
-                                        <th data-field="id">No</th>
-                                        <th data-field="name">Nim</th>
-                                        <th data-field="email">Nama</th>
-                                        <th data-field="phone">Prodi</th>
-                                        <th data-field="complete">Kelas</th>
+                                        <th data-field="no">No</th>
+                                        <th data-field="nim">Nim</th>
+                                        <th data-field="nama">Nama</th>
+                                        <th data-field="jenis_kelamin">Jenis Kelamin</th>
+                                        <th data-field="prodi">Program Studi</th>
+                                        <th data-field="kelas">Kelas</th>
                                         <th data-field="action">Action</th>
                                     </tr>
                                 </thead>
@@ -66,6 +67,7 @@
                                         <td><?=$no++?></td>
                                         <td><?=$m["nim"];?></td>
                                         <td><?=$m["nama"];?></td>
+                                        <td><?=$m["jenis_kelamin"];?></td>
                                         <td><?=$m["prodi"];?></td>
                                         <td><?=$m["kelas"];?></td>
                                         <td class="datatable-ct">

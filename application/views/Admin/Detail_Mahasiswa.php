@@ -44,6 +44,10 @@
                     <p><?=($m['nama']); ?></p>
                 </div>
                 <div class="form-group">
+                    <label for="jenis_kelamin">Jenis Kelamin</label>
+                    <p><?=($m['jenis_kelamin']); ?></p>
+                </div>
+                <div class="form-group">
                     <label for="status">Jurusan</label>
                     <p><?=($m['jurusan']); ?></p>
                 </div> 

@@ -421,9 +421,22 @@
                 "kelas" => $this->input->post('kelas', true),
                 "tahun_masuk" => $this->input->post('tahun_masuk', true),
                 "github" => $this->input->post('github', true),
+                "foto" => $this->upload_foto()
             ];
             $this->db->where('id_mahasiswa', $data['id_mahasiswa']);
             $this->db->update('mahasiswa', $data);
+        }
+
+        public function upload_foto() {
+            $config['upload_path'] = './upload/';
+            $config['allowed_types'] = 'jpg|png';
+            $config['overwrite'] = true;
+
+            $this->upload->initialize($config);
+            $this->load->library('upload',$config);
+            if($this->upload->do_upload('foto')) {
+                return $this->upload->data("file_name");
+            }
         }
 
         public function revisi($id_tugas) {

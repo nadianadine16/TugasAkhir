@@ -413,7 +413,7 @@ class User extends CI_Controller {
     public function Private_Chat(){        
         $data['title'] = 'Private Chat';      
         $id = $this->session->userdata('id_mahasiswa');
-        $data['nama_tutor'] = $this->User_model->tutor();        
+        $data['nama_tutor'] = $this->User_model->daftar_tutor();        
         
         $this->load->view('template/header_user', $data);
         $this->load->view("user/Private_Chat",$data);

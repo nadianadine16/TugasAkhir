@@ -20,6 +20,9 @@
         </div>
     </div>
 </div>
+
+
+
 <div class="single-pro-review-area mt-t-30 mg-b-15">
     <div class="container-fluid">
         <div class="row">
@@ -31,11 +34,18 @@
                     <?php echo validation_errors(); ?>
                 </div>
                 <?php endif; ?>
-                <div class="product-payment-inner-st">
+                
+                <!-- <div class="alert-wrap2 shadow-inner wrap-alert-b"> -->
+                    <br><div class="alert alert-info" style="width:100%;">
+                        <strong>Info!</strong> Indicates a neutral informative change.
+                    </div>
+                <!-- </div> -->
+
                 <form action="<?=base_url('Tutor/Revisi/'.$tugas['id_tugas'])?>" method="post">
                 <input type="hidden" name="id_tugas" value="<?=$tugas['id_tugas'];?>">
                 <input type="hidden" name="status" value="3">
                 <div class="form-group">
+                    <label for="revisi">Masukkan Revisi Disini</label>
                     <textarea name="revisi"></textarea>
                 </div>
                 <center><button type="submit" name="submit" class="btn btn-primary float-right">Kirim</button></center>

@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/editor/x-editor-style.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/data-table/bootstrap-table.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/data-table/bootstrap-editable.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/alerts.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/style.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/responsive.css">
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->

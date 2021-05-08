@@ -25,11 +25,12 @@
             $data = [
                 "nim" => $this->input->post('nim', true),
                 "nama" => $this->input->post('nama', true),
+                "jenis_kelamin" => $this->input->post('jenis_kelamin', true),
                 "jurusan" => $this->input->post('jurusan', true),
                 "prodi" => $this->input->post('prodi', true),
                 "kelas" => $this->input->post('kelas', true),
                 "tahun_masuk" => $this->input->post('tahun_masuk', true),
-                "github" => $this->input->post('github', true),
+                "github" => $this->input->post('github', true)
             ];
             $this->db->insert('mahasiswa', $data);
         }
@@ -44,6 +45,7 @@
             $this->id_mahasiswa = $post["id_mahasiswa"];
             $this->nim = $post["nim"];
             $this->nama = $post["nama"];
+            $this->jenis_kelamin = $post["jenis_kelamin"];
             $this->jurusan = $post["jurusan"];
             $this->prodi = $post["prodi"];
             $this->kelas = $post["kelas"];

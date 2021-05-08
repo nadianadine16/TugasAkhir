@@ -36,10 +36,12 @@ class User_model extends CI_Model {
         return $query->result_array();
     }
     public function daftar_tutor() {
+        $status= '2';
+        
         $this->db->select('*');
         $this->db->from('tutor');
         $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');
-        $this->db->limit(4);
+        $this->db->where('status', $status);
         $query = $this->db->get();
         return $query->result_array();
     }
