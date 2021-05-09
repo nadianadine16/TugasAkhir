@@ -25,11 +25,12 @@
             $data = [
                 "nim" => $this->input->post('nim', true),
                 "nama" => $this->input->post('nama', true),
+                "jenis_kelamin" => $this->input->post('jenis_kelamin', true),
                 "jurusan" => $this->input->post('jurusan', true),
                 "prodi" => $this->input->post('prodi', true),
                 "kelas" => $this->input->post('kelas', true),
                 "tahun_masuk" => $this->input->post('tahun_masuk', true),
-                "github" => $this->input->post('github', true),
+                "github" => $this->input->post('github', true)
             ];
             $this->db->insert('mahasiswa', $data);
         }
@@ -44,6 +45,7 @@
             $this->id_mahasiswa = $post["id_mahasiswa"];
             $this->nim = $post["nim"];
             $this->nama = $post["nama"];
+            $this->jenis_kelamin = $post["jenis_kelamin"];
             $this->jurusan = $post["jurusan"];
             $this->prodi = $post["prodi"];
             $this->kelas = $post["kelas"];
@@ -201,6 +203,15 @@
             $this->db->join('forum', 'forum.id_forum = chat_forum.id_forum');
             $this->db->where('forum.id_forum', $id);
             $this->db->order_by('chat_forum.created_at','ASC');
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+
+        public function Cek_Jawaban($id_forum) {
+            $this->db->select('*');
+            $this->db->from('chat_forum');
+            $this->db->join('forum', 'forum.id_forum = chat_forum.id_forum');
+            $this->db->where('chat_forum.id_forum', $id_forum);
             $query = $this->db->get();
             return $query->result_array();
         }

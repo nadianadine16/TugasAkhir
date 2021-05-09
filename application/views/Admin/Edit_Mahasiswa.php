@@ -43,6 +43,14 @@
                         <input type="text" class="form-control" id="nama" name="nama" value="<?=$mahasiswa['nama'];?>">
                 </div>
                 <div class="form-group">
+                    <label for="jenis_kelamin">Jenis Kelamin</label>
+                    <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
+                        <?php foreach($jenis_kelamin as $jk) : ?>
+                            <option value="<?=($jk)?>" selected><?=($jk)?></option>
+                        <?php endforeach;?>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="status">Jurusan</label>
                     <select class="form-control" id="jurusan" name="jurusan">
                         <?php foreach($jurusan as $a) : ?>

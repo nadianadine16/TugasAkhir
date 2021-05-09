@@ -21,7 +21,7 @@
       <span><div><a href="<?= base_url();?>User/Tanya_Forum" class="btn btn-primary" style="margin-left:360%;">+ Tanya Forum</a></div></span>
     </div><br>
     <?php if($cek_forum == NULL) {?>
-        <center><p>Sayang sekali, forum ini belum ada :)</p></center>
+        <center><p>Sayang sekali, belum ada yang membuat forum. <b>Jadilah yang pertama!</b></p></center>
     <?php }
     else {?>
         <div class="row" style="margin-rop:15px;">
@@ -31,7 +31,8 @@
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title" style="font-size:15px;"><b>Nama Penanya : </b> <?=$p["nama"];?></h5>
-                <p class="card-text" style="font-size:13px;"><b>Pertanyaan : </b><?=$p["pertanyaan"];?></p>
+                <h5 class="card-title" style="font-size:15px;"><b>Kategori : </b> <?=$p["nama_kategori"];?></h5>
+                <p class="card-text" style="font-size:13px;"><b>Pertanyaan : </b><?= substr($p["pertanyaan"],0,100)?></p>
                 <p class="card-text" style="font-size:13px;text-align: right;"><?php echo date("d-F-Y", strtotime($tanggal));?></p>
                 <a href="<?= base_url();?>user/Detail_Forum/<?=$p['id_forum'];?>" class="btn btn-primary" style="float:right">Lihat Forum</a>
               </div>

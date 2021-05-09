@@ -1,12 +1,19 @@
 <section id="gallery" class="gallery">
 
   <div class="container" style="margin-top:50px">
-  <h1 style="color:#3c5466"><b><center>Forum Diskusi</center></b></h1>
+  <h2 style="color:#3c5466"><b><center>Forum Diskusi</center></b></h2><br>
     <?php $no=1; foreach($detail_pertanyaan as $p):?>
-    <h5 style="margin-left:60px"><b>Pertanyaan : <?=$p["pertanyaan"];?> </b></h5>
+      <?php $tgl = $p["created_at"];?>
+      <p><b><?= $p["nama"];?></b> pada <?php echo date("d-F-Y", strtotime($tgl));?></p>
+      <p><b>Kategori</b> : <?= $p["nama_kategori"];?></p>
+    <p><b>Pertanyaan</b> : <?=$p["pertanyaan"];?></p>
     <?php endforeach;?>
     <hr>
     <div class ="kotak" id= "kotak"style="margin-top:20px ; height:400px; display:block;  overflow:auto;">
+    <?php if($jawaban_forum == NULL) {?>
+              <center><p style="margin-top:10%;font-size:16px;">Forum ini belum ada yang menjawab. <b>Jadilah yang pertama!</b></p></center>
+            <?php }
+            else {?>
     <?php foreach($jawaban as $m):?>
       <?php $tanggal = $m["created_at"]?>
       <div class="card border-secondary mb-2" style="max-width: 80%;margin-left:100px;">
@@ -17,9 +24,10 @@
         </div>
       </div>
       <?php endforeach;?>
+      <?php }?>
     </div>
-    <h5 style="margin-left:60px; margin-top:40px;"><b>Balas Forum </b></h5>
-    <div class="kolom-komentar" style="width:1000px;margin-top:10px;">        
+    <h5 style="margin-left:45%;"><b>Balas Forum </b></h5>
+    <div class="kolom-komentar" style="width:100%;margin-top:10px;margin-left:-30px;">        
            <form action="<?=base_url('User/Jawab_Forum/'.$p['id_forum'])?>" method="post" >
               <input type="hidden" name="id_user" value="<?= $this->session->userdata('id_mahasiswa');?>">
               <input type="hidden" name="id_forum" value="<?=$p["id_forum"];?>">
@@ -27,7 +35,7 @@
                 <textarea class="form-control" name="chat" rows="5" data-rule="required" data-msg="Masukkan Jawaban Anda" placeholder="Tulis Jawaban Anda Disini . . . "></textarea>
                 <div class="validate"></div>
               </div>
-              <div class="text-center"><button type="submit" class="btn btn-primary" style="float:right">Kirim</button></div>
+              <center><button type="submit" class="btn btn-primary" style="margin-left:4%;">Kirim</button></div>
             </form>
         </div>
       </div>

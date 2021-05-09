@@ -318,7 +318,8 @@ class Tutor extends CI_Controller {
         $data['title'] ='Forum';
         $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
         $data['forum'] = $this->Tutor_model->getAllForum();
-        $data['kategori_forum'] = $this->Tutor_model->getAllKategoriForum();
+        $data['kategori_forum'] = $this->Tutor_model->Kategori_Forum();
+        $data['cek_forum'] = $this->Tutor_model->cek_forum();
 
         $this->load->view('template/header2_tutor',$data);
         $this->load->view('Tutor/Forum', $data);
@@ -330,6 +331,7 @@ class Tutor extends CI_Controller {
         $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
         $data['detail_pertanyaan'] = $this->Tutor_model->detail_pertanyaan($id);
         $data['jawaban'] = $this->Tutor_model->jawaban($id);
+        $data['jawaban_forum'] = $this->Tutor_model->Cek_Jawaban($id);
 
         $this->load->view('template/header2_tutor', $data);
         $this->load->view('Tutor/Detail_Forum', $data);
@@ -357,11 +359,12 @@ class Tutor extends CI_Controller {
     public function Cari_Forum(){
         $data['title'] = 'Forum';
         $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
-        $data['kategori_forum'] = $this->Tutor_model->getAllKategoriForum();
+        $data['kategori_forum'] = $this->Tutor_model->Kategori_Forum();
 
         if($this->input->post('submit')){
             $kategori = $this->input->post('id_kategori');
 
+            // $data['cek_forum'] = $this->Tutor_model->cek_forum_by_kategori($kategori);
             $data['forum'] = $this->Tutor_model->Search($kategori);
         }
 

@@ -104,6 +104,15 @@
             return $query->result_array();
         }
 
+        public function Cek_Jawaban($id_forum) {
+            $this->db->select('*');
+            $this->db->from('chat_forum');
+            $this->db->join('forum', 'forum.id_forum = chat_forum.id_forum');
+            $this->db->where('chat_forum.id_forum', $id_forum);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+
         public function getMateriByIdTutor($id_tutor) {
             $this->db->select('*');
             $this->db->from('materi');
@@ -276,7 +285,7 @@
             $this->db->from('forum');
             $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
             $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');  
-            // $this->db->limit($limit,$start);                                              
+            $this->db->order_by('forum.created_at', 'DESC');                                             
             $query = $this->db->get();
             return $query->result_array();
         }
@@ -331,7 +340,29 @@
             $this->db->group_by('forum.id_kategori_materi');         
             $query = $this->db->get();
             return $query->result_array();            
-        }        
+        }       
+        
+        public function Kategori_Forum() {
+            $query = $this->db->get('kategori_materi');
+            return $query->result_array();
+        }
+
+        public function cek_forum() {
+            $this->db->select('*');
+            $this->db->from('forum');
+                   
+            $query = $this->db->get();
+            return $query->result_array();
+        } 
+        
+        // public function cek_forum_by_kategori($keyword) {
+        //     $this->db->select('*');
+        //     $this->db->from('forum');
+        //     $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
+                   
+        //     $query = $this->db->get();
+        //     return $query->result_array();
+        // } 
 
         public function search($keyword){
             $keyword=$this->input->post('id_kategori');
@@ -344,6 +375,7 @@
             $query = $this->db->get();
             return $query->result_array();
         }
+
         public function search1($keyword){
             // $status = 2;
             // $query=$this->db->query("SELECT * FROM mahasiswa m JOIN tutor t on t.id_mahasiswa = m.id_mahasiswa where m.nim = '$keyword' and t.status = '2' LIMIT 1 ");
@@ -450,9 +482,22 @@
                 "kelas" => $this->input->post('kelas', true),
                 "tahun_masuk" => $this->input->post('tahun_masuk', true),
                 "github" => $this->input->post('github', true),
+                "foto" => $this->upload_foto()
             ];
             $this->db->where('id_mahasiswa', $data['id_mahasiswa']);
             $this->db->update('mahasiswa', $data);
+        }
+
+        public function upload_foto() {
+            $config['upload_path'] = './upload/';
+            $config['allowed_types'] = 'jpg|png';
+            $config['overwrite'] = true;
+
+            $this->upload->initialize($config);
+            $this->load->library('upload',$config);
+            if($this->upload->do_upload('foto')) {
+                return $this->upload->data("file_name");
+            }
         }
 
         public function revisi($id_tugas) {

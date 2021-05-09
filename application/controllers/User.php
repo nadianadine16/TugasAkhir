@@ -283,6 +283,7 @@ class User extends CI_Controller {
         $data['title'] ='Chat Forum';
         $data['detail_pertanyaan'] = $this->User_model->detail_pertanyaan($id);
         $data['jawaban'] = $this->User_model->jawaban($id);
+        $data['jawaban_forum'] = $this->User_model->Cek_Jawaban($id);
 
         $this->load->view('template/header_user', $data);
         $this->load->view('user/Detail_Forum', $data);

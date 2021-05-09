@@ -42,15 +42,20 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="profile-info-inner">
                                                 <div class="profile-img">
-                                                    <img src="<?=base_url()?>/assets_admin1/img/profile/1.jpg" alt="" style="width:30%;height:30%;"/>
-                                                    <span><p style="margin-left:32%; margin-top:-22%;"><b>Name</b> : <?=$t["nama"];?></p></span>
-                                                    <span><p style="margin-left:32%; margin-top:1%;"><b>NIM</b> : <?=$t["nim"];?></p></span>
-                                                    <span><p style="margin-left:32%; margin-top:1%;"><b>Kategori Materi</b> : <?=$t["nama_kategori"];?></p></span>
-                                                    <span><p style="margin-left:32%; margin-top:1%;"><b>Jurusan</b> : <?=$t["jurusan"];?></p></span>
-                                                    <span><p style="margin-left:32%; margin-top:1%;"><b>Program Studi</b> : <?=$t["prodi"];?></p></span>
-                                                    <span><p style="margin-left:32%; margin-top:1%;"><b>Kelas</b> : <?=$t["kelas"];?></p></span>
-                                                    <span><p style="margin-left:32%; margin-top:1%;"><b>Tahun Masuk</b> : <?=$t["tahun_masuk"];?></p></span>
-                                                    <span><p style="margin-left:32%; margin-top:1%;"><b>Alamat Github</b> : <?=$t["github"];?></p></span>
+                                                    <?php if($t["foto"] == NULL){?>
+                                                        <img src="<?= base_url('upload/user.png')?>" alt="" style="margin-left:-20px;width:200px;height:200px;"/>
+                                                    <?php } else {?>
+                                                        <img src="<?= base_url('upload/'.$t['foto'])?>" alt="" style="margin-left:-20px;width:200px;height:200px;"/>
+                                                    <?php }?>
+                                                    <span><p style="margin-left:20%; margin-top:-19%;"><b>Nama</b> : <?=$t["nama"];?></p></span>
+                                                    <span><p style="margin-left:20%; margin-top:1%;"><b>NIM</b> : <?=$t["nim"];?></p></span>
+                                                    <span><p style="margin-left:20%; margin-top:1%;"><b>Jenis Kelamin</b> : <?=$t["jenis_kelamin"];?></p></span>
+                                                    <span><p style="margin-left:20%; margin-top:1%;"><b>Kategori Materi</b> : <?=$t["nama_kategori"];?></p></span>
+                                                    <span><p style="margin-left:20%; margin-top:1%;"><b>Jurusan</b> : <?=$t["jurusan"];?></p></span>
+                                                    <span><p style="margin-left:20%; margin-top:1%;"><b>Program Studi</b> : <?=$t["prodi"];?></p></span>
+                                                    <span><p style="margin-left:20%; margin-top:1%;"><b>Kelas</b> : <?=$t["kelas"];?></p></span>
+                                                    <span><p style="margin-left:20%; margin-top:1%;"><b>Tahun Masuk</b> : <?=$t["tahun_masuk"];?></p></span>
+                                                    <span><p style="margin-left:20%; margin-top:1%;"><b>Alamat Github</b> : <?=$t["github"];?></p></span>
                                                     <?php endforeach;?>
                                                 </div>
                                             </div>
@@ -67,46 +72,50 @@
                                                         <?php echo validation_errors(); ?>
                                                     </div>
                                                 <?php endif; ?>
-                                                <form action="<?=base_url('Tutor/Edit_Profil')?>" method="post">
+                                                <form action="<?=base_url('Tutor/Edit_Profil')?>" method="post" enctype="multipart/form-data">
                                                     <?php foreach($tutor as $t2):?>
                                                         <input type="hidden" id="id_mahasiswa" name="id_mahasiswa" value="<?= $this->session->userdata('id_mahasiswa');?>">
                                                         <div class="form-group">
                                                             <label for="nama">Nama</label>
-                                                            <input type="text" class="form-control" id="nama" name="nama" disabled value="<?=$t2['nama'];?>">
+                                                            <input type="text" class="form-control" id="nama" name="nama" readonly="true" value="<?=$t2['nama'];?>">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="nim">NIM</label>
-                                                            <input type="text" class="form-control" id="nim" name="nim" disabled value="<?=$t2['nim'];?>">
+                                                            <input type="text" class="form-control" id="nim" name="nim" readonly="true" value="<?=$t2['nim'];?>">
                                                         </div>
-                                                        <!-- <div class="form-group">
+                                                        <div class="form-group">
+                                                            <label for="jenis_kelamin">Jenis Kelamin</label>
+                                                            <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin" readonly="true" value="<?=$t2['jenis_kelamin'];?>">
+                                                        </div>
+                                                        <div class="form-group">
                                                             <label for="kategori_materi">Kategori Materi</label>
-                                                            <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" disabled value="<?=$t2['nama_kategori'];?>">
-                                                        </div> -->
+                                                            <input type="text" class="form-control" id="id_kategori_materi" name="id_kategori_materi" readonly="true" value="<?=$t2['nama_kategori'];?>">
+                                                        </div>
                                                         <div class="form-group">
                                                             <label for="jurusan">Jurusan</label>
-                                                            <input type="text" class="form-control" id="jurusan" name="jurusan" disabled value="<?=$t2['jurusan'];?>">
+                                                            <input type="text" class="form-control" id="jurusan" name="jurusan" readonly="true" value="<?=$t2['jurusan'];?>">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="prodi">Program Studi</label>
-                                                            <input type="text" class="form-control" id="prodi" name="prodi" disabled value="<?=$t2['prodi'];?>">
+                                                            <input type="text" class="form-control" id="prodi" name="prodi" readonly="true" value="<?=$t2['prodi'];?>">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="kelas">Kelas</label>
-                                                            <input type="text" class="form-control" id="kelas" name="kelas" disabled value="<?=$t2['kelas'];?>">
+                                                            <input type="text" class="form-control" id="kelas" name="kelas" readonly="true" value="<?=$t2['kelas'];?>">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="tahun_masuk">Tahun Masuk</label>
-                                                            <input type="text" class="form-control" id="tahun_masuk" name="tahun_masuk" disabled value="<?=$t2['tahun_masuk'];?>">
+                                                            <input type="text" class="form-control" id="tahun_masuk" name="tahun_masuk" readonly="true" value="<?=$t2['tahun_masuk'];?>">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="github">Alamat Github</label>
                                                             <input type="text" class="form-control" id="github" name="github" value="<?=$t2['github'];?>">
                                                         </div>
-                                                        <!-- <div class="form-group">
+                                                        <div class="form-group">
                                                             <label for="foto">Unggah Foto Profil</label>
-                                                                <input type="file" class="form-control" id="profil" name="profil">
-                                                                <p style="color:#808080;">Format .jpg .png</p>
-                                                        </div> -->
+                                                            <input type="file" class="form-control" id="foto" name="foto">
+                                                            <p style="color:#808080;">Format .jpg .png Maks 500Kb</p>
+                                                        </div>
                                                         <center><button type="submit" name="submit" class="btn btn-primary float-right">Edit</button></center>
                                                     <?php endforeach;?>
                                                 </form>

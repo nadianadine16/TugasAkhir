@@ -3,12 +3,17 @@
     <?php foreach($detail as $n):?>
     <div class="kotak" style="width: 100%; height:100%;">  
     <h4 style="font-family: cursive;"><b><center><?=$n['nama']?></center></b></h4><hr><br>
-    <img src="<?= base_url();?>/assets_user/img/team/team-2.jpg" class="img-fluid" alt="" style="width:300px; height:300px;">                      
-    <span><h5 style="font-size:17px; color:black;margin-left:30%; margin-top:-27%;" >Jurusan : <?=$n['jurusan']?></h4></span>
-    <h5 style="font-size:17px; color:black;margin-left:30%; margin-top:2%;">Program Studi : <?=$n['prodi']?></h5>
-    <h5 style="font-size:17px; color:black;;margin-left:30%; margin-top:2%;">Tahun Masuk : <?=$n['tahun_masuk']?></h5>
-    <h5 style="font-size:17px; color:black;;margin-left:30%; margin-top:2%;">Github : <?=$n['github']?></h5>
-    <h5 style="font-size:17px; color:black;;margin-left:30%; margin-top:2%;">Kategori Tutor : <?=$n['nama_kategori']?></h5>
+    <?php if($n["foto"] == NULL){?>
+        <img src="<?= base_url('upload/user.png')?>" class="img-fluid" alt="" style="width:300%;height:300%;">
+    <?php } else {?>
+        <img src="<?= base_url('upload/'.$n['foto'])?>" class="img-fluid" alt="" style="width:300px; height:300px;">
+    <?php }?>                           
+    <span><h5 style="font-size:17px; color:black;margin-left:30%; margin-top:-27%;" ><b>Jurusan</b> : <?=$n['jurusan']?></h4></span>
+    <h5 style="font-size:17px; color:black;margin-left:30%; margin-top:2%;"><b>Program Studi</b> : <?=$n['prodi']?></h5>
+    <h5 style="font-size:17px; color:black;margin-left:30%; margin-top:2%;"><b>Jenis Kelamin</b> : <?=$n['jenis_kelamin']?></h5>
+    <h5 style="font-size:17px; color:black;;margin-left:30%; margin-top:2%;"><b>Tahun Masuk</b> : <?=$n['tahun_masuk']?></h5>
+    <h5 style="font-size:17px; color:black;;margin-left:30%; margin-top:2%;"><b>Github</b> : <?=$n['github']?></h5>
+    <h5 style="font-size:17px; color:black;;margin-left:30%; margin-top:2%;"><b>Kategori Tutor</b> : <?=$n['nama_kategori']?></h5>
     </div> 
     <?php endforeach;?> <hr style="margin-top: 17%;"> 
   </div> 
