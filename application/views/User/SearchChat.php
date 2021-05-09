@@ -17,7 +17,7 @@
       </div>
       </div>
         <div class="row">
-        <?php foreach($nama_tutor as $n):?>
+        <?php foreach($caritutor as $n):?>
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
           <a href="<?= base_url();?>user/Chat/<?=$n['id_mahasiswa'];?>">
             <div class="member">
@@ -31,12 +31,6 @@
           </a>
           </div>          
         <?php endforeach;?>
-        </div>
-        <div class="row">
-        <div class="col">
-    
-            <?php echo $pagination; ?>
-        </div>
-    </div>
+        </div>        
       </div>
     </section><!-- End Team Section -->

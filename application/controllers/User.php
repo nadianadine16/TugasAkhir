@@ -185,6 +185,7 @@ class User extends CI_Controller {
         // $data['materi'] = $this->User_model->getMateriByIdMateri($id);
         $data['materi'] = $this->User_model->getMateriByIdMateri($id);
         $data['konten'] = $this->User_model->Konten($id);
+        $data['count'] = $this->User_model->getCountTugas($id);
 
         $this->load->view('template/header_user', $data);
         $this->load->view('user/Daftar_Konten2', $data);
@@ -287,68 +288,6 @@ class User extends CI_Controller {
         $this->load->view('user/Detail_Forum', $data);
         $this->load->view('template/footer_user', $data);
     }
-    // public function Detail_Private_Chat($send_to){
-    //     $data['title'] = 'Private Chat';
-    //     $pengirim = $this->session->userdata('id_mahasiswa');
-        
-        // $tampil_chat = $this->User_model->GetChat($send_to,$pengirim);
-        // $data['nama_tutor'] = $this->User_model->daftar_tutor();        
-        // $data['jawaban'] = $this->User_model->pesan_private_chat($send_to,$pengirim);
-        // $data['to'] = $id;
-
-        // $this->load->view('template/header_user', $data);
-        // $this->load->view('user/Detail_Private_Chat', $data);
-        // $this->load->view('template/footer_user', $data);
-    //     if ($this->input->server('REQUEST_METHOD') === 'POST') {
-	// 		$isi_pesan = $this->input->post('isi_pesan');
-    //         date_default_timezone_set('Asia/Jakarta');
-	// 		$data  = [
-	// 			'send_by' =>$pengirim,
-	// 			'send_to' =>$send_to,
-	// 			'isi_pesan'=>$isi_pesan,
-    //             "time" => date('Y-m-d H:i:s', time())
-	// 		];
-
-	// 		$this->db->insert('private_chat',$data);
-	// 		redirect('User/Detail_Private_Chat/'.$send_to);
-	// 	} else {
-	// 		$this->db->where_in('send_by', [$pengirim,$send_to]);
-	// 		$this->db->where_in('send_to', [$pengirim,$send_to]);
-	// 		$this->db->order_by('time', 'ASC');
-	// 		$data['send_to'] = $send_to;
-	// 		$data['chat'] = $this->db->get('private_chat')->result();
-    //         $data['nama_tujuan'] = $this->User_model->namaTujuan($send_to);
-
-	// 		$this->load->view('template/header_user', $data);
-    //         $this->load->view('user/Detail_Private_Chat', $data);
-    //         $this->load->view('template/footer_user', $data);
-	// 	}
-
-    // }
-
-    // public function ajax($send_to){
-	// 	$id = $this->session->userdata('id_mahasiswa');
-
-	// 	$this->db->where_in('send_by', [$id,$send_to]);
-	// 	$this->db->where_in('send_to', [$id,$send_to]);
-	// 	$this->db->order_by('time', 'ASC');
-	// 	$data['send_to'] = $send_to;
-	// 	$data['chat'] = $this->db->get('private_chat')->result();
-
-	// 	$result = '<div class="border rounded">';
-		
-	// 	foreach ($data['chat'] as $item) { 
-	// 		if ($item->send_by == $id) {
-	// 			$result .= '<div class="text-right"><span class="mr-2 text-primary" style="font-size:22px;">'.$item->isi_pesan.'</span><br><span style="font-size:11px;" class="text-secondary mr-2">'.date('d-m-Y H:i:s',strtotime($item->time)).'</span></div>';
-	// 		} 
-	// 		else {
-	// 			$result .= '<div class="text-left"><span class="ml-2" style="font-size:22px;">'.$item->isi_pesan.'</span><br><span style="font-size:11px;" class="text-secondary ml-2">'.date('d-m-Y H:i:s',strtotime($item->time)).'</span></div>';
-	// 		}
-
-	// 	}
-	// 	$result .= '</div>';
-	// 	echo $result;
-	// }
 
     public function Detail_Tutor($id) {
         $data['title'] ='Detail Tutor';        
@@ -410,11 +349,49 @@ class User extends CI_Controller {
         $this->load->view("user/Search",$data);
         $this->load->view('template/footer_user', $data);        
     }
-    public function Private_Chat(){        
+    public function cariChat(){
+        $keyword2=  $this->input->post('keyword');        
+        $data['title'] = 'Private Chat';        
+        $data['caritutor'] = $this->User_model->search2($keyword2);
+
+        $this->load->view('template/header_user', $data);
+        $this->load->view("user/SearchChat",$data);
+        $this->load->view('template/footer_user', $data);        
+    }
+    public function Private_Chat(){       
+        $config['base_url'] = site_url('User/Private_Chat'); //site url
+        $config['total_rows'] = $this->User_model->hitung_tutor(); //total row
+        $config['per_page'] = 4;  //show record per halaman
+        $config["uri_segment"] = 3;  // uri parameter
+        $choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = floor($choice);
+
+        $config['first_link']       = 'First';
+        $config['last_link']        = 'Last';
+        $config['next_link']        = 'Next';
+        $config['prev_link']        = 'Prev';
+        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav></div>';
+        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+        $config['num_tag_close']    = '</span></li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['prev_tagl_close']  = '</span>Next</li>';
+        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+        $config['first_tagl_close'] = '</span></li>';
+        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['last_tagl_close']  = '</span></li>';
+
+        $this->pagination->initialize($config);
+        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
         $data['title'] = 'Private Chat';      
         $id = $this->session->userdata('id_mahasiswa');
-        $data['nama_tutor'] = $this->User_model->tutor();        
-        
+        $data['nama_tutor'] = $this->User_model->tutor($config["per_page"], $data['page']);        
+        $data['pagination'] = $this->pagination->create_links();
+                
         $this->load->view('template/header_user', $data);
         $this->load->view("user/Private_Chat",$data);
         $this->load->view('template/footer_user', $data);        
