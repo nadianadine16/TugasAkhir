@@ -37,7 +37,13 @@
                 
                 <!-- <div class="alert-wrap2 shadow-inner wrap-alert-b"> -->
                     <br><div class="alert alert-info" style="width:100%;">
-                        <strong>Info!</strong> Indicates a neutral informative change.
+                        <strong>Petunjuk Pemberian Revisi.</strong><br>
+                        1. Buka file program yang akan diperiksa<br>
+                        2. Klik nomor baris di sebelah kiri kode<br>
+                        3. Pilih "Copy permalink" sampai link menjadi seperti <strong>https://github.com/nadianadine16/TugasAkhir.....application/views/Tutor/Data_Materi.php#L3</strong><br>
+                        4. Masukkan dalam kolom revisi dibawah ini<br>
+                        <strong>Catatan</strong> :<br>
+                        Untuk menautkan beberapa kode yang disorot, maka lakukan klik baris kode pertama lalu tekan Ctrl + Shift dan klik sampai baris kode yang terakhir.
                     </div>
                 <!-- </div> -->
 

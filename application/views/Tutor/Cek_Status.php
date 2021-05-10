@@ -21,15 +21,15 @@
           <div class="col-md-7">
             <div class="card-body">
               <div class="brand-wrapper">                
-                <h2><b>E-Course</b></h2>
+                <h2><b>E-Learning</b></h2>
               </div>
-              <p class="login-card-description">Masukan nim anda untuk mengecek status pendaftaran anda</p>
+              <p class="login-card-description">Masukan NIM Anda untuk mengecek status pendaftaran.</p>
               <form action="<?= base_url('tutor/cari');?>" method="post">
                   <div class="form-group">
                     <label for="email" class="sr-only">NIM</label>
-                    <input id="search" type="text" placeholder="Masukan Nim Pendaftaran" name="keyword" autocomplete="off" class="form-control"/>                    
+                    <input id="search" type="text" placeholder="Masukan NIM" name="keyword" autocomplete="off" class="form-control" style="width:155%;"/>                    
                   </div>                  
-              <button name="login" id="login" class="btn btn-block login-btn mb-4" type="submit">Cek Status</button>
+              <button name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" style="width:155%;">Cek Status</button>
               </form>                
             </div>
           </div>
