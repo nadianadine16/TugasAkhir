@@ -412,9 +412,38 @@
             return $query->result_array();
         }
 
-        public function mahasiswa() {            
-            $query=$this->db->query("SELECT * FROM mahasiswa WHERE NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = mahasiswa.id_mahasiswa)");
+        public function mahasiswa($limit, $start) {            
+            $this->db->select('*');
+            $this->db->from('mahasiswa');
+            $this->db->where('NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = mahasiswa.id_mahasiswa)', '', FALSE);
+            $this->db->limit($limit,$start);
+            
+            $query = $this->db->get();
             return $query->result_array();
+            
+            
+            // $query=$this->db->query("SELECT * FROM mahasiswa WHERE NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = mahasiswa.id_mahasiswa)");
+            // return $query->result_array();
+        }
+        public function searchchat($keyword) {            
+            $this->db->select('*');
+            $this->db->from('mahasiswa');
+            $this->db->where('NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = mahasiswa.id_mahasiswa)', '', FALSE);
+            $this->db->like('mahasiswa.nama',$keyword);
+            $this->db->or_like('nim',$keyword);
+            $this->db->or_like('jurusan',$keyword);
+            $this->db->or_like('prodi',$keyword);
+            
+            $query = $this->db->get();
+            return $query->result_array();
+            
+            
+            // $query=$this->db->query("SELECT * FROM mahasiswa WHERE NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = mahasiswa.id_mahasiswa)");
+            // return $query->result_array();
+        }
+        public function hitung_mahasiswa() {            
+            $query=$this->db->query("SELECT * FROM mahasiswa WHERE NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = mahasiswa.id_mahasiswa)");
+            return $query->num_rows();
         }
         public function namaTujuan($send_to){
             $this->db->select('nama');

@@ -48,9 +48,9 @@
             <!-- ACCORDION START -->
             <?php if($konten == NULL) {?>
                 <center><p>Sayang sekali, sepertinya Tutor belum menambahkan konten :)</p></center>
-            <?php }
-            else {?>
-                <?php $no=1; $x=1; $t=1; foreach($konten as $k):?>
+            <?php } else { ?>
+                <?php $no=1; $x=1; $t=1; $jumlahTugas=-1; foreach($konten as $k):?> <!-- Start dari -1 agar mendapat jumlah lebih 1 dari total yang didapat -->
+                <?php if ($count>$jumlahTugas) { ?>
                 <div id="accordion">
                     <div class="card">
                         <div class="card-header" style="background-color:white; border:0.5px solid #4682B4;">
@@ -90,8 +90,22 @@
                         </div>
                     </div>
                 </div>
-                <?php endforeach;?>
-                <?php }?>
+                <?php } else { ?>
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" style="background-color:white; border:0.5px solid #4682B4;">
+                            <a class="card-link" data-toggle="collapse" href="#menuone<?php echo $x; ?>" aria-expanded="false" aria-controls="menuone" style= "color:#0350ad;"> <?php $x++;?>
+                                <span class="collapsed"><i class="fa fa-plus"></i></span> 
+                                <span class="expanded"><i class="fa fa-minus"></i></span> 
+                                <?=$no++;?>.&nbsp;<?=$k["judul"];?> (Disabled)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+            <?php $jumlahTugas++; ?>
+            <?php endforeach;?>
+            <?php } ?>
             </div>    
             <!-- ACCORDION END -->
             <div class="filterDiv animals">            

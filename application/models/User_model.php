@@ -45,12 +45,31 @@ class User_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
-    public function tutor(){
+    public function tutor($limit, $start){
         $this->db->select('*');
         $this->db->from('mahasiswa');
         $this->db->join('tutor', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');                        
+        $this->db->limit($limit,$start);
+        
         $query = $this->db->get();
         return $query->result_array();
+    }
+    public function search2($keyword2){
+        $this->db->select('*');
+        $this->db->from('mahasiswa');
+        $this->db->join('tutor', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');                        
+        $this->db->like('mahasiswa.nama',$keyword2);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    public function hitung_tutor(){
+        $this->db->select('*');
+        $this->db->from('mahasiswa');
+        $this->db->join('tutor', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');                        
+        
+        $query = $this->db->get();
+        return $query->num_rows();
+        
     }
     public function namaTujuan($send_to){
         $this->db->select('nama');
@@ -412,6 +431,13 @@ class User_model extends CI_Model {
                
         $query = $this->db->get();
         return $query->result_array();
-      }    
+      }
+
+      public function getCountTugas($id){
+        $id_mahasiswa = $this->session->userdata('id_mahasiswa');
+        $query = $this->db->query("SELECT COUNT(id_tugas) AS total FROM tugas INNER JOIN konten ON tugas.id_konten=konten.id_konten INNER JOIN materi ON konten.id_materi=materi.id_materi WHERE materi.id_materi='$id' AND tugas.id_mahasiswa='$id_mahasiswa' AND status='Disetujui'");
+        $hasil = $query->row();
+        return $hasil->total;
+    }    
 }
 ?>
