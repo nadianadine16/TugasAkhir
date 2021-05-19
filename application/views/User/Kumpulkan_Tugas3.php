@@ -1,3 +1,13 @@
+<style>
+.info {
+  background-color: #e7f3fe;
+  border-left: 6px solid #2196F3;
+  padding-left: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+</style>
+
 <section id="team" class="team section-bg">
     <div class="container" style="margin-top:70px">
         <div class="section-title">
@@ -28,9 +38,18 @@
                         <?php }
                         else if($cek_tugas != NULL && $c["status"] == 'Revisi') {?>
                             <b>Revisi Anda: </b>
-                            <?php foreach($tugas as $t):?>
+                            <?php foreach($revisi_tugas as $t):?>
                                 <p class="card-text"><?= $t["revisi"]?></p> 
                             <?php endforeach;?>
+
+                            <div class="info">
+                                <p><strong>Petunjuk Pengumpulan Link Revisi.</strong></p>
+                                1. Unggah tugas Anda ke dalam Github<br>
+                                2. Masuk pada file tugas yang telah Anda kerjakan<br>
+                                3. Copy link file tugas Anda tanpa menggunakan https:// seperti <strong>github.com/shevaputriw/MiniProjectRetrofit/blob/master/app/src/main/AndroidManifest.xml</strong><br>
+                                4. Masukkan dalam kolom revisi dibawah ini
+                            </div><br>
+
                             <label for="tugas"><b>Link Github Revisi Tugas Anda</b></label>
                             <input type="text" class="form-control" id="tugas" name="tugas" autocomplete="off" required><br>               
                             <center><button type="submit" class="btn btn-primary" id= "button" name="submit" class="btn btn-primary float-right">Submit</button></center>
