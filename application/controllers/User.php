@@ -208,6 +208,7 @@ class User extends CI_Controller {
         $data['cek_tugas'] = $this->User_model->cek($id);
         $data['tugas_by_id'] = $this->User_model->tampil_tugas($id);
         $data['tugas'] = $this->User_model->Tugas_Mahasiswa($this->session->userdata('id_mahasiswa'));
+        $data['revisi_tugas'] = $this->User_model->Rev($this->session->userdata('id_mahasiswa'),$id);
 
         $cek = $this->User_model->cek_tugas($id);
         if($cek){

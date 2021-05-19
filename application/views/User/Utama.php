@@ -42,27 +42,11 @@
       <nav class="navbar navbar-expand-lg navbar-light" style="margin-right:-40px;">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <!-- <li <?php if ($title == 'Dashboard User') echo 'class="nav-item active"'; ?>>
-          <a class="nav-link" href="<?=base_url()?>User/index" style="font-family: Arial, Helvetica, sans-serif; "><b>Home </b><span class="sr-only">(current)</span></a>
-        </li> -->
-        <!-- <li <?php if ($title == 'Daftar Kategori Materi'  || $title == 'Daftar Materi' || $title == 'Daftar Konten' || $title == 'Kumpulkan Tugas') echo 'class="nav-item active"';?>>
-          <a class="nav-link" href="<?=base_url()?>User/kategoriMateri" style="font-family: Arial, Helvetica, sans-serif;"><b>Materi </b><span class="sr-only">(current)</span></a>
-        </li>
-        <li <?php if ($title == 'Private Chat') echo 'class="nav-item active"'; ?>>
-          <a class="nav-link" href="<?=base_url()?>User/Private_Chat" style="font-family: Arial, Helvetica, sans-serif;"><b>Private Chat </b><span class="sr-only">(current)</span></a>
-        </li>
-        <li <?php if ($title == 'Forum' || $title == 'Chat Forum') echo 'class="nav-item active"'; ?>>
-          <a class="nav-link" href="<?= base_url()?>User/Forum" style="font-family: Arial, Helvetica, sans-serif;"><b>Forum </b><span class="sr-only">(current)</span></a>
-        </li> -->
-        <!-- <li <?php if ($title == 'Contact Us') echo 'class="nav-item active"'; ?>>
-          <a class="nav-link" href="<?= base_url()?>User/contactus" style="font-family: Arial, Helvetica, sans-serif;"><b>Contact Us </b><span class="sr-only">(current)</span></a>
-        </li> -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-family: Arial, Helvetica, sans-serif;">
           <b>Halo, <?= $this->session->userdata('nama');?></b>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <!-- <a class="dropdown-item" href="<?= base_url();?>User/Detail_Akun/<?= $this->session->userdata('id_mahasiswa');?>">Kelola Akun</a> -->
             <a class="dropdown-item" href="<?= base_url();?>Login/logout">Logout</a>
           </div>
         </li>
@@ -104,6 +88,41 @@
         </div>
     </footer>
 </section>
+
+<section id="about" class="about">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-xl-5 col-lg-6 d-flex justify-content-center video-box align-items-stretch">
+          </div>
+
+          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+            <h3>- Layanan yang Disediakan -</h3>
+            <p>Website ini menyediakan 3 layanan utama khusus untuk kamu yang akan belajar coding.</p>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-file"></i></i></div>
+              <h4 class="title"><a href="">Materi Langsung dari Tutornya</a></h4>
+              <p class="description">Materi yang disajikan dibuat sendiri oleh tutor khusus untuk mahasiswa yang belajar coding pada website ini</p>
+            </div>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-group"></i></div>
+              <h4 class="title"><a href="">Forum Diskusi</a></h4>
+              <p class="description">Forum merupakan media diskusi baik antar mahasiswa satu dengan lainnya maupun bersama dengan tutor</p>
+            </div>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-chat"></i></div>
+              <h4 class="title"><a href="">Private Chat dengan Tutor Secara Langsung</a></h4>
+              <p class="description">Dengan website ini kamu bisa menghubungi tutor secara langsung melalui private chat yang tersedia</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
 
 <section id="counts" class="counts">
       <div class="container">

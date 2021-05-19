@@ -17,6 +17,10 @@
                 <input type="text" class="form-control" readonly="true" name="nama" id="subject" value="<?= $this->session->userdata('nama');?>" style="width:1000px;"/>                
               </div>
               <div class="form-group">
+                <label><b>Jenis Kelamin</b></label>
+                <input type="text" class="form-control" readonly="true" name="jenis_kelamin" id="jenis_kelamin" value="<?= $this->session->userdata('jenis_kelamin');?>" style="width:1000px;"/>                
+              </div>
+              <div class="form-group">
                 <label><b>Jurusan</b></label>
                 <input type="text" class="form-control" readonly="true" name="jurusan" id="subject" value="<?= $this->session->userdata('jurusan');?>" style="width:1000px;"/>
               </div>

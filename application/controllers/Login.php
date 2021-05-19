@@ -50,6 +50,7 @@ class Login extends CI_Controller {
             $this->session->set_userdata('id_mahasiswa',$data['id_mahasiswa']);
             $this->session->set_userdata('nama',$data['nama']);
             $this->session->set_userdata('nim',$data['nim']);
+            $this->session->set_userdata('jenis_kelamin',$data['jenis_kelamin']);
             $this->session->set_userdata('jurusan',$data['jurusan']);
             $this->session->set_userdata('prodi',$data['prodi']);
             $this->session->set_userdata('kelas',$data['kelas']);

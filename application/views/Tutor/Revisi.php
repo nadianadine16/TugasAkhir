@@ -1,3 +1,14 @@
+<style>
+.info {
+  background-color: #e7f3fe;
+  border-left: 6px solid #2196F3;
+  padding-left: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+</style>
+
+
 <div class="breadcome-area">
     <div class="container-fluid">
         <div class="row">
@@ -34,12 +45,15 @@
                     <?php echo validation_errors(); ?>
                 </div>
                 <?php endif; ?>
-                
-                <!-- <div class="alert-wrap2 shadow-inner wrap-alert-b"> -->
-                    <br><div class="alert alert-info" style="width:100%;">
-                        <strong>Info!</strong> Indicates a neutral informative change.
-                    </div>
-                <!-- </div> -->
+                <div class="info">
+                    <p><strong>Petunjuk Pemberian Revisi.</strong></p><br>
+                    1. Buka file program yang akan diperiksa<br>
+                    2. Klik nomor baris di sebelah kiri kode<br>
+                    3. Pilih "Copy permalink" sampai link menjadi seperti <strong>https://github.com/nadianadine16/TugasAkhir.....application/views/Tutor/Data_Materi.php#L3</strong><br>
+                    4. Masukkan dalam kolom revisi dibawah ini<br><br>
+                    <strong>Catatan</strong> :<br>
+                    Untuk menautkan beberapa kode yang disorot, maka lakukan klik baris kode pertama lalu tekan Ctrl + Shift dan klik sampai baris kode yang terakhir.
+                </div><br>
 
                 <form action="<?=base_url('Tutor/Revisi/'.$tugas['id_tugas'])?>" method="post">
                 <input type="hidden" name="id_tugas" value="<?=$tugas['id_tugas'];?>">

@@ -206,7 +206,6 @@ class User_model extends CI_Model {
         else {
             return false;
         }
-        // return $query->result_array();
     }
 
     public function tambah_tugas() {
@@ -330,6 +329,17 @@ class User_model extends CI_Model {
         $this->db->join('konten', 'tugas.id_konten = konten.id_konten');       
         $this->db->where('id_mahasiswa', $id_mahasiswa);
         $this->db->order_by('tugas', 'DESC');
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function Rev($id_mahasiswa, $id_konten) {
+        $this->db->select('*');
+        $this->db->from('tugas');
+        $this->db->join('konten', 'tugas.id_konten = konten.id_konten');       
+        $this->db->where('id_mahasiswa', $id_mahasiswa);
+        $this->db->where('tugas.id_konten', $id_konten);
 
         $query = $this->db->get();
         return $query->result_array();
