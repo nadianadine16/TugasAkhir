@@ -350,6 +350,15 @@ class User extends CI_Controller {
         $this->load->view("user/Search",$data);
         $this->load->view('template/footer_user', $data);        
     }
+    public function carimateri(){
+        $keyword=  $this->input->post('keyword');        
+        $data['title'] = 'Daftar Materi';        
+        $data['cari_materi'] = $this->User_model->search3();
+
+        $this->load->view('template/header_user', $data);
+        $this->load->view("user/SearchMateri",$data);
+        $this->load->view('template/footer_user', $data);        
+    }
     public function cariChat(){
         $keyword2=  $this->input->post('keyword');        
         $data['title'] = 'Private Chat';        

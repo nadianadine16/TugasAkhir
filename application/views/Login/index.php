@@ -33,7 +33,7 @@
             <div class="pr-lg-5"><img src="<?= base_url()?>/assets_admin/img/study.png" alt="" class="img-fluid"></div>
           </div>
           <div class="col-lg-5 px-lg-4">
-            <h1 class="text-base text-primary text-uppercase mb-4">E-Learning</h1>
+            <h1 class="text-base text-primary text-uppercase mb-4">Coding-JTI</h1>
             <h2 class="mb-4">Jurusan Teknologi Informasi</h2>
             <p class="text-muted">Belajar menyenangkan dengan metode tutor sebaya</p>
             <form id="loginForm" action="<?= base_url();?>login/prosesLogin" class="mt-4" method="post">

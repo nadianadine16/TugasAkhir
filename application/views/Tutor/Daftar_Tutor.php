@@ -6,7 +6,7 @@
 </head>
 <div class="single-pro-review-area mt-t-30 mg-b-15">
     <div class="container-fluid">
-    <h3 style="margin-top:50px;">Daftar Tutor E-Learning</h3>
+    <h3 style="margin-top:50px;">Daftar Tutor Coding JTI</h3>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-payment-inner-st">

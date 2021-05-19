@@ -111,6 +111,18 @@ class User_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+    public function search3() {
+        $keyword=$this->input->post('keyword');
+        $this->db->select('*');
+        $this->db->from('materi');
+        $this->db->join('kategori_materi', 'materi.id_kategori_materi = kategori_materi.id_kategori_materi');
+        $this->db->join('tutor', 'materi.id_tutor = tutor.id_tutor');
+        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');        
+        $this->db->like('materi.nama_materi', $keyword);           
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
     public function getAllMateri() {
         $this->db->select('*');

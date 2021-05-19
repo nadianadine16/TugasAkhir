@@ -83,10 +83,16 @@
                                         <div id="isimateri<?php echo $t; $t++;?>" class="panel-collapse panel-ic collapse">
                                             <div class="panel-body admin-panel-content animated flash">
                                             <?php if($k["video"] != NULL){?>
+                                                <?php
+                                                $url = $k["video"];
+                                                preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
+                                                $id = $match[1];
+                                                $width = '400px';
+                                                $height = '300px'; ?>
                                                     <p><b>Video</b><br>
                                                     <!-- <a href="<?= base_url('upload/materi/'.$k["video"])?>"><?=$k["video"];?></a> -->
                                                     </p>
-                                                    <center><iframe width="460" height="280" src="<?=$k["video"];?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+                                                    <iframe id="ytplayer" type="text/html" width="<?php echo $width ?>" height="<?php echo $height ?>" src="https://www.youtube.com/embed/<?php echo $id ?>?rel=0&showinfo=0&color=white&iv_load_policy=3" frameborder="0" allowfullscreen></iframe> 
                                                     <?php
                                                         } 
                                                         else { ?>
