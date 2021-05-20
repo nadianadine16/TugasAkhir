@@ -41,14 +41,14 @@ x y{
 }
 </style>
 
-<section id="team" class="team section-bg" style="margin-top:50px">
+<section id="team" class="team section-bg" style="margin-top:30px">
 <!-- <a href="<?= base_url('User/Private_Chat') ?>" style="margin-left:9%">Back</a> -->
 	<?php foreach($nama_tujuan as $n):?>
-		<center><h4 style="font-size: 20px; padding-top:10px;padding-left:30px;margin-bottom:20px;">Mahasiswa : <b><?=$n["nama"]?></b></h4></center>
+		<center><h4 style="font-size: 20px; padding-top:10px;padding-left:30px;margin-bottom:20px;">Mahasiswa : <b><?=$n["nama"]?></b></h4><hr style="width:85%;"></center>
 	<?php endforeach;?> 
 	<div class="container">	
 		<div id="tmp">
-		<div class="border rounded" id="border_rounded" style="height:500px;;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">
+		<div class="border rounded" id="border_rounded" style="width:100%;height:500px;;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">
 				<?php 
 				$id = $this->session->userdata('id_mahasiswa');
 				foreach ($chats as $item) {
