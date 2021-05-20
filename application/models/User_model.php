@@ -48,7 +48,8 @@ class User_model extends CI_Model {
     public function tutor($limit, $start){
         $this->db->select('*');
         $this->db->from('mahasiswa');
-        $this->db->join('tutor', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');                        
+        $this->db->join('tutor', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');  
+        $this->db->join('kategori_materi', 'kategori_materi.id_kategori_materi = tutor.id_kategori_materi');
         $this->db->limit($limit,$start);
         
         $query = $this->db->get();
@@ -57,8 +58,10 @@ class User_model extends CI_Model {
     public function search2($keyword2){
         $this->db->select('*');
         $this->db->from('mahasiswa');
-        $this->db->join('tutor', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');                        
+        $this->db->join('tutor', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');         
+        $this->db->join('kategori_materi', 'kategori_materi.id_kategori_materi = tutor.id_kategori_materi');                       
         $this->db->like('mahasiswa.nama',$keyword2);
+        $this->db->or_like('kategori_materi.nama_kategori',$keyword2);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -118,7 +121,9 @@ class User_model extends CI_Model {
         $this->db->join('kategori_materi', 'materi.id_kategori_materi = kategori_materi.id_kategori_materi');
         $this->db->join('tutor', 'materi.id_tutor = tutor.id_tutor');
         $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');        
-        $this->db->like('materi.nama_materi', $keyword);           
+        $this->db->like('materi.nama_materi', $keyword);  
+        $this->db->or_like('kategori_materi.nama_kategori', $keyword);  
+
 
         $query = $this->db->get();
         return $query->result_array();
