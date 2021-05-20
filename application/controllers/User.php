@@ -107,6 +107,7 @@ class User extends CI_Controller {
         $data['title'] ='Detail Akun';        
         $data['mahasiswa'] = $this->User_model->Detail_Akun($id_mahasiswa);
         $data['tugas'] = $this->User_model->Tugas_Mahasiswa($id_mahasiswa);
+        $data['forum'] = $this->User_model->Forum_yang_dibuat($id_mahasiswa);
 
         $this->load->view('template/header_user', $data);
         $this->load->view('user/Detail_Akun', $data);

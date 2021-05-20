@@ -1,22 +1,35 @@
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+<section id="about" class="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" style="margin-top:20px;">
+            <?php foreach($mahasiswa as $m):?>
+                <div class="kotak" style="width: 100%; height:100%;">  
+                    <h4><b><?=$m['nama']?></b><span><a href="<?=base_url()?>/User/Edit_Profil/<?=$m['id_mahasiswa'];?>">
+                    <button class="btn btn-primary btn-sm" style="float:right; margin-right:-80%;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit Profil</button></a></span></h4><hr style="width:1030px;"><br>
+                    <p><b>NIM</b> : <?=$m['nim']?></h5>
+                    <p><b>Jenis Kelamin</b> : <?=$m['jenis_kelamin']?></h5>
+                    <p><b>Jurusan</b> : <?=$m['jurusan']?></h5>
+                    <p><b>Program Studi</b> : <?=$m['prodi']?></h5>
+                    <p><b>Kelas</b> : <?=$m['kelas']?></h5>
+                    <p><b>Tahun Masuk</b> : <?=$m['tahun_masuk']?></h5>
+                    <p><b>Github</b> : <?=$m['github']?></h5>
+                </div> 
+            <?php endforeach;?>
+            </div>
+        </div>
+    </div>
+</section>
 
-<section id="team" class="team section-bg" style="background-color:white; margin-top:70px">
-  <div class="container">    
-    <?php foreach($mahasiswa as $m):?>
-    <div class="kotak" style="width: 100%; height:100%;">  
-    <h4 style="font-family: cursive;"><b><?=$m['nama']?></b><span><a href="<?=base_url()?>/User/Edit_Profil/<?=$m['id_mahasiswa'];?>"><button class="btn btn-primary btn-sm" style="float:right;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit Profil</button></a></span></h4><hr><br>
-    <p><b>NIM</b> : <?=$m['nim']?></h5>
-    <p><b>Jenis Kelamin</b> : <?=$m['jenis_kelamin']?></h5>
-    <p><b>Jurusan</b> : <?=$m['jurusan']?></h5>
-    <p><b>Program Studi</b> : <?=$m['prodi']?></h5>
-    <p><b>Tahun Masuk</b> : <?=$m['tahun_masuk']?></h5>
-    <p><b>Github</b> : <?=$m['github']?></h5>
-    </div> 
-    <?php endforeach;?> 
-    <hr style="margin-top: 4%;"> 
-
-    <h5><center>Tugas Anda</center></h5><br>
-    <table id="tabel-data" class="table table-striped table-bordered" width="100%" cellspacing="0">
+<section id="team" class="team section" style="background-color: #f4fbfe; margin-top:-70px;">
+  <div class="container" >
+    <div class="section-title">
+      <h4><b>Tugas Anda</b></h4>              
+    </div>
+    <div class="row"> 
+    <table id="tabel-data" class="table table-striped table-bordered" width="100%" cellspacing="0" style="border-width:3px;">
     <thead>
         <tr>
             <th><center>No</center></th>
@@ -46,16 +59,54 @@
         <?php endforeach;?>
     </tbody>
 </table>
-  </div> 
+    </div>              
+  </div>        
 </section>
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
-<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js" defer></script> -->
+
+<section id="team" class="team section">
+  <div class="container" >
+    <div class="section-title">
+      <h4><b>Forum yang Anda Buat</b></h4>              
+    </div>
+    <div class="row"> 
+    <table id="tabel-data2" class="table table-striped table-bordered" width="100%" cellspacing="0" style="border-width:3px;">
+    <thead>
+        <tr>
+            <th><center>No</center></th>
+            <th><center>Kategori Forum</center></th>
+            <th><center>Pertanyaan</center></th>
+            <th><center>Dibuat pada</center></th>
+            <!-- <th><center>Jumlah Respon</center></th> -->
+            <th><center>Aksi</center></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php $no=1; foreach($forum as $f):?>
+        <tr>
+            <td><?=$no++;?></td>
+            <td><?=$f["nama_kategori"];?></td>
+            <td><?=$f["pertanyaan"];?></td>
+            <td><?=$f["created_at"];?></td>
+            <!-- <td>f</td> -->
+            <td><a href="<?= base_url();?>User/Detail_Forum/<?=$f['id_forum'];?>"><center><button class="btn btn-primary btn-sm">Lihat Forum</button></center></a></td>
+        </tr>
+        <?php endforeach;?>
+    </tbody>
+</table>
+    </div>              
+  </div>        
+</section>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js" defer></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js" defer></script>
 
 <script>
     $(document).ready(function(){
         $('#tabel-data').DataTable();
+    });
+
+    $(document).ready(function(){
+        $('#tabel-data2').DataTable();
     });
 </script>
