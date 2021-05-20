@@ -1,23 +1,74 @@
+<style>
+x{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+x y{
+  display:inline-block;
+  clear: both;
+  padding: 10px;
+  border-radius: 30px;
+  margin-bottom: 10px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.him{
+  background: #eee;
+  float: left;
+  margin-left:10px;
+}
+
+.me{
+  float: right;
+  background: #0084ff;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.him + .me{
+  border-bottom-right-radius: 5px;
+}
+
+.me + .me{
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.me:last-of-type {
+  border-bottom-right-radius: 0px;
+}
+</style>
+
 <section id="team" class="team section-bg" style="margin-top:50px">
-<a href="<?= base_url('User/Private_Chat') ?>" style="margin-left:9%">Back</a>
+<!-- <a href="<?= base_url('User/Private_Chat') ?>" style="margin-left:9%">Back</a> -->
 <?php foreach($nama_tujuan as $n):?>
-<h4 style="font-size: 20px; font-family: Times, Times New Roman, Georgia, serif; padding-top:10px;padding-left:30px; margin-left:7%;"><b>Chat with : </b> <?=$n["nama"]?></h4>
+<center><h4 style="font-size: 20px; padding-top:10px;padding-left:30px;">Tutor : <b><?=$n["nama"]?></b></h4></center>
 <?php endforeach;?> 
 <div class="container">	
 	<div id="tmp">
-	<div class="border rounded" id="border_rounded" style="height:400px;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">
+	<div class="border rounded" id="border_rounded" style="height:500px;;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">
 		<?php 
 		$id = $this->session->userdata('id_mahasiswa');
 		foreach ($chats as $item) {
 		?>
 			<?php if ($item->from == $id) {?>
-				<div class="text-right"><span class="mr-2 text-primary" style="font-size:18px;"><?= $item->message ?></span><br>
+				<x>
+ 					<y class="me"><?= $item->message ?></y>
+				</x><br>
+				<p style="font-size:11px;float:right;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></p>
+				<!-- <div class="me"><span  style="font-size:18px;"><?= $item->message ?></span><br>
 					<span style="font-size:11px;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></span>
-				</div>
+				</div> -->
 			<?php }else { ?>
-				<div class="text-left"><span class="ml-2" style="font-size:18px;"><?= $item->message ?></span><br>
+				<x>
+ 					<y class="him"><?= $item->message ?></y>
+				</x><br>
+				<p style="font-size:11px;float:left;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></p>
+				<!-- <div class="him"><span  style="font-size:18px;"><?= $item->message ?></span><br>
 					<span style="font-size:11px;" class="text-secondary ml-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></span>
-				</div>
+				</div> -->
 			<?php } ?>
 		<?php } ?>
 	</div>
