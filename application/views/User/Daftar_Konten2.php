@@ -71,7 +71,7 @@
                                     $height = '300px'; ?>
                                     <p><b>Video</b><br>                                    
                                     </p>
-                                    <iframe id="ytplayer" type="text/html" width="<?php echo $width ?>" height="<?php echo $height ?>" src="https://www.youtube.com/embed/<?php echo $id ?>?rel=0&showinfo=0&color=white&iv_load_policy=3" frameborder="0" allowfullscreen></iframe> 
+                                    <center><iframe id="ytplayer" type="text/html" width="<?php echo $width ?>" height="<?php echo $height ?>" src="https://www.youtube.com/embed/<?php echo $id ?>?rel=0&showinfo=0&color=white&iv_load_policy=3" frameborder="0" allowfullscreen></iframe></center>
                                     <?php
                                         } 
                                         else { ?>
@@ -100,10 +100,10 @@
                 <div id="accordion">
                     <div class="card">
                         <div class="card-header" style="background-color:white; border:0.5px solid #4682B4;">
-                            <a class="card-link" data-toggle="collapse" href="#menuone<?php echo $x; ?>" aria-expanded="false" aria-controls="menuone" style= "color:#0350ad;"> <?php $x++;?>
+                            <a class="card-link" data-toggle="collapse" href="#menuone<?php echo $x; ?>" aria-expanded="false" aria-controls="menuone" style= "color:#82868c;"> <?php $x++;?>
                                 <span class="collapsed"><i class="fa fa-plus"></i></span> 
                                 <span class="expanded"><i class="fa fa-minus"></i></span> 
-                                <?=$no++;?>.&nbsp;<?=$k["judul"];?> (Disabled)
+                                <?=$no++;?>.&nbsp;<?=$k["judul"];?>
                             </a>
                         </div>
                     </div>

@@ -477,6 +477,7 @@
                 "id_mahasiswa" => $this->input->post('id_mahasiswa', true),
                 "nim" => $this->input->post('nim', true),
                 "nama" => $this->input->post('nama', true),
+                "jenis_kelamin" => $this->input->post('jenis_kelamin', true),
                 "jurusan" => $this->input->post('jurusan', true),
                 "prodi" => $this->input->post('prodi', true),
                 "kelas" => $this->input->post('kelas', true),

@@ -1,3 +1,42 @@
+<style>
+      .kartu {
+        width: 96%;
+        margin-top: 30px;
+        margin-left: 20px;
+            box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.03);
+    transition: all .3s;
+           background-color: #ffffff;
+    border: solid 2px #dadada;
+    /* border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px; */
+      } 
+      .kartu:hover {
+        background-color: #fcfcfc;
+        /* border: solid 8px #4fd47e; */
+        border: solid 2px #dadada;
+    /* border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px; */
+      }
+      .foto {
+            padding: 30px 30px 30px;
+    /* margin-left: 0px; */
+    /* margin-top: 10px; */
+      }
+      tbody {
+          /* padding: 30px 30px 30px;
+          font-size: 20px; */
+          /* margin-bottom:20px; */
+    /* font-size: 20px;
+    font-weight: 300; */
+    /* color:white; */
+}
+.biodata {
+    margin-top: 30px;
+}
+    </style>
+
 <!-- Mobile Menu end -->
 <div class="breadcome-area">
                 <div class="container-fluid">
@@ -24,17 +63,117 @@
                 </div>
             </div>
         </div>
+<div class="single-pro-review-area mt-t-30 mg-b-15">
+    <div class="container-fluid">
+        <div class="row">
+        <?php foreach($tutor as $t):?>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="profile-info-inner" style="width:314%;">
+                <center><h3>Profil Anda</h3></center>
+                    <div class="card kartu">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="foto">
+                                    <?php if($t["foto"] == NULL){?>
+                                        <img src="<?= base_url('upload/user.png')?>" alt="" style="margin-left:-20px;width:200px;height:200px;"/>
+                                    <?php } else {?>
+                                        <img src="<?= base_url('upload/'.$t['foto'])?>" alt="" />
+                                    <?php }?>
+                                </div>
+                            </div>
+                            <div class="col-md-8 kertas-biodata">
+                                <div class="biodata">
+                                    <table width="100%" style="margin-left:-30px;">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="font-weight:bold; font-size:20px;"><?=$t["nama"];?></td>
+                                                            </tr>
+                                                            <tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr>
+                                                            <tr>
+                                                                <td class="textt">NIM</td>
+                                                                <td>:</td>
+                                                                <td><?=$t["nim"];?></td>
+                                                            </tr>
+                                                            <tr><td>&nbsp;</td></tr>
+                                                            <tr>
+                                                                <td class="textt">Jenis Kelamin</td>
+                                                                <td>:</td>
+                                                                <td><?=$t["jenis_kelamin"];?></td>
+                                                            </tr>
+                                                            <tr><td>&nbsp;</td></tr>
+                                                            <tr>
+                                                                <td class="textt">Kategori</td>
+                                                                <td>:</td>
+                                                                <td><?=$t["nama_kategori"];?></td>
+                                                            </tr>
+                                                            <tr><td>&nbsp;</td></tr>
+                                                            <tr>
+                                                                <td class="textt">Jurusan</td>
+                                                                <td>:</td>
+                                                                <td><?=$t["jurusan"];?></td>
+                                                            </tr>
+                                                            <tr><td>&nbsp;</td></tr>
+                                                            <tr>
+                                                                <td valign="top" class="textt">Program Studi</td>
+                                                                <td valign="top">:</td>
+                                                                <td><?=$t["prodi"];?></td>
+                                                            </tr>
+                                                            <tr><td>&nbsp;</td></tr>
+                                                            <tr>
+                                                                <td valign="top" class="textt">Kelas</td>
+                                                                <td valign="top">:</td>
+                                                                <td><?=$t["kelas"];?></td>
+                                                            </tr>
+                                                            <tr><td>&nbsp;</td></tr>
+                                                            <tr>
+                                                                <td valign="top" class="textt">Tahun Masuk</td>
+                                                                <td valign="top">:</td>
+                                                                <td><?=$t["tahun_masuk"];?></td>
+                                                            </tr>
+                                                            <tr><td>&nbsp;</td></tr>
+                                                            <tr>
+                                                                <td valign="top" class="textt">Alamat Github</td>
+                                                                <td valign="top">:</td>
+                                                                <td><?=$t["github"];?></td>
+                                                            </tr>
+                                                            <tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr>
+                                                            <tr>
+                                                                <td valign="top" class="textt"><a href="<?=base_url()?>Tutor/Edit_Profil/<?=$t['id_tutor'];?>">
+                                                                    <button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit Profil</button></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach;?>
+        </div>
+    </div>
+</div>
         <!-- Single pro tab review Start-->
-        <div class="single-pro-review-area mt-t-30 mg-b-15">
+        <!-- <div class="single-pro-review-area mt-t-30 mg-b-15">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" style="width:100%;">
                         <div class="product-payment-inner-st res-mg-t-30 analysis-progrebar-ctn">
                             <ul id="myTabedu1" class="tab-review-design">
                                 <li class="active"><a href="#description">Profil Anda</a></li>
-                                <li><a href="#reviews"> Edit Profil</a></li>
+                                <li><a href="#reviews"> Edit Profil</a></li> -->
                                 <!-- <li><a href="#INFORMATION">Update Details</a></li> -->
-                            </ul>
+                            <!-- </ul>
                             <?php foreach($tutor as $t):?>
                             <div id="myTabContent" class="tab-content custom-product-edit">
                                 <div class="product-tab-list tab-pane fade active in" id="description">
@@ -61,9 +200,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             
-                                <div class="product-tab-list tab-pane fade" id="reviews">
+                                <!-- <div class="product-tab-list tab-pane fade" id="reviews">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
@@ -122,8 +261,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="product-tab-list tab-pane fade" id="INFORMATION">
+                                </div> -->
+                                <!-- <div class="product-tab-list tab-pane fade" id="INFORMATION">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
@@ -219,7 +358,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

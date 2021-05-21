@@ -34,22 +34,17 @@ class Tutor extends CI_Controller {
         $this->load->view('template/footer2_tutor', $data);
     }
 
-    public function Edit_Profil() {
+    public function Edit_Profil($id_tutor) {
         $data['title'] = 'Edit Profil';
         $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
-
-        $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');    
-        $this->form_validation->set_rules('nim', 'nim', 'required');        
-        $this->form_validation->set_rules('nama', 'nama', 'required');        
-        $this->form_validation->set_rules('jurusan', 'jurusan', 'required');        
-        $this->form_validation->set_rules('prodi', 'prodi', 'required');        
-        $this->form_validation->set_rules('kelas', 'kelas', 'required');        
-        $this->form_validation->set_rules('tahun_masuk', 'tahun_masuk', 'required'); 
+        $data['tutor'] = $this->Tutor_model->Profil($id_tutor);
+ 
         $this->form_validation->set_rules('github', 'github', 'required');        
         
         if($this->form_validation->run() == FALSE) {
-            echo"<script>alert('Edit Profil Gagal!');</script>";
-            redirect('Tutor/Profil/'.$this->session->userdata('id_tutor'),'refresh');
+            $this->load->view('template/header2_tutor',$data);
+            $this->load->view('Tutor/Edit_Profil', $data);
+            $this->load->view('template/footer2_tutor',$data);
         }
         else {
             $this->Tutor_model->Edit_Profil();
@@ -196,7 +191,7 @@ class Tutor extends CI_Controller {
         }
         else {
             $this->Tutor_model->Edit_Konten($id_konten);
-            // echo"<script>alert('Konten Berhasil Di Edit!');</script>";
+            echo"<script>alert('Konten Berhasil Di Edit!');</script>";
             redirect('Tutor/Detail_Materi/'.$id_materi ,'refresh');
         }
     }
