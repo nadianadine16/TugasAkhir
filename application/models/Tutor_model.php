@@ -12,9 +12,19 @@
             return $this->db->get_where('materi', array('id_tutor' => $this->session->userdata('id_tutor') ))->num_rows();
         }
 
-        public function Hitung_Konten($id_konten) {
-            return $this->db->get_where('konten', array('id_konten' => $this->session->userdata('id_materi') ))->num_rows();
+        public function Hitung_Konten() {
+            $this->db->select('*');
+            $this->db->from('konten');
+            $this->db->join('materi', 'materi.id_materi = konten.id_materi');
+            $this->db->join('tutor', 'tutor.id_tutor = materi.id_tutor');
+            $this->db->where('tutor.id_tutor', $this->session->userdata('id_tutor'));
+            $query = $this->db->get();
+            return $query->num_rows();
         }
+
+        // public function Hitung_Konten($id_konten) {
+        //     return $this->db->get_where('konten', array('id_konten' => $this->session->userdata('id_materi') ))->num_rows();
+        // }
 
         public function Hitung_Tugas_Mahasiswa() {
             return $this->db->get_where('tugas', array('id_materi' => $this->session->userdata('id_materi') ))->num_rows();

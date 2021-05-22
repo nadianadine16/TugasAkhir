@@ -18,6 +18,7 @@ class Tutor extends CI_Controller {
         $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
         $data['materi'] = $this->Tutor_model->Hitung_Materi($this->session->userdata('id_tutor'));
         $data['forum'] = $this->Tutor_model->Hitung_Forum();
+        $data['konten'] = $this->Tutor_model->Hitung_Konten();
 
         $this->load->view('template/header2_tutor',$data);
         $this->load->view('Tutor/Index',$data);
