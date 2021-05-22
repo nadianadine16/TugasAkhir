@@ -280,12 +280,14 @@
             return $query->result_array();
         }
 
-        public function getAllForum(){
+        public function getAllForum($limit, $start){
             $this->db->select('*');
             $this->db->from('forum');
             $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
             $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');  
-            $this->db->order_by('forum.created_at', 'DESC');                                             
+            $this->db->order_by('forum.created_at', 'DESC');    
+            $this->db->limit($limit,$start);
+
             $query = $this->db->get();
             return $query->result_array();
         }
@@ -364,14 +366,19 @@
         //     return $query->result_array();
         // } 
 
-        public function search($keyword){
-            $keyword=$this->input->post('id_kategori');
+        public function Cari_Forum($kategori, $keyword, $limit, $start){
+            $kategori=$this->input->post('id_kategori_materi');
+            $keyword=$this->input->post('keyword');
+
             $this->db->select('*');
             $this->db->from('forum');
             $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
             $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');            
-            $this->db->like('kategori_materi.id_kategori_materi', $keyword);        
-            $this->db->order_by('forum.created_at', 'DESC');        
+            $this->db->like('forum.id_kategori_materi', $kategori); 
+            $this->db->like('forum.pertanyaan', $keyword);        
+            $this->db->order_by('forum.created_at', 'DESC'); 
+            $this->db->limit($limit,$start);
+
             $query = $this->db->get();
             return $query->result_array();
         }
@@ -420,31 +427,46 @@
             
             $query = $this->db->get();
             return $query->result_array();
-            
-            
-            // $query=$this->db->query("SELECT * FROM mahasiswa WHERE NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = mahasiswa.id_mahasiswa)");
-            // return $query->result_array();
         }
-        public function searchchat($keyword) {            
+        public function searchchat($keyword, $limit, $start) {  
+            $keyword=$this->input->post('keyword');          
             $this->db->select('*');
             $this->db->from('mahasiswa');
             $this->db->where('NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = mahasiswa.id_mahasiswa)', '', FALSE);
             $this->db->like('mahasiswa.nama',$keyword);
-            $this->db->or_like('nim',$keyword);
-            $this->db->or_like('jurusan',$keyword);
-            $this->db->or_like('prodi',$keyword);
+            $this->db->limit($limit, $start);
             
             $query = $this->db->get();
-            return $query->result_array();
-            
-            
-            // $query=$this->db->query("SELECT * FROM mahasiswa WHERE NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = mahasiswa.id_mahasiswa)");
-            // return $query->result_array();
+            return $query->result_array();            
         }
+
+        public function hitung_mahasiswa_for_search($keyword) {            
+            $query=$this->db->query("SELECT count(*) FROM mahasiswa WHERE NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = mahasiswa.id_mahasiswa) AND mahasiswa.nama like '%$keyword%'");
+            return $query->num_rows();
+
+            // $this->db->select('count(*) as allcount');
+            // $this->db->from('mahasiswa');
+            // $this->db->where('NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = mahasiswa.id_mahasiswa)', '', FALSE);
+        
+            // if($keyword != ''){
+            // $this->db->like('mahasiswa.nama', $keyword);
+            // $query = $this->db->get();
+            // return $query->num_rows();
+            // }
+            // $result = $query->result_array();
+            // return $result[0]['allcount'];
+        }
+
         public function hitung_mahasiswa() {            
             $query=$this->db->query("SELECT * FROM mahasiswa WHERE NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = mahasiswa.id_mahasiswa)");
             return $query->num_rows();
         }
+
+        public function hitung_forum_for_search() {            
+            $query=$this->db->query("SELECT * FROM forum");
+            return $query->num_rows();
+        }
+
         public function namaTujuan($send_to){
             $this->db->select('nama');
             $this->db->from('mahasiswa');

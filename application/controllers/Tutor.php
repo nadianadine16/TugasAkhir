@@ -283,9 +283,39 @@ class Tutor extends CI_Controller {
     }
 
     public function Forum() {
+        $config['base_url'] = site_url('Tutor/Forum'); //site url
+        $config['total_rows'] = $this->Tutor_model->Hitung_Forum(); //total row
+        $config['per_page'] = 10;  //show record per halaman
+        $config["uri_segment"] = 3;  // uri parameter
+        $choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = floor($choice);
+
+        $config['first_link']       = 'First';
+        $config['last_link']        = 'Last';
+        $config['next_link']        = 'Next';
+        $config['prev_link']        = 'Prev';
+        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav></div>';
+        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+        $config['num_tag_close']    = '</span></li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['prev_tagl_close']  = '</span>Next</li>';
+        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+        $config['first_tagl_close'] = '</span></li>';
+        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['last_tagl_close']  = '</span></li>';
+
+        $this->pagination->initialize($config);
+        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
         $data['title'] ='Forum';
         $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
-        $data['forum'] = $this->Tutor_model->getAllForum();
+        $data['forum'] = $this->Tutor_model->getAllForum($config["per_page"], $data['page']);
+        $data['pagination'] = $this->pagination->create_links();
         $data['kategori_forum'] = $this->Tutor_model->Kategori_Forum();
         $data['cek_forum'] = $this->Tutor_model->cek_forum();
 
@@ -324,16 +354,49 @@ class Tutor extends CI_Controller {
             redirect('Tutor/Detail_Forum/'.$id ,'refresh');
         }
     }
+
     public function Cari_Forum(){
+        $config['base_url'] = site_url('Tutor/Cari_Forum'); //site url
+        $config['total_rows'] = $this->Tutor_model->hitung_forum_for_search(); //total row
+        $config['per_page'] = 10;  //show record per halaman
+        $config["uri_segment"] = 3;  // uri parameter
+        $choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = floor($choice);
+
+        $config['first_link']       = 'First';
+        $config['last_link']        = 'Last';
+        $config['next_link']        = 'Next';
+        $config['prev_link']        = 'Prev';
+        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav></div>';
+        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+        $config['num_tag_close']    = '</span></li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['prev_tagl_close']  = '</span>Next</li>';
+        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+        $config['first_tagl_close'] = '</span></li>';
+        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['last_tagl_close']  = '</span></li>';
+
+        $this->pagination->initialize($config);
+        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
         $data['title'] = 'Forum';
         $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
         $data['kategori_forum'] = $this->Tutor_model->Kategori_Forum();
+        $data['forum'] = $this->Tutor_model->getAllForum($config["per_page"], $data['page']);
+        $data['pagination'] = $this->pagination->create_links();
 
         if($this->input->post('submit')){
-            $kategori = $this->input->post('id_kategori');
+            $kategori = $this->input->post('id_kategori_materi');
+            $keyword = $this->input->post('keyword');
 
             // $data['cek_forum'] = $this->Tutor_model->cek_forum_by_kategori($kategori);
-            $data['forum'] = $this->Tutor_model->Search($kategori);
+            $data['forum'] = $this->Tutor_model->Cari_Forum($kategori, $keyword, $config["per_page"], $data['page']);
         }
 
         $this->load->view('template/header2_tutor', $data);
@@ -412,11 +475,44 @@ class Tutor extends CI_Controller {
         $this->load->view("Tutor/TPrivate_Chat",$data);
         $this->load->view('template/footer2_tutor', $data);        
     }
+
     public function carichat(){
-        $keyword=  $this->input->post('keyword');        
-        $data['title'] = 'Private Chat';        
-        $data['hasilsearch'] = $this->Tutor_model->searchchat($keyword);
-        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
+        $keyword=  $this->input->post('keyword'); 
+
+        $config['base_url'] = site_url('Tutor/carichat'); //site url
+        $config['total_rows'] = $this->Tutor_model->hitung_mahasiswa_for_search($keyword); //total row
+        $config['per_page'] = 3;  //show record per halaman
+        $config["uri_segment"] = 3;  // uri parameter
+        $choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = floor($choice);
+
+        $config['first_link']       = 'First';
+        $config['last_link']        = 'Last';
+        $config['next_link']        = 'Next';
+        $config['prev_link']        = 'Prev';
+        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav></div>';
+        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+        $config['num_tag_close']    = '</span></li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['prev_tagl_close']  = '</span>Next</li>';
+        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+        $config['first_tagl_close'] = '</span></li>';
+        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['last_tagl_close']  = '</span></li>';
+
+        $this->pagination->initialize($config);
+        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $data['title'] = 'Private Chat';
+        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));        
+        $data['hasilsearch'] = $this->Tutor_model->searchchat($keyword, $config["per_page"], $data['page']);
+        $data['pagination'] = $this->pagination->create_links();
+
         $this->load->view('template/header2_tutor', $data);
         $this->load->view("Tutor/Search_Private_Chat",$data);
         $this->load->view('template/footer2_tutor', $data);        

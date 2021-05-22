@@ -62,7 +62,7 @@
                                     <?php $no=1; foreach($materi as $m):?>
                                     <tr>
                                         <td><?=$no++?></td>
-                                        <td><img src="<?= base_url('upload/cover_materi/'.$m['cover'])?>" style="height: 70px; width: 70px;"></td>
+                                        <td><img src="<?= base_url('upload/cover_materi/'.$m['cover'])?>" style="height: 70px; width: 100px;"></td>
                                         <td><?=$m["nama_materi"];?></td>
                                         <td class="datatable-ct">
                                             <a href="<?= base_url();?>Tutor/Detail_Materi/<?=$m["id_materi"];?>" class="pd-setting-ed"><i class="fa fa-eye" aria-hidden="true"></i></a>
