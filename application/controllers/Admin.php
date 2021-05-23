@@ -190,7 +190,7 @@ class Admin extends CI_Controller {
             if($action == 'terima') {
                 // execute code to log in
                 $this->Admin_model->status_pendaftaran($id);
-                echo"<script>alert('Tutor Telah Diterima!');</script>";
+                echo"<script>alert('Tutor Berhasil Diterima!');</script>";
                 redirect('admin/data_tutor', 'refresh');
             }
             if($action == 'tolak') {

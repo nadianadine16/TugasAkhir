@@ -412,19 +412,22 @@ class User extends CI_Controller {
     {        
         $data['title'] = 'Private Chat';  
 		$id = $this->session->userdata('id_mahasiswa');
+        $this->form_validation->set_rules('message', 'message', 'required');
+        
+        if($this->form_validation->run() == TRUE) {
+            if ($this->input->server('REQUEST_METHOD') === 'POST') {
+                $message = $this->input->post('message');
 
-		if ($this->input->server('REQUEST_METHOD') === 'POST') {
-			$message = $this->input->post('message');
+                $data  = [
+                    'from' =>$id,
+                    'to' =>$to,
+                    'message'=>$message,				
+                ];
 
-			$data  = [
-				'from' =>$id,
-				'to' =>$to,
-				'message'=>$message,				
-			];
-
-			$this->db->insert('private_chat',$data);
-			redirect('User/Chat/'.$to);
-		} else {
+                $this->db->insert('private_chat',$data);
+                redirect('User/Chat/'.$to);
+            } 
+        }else {
 			$this->db->where_in('from', [$id,$to]);
 			$this->db->where_in('to', [$id,$to]);
 			$this->db->order_by('created_at', 'ASC');
@@ -461,6 +464,7 @@ class User extends CI_Controller {
 		$result .= '</div>';
 		echo $result;
 	}
+    
     
 }
 ?>

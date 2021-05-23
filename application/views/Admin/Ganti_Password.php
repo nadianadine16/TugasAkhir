@@ -32,7 +32,7 @@
                 </div>
                 <?php endif; ?>
                 <div class="product-payment-inner-st">
-                <form action="<?=base_url('Admin/profile')?>" method="post">
+                <form action="<?=base_url('Admin/profile')?>" method="post" onsubmit="return validasi_input(this)">
                 <input type="hidden" name="id_admin" value="<?= $this->session->userdata('id_admin');?>">
                 <div class="form-group">
                     <label for="nama_kategori">Password Lama</label>
@@ -48,3 +48,14 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+function validasi_input(form){
+  var mincar = 9;
+  if (form.password_baru.value.length < mincar){
+    alert("Password Minimal 8 karakter!");
+    form.password_baru.focus();
+    return (false);
+  }  
+   return (true);
+}
+</script>

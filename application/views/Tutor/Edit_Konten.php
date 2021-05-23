@@ -49,6 +49,7 @@
                 </div>
                 <div class="form-group">
                     <label for="file_pendukung">Unggah File Pendukung</label>
+                        <input type="hidden" name="old_file" value="<?= $konten['file_pendukung'];?>" />
                         <input type="file" class="form-control" id="file_pendukung" name="file_pendukung">
                         <p style="color:#808080;">Format .pdf</p>
                 </div>

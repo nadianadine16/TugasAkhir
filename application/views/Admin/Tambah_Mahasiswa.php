@@ -32,7 +32,7 @@
                 </div>
                 <?php endif; ?>
                 <div class="product-payment-inner-st">
-                <form action="<?=base_url('Admin/tambah_data_mahasiswa')?>" method="post">
+                <form action="<?=base_url('Admin/tambah_data_mahasiswa')?>" method="post" onsubmit="return validasi_input(this)">
                 <div class="form-group">
                     <label for="nim">NIM</label>
                         <input type="text" class="form-control" id="nim" name="nim" required autocomplete="off">
@@ -83,3 +83,31 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+function validasi_input(form){
+  var mincar = 10;
+  if (form.nim.value.length > mincar){
+    alert("NIM Maksimal 10 karakter!");
+    form.nim.focus();
+    return (false);
+  }
+  else{
+    if (form.nim.value != ""){
+        var x = (form.nim.value);
+        var status = true;
+        var list = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+        for (i=0; i<=x.length-1; i++){
+            if (x[i] in list) cek = true;
+            else cek = false;
+        status = status && cek;
+        }
+        if (status == false){
+            alert("NIM harus angka");
+            form.nim.focus();
+            return false;
+        }
+    }    
+  }
+   return (true);
+}
+</script>

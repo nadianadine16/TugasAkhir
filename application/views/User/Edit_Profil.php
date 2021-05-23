@@ -38,7 +38,7 @@
               </div>
               <div class="form-group">
                 <label><b>Alamat Github</b></label>
-                <input type="text" class="form-control" name="github" id="github" value="<?= $this->session->userdata('github');?>" style="width:1000px;"/>                
+                <input type="text" class="form-control" name="github" id="github" value="<?= $this->session->userdata('github');?>" style="width:1000px;" required/>                
               </div>
               <div class="text-center">
                 <center><button type="submit" class="btn btn-primary" style="margin-left:35%;">Edit</button></center>

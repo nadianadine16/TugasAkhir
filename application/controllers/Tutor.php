@@ -69,9 +69,10 @@ class Tutor extends CI_Controller {
 
         $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');
         $this->form_validation->set_rules('id_kategori_materi', 'id_kategori_materi', 'required');
+        $this->form_validation->set_rules('surat_pernyataan', 'surat_pernyataan', 'required');
         
         if($this->form_validation->run() == FALSE) {
-            echo"<script>alert('Tidak Terdaftar');</script>";
+            echo"<script>alert('Surat Pernyataan Wajib Diisi');</script>";
             redirect('Tutor/Daftar_Tutor','refresh');
         }
         else {
@@ -115,6 +116,7 @@ class Tutor extends CI_Controller {
 
     public function Hapus_Materi($id_materi) {
         $this->Tutor_model->Hapus_Materi($id_materi);
+        echo"<script>alert('Materi Berhasil Dihapus!');</script>";
         redirect('Tutor/Data_Materi','refresh');
     }
 
@@ -128,7 +130,7 @@ class Tutor extends CI_Controller {
         $this->form_validation->set_rules('id_kategori_materi', 'id_kategori_materi', 'required');
         $this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
         $this->form_validation->set_rules('requirement', 'requirement', 'required');
-        $this->form_validation->set_rules('id_tutor', 'id_tutor', 'required');
+        $this->form_validation->set_rules('id_tutor', 'id_tutor', 'required');        
 
         if($this->form_validation->run() == FALSE) {
             $this->load->view('template/header2_tutor',$data);
@@ -353,9 +355,14 @@ class Tutor extends CI_Controller {
         $berhasil=$this->Tutor_model->search1($keyword);
         $data['tampil']=$this->Tutor_model->search2($keyword);
         $gagal['cekPendaftaranTolak']=$this->Tutor_model->search3($keyword);
+        $cek = $this->Tutor_model->ketersediaanNim($keyword);
 
         if($berhasil){
             $this->load->view('tutor/hasil_search_berhasil',$data);
+        }
+        else if (empty($cek)) {
+            echo"<script>alert('Nim Anda Salah');</script>";
+            redirect('Tutor/Cek_Status_pendaftaran','refresh');
         }
         else{
             echo"<script>alert('Mohon maaf anda gagal / belum mendaftar menjadi tutor');</script>";

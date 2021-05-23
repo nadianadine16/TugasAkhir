@@ -49,8 +49,9 @@
                 </div>
                 <div class="form-group">
                     <label for="cover">Unggah Gambar</label>
+                        <input type="hidden" name="old_image" value="<?= $materi['cover'];?>" />
                         <input type="file" class="form-control" id="cover" name="cover">
-                        <p style="color:#808080;">Format .jpg .png</p>
+                        <p style="color:#808080;">Format .jpg .png || <?=$materi['cover'];?></p>
                 </div>
                 <center><button type="submit" name="submit" class="btn btn-primary float-right">Edit</button></center>
             </form>

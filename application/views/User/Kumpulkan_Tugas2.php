@@ -36,7 +36,7 @@
 
             <div class="form-group">            
               <label for="nim"><b>Masukkan Link Github Tugas Anda</b></label>
-              <input type="text" class="form-control" id="tugas" name="tugas" required><br>              
+              <input type="text" class="form-control" id="tugas" name="tugas" required autocomplete="off"><br>              
               <center><button type="submit" class="btn btn-primary" id= "button" name="submit" class="btn btn-primary float-right">Submit</button></center>                        
             </form>
         </div>      

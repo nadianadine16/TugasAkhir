@@ -84,6 +84,7 @@
             if($this->upload->do_upload('cover')) {
                 return $this->upload->data("file_name");
             }
+            return $this->input->post('old_image', true);
         }
 
         public function Detail_materi($id_materi) {
@@ -167,6 +168,7 @@
             if($this->upload->do_upload('file_pendukung')) {
                 return $this->upload->data("file_name");
             }
+            return $this->input->post('old_file', true);
         } 
 
         public function Hapus_materi($id_materi) {
@@ -410,6 +412,13 @@
             $this->db->join('mahasiswa', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');        
             $query = $this->db->get();
             return $query->result_array();
+        }
+        public function ketersediaanNim($keyword){
+            $this->db->select('*');
+            $this->db->from('mahasiswa');
+            $this->db->where('nim', $keyword);
+            $query = $this->db->get();                        
+            return $query->result_array();            
         }
 
         public function mahasiswa($limit, $start) {            
