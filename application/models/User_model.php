@@ -35,16 +35,50 @@ class User_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
-    public function daftar_tutor() {
+
+    public function daftar_tutor($limit, $start) {
         $status= '2';
         
         $this->db->select('*');
         $this->db->from('tutor');
         $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');
+        $this->db->join('kategori_materi', 'kategori_materi.id_kategori_materi = tutor.id_kategori_materi');
         $this->db->where('status', $status);
+        $this->db->limit($limit,$start);
+
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    //SEMENTARA BUAT HASIL CARI TUTOR BLM ADA PAGINATION
+    public function daftar_tutor2() {
+        $status= '2';
+        
+        $this->db->select('*');
+        $this->db->from('tutor');
+        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');
+        $this->db->join('kategori_materi', 'kategori_materi.id_kategori_materi = tutor.id_kategori_materi');
+        $this->db->where('status', $status);
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function Cari_Tutor($kategori, $keyword) {
+        $kategori=$this->input->post('id_kategori_materi');
+        $keyword=$this->input->post('keyword');
+
+        $this->db->select('*');
+        $this->db->from('tutor');
+        $this->db->join('kategori_materi', 'tutor.id_kategori_materi = kategori_materi.id_kategori_materi');
+        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');            
+        $this->db->like('tutor.id_kategori_materi', $kategori); 
+        $this->db->like('mahasiswa.nama', $keyword);         
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function tutor($limit, $start){
         $this->db->select('*');
         $this->db->from('mahasiswa');
@@ -55,6 +89,7 @@ class User_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+
     public function search2($keyword2){
         $this->db->select('*');
         $this->db->from('mahasiswa');
@@ -65,6 +100,7 @@ class User_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+
     public function hitung_tutor(){
         $this->db->select('*');
         $this->db->from('mahasiswa');
@@ -72,16 +108,16 @@ class User_model extends CI_Model {
         
         $query = $this->db->get();
         return $query->num_rows();
-        
     }
+
     public function namaTujuan($send_to){
         $this->db->select('nama');
         $this->db->from('mahasiswa');
         $this->db->where('id_mahasiswa', $send_to);
         $query = $this->db->get();
         return $query->result_array();        
-        
     }
+
     public function daftar_materi_limit() {
         $this->db->select('*');
         $this->db->from('materi');

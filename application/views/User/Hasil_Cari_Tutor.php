@@ -21,7 +21,11 @@
     </div>
 
     <div class="row">
-        <?php foreach($nama_tutor as $n):?>
+      <?php if($nama_tutor == NULL) {?>
+        <center><br><br><br><p style="margin-left:60%;width:100%;">Sayang sekali, tutor yang Anda cari tidak ditemukan. <b>Silahkan coba lagi.<br><br><br></b></center>
+      <?php }
+      else {?>
+          <?php foreach($nama_tutor as $n):?>
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" style="margin-top:30px;">
           <a href="<?=base_url()?>User/Detail_Tutor/<?=$n['id_tutor'];?>">
             <div class="member">
@@ -39,13 +43,14 @@
             </div>
           </a>
           </div>          
-        <?php endforeach;?>         
+        <?php endforeach;?>  
+      <?php }?>         
     </div>
 
-    <div class="row">
+    <!-- <div class="row">
       <div class="col">
           <?php echo $pagination; ?>
       </div>
-    </div>
+    </div> -->
   </div>
 </section>

@@ -1,7 +1,7 @@
 <section id="gallery" class="gallery">
 
-  <div class="container" style="margin-top:50px">
-  <h2 style="color:#3c5466"><b><center>Forum Diskusi</center></b></h2><br>
+  <div class="container" style="margin-top:30px;background-color: #f4fbfe;">
+  <h2><b><center><br>Forum Diskusi</center></b></h2><br>
     <?php $no=1; foreach($detail_pertanyaan as $p):?>
       <?php $tgl = $p["created_at"];?>
       <p><b><?= $p["nama"];?></b> pada <?php echo date("d-F-Y", strtotime($tgl));?></p>
@@ -9,7 +9,7 @@
     <p><b>Pertanyaan</b> : <?=$p["pertanyaan"];?></p>
     <?php endforeach;?>
     <hr>
-    <div class ="kotak" id= "kotak"style="margin-top:20px ; height:400px; display:block;  overflow:auto;">
+    <div class ="kotak" id= "kotak"style="margin-top:20px ; height:700px;; display:block;  overflow:auto;">
     <?php if($jawaban_forum == NULL) {?>
               <center><p style="margin-top:10%;font-size:16px;">Forum ini belum ada yang menjawab. <b>Jadilah yang pertama!</b></p></center>
             <?php }
@@ -26,7 +26,7 @@
       <?php endforeach;?>
       <?php }?>
     </div>
-    <h5 style="margin-left:45%;"><b>Balas Forum </b></h5>
+    <h5 style="margin-left:45%;"><b><br>Balas Forum </b></h5>
     <div class="kolom-komentar" style="width:100%;margin-top:10px;margin-left:-30px;">        
            <form action="<?=base_url('User/Jawab_Forum/'.$p['id_forum'])?>" method="post" >
               <input type="hidden" name="id_user" value="<?= $this->session->userdata('id_mahasiswa');?>">
@@ -35,7 +35,7 @@
                 <textarea class="form-control" name="chat" rows="5" data-rule="required" data-msg="Masukkan Jawaban Anda" placeholder="Tulis Jawaban Anda Disini . . . "></textarea>
                 <div class="validate"></div>
               </div>
-              <center><button type="submit" class="btn btn-primary" style="margin-left:4%;">Kirim</button></div>
+              <center><button type="submit" class="btn btn-primary" style="margin-left:4%;margin-bottom:20px;">Kirim</button></div>
             </form>
         </div>
       </div>

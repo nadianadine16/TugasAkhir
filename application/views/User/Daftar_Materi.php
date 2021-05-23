@@ -4,16 +4,13 @@
       <br><br><h2>Daftar Materi</h2>              
     </div>
     <div class="row">      
-      <div class="col-md-5">
-        <form action ="<?= base_url('user/carimateri');?>" method="post">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search.." name="keyword" autocomplete="off" autofocus>
-            <div class="input-group-append">
-              <input class="btn btn-primary" type="submit" name="submit"></button>
-            </div>
-          </div>
+      <div class="col-md-5" style="margin-left:71%;margin-bottom:30px;">
+        <form class="form-inline" action ="<?= base_url('User/carimateri');?>" method="post">
+          <input type="text" class="form-control" placeholder="Cari Materi . . ." name="keyword" autocomplete="off" autofocus required> 
+          <input class="btn btn-primary" type="submit" name="submit">
         </form>
       </div>
+    </div>
     <div class="row">
       <?php if($daftar_materi == NULL) {?>
       <center><p style="width:100%;margin-left:100%;">Sayang sekali, materi pada kategori ini belum ada :)</p></center>
@@ -24,7 +21,7 @@
         <a href="<?= base_url();?>user/daftarKonten/<?=$d['id_materi'];?>">
           <div class="member">
             <div class="member-img">
-              <img src="<?= base_url('upload/cover_materi/'.$d['cover'])?>" class="img-fluid" alt="">               
+              <img src="<?= base_url('upload/cover_materi/'.$d['cover'])?>" class="img-fluid" alt="" style="width:280px; height:150px;">               
             </div>
             <div class="member-info">
               <h4><?= $d["nama_materi"]?></h4>

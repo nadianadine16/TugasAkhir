@@ -1,7 +1,7 @@
 <br>
 <div class="widgets-programs-area">
     <div class="container-fluid">
-        <center><h3>- Informasi Cepat Admin -</h3><br></center>
+        <center><h3>- Dashboard Admin -</h3><br></center>
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                 <div class="hpanel widget-int-shape responsive-mg-b-30">
