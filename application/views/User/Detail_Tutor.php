@@ -45,22 +45,22 @@
 <section id="team" class="team section" style="background-color: #f4fbfe;">
   <div class="container" >
     <div class="section-title">
-      <h4><b>Materi Anda</b></h4>              
+      <h4><b>Materi Tutor</b></h4>              
     </div>
     <div class="row"> 
-    <table id="tabel-materi" class="table table-striped table-bordered" width="200%" cellspacing="0" style="border-width:3px;">
+    <table id="tabel-materi" class="table table-striped table-bordered" width="100%" cellspacing="0" style="border-width:3px;">
     <thead>
         <tr>
             <th><center>No</center></th>
-            <th><center>Nama Materi</center></th>
+            <th><center>Nama Materi yang Diunggah</center></th>
             <th><center>Aksi</center></th>
         </tr>
     </thead>
     <tbody>
         <?php $no=1; foreach($materi as $m):?>
         <tr>
-            <td style="width:5%;"><center><?=$no++;?></center></td>
-            <td><?=$m["nama_materi"];?></a></td>
+            <td><center><?=$no++;?></center></td>
+            <td style="width:1000px;"><?=$m["nama_materi"];?></a></td>
             <td><a href="<?= base_url();?>user/daftarKonten/<?=$m['id_materi'];?>"><center><button class="btn btn-primary btn-sm">Lihat Materi</button></center></a></td>
         </tr>
         <?php endforeach;?>

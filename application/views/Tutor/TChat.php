@@ -48,7 +48,7 @@ x y{
 	<?php endforeach;?> 
 	<div class="container">	
 		<div id="tmp">
-		<div class="border rounded" id="border_rounded" style="width:100%;height:500px;;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">
+		<div class="border rounded" id="border_rounded" style="background-color:#ffffff;width:100%;height:500px;;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">
 				<?php 
 				$id = $this->session->userdata('id_mahasiswa');
 				foreach ($chats as $item) {

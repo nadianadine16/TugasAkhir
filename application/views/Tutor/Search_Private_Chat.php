@@ -4,9 +4,11 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcome-list single-page-breadcome">
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div class="breadcome-heading">
-                            </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <form class="form-inline" action ="<?= base_url('Tutor/carichat');?>" method="post">
+                          <input type="text" class="form-control" placeholder="Cari Mahasiswa.." name="keyword" autocomplete="off" autofocus required> 
+                          <input class="btn btn-primary" type="submit" name="submit">
+                        </form>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
@@ -22,43 +24,36 @@
 </div>
 
 <center><h3>Private Chat</h3></center>
-<div class="row" style="margin-left:12px;">      
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <div class="breadcome-heading">
-        <form action ="<?= base_url('Tutor/carichat');?>" method="post" class="sr-input-func">
-                <input type="text" placeholder="Search..." class="search-int form-control">
-                <a href="#"><i class="fa fa-search"></i></a>
-            </form>
+<div class="container-fluid">   
+  <div class="courses-area" style="margin-top:30px">
+    <div class="container-fluid">
+      <?php if(count($hasilsearch)>0) {?>
+        <div class="row">
+          <?php $no=1; foreach($hasilsearch as $n):?>  
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="width:99%;"><br>
+              <div class="courses-inner res-mg-b-30">
+                <div class="courses-title">                                
+                  <h2><?=$n["nama"];?></h2>
+                </div>          
+                <div class="course-des">
+                  <p><b>NIM:</b> <?=$n["nim"];?></p>
+                  <p><b>Jurusan:</b> <?=$n["prodi"];?></p>
+                  <p><b>Prodi:</b> <?=$n["jurusan"]?></p>
+                  <a type="button" href="<?= base_url();?>Tutor/Chat/<?=$n['id_mahasiswa'];?>" class="btn btn-primary" style="float:right;margin-top:-6%;">Chat</a>
+                </div>
+              </div>
+            </div>                  
+          <?php endforeach;?>
         </div>
-    </div>
-  <!-- <div class="col-md-5">
-    <form action ="<?= base_url('Tutor/carichat');?>" method="post">
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Search.." name="keyword" autocomplete="off" autofocus>
-      <div class="input-group-append">
-        <input class="btn btn-primary" type="submit" name="submit"></button>
+      <?php } 
+      else {?>
+        <center>Sepertinya kata yang Anda cari kurang tepat. Coba sekali lagi</center>
+      <?php }?>
+      <div class="row">
+        <div class="col">
+          <?php echo $pagination; ?>
+        </div>
       </div>
     </div>
-    </form>
-  </div>       -->
-<div class="courses-area" style="margin-top:30px">
-  <div class="container-fluid">
-    <div class="row">
-      <?php $no=1; foreach($hasilsearch as $hs):?>  
-        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="width:100%;"><br>
-          <div class="courses-inner res-mg-b-30">
-            <div class="courses-title">                                
-              <h2><?=$hs["nama"];?></h2>
-            </div>          
-            <div class="course-des">
-              <p><b>NIM:</b> <?=$hs["nim"];?></p>
-              <p><b>Jurusan:</b> <?=$hs["prodi"];?></p>
-              <p><b>Prodi:</b> <?=$hs["jurusan"]?></p>
-              <a type="button" href="<?= base_url();?>Tutor/Chat/<?=$hs['id_mahasiswa'];?>" class="btn btn-primary" style="float:right;margin-top:-6%;">Chat</a>
-            </div>
-          </div>
-        </div>                  
-      <?php endforeach;?>
-    </div>    
-  </div>
-</div>        
+  </div>  
+</div>         
