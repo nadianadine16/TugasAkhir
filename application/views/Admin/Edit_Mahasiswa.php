@@ -52,11 +52,7 @@
                 </div>
                 <div class="form-group">
                     <label for="status">Jurusan</label>
-                    <select class="form-control" id="jurusan" name="jurusan">
-                        <?php foreach($jurusan as $a) : ?>
-                            <option value="<?=($a)?>" selected><?=($a)?></option>
-                        <?php endforeach;?>
-                    </select>
+                    <input type="text" class="form-control" id="jurusan" name="jurusan" readonly value="<?=$mahasiswa['jurusan'];?>">
                 </div> 
                 <div class="form-group">
                     <label for="status">Prodi</label>

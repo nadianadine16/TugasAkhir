@@ -50,7 +50,7 @@
 </div>
 <script type="text/javascript">
 function validasi_input(form){
-  var mincar = 9;
+  var mincar = 8;
   if (form.password_baru.value.length < mincar){
     alert("Password Minimal 8 karakter!");
     form.password_baru.focus();

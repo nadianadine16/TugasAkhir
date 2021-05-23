@@ -101,7 +101,7 @@
                                                         } 
                                                     ?>
                                                     <?php if($k["file_pendukung"] != NULL){?>
-                                                        <p><b>File Pendukung</b><br><a href="<?= base_url('upload/materi/'.$k["file_pendukung"])?>"><?=$k["file_pendukung"];?></a></p>
+                                                        <p><b>File Pendukung</b><br><a href="<?= base_url('upload/materi/'.$k["file_pendukung"])?>" style="color:#4682B4;"><?=$k["file_pendukung"];?></a></p>
                                                     <?php
                                                         } 
                                                     else { ?>

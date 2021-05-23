@@ -79,6 +79,19 @@ class User_model extends CI_Model {
         return $query->result_array();
     }
 
+    public function Search_Chat($keyword) {
+        $keyword=$this->input->post('keyword');
+
+        $this->db->select('*');
+        $this->db->from('tutor');
+        $this->db->join('kategori_materi', 'tutor.id_kategori_materi = kategori_materi.id_kategori_materi');
+        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');            
+        $this->db->like('mahasiswa.nama', $keyword);         
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function tutor($limit, $start){
         $this->db->select('*');
         $this->db->from('mahasiswa');

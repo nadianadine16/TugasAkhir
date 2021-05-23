@@ -74,7 +74,7 @@
                                                         <div class="form-group">
                                                             <label for="foto">Unggah Foto Profil</label>
                                                             <input type="file" class="form-control" id="foto" name="foto">
-                                                            <p style="color:#808080;">Format .jpg .png Maks 500Kb</p>
+                                                            <p style="color:#808080;">Format .jpg .png Maks 500Kb || <?=$t2['foto'];?></p>
                                                         </div>
                                                         <center><button type="submit" name="submit" class="btn btn-primary float-right">Edit</button></center>
                                                     <?php endforeach;?>

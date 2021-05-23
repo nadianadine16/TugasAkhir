@@ -38,11 +38,6 @@
                     <label for="judul">Judul</label>
                         <input type="text" class="form-control" id="judul" name="judul" autocomplete="off" value="<?=$konten["judul"];?>">
                 </div>
-                <!-- <div class="form-group">
-                    <label for="video">Unggah Video</label>
-                        <input type="file" class="form-control" id="video" name="video">
-                        <p style="color:#808080;">Format .mp4</p>
-                </div> -->
                 <div class="form-group">
                     <label for="video">Link Video</label>
                         <input type="text" class="form-control" id="video" name="video" autocomplete="off" value="<?=$konten["video"];?>">
@@ -51,7 +46,7 @@
                     <label for="file_pendukung">Unggah File Pendukung</label>
                         <input type="hidden" name="old_file" value="<?= $konten['file_pendukung'];?>" />
                         <input type="file" class="form-control" id="file_pendukung" name="file_pendukung">
-                        <p style="color:#808080;">Format .pdf</p>
+                        <p style="color:#808080;">Format .pdf || <?=$konten['file_pendukung'];?></p>
                 </div>
                 <div class="form-group">
                     <label for="soal">Soal Latihan</label>

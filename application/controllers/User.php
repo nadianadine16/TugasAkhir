@@ -17,15 +17,7 @@ class User extends CI_Controller {
     {
         $data['title'] ='Dashboard User';
         $data['kategori_materi'] = $this->User_model->getAllKategoriMateri();
-        $data['nama_tutor'] = $this->User_model->daftar_tutor();
-        $data['daftar_materi_limit'] = $this->User_model->daftar_materi_limit();
-        $data['jumlah_tutor'] = $this->User_model->jumlah_tutor();
-        $data['jumlah_konten'] = $this->User_model->jumlah_konten();
-        $data['jumlah_materi'] = $this->User_model->jumlah_materi();
-        $data['jumlah_kategori'] = $this->User_model->jumlah_kategori();
 
-        // $this->load->view('template/header_user', $data);
-        // $this->load->view('user/index', $data);
         $this->load->view('user/Utama', $data);
         $this->load->view('template/footer_user', $data);
     }
@@ -409,14 +401,23 @@ class User extends CI_Controller {
         $this->load->view('template/footer_user', $data);        
     }
     public function cariChat(){
-        $keyword2=  $this->input->post('keyword');        
+        $keyword=  $this->input->post('keyword'); 
+
         $data['title'] = 'Private Chat';        
-        $data['caritutor'] = $this->User_model->search2($keyword2);
+        $data['caritutor'] = $this->User_model->search2($keyword);
+        $data['nama_tutor'] = $this->User_model->daftar_tutor2();
+
+        if($this->input->post('submit')){
+            $keyword = $this->input->post('keyword');
+
+            $data['nama_tutor'] = $this->User_model->Search_Chat($keyword);
+        }
 
         $this->load->view('template/header_user', $data);
         $this->load->view("user/SearchChat",$data);
         $this->load->view('template/footer_user', $data);        
     }
+
     public function Private_Chat(){       
         $config['base_url'] = site_url('User/Private_Chat'); //site url
         $config['total_rows'] = $this->User_model->hitung_tutor(); //total row

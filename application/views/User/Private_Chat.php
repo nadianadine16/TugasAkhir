@@ -1,6 +1,6 @@
 <section id="team" class="team" style="margin-top:50px">  
   <div class="section-title">
-    <br><h2><center><b>Chat Tutor - Mahasiswa</b></center></h2>            
+    <br><h2><center><b>Chat Bersama Tutor</b></center></h2>            
   </div>
   <div class="col-md-3" style="margin-left:66%;margin-top: 0px;">
         <form action ="<?= base_url('user/cariChat');?>" method="post">
