@@ -73,7 +73,7 @@ class Tutor extends CI_Controller {
 
         $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');
         $this->form_validation->set_rules('id_kategori_materi', 'id_kategori_materi', 'required');
-        $this->form_validation->set_rules('surat_pernyataan', 'surat_pernyataan', 'required');
+        // $this->form_validation->set_rules('surat_pernyataan', 'surat_pernyataan', 'required');
         
         if($this->form_validation->run() == FALSE) {
             echo"<script>alert('Surat Pernyataan Wajib Diisi');</script>";
