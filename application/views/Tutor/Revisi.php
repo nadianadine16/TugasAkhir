@@ -8,7 +8,6 @@
 }
 </style>
 
-
 <div class="breadcome-area">
     <div class="container-fluid">
         <div class="row">
@@ -21,8 +20,9 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
-                                <li><a href="#">Home</a> <span class="bread-slash">/</span></li>
-                                <li><span class="bread-blod">Revisi</span></li>
+                                <li><a href="<?= base_url();?>/Tutor/index" style="color:#088ccf;">Home</a> <span class="bread-slash">/</span></li>
+                                <li><a href="<?= base_url();?>/Tutor/Tugas_mahasiswa" style="color:#088ccf;">Tugas Mahasiswa</a> <span class="bread-slash">/</span></li>
+                                <li><span class="bread-blod">Tambah Revisi</span></li>
                             </ul>
                         </div>
                     </div>
@@ -31,8 +31,6 @@
         </div>
     </div>
 </div>
-
-
 
 <div class="single-pro-review-area mt-t-30 mg-b-15">
     <div class="container-fluid">

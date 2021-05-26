@@ -4,15 +4,15 @@
 
     class Tutor_model extends CI_Model {
 
-        public function Hitung_Forum() {
+        public function Hitung_Forum() { //function untuk menghitung forum
             return $this->db->count_all('forum');
         }
 
-        public function Hitung_Materi() {
+        public function Hitung_Materi() { //menghitung materi sesuai id_tutor yang sedang login
             return $this->db->get_where('materi', array('id_tutor' => $this->session->userdata('id_tutor') ))->num_rows();
         }
 
-        public function Hitung_Konten() {
+        public function Hitung_Konten() { //menghitung konten sesuai dengan id tutor yang sedan login
             $this->db->select('*');
             $this->db->from('konten');
             $this->db->join('materi', 'materi.id_materi = konten.id_materi');
@@ -22,30 +22,21 @@
             return $query->num_rows();
         }
 
-        // public function Hitung_Konten($id_konten) {
-        //     return $this->db->get_where('konten', array('id_konten' => $this->session->userdata('id_materi') ))->num_rows();
-        // }
-
-        public function Hitung_Tugas_Mahasiswa() {
+        public function Hitung_Tugas_Mahasiswa() { //menghitung tugas mhs sesuai dengan id_maeri yang dimiliki tutor yg
             return $this->db->get_where('tugas', array('id_materi' => $this->session->userdata('id_materi') ))->num_rows();
         }
         
-        public function getAllKategoriMateri() {
+        public function getAllKategoriMateri() { //menampilkan semua data kategori mater
             $query = $this->db->get('kategori_materi');
             return $query->result_array();
         }
 
-        public function getNim() {
+        public function getNim() { //menampilkan NIM yang tidak terdaftar sebagai tutor
             $query=$this->db->query("SELECT * FROM mahasiswa WHERE NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = mahasiswa.id_mahasiswa)");
             return $query->result_array();
         }
 
-        public function cekNim($nim) {
-            $query=$this->db->query("SELECT m.id_mahasiswa FROM mahasiswa m WHERE m.nim= $nim AND NOT EXISTS (SELECT * FROM tutor t WHERE t.id_mahasiswa = m.id_mahasiswa)");
-            return $query;
-        }
-
-        public function Tambah_Tutor() {
+        public function Tambah_Tutor() { //mendaftar tutor
             $status = 1;
 
             $this->id_tutor = uniqid();
@@ -60,8 +51,8 @@
         }
 
         public function upload_surat_pernyataan() {
-            $config['upload_path'] = './upload/';
-            $config['allowed_types'] = 'pdf|docx';
+            $config['upload_path'] = './upload/'; //file akan disimpan di dalam folder upload
+            $config['allowed_types'] = 'pdf'; //ekstensi yang diizinkan hanya pdf
             $config['overwrite'] = true;
 
             $this->upload->initialize($config);
@@ -71,7 +62,7 @@
             }
         }
         
-        public function Tambah_Materi() {
+        public function Tambah_Materi() {  //menambah materi
             $this->id_materi = uniqid();
             $data = [
                 "nama_materi" => $this->input->post('nama_materi', true),
@@ -84,9 +75,9 @@
             $this->db->insert('materi', $data);
         }
 
-        public function upload_cover() {
-            $config['upload_path'] = './upload/cover_materi/';
-            $config['allowed_types'] = 'jpg|png';
+        public function upload_cover() { //mengupload cover materi
+            $config['upload_path'] = './upload/cover_materi/'; //file akan disimpan di dalam folder upload/cover_materi
+            $config['allowed_types'] = 'jpg|png'; //ekstensi yang diizinkan hanya jpg dan png
             $config['overwrite'] = true;
 
             $this->upload->initialize($config);
@@ -97,7 +88,7 @@
             return $this->input->post('old_image', true);
         }
 
-        public function Detail_materi($id_materi) {
+        public function Detail_materi($id_materi) { //get data materi sesuai dengan id_materi
             $this->db->select('*');
             $this->db->from('konten');
             $this->db->join('kategori_materi', 'materi.id_kategori_materi = kategori_materi.id_kategori_materi');
@@ -106,7 +97,7 @@
             return $query->result_array();
         }
 
-        public function Konten($id_materi) {
+        public function Konten($id_materi) { //menampilkan semua data konten sesuai id_materi yang dipilih
             $this->db->select('*');
             $this->db->from('konten');
             $this->db->join('materi', 'materi.id_materi = konten.id_materi');
@@ -115,7 +106,7 @@
             return $query->result_array();
         }
 
-        public function Cek_Jawaban($id_forum) {
+        public function Cek_Jawaban($id_forum) { //pemeriksaan jawaban forum kosong/tidak
             $this->db->select('*');
             $this->db->from('chat_forum');
             $this->db->join('forum', 'forum.id_forum = chat_forum.id_forum');
@@ -124,7 +115,7 @@
             return $query->result_array();
         }
 
-        public function getMateriByIdTutor($id_tutor) {
+        public function getMateriByIdTutor($id_tutor) { //get materi sesuai dengan id_tutor yang sedang login
             $this->db->select('*');
             $this->db->from('materi');
             $this->db->join('kategori_materi', 'materi.id_kategori_materi = kategori_materi.id_kategori_materi');
@@ -134,7 +125,7 @@
             return $query->result_array();
         }
 
-        public function getMateriByIdMateri($id_materi) {
+        public function getMateriByIdMateri($id_materi) { //get materi sesuai dengan id_materi
             $this->db->select('*');
             $this->db->from('materi');
             $this->db->join('kategori_materi', 'materi.id_kategori_materi = kategori_materi.id_kategori_materi');
@@ -143,34 +134,21 @@
             return $query->result_array();
         }
 
-        public function Tambah_Konten() {
+        public function Tambah_Konten() { //menambah konten
             $this->id_konten = uniqid();
             $data = [
                 "judul" => $this->input->post('judul', true),
                 "id_materi" => $this->input->post('id_materi', true),
                 "soal" => $this->input->post('soal', true),
-                // "video" => $this->upload_video(),
                 "video" => $this->input->post('video', true),
                 "file_pendukung" => $this->upload_file_pendukung()
             ];
             $this->db->insert('konten', $data);
         }
 
-        public function upload_video() {
-            $config['upload_path'] = './upload/materi/';
-            $config['allowed_types'] = 'mp4|3gp|flv';
-            $config['overwrite'] = true;
-
-            $this->upload->initialize($config);
-            $this->load->library('upload',$config);
-            if($this->upload->do_upload('video')) {
-                return $this->upload->data("file_name");
-            }
-        } 
-
-        public function upload_file_pendukung() {
-            $config['upload_path'] = './upload/materi/';
-            $config['allowed_types'] = 'pdf';
+        public function upload_file_pendukung() { //mengupload file pendukung di setiap konten
+            $config['upload_path'] = './upload/materi/'; //file pendukung akan tersimpan di dalam folder upload/materi
+            $config['allowed_types'] = 'pdf'; //ekstensi yang dizinkan hanya pdf
             $config['overwrite'] = true;
 
             $this->upload->initialize($config);
@@ -181,25 +159,25 @@
             return $this->input->post('old_file', true);
         } 
 
-        public function Hapus_materi($id_materi) {
+        public function Hapus_materi($id_materi) { //menghapus materi sesuai id_materi yg dipilih
             return $this->db->delete('materi',array("id_materi"=>$id_materi));
         }
 
-        public function Hapus_Konten($id_konten) {
+        public function Hapus_Konten($id_konten) { //menghapus konten sesuai id_konten yg dipilih
             return $this->db->delete('konten',array("id_konten"=>$id_konten));
         }
 
-        public function getMateriById($id_materi) {
+        public function getMateriById($id_materi) { //get materi sesuai id_materi
             $query=$this->db->get_where('materi',array('id_materi'=>$id_materi));
             return $query->row_array();
         }
 
-        public function getKontenById($id_konten) {
+        public function getKontenById($id_konten) { //get konten sesuai id_konten
             $query=$this->db->get_where('konten',array('id_konten'=>$id_konten));
             return $query->row_array();
         }
 
-        public function Edit_Materi($id_materi) {
+        public function Edit_Materi($id_materi) { //edit materi sesuai id_materi
             $post=$this->input->post();
             $this->id_materi = $post["id_materi"];
             $this->nama_materi = $post["nama_materi"];
@@ -212,7 +190,7 @@
             $this->db->update('materi',$this, array('id_materi' => $post['id_materi']));
         }
 
-        public function Edit_Konten($id_konten) {
+        public function Edit_Konten($id_konten) { //edit konten sesuai id_konten
             $post=$this->input->post();
             $this->id_konten = $post["id_konten"];
             $this->id_materi = $post["id_materi"];
@@ -224,7 +202,7 @@
             $this->db->update('konten',$this, array('id_konten' => $post['id_konten']));
         }
 
-        public function getAllTugasUnVerif() {
+        public function getAllTugasUnVerif() { //get semua data tugas mhs yg blm di verifikasi (status = Diajukan)
             $status = 'Diajukan';
 
             $this->db->select('*');
@@ -236,7 +214,7 @@
             return $query->result_array();
         }
 
-        public function getAllRevisiTugas() {
+        public function getAllRevisiTugas() { //get semua data tugas mhs yg direvisi (status = revisi)
             $status = 'Revisi';
 
             $this->db->select('*');
@@ -248,7 +226,7 @@
             return $query->result_array();
         }
 
-        public function getAllTugasVerif() {
+        public function getAllTugasVerif() { //get semua data tugas mhs yg diverifikasi (status = disetujui)
             $status = 'Disetujui';
 
             $this->db->select('*');
@@ -260,18 +238,18 @@
             return $query->result_array();
         }
 
-        public function Verifikasi_Tugas($id_tugas) {
-            $this->db->set('status', 'Disetujui');
+        public function Verifikasi_Tugas($id_tugas) { //proses verifikasi tugas
+            $this->db->set('status', 'Disetujui'); //mengubah status tugas menjadi disetujui sesuai id_tugas
             $this->db->where('id_tugas',$id_tugas);
         
             $this->db->update("tugas");
         }
 
-        public function Hapus_Tugas($id_tugas) {
+        public function Hapus_Tugas($id_tugas) { //menghapus tugas sesuai id_tugas yg dipilih
             return $this->db->delete('tugas',array("id_tugas"=>$id_tugas));
         }
 
-        public function Kritik_Saran() {
+        public function Kritik_Saran() { //mengirim kritik dan saran
             $this->id_kritiksaran = uniqid();
             $data = [
                 "subject" => $this->input->post('subject', true),
@@ -281,18 +259,7 @@
             $this->db->insert('kritik_saran', $data);
         }
 
-        public function Cari_Materi($kayword) {
-            $keyword=$this->input->post('keyword');
-
-            $this->db->select('*');
-            $this->db->from('materi');
-            $this->db->join('kategori_materi', 'materi.id_kategori_materi = kategori_materi.id_kategori_materi');
-            $this->db->like('materi.nama_materi', $keyword);
-            $query = $this->db->get();
-            return $query->result_array();
-        }
-
-        public function getAllForum($limit, $start){
+        public function getAllForum($limit, $start){ //menampilkan forum per page
             $this->db->select('*');
             $this->db->from('forum');
             $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
@@ -304,7 +271,7 @@
             return $query->result_array();
         }
 
-        public function detail_pertanyaan($id_forum) {
+        public function detail_pertanyaan($id_forum) { //menampilkan detail pertanyaan forum sesuai id_forum
             $this->db->select('*');
             $this->db->from('forum');
             $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
@@ -314,7 +281,7 @@
             return $query->result_array();
         }
     
-        public function Jawab_Forum($id) {
+        public function Jawab_Forum($id) { //menjawab forum sesuai forum yang dipilih
             $this->id_chat_forum = uniqid();
             date_default_timezone_set('Asia/Jakarta');
     
@@ -328,7 +295,7 @@
             $this->db->insert('chat_forum', $data);
         }
     
-        public function jawaban($id) {
+        public function jawaban($id) { //menampilkan jawaban forum sesuai id_forum
             $this->db->select('*');
             $this->db->from('chat_forum');
             $this->db->join('mahasiswa', 'chat_forum.id_user = mahasiswa.id_mahasiswa');
@@ -337,48 +304,22 @@
             $this->db->order_by('chat_forum.created_at','ASC');
             $query = $this->db->get();
             return $query->result_array();
-        }
-
-        public function hitungJawaban($id)
-        {
-            $this->db->select('COUNT(id_chat_forum)');
-            $this->db->from('chat_forum');
-            $this->db->where('id_forum', $id);
-            $query = $this->db->get();
-            return $query->result_array();                                
-        }
-        public function getAllKategoriForum(){
-            $this->db->select('kategori_materi.id_kategori_materi, kategori_materi.nama_kategori, COUNT(forum.id_kategori_materi) AS total');
-            $this->db->from('kategori_materi');
-            $this->db->join('forum', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
-            $this->db->group_by('forum.id_kategori_materi');         
-            $query = $this->db->get();
-            return $query->result_array();            
-        }       
+        }    
         
-        public function Kategori_Forum() {
+        public function Kategori_Forum() { //get semua data kategori forum
             $query = $this->db->get('kategori_materi');
             return $query->result_array();
         }
 
-        public function cek_forum() {
+        public function cek_forum() { //memeriksa apakah forum kosong atau tidak
             $this->db->select('*');
             $this->db->from('forum');
                    
             $query = $this->db->get();
             return $query->result_array();
         } 
-        
-        // public function cek_forum_by_kategori($keyword) {
-        //     $this->db->select('*');
-        //     $this->db->from('forum');
-        //     $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
-                   
-        //     $query = $this->db->get();
-        //     return $query->result_array();
-        // } 
 
-        public function Cari_Forum($kategori, $keyword, $limit, $start){
+        public function Cari_Forum($kategori, $keyword, $limit, $start){ //menampilkan hasil cari forum berdasarkan katgeori/pertanyaan per page
             $kategori=$this->input->post('id_kategori_materi');
             $keyword=$this->input->post('keyword');
 
@@ -395,15 +336,11 @@
             return $query->result_array();
         }
 
-        public function search1($keyword){
-            // $status = 2;
-            // $query=$this->db->query("SELECT * FROM mahasiswa m JOIN tutor t on t.id_mahasiswa = m.id_mahasiswa where m.nim = '$keyword' and t.status = '2' LIMIT 1 ");
-            // return $query;
+        public function search1($keyword){ //get data NIM yang dicari sesuai keyword dengan limit 1
             $this->db->select('*');
             $this->db->from("mahasiswa AS t2");
-            $this->db->join("tutor AS t1", "t2.id_mahasiswa = t1.id_mahasiswa");  # confirm user_order_id in both table
+            $this->db->join("tutor AS t1", "t2.id_mahasiswa = t1.id_mahasiswa");
             $this->db->where('nim',$keyword);
-            // $this->db->where(array('status'=>$status));
             $this->db->limit(1);
     
             $query = $this->db->get();
@@ -413,24 +350,26 @@
             else {
                 return false;
             }
-            // return $query->result();
         }
-        public function search2($keyword){            
+
+        public function search2($keyword){ //get data NIM calon tutor yg masih blm di verifikasi
             $this->db->select('*');
             $this->db->from("mahasiswa AS t2");
-            $this->db->join("tutor AS t1", "t2.id_mahasiswa = t1.id_mahasiswa");  # confirm user_order_id in both table
+            $this->db->join("tutor AS t1", "t2.id_mahasiswa = t1.id_mahasiswa");
             $this->db->where('nim',$keyword);            
             $query = $this->db->get();
             return $query->result();
         }
-        public function search3(){
+
+        public function search3(){ //memeriksa apakah tutor diterima/tidak
             $this->db->select('*');
             $this->db->from('tutor');
             $this->db->join('mahasiswa', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');        
             $query = $this->db->get();
             return $query->result_array();
         }
-        public function ketersediaanNim($keyword){
+
+        public function ketersediaanNim($keyword){ //cek NIM terdaftar/tidak dalam data mhs sesuai keyword
             $this->db->select('*');
             $this->db->from('mahasiswa');
             $this->db->where('nim', $keyword);
@@ -438,7 +377,7 @@
             return $query->result_array();            
         }
 
-        public function mahasiswa($limit, $start) {            
+        public function mahasiswa($limit, $start) { //menampilkan data mhs per page untuk halaman private chat         
             $this->db->select('*');
             $this->db->from('mahasiswa');
             $this->db->where('NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = mahasiswa.id_mahasiswa)', '', FALSE);
@@ -447,7 +386,8 @@
             $query = $this->db->get();
             return $query->result_array();
         }
-        public function searchchat($keyword, $limit, $start) {  
+
+        public function searchchat($keyword, $limit, $start) { //get hasil cari data mahasiswa sesuai keyword untuk private chat per page
             $keyword=$this->input->post('keyword');          
             $this->db->select('*');
             $this->db->from('mahasiswa');
@@ -459,34 +399,22 @@
             return $query->result_array();            
         }
 
-        public function hitung_mahasiswa_for_search($keyword) {            
+        public function hitung_mahasiswa_for_search($keyword) { //menghitung jumlah mahasiswa untuk hasil serach mhs di private chat         
             $query=$this->db->query("SELECT count(*) FROM mahasiswa WHERE NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = mahasiswa.id_mahasiswa) AND mahasiswa.nama like '%$keyword%'");
             return $query->num_rows();
-
-            // $this->db->select('count(*) as allcount');
-            // $this->db->from('mahasiswa');
-            // $this->db->where('NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = mahasiswa.id_mahasiswa)', '', FALSE);
-        
-            // if($keyword != ''){
-            // $this->db->like('mahasiswa.nama', $keyword);
-            // $query = $this->db->get();
-            // return $query->num_rows();
-            // }
-            // $result = $query->result_array();
-            // return $result[0]['allcount'];
         }
 
-        public function hitung_mahasiswa() {            
+        public function hitung_mahasiswa() { //menghitung jumlah mahasiswa untuk ditampilkan di private chat
             $query=$this->db->query("SELECT * FROM mahasiswa WHERE NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = mahasiswa.id_mahasiswa)");
             return $query->num_rows();
         }
 
-        public function hitung_forum_for_search() {            
+        public function hitung_forum_for_search() { //menghitung jumlah forum untuk hasil serach forum
             $query=$this->db->query("SELECT * FROM forum");
             return $query->num_rows();
         }
 
-        public function namaTujuan($send_to){
+        public function namaTujuan($send_to){ //get nama untuk tujuan mengirim chat
             $this->db->select('nama');
             $this->db->from('mahasiswa');
             $this->db->where('id_mahasiswa', $send_to);
@@ -494,7 +422,7 @@
             return $query->result_array();                    
         }
 
-        public function kategori_header($id) {
+        public function kategori_header($id) { //get kategori yang dimiliki tutor yg sedang login
             $this->db->select('nama_kategori');
             $this->db->from('kategori_materi');
             $this->db->where('id_kategori_materi', $id);
@@ -502,7 +430,7 @@
             return $query->result_array(); 
         }
 
-        public function Profil($id_tutor)
+        public function Profil($id_tutor) //get data sesuai dengan id_tutor yg dipilih
         {
             $this->db->select('*');
             $this->db->from('tutor'); 
@@ -513,7 +441,7 @@
             return $query->result_array();                        
         }
 
-        public function Edit_Profil() {
+        public function Edit_Profil() { //mengubah profil tutor
             $data = [
                 "id_mahasiswa" => $this->input->post('id_mahasiswa', true),
                 "nim" => $this->input->post('nim', true),
@@ -530,9 +458,9 @@
             $this->db->update('mahasiswa', $data);
         }
 
-        public function upload_foto() {
-            $config['upload_path'] = './upload/';
-            $config['allowed_types'] = 'jpg|png';
+        public function upload_foto() { //upload foto profil tutor
+            $config['upload_path'] = './upload/'; //file akan disimpan di dalam folder upload
+            $config['allowed_types'] = 'jpg|png'; //ekstensi yg diizinkan adalah jpg dan png
             $config['overwrite'] = true;
 
             $this->upload->initialize($config);
@@ -542,8 +470,9 @@
             }
         }
 
-        public function revisi($id_tugas) {
+        public function revisi($id_tugas) { //menambah revisi tugas mhs sesuai dengan id_tugas
             $post=$this->input->post();
+
             $this->id_tugas = $post["id_tugas"];
             $this->revisi = $post["revisi"];
             $this->status = $post["status"];
@@ -551,26 +480,15 @@
             $this->db->update('tugas',$this, array('id_tugas' => $post['id_tugas']));
         }
 
-        public function getTugasById($id_tugas) {
+        public function getTugasById($id_tugas) { //get data tugas sesuai dengan did_tugas
             $query=$this->db->get_where('tugas',array('id_tugas'=>$id_tugas));
             return $query->row_array();
         }
-        public function getCountKontenFavorit(){
+
+        public function getCountKontenFavorit(){ //menghitung jumlah konten terfavorit yg dimiliki tutor yg sedang login
             $id = $this->session->userdata('id_tutor');
-            $query = $this->db->query("SELECT tugas.id_konten, konten.judul, COUNT(tugas.id_konten) AS hasil
-            FROM tugas
-            JOIN konten
-            ON konten.id_konten = tugas.id_konten
-            JOIN materi
-            ON materi.id_materi = konten.id_materi
-            JOIN tutor
-            ON tutor.id_tutor = materi.id_tutor
-            WHERE materi.id_tutor = '$id'
-            GROUP BY tugas.id_konten
-            ORDER BY hasil DESC
-            LIMIT 5");
+            $query = $this->db->query("SELECT tugas.id_konten, konten.judul, COUNT(tugas.id_konten) AS hasil FROM tugas JOIN konten ON konten.id_konten = tugas.id_konten JOIN materi ON materi.id_materi = konten.id_materi JOIN tutor ON tutor.id_tutor = materi.id_tutor WHERE materi.id_tutor = '$id' GROUP BY tugas.id_konten ORDER BY hasil DESC LIMIT 5");
             return $query->result();                             
         }  
     }
-    
 ?>

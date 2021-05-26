@@ -42,7 +42,6 @@ x y{
 </style>
 
 <section id="team" class="team section-bg" style="margin-top:30px">
-<!-- <a href="<?= base_url('User/Private_Chat') ?>" style="margin-left:9%">Back</a> -->
 	<?php foreach($nama_tujuan as $n):?>
 		<center><h4 style="font-size: 20px; padding-top:10px;padding-left:30px;margin-bottom:20px;">Mahasiswa : <b><?=$n["nama"]?></b></h4><hr style="width:85%;"></center>
 	<?php endforeach;?> 
@@ -58,17 +57,11 @@ x y{
 							<y class="me"><?= $item->message ?></y>
 						</x><br>
 						<p style="font-size:11px;float:right;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></p>
-						<!-- <div class="me"><span  style="font-size:18px;"><?= $item->message ?></span><br>
-							<span style="font-size:11px;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></span>
-						</div> -->
 					<?php }else { ?>
 						<x>
 							<y class="him"><?= $item->message ?></y>
 						</x><br>
 						<p style="font-size:11px;float:left;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></p>
-						<!-- <div class="him"><span  style="font-size:18px;"><?= $item->message ?></span><br>
-							<span style="font-size:11px;" class="text-secondary ml-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></span>
-						</div> -->
 					<?php } ?>
 				<?php } ?>
 			</div>
@@ -91,22 +84,6 @@ x y{
 </section>
 
 <script type="text/javascript">
- var objDiv = document.getElementById("mydiv");
+	var objDiv = document.getElementById("mydiv");
 	objDiv.scrollTop = objDiv.scrollHeight;
 </script> 
-<!-- <script type="text/javascript">
-	myFunction();
-
-	function myFunction() {
-	  setInterval(ajaxChat, 5000);
-	}
-
-	function ajaxChat() {
-	  $.ajax({
-	  	url: "<?= base_url('Tutor/ajax/'.$to) ?>", 
-	  	success: function(result){
-	    $("#tmp").html(result);
-	  }});
-	}
-
-</script>-->

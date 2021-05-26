@@ -11,10 +11,10 @@
                         </form>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <ul class="breadcome-menu">
-                                <li><a href="#">Home</a> <span class="bread-slash">/</span></li>
-                                <li><span class="bread-blod">Private Chat</span></li>
-                            </ul>
+                          <ul class="breadcome-menu">
+                            <li><a href="<?= base_url();?>/Tutor/index" style="color:#088ccf;">Home</a> <span class="bread-slash">/</span></li>
+                            <li><span class="bread-blod">Private Chat</span></li>
+                          </ul>
                         </div>
                     </div>                    
                 </div>
