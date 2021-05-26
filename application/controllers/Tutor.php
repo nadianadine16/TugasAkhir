@@ -20,7 +20,8 @@ class Tutor extends CI_Controller {
         $data['materi'] = $this->Tutor_model->Hitung_Materi($this->session->userdata('id_tutor'));
         $data['forum'] = $this->Tutor_model->Hitung_Forum();
         $data['konten'] = $this->Tutor_model->Hitung_Konten();
-
+        $data['hitung_konten'] = $this->Tutor_model->getCountKontenFavorit();
+        
         $this->load->view('template/header2_tutor',$data);
         $this->load->view('Tutor/Index',$data);
         $this->load->view('template/footer2_tutor',$data);

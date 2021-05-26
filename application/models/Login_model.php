@@ -16,5 +16,51 @@ class Login_model extends CI_Model {
         $query=$this->db->query("SELECT * FROM admin WHERE username='$username' AND password='$password' LIMIT 1");
         return $query;
     }
+    public function tambah_session_mahasiswa(){
+        $this->id_hitung = uniqid();
+        $id_mahasiswa = $this->session->userdata('id_mahasiswa');
+        date_default_timezone_set('Asia/Jakarta');
+        $data = [                        
+            "id_mahasiswa" => $id_mahasiswa,
+            "log_in_time" => date('Y-m-d H:i:s', time())
+        ];
+        $this->db->insert('session_mahasiswa_tutor', $data);
+        $hasil_session = $this->db->insert_id();
+        $hasil_mahasiswa = $this->db->get_where('session_mahasiswa_tutor', array('id_hitung' => $hasil_session));
+        return $hasil_mahasiswa->row_array();
+    }
+    public function edit_session_mahasiswa() {        
+        date_default_timezone_set('Asia/Jakarta');
+        $data = array(
+            'log_out_time' => date('Y-m-d H:i:s', time()),
+        );
+        $id_hitung = $this->session->userdata('id_hitung');
+        $this->db->where('id_hitung', $id_hitung);
+        $this->db->update('session_mahasiswa_tutor' ,$data);
+        return $this->db->affected_rows();        
+    }
+    public function tambah_session_tutor(){
+        $this->id_hitung = uniqid();
+        $id_tutor = $this->session->userdata('id_tutor');
+        date_default_timezone_set('Asia/Jakarta');
+        $data = [                        
+            "id_tutor" => $id_tutor,
+            "log_in_time" => date('Y-m-d H:i:s', time())
+        ];
+        $this->db->insert('session_mahasiswa_tutor', $data);
+        $hasil_session = $this->db->insert_id();
+        $hasil_tutor = $this->db->get_where('session_mahasiswa_tutor', array('id_hitung' => $hasil_session));
+        return $hasil_tutor->row_array();
+    }
+    public function edit_session_tutor() {        
+        date_default_timezone_set('Asia/Jakarta');
+        $data = array(
+            'log_out_time' => date('Y-m-d H:i:s', time()),
+        );
+        $id_hitung = $this->session->userdata('id_hitung');
+        $this->db->where('id_hitung', $id_hitung);
+        $this->db->update('session_mahasiswa_tutor' ,$data);
+        return $this->db->affected_rows();        
+    }
 }
 ?>

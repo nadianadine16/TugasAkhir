@@ -79,19 +79,6 @@ class User_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function Search_Chat($keyword) {
-        $keyword=$this->input->post('keyword');
-
-        $this->db->select('*');
-        $this->db->from('tutor');
-        $this->db->join('kategori_materi', 'tutor.id_kategori_materi = kategori_materi.id_kategori_materi');
-        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');            
-        $this->db->like('mahasiswa.nama', $keyword);         
-
-        $query = $this->db->get();
-        return $query->result_array();
-    }
-
     public function tutor($limit, $start){
         $this->db->select('*');
         $this->db->from('mahasiswa');
@@ -239,27 +226,16 @@ class User_model extends CI_Model {
     }
 
     public function tampil_tugas($id) {
-        $this->db->select('*');
-        $this->db->from('tugas');
-        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');
-        $this->db->join('konten', 'tugas.id_konten = konten.id_konten');
-        $this->db->where('konten.id_konten', $id);
-        $query = $this->db->get();
+        $id_mhs = $this->session->userdata('id_mahasiswa');
+        $query = $this->db->query("SELECT * FROM TUGAS JOIN mahasiswa ON mahasiswa.id_mahasiswa = tugas.id_mahasiswa
+        JOIN konten ON tugas.id_konten = konten.id_konten where konten.id_konten = '$id' AND tugas.id_mahasiswa = '$id_mhs'");        
         return $query->result_array();
     }
-    public function cek_tugas($id) {
-        $this->db->select('*');
-        $this->db->from('tugas');
-        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');
-        $this->db->join('konten', 'tugas.id_konten = konten.id_konten');
-        $this->db->where('konten.id_konten', $id);
-        $query = $this->db->get();
-        if($query->num_rows()==1) {
-            return $query->result_array();
-        }
-        else {
-            return false;
-        }
+    public function cek_tugas($id) { 
+        $id_mhs = $this->session->userdata('id_mahasiswa');
+        $query = $this->db->query("SELECT * FROM TUGAS JOIN mahasiswa ON mahasiswa.id_mahasiswa = tugas.id_mahasiswa
+        JOIN konten ON tugas.id_konten = konten.id_konten where konten.id_konten = '$id' AND tugas.id_mahasiswa = '$id_mhs'");
+        return $query;
     }
 
     public function tambah_tugas() {
@@ -449,6 +425,18 @@ class User_model extends CI_Model {
         $this->db->order_by('forum.created_at', 'DESC');        
         $query = $this->db->get();
         return $query->result_array();
+    }
+    public function hitungHasilCariForum(){
+        $keyword=$this->input->post('keyword');
+        $this->db->select('*');
+        $this->db->from('forum');
+        $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
+        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');            
+        $this->db->like('kategori_materi.nama_kategori', $keyword);        
+        $this->db->or_like('forum.pertanyaan', $keyword);
+        $this->db->order_by('forum.created_at', 'DESC');        
+        $query = $this->db->get();
+        return $query->num_rows();
     }
     public function countMateri($id){
         $this->db->select('COUNT(id_materi)');
