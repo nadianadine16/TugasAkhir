@@ -15,6 +15,7 @@
     <link href="<?= base_url()?>/assets_admin1/https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
     <!-- Bootstrap CSS
 		============================================ -->
+    <script src="<?= base_url()?>/assets_admin1/Chart.js"></script>
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/bootstrap.min.css">
     <!-- Bootstrap CSS
 		============================================ -->

@@ -20,6 +20,9 @@ class Admin extends CI_Controller {
         $data['kategori_materi'] = $this->Admin_model->getCountKategoriMateri();
         $data['kritik_saran'] = $this->Admin_model->getCountKritikSaran();
         $data['forum'] = $this->Admin_model->getCountForum();
+        $data['hasil']= $this->Admin_model->getCountSessionMahasiswa();        
+        $data['hasil_tutor']= $this->Admin_model->getCountSessionTutor();        
+
         $this->load->view('template/header2_admin',$data);
         $this->load->view('Admin/index',$data);
         $this->load->view('template/footer2_admin',$data);

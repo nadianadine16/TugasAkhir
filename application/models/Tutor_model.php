@@ -555,6 +555,22 @@
             $query=$this->db->get_where('tugas',array('id_tugas'=>$id_tugas));
             return $query->row_array();
         }
+        public function getCountKontenFavorit(){
+            $id = $this->session->userdata('id_tutor');
+            $query = $this->db->query("SELECT tugas.id_konten, konten.judul, COUNT(tugas.id_konten) AS hasil
+            FROM tugas
+            JOIN konten
+            ON konten.id_konten = tugas.id_konten
+            JOIN materi
+            ON materi.id_materi = konten.id_materi
+            JOIN tutor
+            ON tutor.id_tutor = materi.id_tutor
+            WHERE materi.id_tutor = '$id'
+            GROUP BY tugas.id_konten
+            ORDER BY hasil DESC
+            LIMIT 5");
+            return $query->result();                             
+        }  
     }
     
 ?>

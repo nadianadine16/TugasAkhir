@@ -41,6 +41,8 @@ class Login extends CI_Controller {
                 $this->load->view('login/index', $data);
             }
             else if($this->session->userdata('status') == 2) {
+                $login_tutor=$this->Login_model->tambah_session_tutor();            
+                $this->session->set_userdata('id_hitung',$login_tutor['id_hitung']);   
                 redirect('tutor/index');
             }
             
@@ -55,8 +57,13 @@ class Login extends CI_Controller {
             $this->session->set_userdata('prodi',$data['prodi']);
             $this->session->set_userdata('kelas',$data['kelas']);
             $this->session->set_userdata('tahun_masuk',$data['tahun_masuk']);
-            $this->session->set_userdata('github',$data['github']);
-            redirect('user/index');
+            $this->session->set_userdata('github',$data['github']);             
+            
+            $login_mahasiswa=$this->Login_model->tambah_session_mahasiswa();
+            
+            $this->session->set_userdata('id_hitung',$login_mahasiswa['id_hitung']);   
+            redirect('user/index');            
+
         }
         else if($cek_admin->num_rows() > 0){
             $data=$cek_admin->row_array();
@@ -72,7 +79,8 @@ class Login extends CI_Controller {
             $this->load->view('login/index', $data);
         }
     }
-    public function logout() {
+    public function logout() {        
+        $logout_mahasiswa = $this->Login_model->edit_session_mahasiswa();
         $this->session->sess_destroy();
         redirect('Login/index','refresh');
     }

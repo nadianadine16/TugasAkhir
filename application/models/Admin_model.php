@@ -228,5 +228,25 @@
             $query = $this->db->get();
             return $query->result_array();                             
         }
+        public function getCountSessionMahasiswa(){
+            $this->db->select('s.id_mahasiswa, m.nama, COUNT(s.id_mahasiswa) AS hitung');
+            $this->db->from('session_mahasiswa_tutor AS s');
+            $this->db->join('mahasiswa AS m', 'm.id_mahasiswa = s.id_mahasiswa');
+            $this->db->group_by('s.id_mahasiswa');
+            $this->db->order_by('hitung', 'desc');
+            $this->db->limit(5);                                                            
+            $query = $this->db->get();
+            return $query->result();                             
+        }        
+        public function getCountSessionTutor(){
+            $query = $this->db->query('SELECT session_mahasiswa_tutor.id_tutor, mahasiswa.nama, 
+            COUNT(session_mahasiswa_tutor.id_tutor) as hasilTutor FROM session_mahasiswa_tutor 
+            JOIN tutor ON session_mahasiswa_tutor.id_tutor = tutor.id_tutor JOIN mahasiswa ON 
+            mahasiswa.id_mahasiswa = tutor.id_mahasiswa GROUP BY session_mahasiswa_tutor.id_tutor 
+            ORDER BY hasilTutor DESC LIMIT 5
+            ');
+            return $query->result();                             
+        }        
+        
     }
 ?>

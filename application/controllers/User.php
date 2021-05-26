@@ -204,7 +204,7 @@ class User extends CI_Controller {
         $data['revisi_tugas'] = $this->User_model->Rev($this->session->userdata('id_mahasiswa'),$id);
 
         $cek = $this->User_model->cek_tugas($id);
-        if($cek){
+        if($cek->num_rows() > 0){
             $this->load->view('template/header_user', $data);
             $this->load->view('user/Kumpulkan_Tugas3', $data);
             $this->load->view('template/footer_user', $data);    
