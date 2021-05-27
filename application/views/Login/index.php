@@ -21,9 +21,6 @@
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="<?= base_url()?>/assets_admin/img/favicon.png?3">
-    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
   </head>
   <body>
     <div class="page-holder d-flex align-items-center">
@@ -47,7 +44,7 @@
             </form>
             <a href="<?= base_url();?>Tutor/Daftar_Tutor" class="btn btn-primary shadow px-5" style="width:250px; margin-left:100px; margin-top:10px;">Daftar Tutor</a>
             <a href="<?= base_url();?>Tutor/Cek_Status_Pendaftaran" class="btn btn-primary shadow" style="width:250px; margin-left:100px; margin-top:10px; margin-bottom:10px">Cek Status Pendaftaran</a>
-            <div class="alert alert-info" role="alert">
+            <div class="alert alert-info" role="alert" style="width:345px;margin-left:45px;">
               <?php
               if(isset($pesan)) {
                 echo $pesan;
@@ -58,10 +55,9 @@
               ?>
             </div>
           </div>
-        </div>
-        <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)                 -->
       </div>
     </div>
+
     <!-- JavaScript files-->
     <script src="<?= base_url()?>/assets_admin/vendor/jquery/jquery.min.js"></script>
     <script src="<?= base_url()?>/assets_admin/vendor/popper.js/umd/popper.min.js"> </script>
@@ -70,5 +66,6 @@
     <script src="<?= base_url()?>/assets_admin/vendor/chart.js/Chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <script src="<?= base_url()?>/assets_admin/js/front.js"></script>
+    
   </body>
 </html>

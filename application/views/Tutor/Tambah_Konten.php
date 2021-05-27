@@ -10,7 +10,11 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
-                                <li><a href="#">Home</a> <span class="bread-slash">/</span></li>
+                                <li><a href="<?= base_url();?>/Tutor/index" style="color:#088ccf;">Home</a> <span class="bread-slash">/</span></li>
+                                <li><a href="<?= base_url();?>/Tutor/data_materi" style="color:#088ccf;">Data Materi</a> <span class="bread-slash">/</span></li>
+                                <?php foreach($materi as $m):?>
+                                    <li><a href="<?= base_url('Tutor/Detail_materi/'.$m['id_materi'])?>" style="color:#088ccf;">Konten</a> <span class="bread-slash">/</span></li>
+                                <?php endforeach;?>
                                 <li><span class="bread-blod">Tambah Konten</span></li>
                             </ul>
                         </div>
@@ -44,11 +48,6 @@
                     <label for="judul">Judul</label>
                         <input type="text" class="form-control" id="judul" name="judul" autocomplete="off">
                 </div>
-                <!-- <div class="form-group">
-                    <label for="video">Unggah Video</label>
-                        <input type="file" class="form-control" id="video" name="video">
-                        <p style="color:#808080;">Format .mp4</p>
-                </div> -->
                 <div class="form-group">
                     <label for="video">Link Video</label>
                         <input type="text" class="form-control" id="video" name="video" autocomplete="off">

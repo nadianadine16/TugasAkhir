@@ -1,9 +1,51 @@
 <br>
 <div class="widgets-programs-area">
     <div class="container-fluid">
-        <center><h3>- Dashboard Admin -</h3><br></center>
+        <center><h3 style="margin-top:7px;">- Dashboard Admin -</h3><br></center>
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="charts-single-pro responsive-mg-b-30">
+                    <div class="alert-title">
+                        <h2><center>5 Mahasiswa Paling Aktif Login</center></h2>            
+                    </div>
+                    <div id="bar1-chart">
+                        <canvas id="myChart"></canvas>
+                        <?php
+                            $nama_mahasiswa= "";
+                            $jumlah=null;
+                            foreach ($hasil as $item)
+                            {
+                                $n=$item->nama;
+                                $nama_mahasiswa .= "'$n'". ", ";
+                                $jum=$item->hitung;
+                                $jumlah .= "$jum". ", ";
+                            }
+                            ?>
+                    </div>
+                </div>
+            </div>  
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="charts-single-pro responsive-mg-b-30">
+                    <div class="alert-title">
+                        <h2><center>5 Tutor Paling Aktif Login</center></h2>            
+                    </div>
+                    <div id="bar1-chart">
+                        <canvas id="myChartTutor"></canvas>
+                        <?php
+                            $nama_tutor= "";
+                            $jumlah_tutor=null;
+                            foreach ($hasil_tutor as $h)
+                            {
+                                $na=$h->nama;
+                                $nama_tutor .= "'$na'". ", ";
+                                $j=$h->hasilTutor;
+                                $jumlah_tutor .= "$j". ", ";
+                            }
+                            ?>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="margin-top:30px;">
                 <div class="hpanel widget-int-shape responsive-mg-b-30">
                     <div class="panel-body">
                         <div class="stats-title pull-left">
@@ -21,7 +63,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="margin-top:30px;">
                 <div class="hpanel widget-int-shape responsive-mg-b-30 res-tablet-mg-t-30 dk-res-t-pro-30">
                     <div class="panel-body">
                         <div class="stats-title pull-left">
@@ -39,7 +81,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="margin-top:30px;">
                 <div class="hpanel widget-int-shape res-tablet-mg-t-30 dk-res-t-pro-30">
                     <div class="panel-body">
                         <div class="stats-title pull-left">
@@ -57,7 +99,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="margin-top:30px;">
                 <div class="hpanel widget-int-shape res-tablet-mg-t-30 dk-res-t-pro-30">
                     <div class="panel-body">
                         <div class="stats-title pull-left">
@@ -75,7 +117,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12"><br>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="margin-top:30px;">
                 <div class="hpanel widget-int-shape res-tablet-mg-t-30 dk-res-t-pro-30">
                     <div class="panel-body">
                         <div class="stats-title pull-left">
@@ -96,48 +138,7 @@
         </div>
     </div>
 </div><br>
-<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <div class="charts-single-pro responsive-mg-b-30">
-        <div class="alert-title">
-            <h2><center>5 Mahasiswa Paling Aktif Login</center></h2>            
-        </div>
-        <div id="bar1-chart">
-            <canvas id="myChart"></canvas>
-            <?php
-                $nama_mahasiswa= "";
-                $jumlah=null;
-                foreach ($hasil as $item)
-                {
-                    $n=$item->nama;
-                    $nama_mahasiswa .= "'$n'". ", ";
-                    $jum=$item->hitung;
-                    $jumlah .= "$jum". ", ";
-                }
-                ?>
-        </div>
-    </div>
-</div>  
-<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <div class="charts-single-pro responsive-mg-b-30">
-        <div class="alert-title">
-            <h2><center>5 Tutor Paling Aktif Login</center></h2>            
-        </div>
-        <div id="bar1-chart">
-            <canvas id="myChartTutor"></canvas>
-            <?php
-                $nama_tutor= "";
-                $jumlah_tutor=null;
-                foreach ($hasil_tutor as $h)
-                {
-                    $na=$h->nama;
-                    $nama_tutor .= "'$na'". ", ";
-                    $j=$h->hasilTutor;
-                    $jumlah_tutor .= "$j". ", ";
-                }
-                ?>
-        </div>
-    </div>
-</div>    
+    
 <script>
 Chart.defaults.global.legend.display = false;
     var ctx = document.getElementById('myChart').getContext('2d');

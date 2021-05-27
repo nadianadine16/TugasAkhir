@@ -3,9 +3,9 @@
     {
         tanya = confirm("Anda Yakin Akan Menghapus Data ?");
         if (tanya == true) return true;
-            else return false;
+        else return false;
     }
- </script>
+</script>
 
 <div class="breadcome-area">
     <div class="container-fluid">
@@ -17,7 +17,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
-                                <li><a href="#">Home</a> <span class="bread-slash">/</span></li>
+                                <li><a href="<?= base_url();?>/Tutor/index" style="color:#088ccf;">Home</a> <span class="bread-slash">/</span></li>
                                 <li><span class="bread-blod">Data Materi</span></li>
                             </ul>
                         </div>
