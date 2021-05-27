@@ -30,6 +30,8 @@ class Tutor extends CI_Controller {
             $data['konten'] = $this->Tutor_model->Hitung_Konten();
             // menampilkan chart konten terfavorit
             $data['hitung_konten'] = $this->Tutor_model->getCountKontenFavorit();
+            //menghitung session mhs yg aktif login
+            $data['hasil']= $this->Tutor_model->getCountSessionMahasiswa(); 
             
             $this->load->view('template/header2_tutor',$data);
             $this->load->view('Tutor/Index',$data);

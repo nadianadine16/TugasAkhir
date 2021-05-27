@@ -485,6 +485,19 @@
             return $query->row_array();
         }
 
+        // menghitung session 5 mahasiswa yang sering aktif
+        public function getCountSessionMahasiswa(){
+            $this->db->select('s.id_mahasiswa, m.nama, COUNT(s.id_mahasiswa) AS hitung');
+            $this->db->from('session_mahasiswa_tutor AS s');
+            $this->db->join('mahasiswa AS m', 'm.id_mahasiswa = s.id_mahasiswa');
+            $this->db->group_by('s.id_mahasiswa');
+            $this->db->order_by('hitung', 'desc');
+            $this->db->limit(5);               
+
+            $query = $this->db->get();
+            return $query->result();                             
+        }
+
         public function getCountKontenFavorit(){ //menghitung jumlah konten terfavorit yg dimiliki tutor yg sedang login
             $id = $this->session->userdata('id_tutor');
             $query = $this->db->query("SELECT tugas.id_konten, konten.judul, COUNT(tugas.id_konten) AS hasil FROM tugas JOIN konten ON konten.id_konten = tugas.id_konten JOIN materi ON materi.id_materi = konten.id_materi JOIN tutor ON tutor.id_tutor = materi.id_tutor WHERE materi.id_tutor = '$id' GROUP BY tugas.id_konten ORDER BY hasil DESC LIMIT 5");

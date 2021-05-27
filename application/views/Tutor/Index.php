@@ -14,7 +14,7 @@
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">    
                 <div class="charts-single-pro responsive-mg-b-30">
                     <div class="alert-title">
-                        <h2><center>5 Konten Paling Favorit</center></h2>            
+                        <h2><center>Konten Terfavorit</center></h2>            
                     </div>
                     <div id="bar1-chart">
                         <canvas id="myChart"></canvas>
@@ -32,27 +32,27 @@
                     </div>
                 </div>            
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">    
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="charts-single-pro responsive-mg-b-30">
                     <div class="alert-title">
-                        <h2><center>5 Konten Paling Favorit</center></h2>            
+                        <h2><center>Mahasiswa Paling Aktif Login</center></h2>            
                     </div>
                     <div id="bar1-chart">
                         <canvas id="myChart2"></canvas>
                         <?php
-                            $nama_konten= "";
+                            $nama_mahasiswa= "";
                             $jumlah=null;
-                            foreach ($hitung_konten as $h)
+                            foreach ($hasil as $item)
                             {
-                                $na=$h->judul;
-                                $nama_konten .= "'$na'". ", ";
-                                $j=$h->hasil;
-                                $jumlah .= "$j". ", ";
+                                $n=$item->nama;
+                                $nama_mahasiswa .= "'$n'". ", ";
+                                $jum=$item->hitung;
+                                $jumlah .= "$jum". ", ";
                             }
                             ?>
                     </div>
-                </div>            
-            </div>    
+                </div>
+            </div>  
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="margin-top:30px;">
                 <div class="hpanel widget-int-shape responsive-mg-b-30">
                     <div class="panel-body">
@@ -184,7 +184,7 @@
     var barchart42 = new Chart(ctx2, {
 		type: 'bar',
 		data: {
-			labels: [<?php echo $nama_konten?>],
+			labels: [<?php echo $nama_mahasiswa?>],
 			datasets: [{
                 label: 'Dataset 1',
 				data: [<?php echo $jumlah?>],
