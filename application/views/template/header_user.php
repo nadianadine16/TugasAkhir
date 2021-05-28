@@ -32,7 +32,64 @@
 
   <!-- Template Main CSS File -->
   <link href="<?= base_url()?>/assets_user/css/style.css" rel="stylesheet">
+<style>
+.dropbtn {
+  background-color: #ffffff;
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;  
+}
 
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  width: 400px;
+  min-height:50px;
+  font-size:12px;
+  box-shadow: 0px 10px -14px 14px #FFF;
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropbtn:hover {
+  background: #ffffff;
+}
+
+.dropbtn .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ffffff;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #ffffff;}
+</style>
 </head>
 <body>
 
@@ -49,6 +106,16 @@
         </li>
         <li <?php if ($title == 'Private Chat') echo 'class="nav-item active"'; ?>>
           <a class="nav-link" href="<?=base_url()?>User/Private_Chat" style="font-family: Arial, Helvetica, sans-serif;"><b>Private Chat </b><span class="sr-only">(current)</span></a>
+        </li>
+        <li>
+          <div class="dropdown">
+          <button class="dropbtn"><i class="fa fa-bell" aria-hidden="true"></i><span class="badge"><?php echo $hitung_chat ;?></span></button>
+          <div class="dropdown-content">
+          <?php foreach($notif_chat_user as $nc):?>        
+            <a href="<?= base_url('User/change_status_chat/'.$nc['from'])?>"><b><?=$nc["nama"];?> </b><br><?=$nc['message'];?></a><hr>
+            <?php endforeach;?>
+          </div>
+          </div>        
         </li>
         <li <?php if ($title == 'Forum' || $title == 'Chat Forum') echo 'class="nav-item active"'; ?>>
           <a class="nav-link" href="<?= base_url()?>User/Forum" style="font-family: Arial, Helvetica, sans-serif;"><b>Forum </b><span class="sr-only">(current)</span></a>

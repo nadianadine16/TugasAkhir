@@ -513,5 +513,31 @@ class User_model extends CI_Model {
         $hasil = $query->row();
         return $hasil->total;
     }    
+    public function notif_chat(){
+        $id_mahasiswa = $this->session->userdata('id_mahasiswa');
+        $query = $this->db->query("SELECT private_chat.id_pesan, private_chat.from, private_chat.to, mahasiswa.nama,  private_chat.message
+        FROM private_chat
+        JOIN mahasiswa 
+        ON mahasiswa.id_mahasiswa = private_chat.from
+        WHERE private_chat.to = '$id_mahasiswa' AND private_chat.status_chat = 1
+        ORDER BY private_chat.created_at DESC");
+        return $query->result_array();
+        
+    }
+    public function change_status_chat($from){
+        $this->db->query("UPDATE private_chat as pc
+        SET pc.status_chat = 2
+        WHERE pc.id_pesan IN (SELECT pt.id_pesan FROM private_chat as pt WHERE pt.from = '$from')");        
+    }
+    public function hitung_chat(){
+        $idmhs = $this->session->userdata('id_mahasiswa');
+        $query = $this->db->query("SELECT COUNT(private_chat.from) AS total from private_chat WHERE private_chat.to = '$idmhs' AND private_chat.status_chat=1");        
+        if ($query->num_rows() > 0 )
+        {
+          $row = $query->row();
+          return $row->total;
+        }
+        return 0;      
+    }
 }
 ?>

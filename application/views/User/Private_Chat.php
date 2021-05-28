@@ -12,7 +12,8 @@
           </div>
         </form>
       </div>
-  <div class="kotak" style="width:80%; height:600px; margin-top:15%;position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+
+  <div class="kotak" style="width:80%; height:600px; margin-top:23%;position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
   <?php foreach($nama_tutor as $n):?>
     <div class="kotakSatu">    
       <div class="card border-info mb-3">
@@ -31,7 +32,7 @@
           <b>Tahun Masuk :</b> <?=$n["tahun_masuk"]?>
           </div>
           <?php }?>
-          <a href="<?= base_url();?>user/Chat/<?=$n['id_mahasiswa'];?>"style="float:right;color:#007bff; bottom: 0;right:0; padding: 15px; position: absolute;"><i class="fa fa-envelope" aria-hidden="true"></i> Chat</a>
+          <a href="<?= base_url();?>user/change_status_chat/<?=$n['id_mahasiswa'];?>"style="float:right;color:#007bff; bottom: 0;right:0; padding: 15px; position: absolute;"><i class="fa fa-envelope" aria-hidden="true"></i> Chat</a>
         </div>      
     </div>
     <?php endforeach;?>
@@ -43,3 +44,4 @@
     </div>
   </div>
     </section>
+    

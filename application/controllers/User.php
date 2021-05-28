@@ -17,7 +17,8 @@ class User extends CI_Controller {
     {
         $data['title'] ='Dashboard User';
         $data['kategori_materi'] = $this->User_model->getAllKategoriMateri();
-
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         $this->load->view('user/Utama', $data);
         $this->load->view('template/footer_user', $data);
     }
@@ -55,6 +56,8 @@ class User extends CI_Controller {
         $data['title'] ='Forum';
         $data['forum'] = $this->User_model->getAllForum($config["per_page"], $data['page']);
         $data['cek_forum'] = $this->User_model->cek_forum();
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         $data['pagination'] = $this->pagination->create_links();
 
         $this->load->view('template/header_user', $data);
@@ -65,6 +68,8 @@ class User extends CI_Controller {
     public function contactus()
     {
         $data['title'] ='Contact Us';
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         $this->load->view('template/header_user', $data);
         $this->load->view('user/contactus', $data);
         $this->load->view('template/footer_user', $data);
@@ -90,6 +95,8 @@ class User extends CI_Controller {
     public function Edit_Profil($id_mahasiswa)
     {
         $data['title'] ='Edit Profil';
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         $this->load->view('template/header_user', $data);
         $this->load->view('User/Edit_Profil', $data);
         $this->load->view('template/footer_user', $data);
@@ -97,6 +104,8 @@ class User extends CI_Controller {
 
     public function Detail_Akun($id_mahasiswa) {
         $data['title'] ='Detail Akun';        
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         $data['mahasiswa'] = $this->User_model->Detail_Akun($id_mahasiswa);
         $data['tugas'] = $this->User_model->Tugas_Mahasiswa($id_mahasiswa);
         $data['forum'] = $this->User_model->Forum_yang_dibuat($id_mahasiswa);
@@ -132,6 +141,8 @@ class User extends CI_Controller {
     public function kategoriMateri(){
         $data['title'] ='Daftar Kategori Materi';
         $data['kategori_materi'] = $this->User_model->getAllKategoriMateri();
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         $this->load->view('template/header_user', $data);
         $this->load->view('user/Kategori_Materi', $data);
         $this->load->view('template/footer_user', $data);
@@ -140,6 +151,8 @@ class User extends CI_Controller {
     public function daftarMateri($id){
         $data['title'] ='Daftar Materi';
         $data['daftar_materi'] = $this->User_model->daftar_materi($id);
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
 
         $this->load->view('template/header_user', $data);
         $this->load->view('user/Daftar_Materi', $data);
@@ -147,6 +160,8 @@ class User extends CI_Controller {
     }
     public function daftarMateribyKategori(){
         $data['title'] ='Daftar Materi';
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         $kategori = htmlspecialchars($this->input->post('id_kategori_materi'));
         $data_session = array(
             'id_kategori_materi' => $kategori
@@ -166,6 +181,8 @@ class User extends CI_Controller {
     public function daftar_materi($id) {
         $data['title'] ='Daftar Materi';
         $data['daftar_materi'] = $this->User_model->daftar_materi_byKategori($id);
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
 
         $this->load->view('template/header_user', $data);
         $this->load->view('user/Daftar_Materi', $data);
@@ -179,6 +196,8 @@ class User extends CI_Controller {
         $data['materi'] = $this->User_model->getMateriByIdMateri($id);
         $data['konten'] = $this->User_model->Konten($id);
         $data['count'] = $this->User_model->getCountTugas($id);
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
 
         $this->load->view('template/header_user', $data);
         $this->load->view('user/Daftar_Konten2', $data);
@@ -188,6 +207,8 @@ class User extends CI_Controller {
     public function detailKonten($id){
         $data['title'] ='Detail Materi';
         $data['detail_materi'] = $this->User_model->detail_konten($id);    
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
 
         $this->load->view('template/header_user', $data);
         $this->load->view('user/Detail_Materi', $data);
@@ -202,6 +223,8 @@ class User extends CI_Controller {
         $data['tugas_by_id'] = $this->User_model->tampil_tugas($id);
         $data['tugas'] = $this->User_model->Tugas_Mahasiswa($this->session->userdata('id_mahasiswa'));
         $data['revisi_tugas'] = $this->User_model->Rev($this->session->userdata('id_mahasiswa'),$id);
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
 
         $cek = $this->User_model->cek_tugas($id);
         if($cek->num_rows() > 0){
@@ -218,7 +241,8 @@ class User extends CI_Controller {
 
     public function tambah_tugas($id_konten){
         $data['title'] = 'Tambah Tugas';
-
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         $this->form_validation->set_rules('id_konten', 'id_konten', 'required');
         $this->form_validation->set_rules('tugas', 'tugas', 'required');
         $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');
@@ -237,7 +261,8 @@ class User extends CI_Controller {
 
     public function revisi_tugas($id_tugas, $id_konten) {
         $data['title'] = 'Revisi Tugas';
-
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         $this->form_validation->set_rules('id_konten', 'id_konten', 'required');
         $this->form_validation->set_rules('tugas', 'tugas', 'required');
         $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');
@@ -258,7 +283,8 @@ class User extends CI_Controller {
     public function Tanya_Forum() {
         $data['title'] ='Forum';
         $data['KategoriMateri'] = $this->User_model->getAllKategoriMateri();
-
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         $this->form_validation->set_rules('pertanyaan', 'pertanyaan', 'required');
 
         if($this->form_validation->run() == FALSE) {
@@ -278,7 +304,8 @@ class User extends CI_Controller {
         $data['detail_pertanyaan'] = $this->User_model->detail_pertanyaan($id);
         $data['jawaban'] = $this->User_model->jawaban($id);
         $data['jawaban_forum'] = $this->User_model->Cek_Jawaban($id);
-
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         $this->load->view('template/header_user', $data);
         $this->load->view('user/Detail_Forum', $data);
         $this->load->view('template/footer_user', $data);
@@ -288,7 +315,8 @@ class User extends CI_Controller {
         $data['title'] ='Detail Tutor';        
         $data['detail'] = $this->User_model->detailTutor($id);
         $data['materi'] = $this->User_model->Daftar_Materi_by_tutor($id);
-
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         $this->load->view('template/header_user', $data);
         $this->load->view('user/Detail_Tutor', $data);
         $this->load->view('template/footer_user', $data);
@@ -326,7 +354,8 @@ class User extends CI_Controller {
         $data['kategori_tutor'] = $this->User_model->getAllKategoriMateri();
         $data['nama_tutor'] = $this->User_model->daftar_tutor($config["per_page"], $data['page']);
         $data['pagination'] = $this->pagination->create_links();
-
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         $this->load->view('template/header_user', $data);
         $this->load->view('user/SeeAllTutor', $data);
         $this->load->view('template/footer_user', $data);
@@ -336,7 +365,8 @@ class User extends CI_Controller {
         $data['title'] ='Daftar Tutor';
         $data['kategori_tutor'] = $this->User_model->getAllKategoriMateri();
         $data['nama_tutor'] = $this->User_model->daftar_tutor2();
-
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         if($this->input->post('submit')){
             $kategori = $this->input->post('id_kategori_materi');
             $keyword = $this->input->post('keyword');
@@ -352,7 +382,8 @@ class User extends CI_Controller {
     public function Jawab_Forum($id) {
         $data['title'] ='Forum';
         $data['detail_pertanyaan'] = $this->User_model->detail_pertanyaan($id);
-
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         $this->form_validation->set_rules('chat', 'chat', 'required');
 
         if($this->form_validation->run() == FALSE) {
@@ -368,7 +399,8 @@ class User extends CI_Controller {
     }
     public function Jawab_Private_Chat($id_mahasiswa, $id_tutor) {
         $data['title'] ='Private Chat';        
-
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         $this->form_validation->set_rules('isi_pesan', 'isi_pesan', 'required');
 
         if($this->form_validation->run() == FALSE) {
@@ -386,7 +418,8 @@ class User extends CI_Controller {
         $keyword=  $this->input->post('keyword');        
         $data['title'] = 'Forum';        
         $data['forum'] = $this->User_model->search();
-
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         $this->load->view('template/header_user', $data);
         $this->load->view("user/Search",$data);
         $this->load->view('template/footer_user', $data);        
@@ -395,14 +428,16 @@ class User extends CI_Controller {
         $keyword=  $this->input->post('keyword');        
         $data['title'] = 'Daftar Materi';        
         $data['cari_materi'] = $this->User_model->search3();
-
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         $this->load->view('template/header_user', $data);
         $this->load->view("user/SearchMateri",$data);
         $this->load->view('template/footer_user', $data);        
     }
     public function cariChat(){
         $keyword=  $this->input->post('keyword'); 
-
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         $data['title'] = 'Private Chat';        
         $data['caritutor'] = $this->User_model->search2($keyword);
         $data['nama_tutor'] = $this->User_model->daftar_tutor2();
@@ -448,20 +483,29 @@ class User extends CI_Controller {
         $this->pagination->initialize($config);
         $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
         $data['title'] = 'Private Chat';      
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         $id = $this->session->userdata('id_mahasiswa');
         $data['nama_tutor'] = $this->User_model->tutor($config["per_page"], $data['page']);        
         $data['pagination'] = $this->pagination->create_links();
-                
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         $this->load->view('template/header_user', $data);
         $this->load->view("user/Private_Chat",$data);
         $this->load->view('template/footer_user', $data);        
     }    
-
+    public function change_status_chat($from){
+        $this->User_model->change_status_chat($from);
+        redirect('User/Chat/'.$from,'refresh');
+    }
+        
     public function Chat($to)
     {        
         $data['title'] = 'Private Chat';  
 		$id = $this->session->userdata('id_mahasiswa');
         $this->form_validation->set_rules('message', 'message', 'required');
+        $data['notif_chat_user'] = $this->User_model->notif_chat();
+        $data['hitung_chat']= $this->User_model->hitung_chat();
         
         if($this->form_validation->run() == TRUE) {
             if ($this->input->server('REQUEST_METHOD') === 'POST') {
@@ -480,7 +524,7 @@ class User extends CI_Controller {
 			$this->db->where_in('from', [$id,$to]);
 			$this->db->where_in('to', [$id,$to]);
 			$this->db->order_by('created_at', 'ASC');
-			$data['to'] = $to;
+			$data['to'] = $to;            
 			$data['chats'] = $this->db->get('private_chat')->result();
             $data['nama_tujuan'] = $this->User_model->namaTujuan($to);
             
