@@ -50,10 +50,13 @@
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-  display: none;
+  height:200px;
+  display:none;
+  overflow:auto;
+  /* display: none; */
   position: absolute;
   background-color: #ffffff;
-  width: 400px;
+  width: 300px;
   min-height:50px;
   font-size:12px;
   box-shadow: 0px 10px -14px 14px #FFF;
