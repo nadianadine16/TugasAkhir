@@ -38,7 +38,7 @@
               <p><b>NIM:</b> <?=$n["nim"];?></p>
               <p><b>Jurusan:</b> <?=$n["prodi"];?></p>
               <p><b>Prodi:</b> <?=$n["jurusan"]?></p>
-              <a type="button" href="<?= base_url();?>Tutor/Chat/<?=$n['id_mahasiswa'];?>" class="btn btn-primary" style="float:right;margin-top:-6%;">Chat</a>
+              <a type="button" href="<?= base_url();?>Tutor/change_status_chat_tutor/<?=$n['id_mahasiswa'];?>" class="btn btn-primary" style="float:right;margin-top:-6%;">Chat</a>
             </div>
           </div>
         </div>                  

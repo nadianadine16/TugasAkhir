@@ -31,7 +31,10 @@ class Tutor extends CI_Controller {
             // menampilkan chart konten terfavorit
             $data['hitung_konten'] = $this->Tutor_model->getCountKontenFavorit();
             //menghitung session mhs yg aktif login
-            $data['hasil']= $this->Tutor_model->getCountSessionMahasiswa(); 
+            $data['hasil']= $this->Tutor_model->getCountSessionMahasiswa();
+            //notifikasi private chat
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
             
             $this->load->view('template/header2_tutor',$data);
             $this->load->view('Tutor/Index',$data);
@@ -49,6 +52,9 @@ class Tutor extends CI_Controller {
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
             // menampilkan data profil tutor yang sedang login
             $data['tutor'] = $this->Tutor_model->Profil($id_tutor);
+            //notifikasi private chat
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             $this->load->view('template/header2_tutor', $data);
             $this->load->view('Tutor/Profil', $data);
@@ -66,6 +72,9 @@ class Tutor extends CI_Controller {
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
             // get data sesuai dengan id_tutor yang dipilih
             $data['tutor'] = $this->Tutor_model->Profil($id_tutor);
+            //notifikasi private chat
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
     
             // form validation untuk memeriksa kelengkapan isian form
             $this->form_validation->set_rules('github', 'github', 'required');        
@@ -97,6 +106,9 @@ class Tutor extends CI_Controller {
         $data['mahasiswa'] = $this->Tutor_model->getNim();
         // menampilkan semua data kategori materi
         $data['KategoriMateri'] = $this->Tutor_model->getAllKategoriMateri();
+        //notifikasi private chat
+        $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+        $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
         $this->load->view('Tutor/Daftar_Tutor', $data);
         $this->load->view('template/footer_tutor',$data);
@@ -137,6 +149,9 @@ class Tutor extends CI_Controller {
             $id_tutor = $this->session->userdata('id_tutor');
             // get materi sesuai dengan id_tutor yang sedang login
             $data['materi'] = $this->Tutor_model->getMateriByIdTutor($id_tutor);
+            //notifikasi private chat
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             $this->load->view('template/header2_tutor',$data);
             $this->load->view('Tutor/Data_Materi', $data);
@@ -153,6 +168,9 @@ class Tutor extends CI_Controller {
             $data['kategori_materi'] = $this->Tutor_model->getAllKategoriMateri();
             $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
+            //notifikasi private chat
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             // form validation untuk memeriksa kelengkapan isian form
             $this->form_validation->set_rules('nama_materi', 'nama_materi', 'required');
@@ -200,6 +218,9 @@ class Tutor extends CI_Controller {
             $data['materi'] = $this->Tutor_model->getMateriById($id_materi);
             // menampilkan semua data kategori materi untuk form edit materi
             $data['kategori_materi'] = $this->Tutor_model->getAllKategoriMateri();
+            //notifikasi private chat
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
             
             // form validation untuk memeriksa kelengkapan isian form
             $this->form_validation->set_rules('nama_materi', 'nama_materi', 'required');
@@ -235,6 +256,9 @@ class Tutor extends CI_Controller {
             $data['materi'] = $this->Tutor_model->getMateriByIdMateri($id_materi);
             // get data konten sesuai dengan id_materi yang dipilih
             $data['konten'] = $this->Tutor_model->Konten($id_materi);
+            //notifikasi private chat
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             $this->load->view('template/header2_tutor',$data);
             $this->load->view('Tutor/Detail_Materi', $data);
@@ -252,6 +276,9 @@ class Tutor extends CI_Controller {
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
             // get data materi sesuai id_materi
             $data['materi'] = $this->Tutor_model->getMateriByIdMateri($id_materi);
+            //notifikasi private chat
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             // form validation untuk memeriksa kelengkapan isian form
             $this->form_validation->set_rules('judul', 'judul', 'required');
@@ -283,6 +310,9 @@ class Tutor extends CI_Controller {
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
             // get data konten sesuai dengan id_konten
             $data['konten'] = $this->Tutor_model->getKontenById($id_konten);
+            //notifikasi private chat
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             // form validation untuk memeriksa kelengkapan isian form
             $this->form_validation->set_rules('judul', 'judul', 'required');
@@ -331,6 +361,9 @@ class Tutor extends CI_Controller {
             $data['revisi_tugas'] = $this->Tutor_model->getAllRevisiTugas();
             // menampilkan semua tugas mhs yang telah diverifikasi (status = disetujui)
             $data['tugasverif'] = $this->Tutor_model->getAllTugasVerif();
+            //notifikasi private chat
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             $this->load->view('template/header2_tutor',$data);
             $this->load->view('Tutor/Tugas_mahasiswa', $data);
@@ -348,6 +381,9 @@ class Tutor extends CI_Controller {
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
             // get data tugas sesuai dengan id_tugas
             $data['tugas'] = $this->Tutor_model->getTugasById($id_tugas);
+            //notifikasi private chat
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             // form validation memeriksa kelengkapan isian form
             $this->form_validation->set_rules('revisi', 'revisi', 'required');
@@ -401,6 +437,9 @@ class Tutor extends CI_Controller {
             $data['title'] = 'Kritik dan Saran';
             $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
+            //notifikasi private chat
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             // form validation untuk memeriksa kelengkapan isian form
             $this->form_validation->set_rules('kritik_saran', 'Kritik dan Saran', 'required');
@@ -467,6 +506,9 @@ class Tutor extends CI_Controller {
             $data['kategori_forum'] = $this->Tutor_model->Kategori_Forum();
             // memeriksan ada forum atau tidak
             $data['cek_forum'] = $this->Tutor_model->cek_forum();
+            //notifikasi private chat
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             $this->load->view('template/header2_tutor',$data);
             $this->load->view('Tutor/Forum', $data);
@@ -488,6 +530,9 @@ class Tutor extends CI_Controller {
             $data['jawaban'] = $this->Tutor_model->jawaban($id);
             // memeriksa apakah jawaban forum sedang kosong atau sudah terisi sesuai dengan id_forum
             $data['jawaban_forum'] = $this->Tutor_model->Cek_Jawaban($id);
+            //notifikasi private chat
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             $this->load->view('template/header2_tutor', $data);
             $this->load->view('Tutor/Detail_Forum', $data);
@@ -505,6 +550,9 @@ class Tutor extends CI_Controller {
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
             // menampilkan detail forum
             $data['detail_pertanyaan'] = $this->Tutor_model->detail_pertanyaan($id);
+            //notifikasi private chat
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             // form validation untuk memeriksa kelengkapan isian form
             $this->form_validation->set_rules('chat', 'chat', 'required');
@@ -563,6 +611,9 @@ class Tutor extends CI_Controller {
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
             // menampilkan kategori forum
             $data['kategori_forum'] = $this->Tutor_model->Kategori_Forum();
+            //notifikasi private chat
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
             // menampilkan hasil forum yang dicari per page
             $data['forum'] = $this->Tutor_model->getAllForum($config["per_page"], $data['page']);
             // membuat pagination
@@ -604,6 +655,9 @@ class Tutor extends CI_Controller {
         $gagal['cekPendaftaranTolak']=$this->Tutor_model->search3($keyword);
         // memeriksa ketersediaan nim yang telah didaftarkan
         $cek = $this->Tutor_model->ketersediaanNim($keyword);
+        //notifikasi private chat
+        $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+        $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
         if($berhasil){
             $this->load->view('tutor/hasil_search_berhasil',$data);
@@ -652,6 +706,9 @@ class Tutor extends CI_Controller {
             $data['title'] = 'Private Chat';  
             $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor')); 
+            //notifikasi private chat
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
             // menampilkan semua data mahasiswa per page
             $data['mahasiswa'] = $this->Tutor_model->Mahasiswa($config["per_page"], $data['page']);
             // membuat pagination
@@ -703,6 +760,9 @@ class Tutor extends CI_Controller {
             $data['title'] = 'Private Chat';
             $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor')); 
+            //notifikasi private chat
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
             // menampilkan data mahasiswa sesuai keyword per page      
             $data['hasilsearch'] = $this->Tutor_model->searchchat($keyword, $config["per_page"], $data['page']);
             // membuat pagination
@@ -716,6 +776,10 @@ class Tutor extends CI_Controller {
             redirect('Login/logout');
         } 
     }
+    public function change_status_chat_tutor($from){
+        $this->Tutor_model->change_status_chat_tutor($from);
+        redirect('Tutor/Chat/'.$from,'refresh');
+    }
 
     public function Chat($to) //function untuk menampilkan dan membalas chat sesuai dengan id_user tujuan
     {
@@ -723,6 +787,9 @@ class Tutor extends CI_Controller {
 		$id = $this->session->userdata('id_mahasiswa'); // menyimpan session id_mahasiswa ke dalam variabel $id
         $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
         $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
+        //notifikasi private chat
+        $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+        $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
 		if ($this->input->server('REQUEST_METHOD') === 'POST') { //jika mengirim pesan
 			$message = $this->input->post('message'); //mengambil data dari inputas pesan

@@ -110,6 +110,30 @@
                                             <ul class="nav navbar-nav mai-top-nav header-right-menu">
                                                 <li class="nav-item dropdown">
                                                 </li>
+                                                <li class="nav-item dropdown">
+                                                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-message edu-chat-pro" aria-hidden="true"></i><span class="badge badge-light" style="background-color:red"><?php echo $hitung_chat_tutor ;?></span></a>
+                                                    <div role="menu" class="author-message-top dropdown-menu animated zoomIn">
+                                                        <div class="message-single-top">
+                                                            <h1>Private Chat</h1>
+                                                        </div>
+                                                        <ul class="message-menu">
+                                                        <?php foreach($notif_chat_tutor as $nt):?>   
+                                                            <li>
+                                                                <a href="<?= base_url('Tutor/change_status_chat_tutor/'.$nt['from'])?>">                                                                    
+                                                                    <div class="message-content">                                                                        
+                                                                        <h2><?=$nt['nama'];?></h2>
+                                                                        <p><?=$nt['message'];?>.</p>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                            <?php endforeach;?>                                                            
+                                                        </ul>
+                                                        <div class="message-view">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
                                                 <li class="nav-item">
                                                     <a href="<?= base_url()?>/assets_admin1/#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                                                         <?php foreach($foto_tutor as $ft):?>

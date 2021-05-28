@@ -47,7 +47,7 @@ x y{
 	<?php endforeach;?> 
 	<div class="container">	
 		<div id="tmp">
-		<div class="border rounded" id="border_rounded" style="background-color:#ffffff;width:100%;height:500px;;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">
+		<div class="border rounded" id="border_rounded" style="background-color:#ffffff;width:100%;height:350px;;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">
 				<?php 
 				$id = $this->session->userdata('id_mahasiswa');
 				foreach ($chats as $item) {
@@ -71,7 +71,7 @@ x y{
 			<input type="hidden" name="from" value="<?=$this->session->userdata('id_mahasiswa');?>">    
 			<div class="row">
 				<div class="col-10">
-					<input type="text" name="message" class="form-control" placeholder="Tulis Pesan Kamu">
+					<input type="text" name="message" class="form-control" placeholder="Tulis Pesan Kamu" autocomplete="off">
 					<!-- <span><input class="btn btn-primary" type="submit" name="submit"></span> -->
 				</div>
 				<div class="col-2">
@@ -84,6 +84,6 @@ x y{
 </section>
 
 <script type="text/javascript">
-	var objDiv = document.getElementById("mydiv");
+	var objDiv = document.getElementById("border_rounded");
 	objDiv.scrollTop = objDiv.scrollHeight;
 </script> 
