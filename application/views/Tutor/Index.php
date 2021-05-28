@@ -20,13 +20,13 @@
                         <canvas id="myChart"></canvas>
                         <?php
                             $nama_konten= "";
-                            $jumlah=null;
+                            $jumlah1=null;
                             foreach ($hitung_konten as $h)
                             {
                                 $na=$h->judul;
                                 $nama_konten .= "'$na'". ", ";
                                 $j=$h->hasil;
-                                $jumlah .= "$j". ", ";
+                                $jumlah1 .= "$j". ", ";
                             }
                             ?>
                     </div>
@@ -120,7 +120,7 @@
 			labels: [<?php echo $nama_konten?>],
 			datasets: [{
                 label: 'Dataset 1',
-				data: [<?php echo $jumlah?>],
+				data: [<?php echo $jumlah1?>],
 				borderWidth: 1,
 				yAxisID: "y-axis-1",
                 backgroundColor: [
