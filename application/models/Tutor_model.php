@@ -231,9 +231,12 @@
 
             $this->db->select('*');
             $this->db->from('tugas');
-            $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');            
+            $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');
+            $this->db->join('tutor', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');            
             $this->db->join('konten', 'konten.id_konten = tugas.id_konten');
             $this->db->where('tugas.status', $status);
+            $this->db->where('tutor.id_tutor',$this->session->userdata('id_tutor'));
+
             $query = $this->db->get();
             return $query->result_array();
         }
@@ -498,10 +501,21 @@
             return $query->result();                             
         }
 
-        public function getCountKontenFavorit(){ //menghitung jumlah konten terfavorit yg dimiliki tutor yg sedang login
+        public function getCountKontenFavorit(){
             $id = $this->session->userdata('id_tutor');
-            $query = $this->db->query("SELECT tugas.id_konten, konten.judul, COUNT(tugas.id_konten) AS hasil FROM tugas JOIN konten ON konten.id_konten = tugas.id_konten JOIN materi ON materi.id_materi = konten.id_materi JOIN tutor ON tutor.id_tutor = materi.id_tutor WHERE materi.id_tutor = '$id' GROUP BY tugas.id_konten ORDER BY hasil DESC LIMIT 5");
+            $query = $this->db->query("SELECT tugas.id_konten, konten.judul, COUNT(tugas.id_konten) AS hasil
+            FROM tugas
+            JOIN konten
+            ON konten.id_konten = tugas.id_konten
+            JOIN materi
+            ON materi.id_materi = konten.id_materi
+            JOIN tutor
+            ON tutor.id_tutor = materi.id_tutor
+            WHERE materi.id_tutor = '$id'
+            GROUP BY tugas.id_konten
+            ORDER BY hasil DESC
+            LIMIT 5");
             return $query->result();                             
-        }  
+        }
     }
 ?>
