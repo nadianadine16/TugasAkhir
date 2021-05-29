@@ -533,6 +533,7 @@ class Tutor extends CI_Controller {
             //notifikasi private chat
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
+            $data['get_id_mahasiswa'] = $this->Tutor_model->get_id_mahasiswa($this->session->userdata('id_tutor'));
 
             $this->load->view('template/header2_tutor', $data);
             $this->load->view('Tutor/Detail_Forum', $data);

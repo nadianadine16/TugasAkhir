@@ -19,6 +19,8 @@ class User extends CI_Controller {
         $data['kategori_materi'] = $this->User_model->getAllKategoriMateri();
         $data['notif_chat_user'] = $this->User_model->notif_chat();
         $data['hitung_chat']= $this->User_model->hitung_chat();
+        $data['notif_jawaban_baru'] = $this->User_model->notif_jawaban_baru();
+
         $this->load->view('user/Utama', $data);
         $this->load->view('template/footer_user', $data);
     }
@@ -162,6 +164,9 @@ class User extends CI_Controller {
         $data['title'] ='Daftar Materi';
         $data['notif_chat_user'] = $this->User_model->notif_chat();
         $data['hitung_chat']= $this->User_model->hitung_chat();
+        $data['notif_jawaban_baru'] = $this->User_model->notif_jawaban_baru();
+        $data['hitung_jawaban_baru']= $this->User_model->hitung_jawaban_baru();
+
         $kategori = htmlspecialchars($this->input->post('id_kategori_materi'));
         $data_session = array(
             'id_kategori_materi' => $kategori
@@ -497,6 +502,11 @@ class User extends CI_Controller {
     public function change_status_chat($from){
         $this->User_model->change_status_chat($from);
         redirect('User/Chat/'.$from,'refresh');
+    }
+
+    public function change_status_jawaban($id_chat_forum, $id_forum){
+        $this->User_model->change_status_jawaban($id_chat_forum);
+        redirect('User/Detail_Forum/'.$id_forum,'refresh');
     }
         
     public function Chat($to)

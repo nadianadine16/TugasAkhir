@@ -308,6 +308,15 @@
             $query = $this->db->get();
             return $query->result_array();
         }    
+
+        public function get_id_mahasiswa($id_tutor) {
+            $this->db->select('');
+            $this->db->from('tutor');
+            $this->db->where('id_tutor', $id_tutor);
+
+            $query = $this->db->get();
+            return $query->result_array();
+        }
         
         public function Kategori_Forum() { //get semua data kategori forum
             $query = $this->db->get('kategori_materi');
@@ -527,11 +536,19 @@
             ORDER BY private_chat.created_at DESC");
             return $query->result_array();            
         }
+
+        // public function change_status_chat_tutor($from){
+        //     $this->db->query("UPDATE private_chat
+        //     SET status_chat = 2
+        //     WHERE id_pesan IN (SELECT id_pesan FROM private_chat  WHERE from = $from)");        
+        // }
+        
         public function change_status_chat_tutor($from){
-            $this->db->query("UPDATE private_chat as pc
-            SET pc.status_chat = 2
-            WHERE pc.id_pesan IN (SELECT pt.id_pesan FROM private_chat as pt WHERE pt.from = '$from')");        
+            $this->db->query("UPDATE private_chat
+            SET status_chat = 2
+            WHERE id_pesan IN (SELECT id_pesan from (select*from private_chat) as p where (p.from = $from))");        
         }
+
         public function hitung_chat_tutor(){
             $idmhs = $this->session->userdata('id_mahasiswa');
             $query = $this->db->query("SELECT COUNT(private_chat.from) AS total from private_chat WHERE private_chat.to = '$idmhs' AND private_chat.status_chat=1");        

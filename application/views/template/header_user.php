@@ -123,6 +123,16 @@
         <li <?php if ($title == 'Forum' || $title == 'Chat Forum') echo 'class="nav-item active"'; ?>>
           <a class="nav-link" href="<?= base_url()?>User/Forum" style="font-family: Arial, Helvetica, sans-serif;"><b>Forum </b><span class="sr-only">(current)</span></a>
         </li>
+        <li>
+          <div class="dropdown">
+          <button class="dropbtn"><i class="fa fa-bell" aria-hidden="true"></i><span class="badge"><?php echo $hitung_jawaban_baru ;?></span></button>
+          <div class="dropdown-content">
+          <?php foreach($notif_jawaban_baru as $njb):?>        
+            <a href="<?=base_url('User/change_status_jawaban/'.$njb['id_chat_forum'].'/'.$njb['id_forum'])?>"><b><?=$njb["nama"];?> </b><br><?=$njb['chat'];?></a><hr>
+            <?php endforeach;?>
+          </div>
+          </div>        
+        </li>
         <li <?php if ($title == 'Daftar Tutor' || $title == 'Detail Tutor') echo 'class="nav-item active"'; ?>>
           <a class="nav-link" href="<?= base_url()?>User/SeeAllTutor" style="font-family: Arial, Helvetica, sans-serif;"><b>Tutor </b><span class="sr-only">(current)</span></a>
         </li>

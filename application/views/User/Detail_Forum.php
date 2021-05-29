@@ -31,6 +31,7 @@
            <form action="<?=base_url('User/Jawab_Forum/'.$p['id_forum'])?>" method="post" >
               <input type="hidden" name="id_user" value="<?= $this->session->userdata('id_mahasiswa');?>">
               <input type="hidden" name="id_forum" value="<?=$p["id_forum"];?>">
+              <input type="hidden" name="status" value="<?=$p["id_forum"];?>">
               <div class="form-group" style="width:880px; margin-left:130px;">
                 <textarea class="form-control" name="chat" required rows="5" data-rule="required" data-msg="Masukkan Pertanyaan Anda" placeholder="Tulis Pertanyaan Anda Disini . . . "></textarea>
                 <div class="validate"></div>

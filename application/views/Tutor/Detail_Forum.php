@@ -37,7 +37,9 @@
             <center><h4>Balas Forum</h4>
             <div class="kolom-komentar" style="width:88%;margin-top:10px;">        
               <form action="<?=base_url('Tutor/Jawab_Forum/'.$p['id_forum'])?>" method="post" >
-                    <input type="hidden" name="id_user" value="<?= $this->session->userdata('id_tutor');?>">
+                    <?php  foreach($get_id_mahasiswa as $gid):?>
+                    <input type="hidden" name="id_user" value="<?=$gid['id_mahasiswa']?>">
+                    <?php endforeach;?>
                     <input type="hidden" name="id_forum" value="<?=$p["id_forum"];?>">                
                   <div class="form-group">
                     <textarea class="form-control" name="chat" rows="5" data-rule="required" data-msg="Masukkan Jawaban Anda" placeholder="Tulis Jawaban Anda Disini . . . "></textarea>
