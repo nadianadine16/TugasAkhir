@@ -175,7 +175,7 @@
             <form action="<?=base_url('user/prosesContactus')?>" method="post" role="form" class="php-email-form">
             <input type="hidden" name="id_user" value="<?= $this->session->userdata('id_mahasiswa');?>">
               <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Silahkan isi subject" />
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" autocomplete="off"/>
                 <div class="validate"></div>
               </div>
               <div class="form-group">

@@ -16,7 +16,7 @@
         <?php foreach($detail_materi as $d):?>
         <div class="card" style="margin-top:-15px;">    
             <div class="card-body">
-                <b>Nama Materi bbbbbb: </b><br>
+                <b>Nama Materi: </b><br>
                 <p class="card-text"><?= $d["nama_materi"]?></p>      
                 <b>Nama Tutor: </b><br>
                 <p class="card-text"><?= $d["nama"]?></p>      

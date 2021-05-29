@@ -32,8 +32,9 @@ class Tutor extends CI_Controller {
             $data['hitung_konten'] = $this->Tutor_model->getCountKontenFavorit();
             //menghitung session mhs yg aktif login
             $data['hasil']= $this->Tutor_model->getCountSessionMahasiswa();
-            //notifikasi private chat
+            //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
             
             $this->load->view('template/header2_tutor',$data);
@@ -52,8 +53,9 @@ class Tutor extends CI_Controller {
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
             // menampilkan data profil tutor yang sedang login
             $data['tutor'] = $this->Tutor_model->Profil($id_tutor);
-            //notifikasi private chat
+            //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             $this->load->view('template/header2_tutor', $data);
@@ -72,8 +74,9 @@ class Tutor extends CI_Controller {
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
             // get data sesuai dengan id_tutor yang dipilih
             $data['tutor'] = $this->Tutor_model->Profil($id_tutor);
-            //notifikasi private chat
+            //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
     
             // form validation untuk memeriksa kelengkapan isian form
@@ -106,8 +109,9 @@ class Tutor extends CI_Controller {
         $data['mahasiswa'] = $this->Tutor_model->getNim();
         // menampilkan semua data kategori materi
         $data['KategoriMateri'] = $this->Tutor_model->getAllKategoriMateri();
-        //notifikasi private chat
+        //menampilkan notifikasi pesan private chat yang belum dibaca
         $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+        //menghitung jumlah notifikasi pesan yang belum dibaca
         $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
         $this->load->view('Tutor/Daftar_Tutor', $data);
@@ -149,8 +153,9 @@ class Tutor extends CI_Controller {
             $id_tutor = $this->session->userdata('id_tutor');
             // get materi sesuai dengan id_tutor yang sedang login
             $data['materi'] = $this->Tutor_model->getMateriByIdTutor($id_tutor);
-            //notifikasi private chat
+            //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             $this->load->view('template/header2_tutor',$data);
@@ -168,8 +173,9 @@ class Tutor extends CI_Controller {
             $data['kategori_materi'] = $this->Tutor_model->getAllKategoriMateri();
             $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
-            //notifikasi private chat
+            //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             // form validation untuk memeriksa kelengkapan isian form
@@ -218,8 +224,9 @@ class Tutor extends CI_Controller {
             $data['materi'] = $this->Tutor_model->getMateriById($id_materi);
             // menampilkan semua data kategori materi untuk form edit materi
             $data['kategori_materi'] = $this->Tutor_model->getAllKategoriMateri();
-            //notifikasi private chat
+            //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
             
             // form validation untuk memeriksa kelengkapan isian form
@@ -256,8 +263,9 @@ class Tutor extends CI_Controller {
             $data['materi'] = $this->Tutor_model->getMateriByIdMateri($id_materi);
             // get data konten sesuai dengan id_materi yang dipilih
             $data['konten'] = $this->Tutor_model->Konten($id_materi);
-            //notifikasi private chat
+            //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             $this->load->view('template/header2_tutor',$data);
@@ -276,8 +284,9 @@ class Tutor extends CI_Controller {
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
             // get data materi sesuai id_materi
             $data['materi'] = $this->Tutor_model->getMateriByIdMateri($id_materi);
-            //notifikasi private chat
+            //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             // form validation untuk memeriksa kelengkapan isian form
@@ -310,8 +319,9 @@ class Tutor extends CI_Controller {
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
             // get data konten sesuai dengan id_konten
             $data['konten'] = $this->Tutor_model->getKontenById($id_konten);
-            //notifikasi private chat
+            //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             // form validation untuk memeriksa kelengkapan isian form
@@ -361,8 +371,9 @@ class Tutor extends CI_Controller {
             $data['revisi_tugas'] = $this->Tutor_model->getAllRevisiTugas();
             // menampilkan semua tugas mhs yang telah diverifikasi (status = disetujui)
             $data['tugasverif'] = $this->Tutor_model->getAllTugasVerif();
-            //notifikasi private chat
+            //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             $this->load->view('template/header2_tutor',$data);
@@ -381,8 +392,9 @@ class Tutor extends CI_Controller {
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
             // get data tugas sesuai dengan id_tugas
             $data['tugas'] = $this->Tutor_model->getTugasById($id_tugas);
-            //notifikasi private chat
+            //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             // form validation memeriksa kelengkapan isian form
@@ -437,8 +449,9 @@ class Tutor extends CI_Controller {
             $data['title'] = 'Kritik dan Saran';
             $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
-            //notifikasi private chat
+            //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             // form validation untuk memeriksa kelengkapan isian form
@@ -506,8 +519,9 @@ class Tutor extends CI_Controller {
             $data['kategori_forum'] = $this->Tutor_model->Kategori_Forum();
             // memeriksan ada forum atau tidak
             $data['cek_forum'] = $this->Tutor_model->cek_forum();
-            //notifikasi private chat
+            //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             $this->load->view('template/header2_tutor',$data);
@@ -530,9 +544,11 @@ class Tutor extends CI_Controller {
             $data['jawaban'] = $this->Tutor_model->jawaban($id);
             // memeriksa apakah jawaban forum sedang kosong atau sudah terisi sesuai dengan id_forum
             $data['jawaban_forum'] = $this->Tutor_model->Cek_Jawaban($id);
-            //notifikasi private chat
+            //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
+            //get data id_mahasiswa dari tutor yang sedang login
             $data['get_id_mahasiswa'] = $this->Tutor_model->get_id_mahasiswa($this->session->userdata('id_tutor'));
 
             $this->load->view('template/header2_tutor', $data);
@@ -551,8 +567,9 @@ class Tutor extends CI_Controller {
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
             // menampilkan detail forum
             $data['detail_pertanyaan'] = $this->Tutor_model->detail_pertanyaan($id);
-            //notifikasi private chat
+            //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             // form validation untuk memeriksa kelengkapan isian form
@@ -578,47 +595,17 @@ class Tutor extends CI_Controller {
 
     public function Cari_Forum(){
         if (isset($_SESSION['id_tutor'])) {
-            $config['base_url'] = site_url('Tutor/Cari_Forum'); //site url
-            $config['total_rows'] = $this->Tutor_model->hitung_forum_for_search(); //total row
-            $config['per_page'] = 10;  //show record per halaman
-            $config["uri_segment"] = 3;  // uri parameter
-            $choice = $config["total_rows"] / $config["per_page"];
-            $config["num_links"] = floor($choice);
-
-            $config['first_link']       = 'First';
-            $config['last_link']        = 'Last';
-            $config['next_link']        = 'Next';
-            $config['prev_link']        = 'Prev';
-            $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
-            $config['full_tag_close']   = '</ul></nav></div>';
-            $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
-            $config['num_tag_close']    = '</span></li>';
-            $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
-            $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
-            $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
-            $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
-            $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
-            $config['prev_tagl_close']  = '</span>Next</li>';
-            $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
-            $config['first_tagl_close'] = '</span></li>';
-            $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
-            $config['last_tagl_close']  = '</span></li>';
-
-            $this->pagination->initialize($config);
-            $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-
             $data['title'] = 'Forum';
             $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
             // menampilkan kategori forum
             $data['kategori_forum'] = $this->Tutor_model->Kategori_Forum();
-            //notifikasi private chat
+            //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
-            // menampilkan hasil forum yang dicari per page
-            $data['forum'] = $this->Tutor_model->getAllForum($config["per_page"], $data['page']);
-            // membuat pagination
-            $data['pagination'] = $this->pagination->create_links();
+            // menampilkan hasil forum yang dicari
+            $data['forum'] = $this->Tutor_model->getAllForum_cari();
 
             if($this->input->post('submit')){
                 // mengambil data inputan saat pencarian
@@ -626,7 +613,7 @@ class Tutor extends CI_Controller {
                 $keyword = $this->input->post('keyword');
 
                 // menuju tutor_model untuk mencari forum sesuai dengan kategori/pertanyaan
-                $data['forum'] = $this->Tutor_model->Cari_Forum($kategori, $keyword, $config["per_page"], $data['page']);
+                $data['forum'] = $this->Tutor_model->Cari_Forum($kategori, $keyword);
             }
 
             $this->load->view('template/header2_tutor', $data);
@@ -656,8 +643,9 @@ class Tutor extends CI_Controller {
         $gagal['cekPendaftaranTolak']=$this->Tutor_model->search3($keyword);
         // memeriksa ketersediaan nim yang telah didaftarkan
         $cek = $this->Tutor_model->ketersediaanNim($keyword);
-        //notifikasi private chat
+        //menampilkan notifikasi pesan private chat yang belum dibaca
         $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+        //menghitung jumlah notifikasi pesan yang belum dibaca
         $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
         if($berhasil){
@@ -707,8 +695,9 @@ class Tutor extends CI_Controller {
             $data['title'] = 'Private Chat';  
             $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor')); 
-            //notifikasi private chat
+            //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
             // menampilkan semua data mahasiswa per page
             $data['mahasiswa'] = $this->Tutor_model->Mahasiswa($config["per_page"], $data['page']);
@@ -729,45 +718,15 @@ class Tutor extends CI_Controller {
             // mengambil inputan dari form pencarian
             $keyword=  $this->input->post('keyword'); 
 
-            $config['base_url'] = site_url('Tutor/carichat'); //site url
-            $config['total_rows'] = $this->Tutor_model->hitung_mahasiswa_for_search($keyword); //total row
-            $config['per_page'] = 3;  //show record per halaman
-            $config["uri_segment"] = 3;  // uri parameter
-            $choice = $config["total_rows"] / $config["per_page"];
-            $config["num_links"] = floor($choice);
-
-            $config['first_link']       = 'First';
-            $config['last_link']        = 'Last';
-            $config['next_link']        = 'Next';
-            $config['prev_link']        = 'Prev';
-            $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
-            $config['full_tag_close']   = '</ul></nav></div>';
-            $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
-            $config['num_tag_close']    = '</span></li>';
-            $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
-            $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
-            $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
-            $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
-            $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
-            $config['prev_tagl_close']  = '</span>Next</li>';
-            $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
-            $config['first_tagl_close'] = '</span></li>';
-            $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
-            $config['last_tagl_close']  = '</span></li>';
-
-            $this->pagination->initialize($config);
-            $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-
             $data['title'] = 'Private Chat';
             $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
             $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor')); 
-            //notifikasi private chat
+            //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
             // menampilkan data mahasiswa sesuai keyword per page      
-            $data['hasilsearch'] = $this->Tutor_model->searchchat($keyword, $config["per_page"], $data['page']);
-            // membuat pagination
-            $data['pagination'] = $this->pagination->create_links();
+            $data['hasilsearch'] = $this->Tutor_model->searchchat($keyword);
 
             $this->load->view('template/header2_tutor', $data);
             $this->load->view("Tutor/Search_Private_Chat",$data);
@@ -777,47 +736,55 @@ class Tutor extends CI_Controller {
             redirect('Login/logout');
         } 
     }
+
     public function change_status_chat_tutor($from){
+        //mengubah status pesan menjadi sudah dibaca (status = 2)
         $this->Tutor_model->change_status_chat_tutor($from);
-        redirect('Tutor/Chat/'.$from,'refresh');
+        redirect('Tutor/Chat/'.$from,'refresh'); //kembali ke halaman chat
     }
 
     public function Chat($to) //function untuk menampilkan dan membalas chat sesuai dengan id_user tujuan
     {
-        $data['title'] = 'Private Chat';  
-		$id = $this->session->userdata('id_mahasiswa'); // menyimpan session id_mahasiswa ke dalam variabel $id
-        $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
-        $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
-        //notifikasi private chat
-        $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
-        $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
+        if (isset($_SESSION['id_tutor'])) {  
+            $data['title'] = 'Private Chat';  
+            $id = $this->session->userdata('id_mahasiswa'); // menyimpan session id_mahasiswa ke dalam variabel $id
+            $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
+            $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
+            //menampilkan notifikasi pesan private chat yang belum dibaca
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
-		if ($this->input->server('REQUEST_METHOD') === 'POST') { //jika mengirim pesan
-			$message = $this->input->post('message'); //mengambil data dari inputas pesan
+            if ($this->input->server('REQUEST_METHOD') === 'POST') { //jika mengirim pesan
+                $message = $this->input->post('message'); //mengambil data dari inputas pesan
 
-			$data  = [
-				'from' =>$id,
-				'to' =>$to,
-				'message'=>$message,				
-			];
+                $data  = [
+                    'from' =>$id,
+                    'to' =>$to,
+                    'message'=>$message,				
+                ];
 
-			$this->db->insert('private_chat',$data); //insert ke tabel private_chat
-			redirect('Tutor/Chat/'.$to); //kembali ke halaman chat sesuai dengan id_user tujuan
-		}
+                $this->db->insert('private_chat',$data); //insert ke tabel private_chat
+                redirect('Tutor/Chat/'.$to); //kembali ke halaman chat sesuai dengan id_user tujuan
+            }
+            else {
+                //kondisi yang akan ditampilkan oleh query
+                $this->db->where_in('from', [$id,$to]);
+                $this->db->where_in('to', [$id,$to]);
+                $this->db->order_by('created_at', 'ASC');
+
+                $data['to'] = $to;
+                $data['chats'] = $this->db->get('private_chat')->result(); //menampilkan pesan
+                $data['nama_tujuan'] = $this->Tutor_model->namaTujuan($to); //menampilkan nama mhs tujuan
+
+                $this->load->view('template/header2_tutor', $data);
+                $this->load->view('Tutor/TChat', $data);
+                $this->load->view('template/footer2_tutor', $data);
+            }
+        }
         else {
-            //kondisi yang akan ditampilkan oleh query
-			$this->db->where_in('from', [$id,$to]);
-			$this->db->where_in('to', [$id,$to]);
-			$this->db->order_by('created_at', 'ASC');
-
-			$data['to'] = $to;
-			$data['chats'] = $this->db->get('private_chat')->result(); //menampilkan pesan
-            $data['nama_tujuan'] = $this->Tutor_model->namaTujuan($to); //menampilkan nama mhs tujuan
-
-			$this->load->view('template/header2_tutor', $data);
-            $this->load->view('Tutor/TChat', $data);
-            $this->load->view('template/footer2_tutor', $data);
-		}
+            redirect('Login/logout');
+        }
     }
 }
 ?>

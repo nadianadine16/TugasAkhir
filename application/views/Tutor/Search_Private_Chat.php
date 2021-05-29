@@ -49,11 +49,6 @@
       else {?>
         <center>Sepertinya kata yang Anda cari kurang tepat. Coba sekali lagi</center>
       <?php }?>
-      <div class="row">
-        <div class="col">
-          <?php echo $pagination; ?>
-        </div>
-      </div>
     </div>
   </div>  
 </div>         

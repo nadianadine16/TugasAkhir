@@ -114,9 +114,13 @@
           <div class="dropdown">
           <button class="dropbtn"><i class="fa fa-bell" aria-hidden="true"></i><span class="badge"><?php echo $hitung_chat ;?></span></button>
           <div class="dropdown-content">
-          <?php foreach($notif_chat_user as $nc):?>        
-            <a href="<?= base_url('User/change_status_chat/'.$nc['from'])?>"><b><?=$nc["nama"];?> </b><br><?=$nc['message'];?></a><hr>
-            <?php endforeach;?>
+            <?php if ($hitung_chat > 0) {?>
+              <?php foreach($notif_chat_user as $nc):?>        
+                <a href="<?= base_url('User/change_status_chat/'.$nc['from'])?>"><b><?=$nc["nama"];?> </b><br><?=$nc['message'];?></a><hr>
+              <?php endforeach;?>
+            <?php } else {?>
+                <a href="#"><b>Belum ada pesan baru untuk kamu.</b></a>
+            <?php }?>
           </div>
           </div>        
         </li>
@@ -127,9 +131,13 @@
           <div class="dropdown">
           <button class="dropbtn"><i class="fa fa-bell" aria-hidden="true"></i><span class="badge"><?php echo $hitung_jawaban_baru ;?></span></button>
           <div class="dropdown-content">
-          <?php foreach($notif_jawaban_baru as $njb):?>        
-            <a href="<?=base_url('User/change_status_jawaban/'.$njb['id_chat_forum'].'/'.$njb['id_forum'])?>"><b><?=$njb["nama"];?> </b><br><?=$njb['chat'];?></a><hr>
-            <?php endforeach;?>
+            <?php if ($hitung_jawaban_baru > 0) {?>
+              <?php foreach($notif_jawaban_baru as $njb):?>        
+                <a href="<?=base_url('User/change_status_jawaban/'.$njb['id_chat_forum'].'/'.$njb['id_forum'])?>"><b><?=$njb["nama"];?> </b><br><?=$njb['chat'];?></a><hr>
+              <?php endforeach;?>
+            <?php } else {?>
+              <a href="#"><b>Belum ada yang menjawab forum kamu.</b></a>
+            <?php }?>
           </div>
           </div>        
         </li>
