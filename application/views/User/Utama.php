@@ -65,13 +65,12 @@
         <h4>Ayo Melangkah Lebih Baik dengan Belajar</h4>
                 <p>Pembelajaran model tutor sebaya saat ini menjadi trend karena dengan adanya model ini maka mahasiswa yang mengalami kesulitan tidak akan merasa canggung dalam mengajukan pertanyaan</p>
                 <form action="<?=base_url('User/daftarMateribyKategori')?>" method="post">
-                    <select class="form-control" id="id_kategori_materi" name="id_kategori_materi" style="width:74%;">
+                    <select class="form-control" id="id_kategori_materi" name="id_kategori_materi" style="width:74%;" required>
                         <option value="" selected="true" disabled="disabled">- Anda ingin belajar apa hari ini? -</option>
                         <?php foreach($kategori_materi as $km) : ?>
                             <option value="<?=$km["id_kategori_materi"];?>"><?=$km["nama_kategori"];?></option>
                         <?php endforeach;?>
                     </select>
-                <!-- <input type="email" name="email" value="Anda ingin belajar apa hari ini?"> -->
                     <input type="submit" value="Mulai Belajar">
                 </form>
         </div>
@@ -172,17 +171,17 @@
             </div>
           </div>
           <div class="col-lg-8 mt-5 mt-lg-0">
-            <form action="<?=base_url('user/prosesContactus')?>" method="post" role="form" class="php-email-form">
-            <input type="hidden" name="id_user" value="<?= $this->session->userdata('id_mahasiswa');?>">
+            <form action="<?=base_url('user/prosesContactus')?>" method="post">
+              <input type="hidden" name="id_user" value="<?= $this->session->userdata('id_mahasiswa');?>">
               <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" autocomplete="off"/>
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" autocomplete="off" required/>
                 <div class="validate"></div>
               </div>
               <div class="form-group">
-                <textarea class="form-control" name="kritik_saran" rows="5" data-rule="required" data-msg="Silahkan Tuliskan Kritik Saran Anda" placeholder="Kritik Saran"></textarea>
+                <textarea class="form-control" name="kritik_saran" rows="5" data-rule="required" data-msg="Silahkan Tuliskan Kritik Saran Anda" placeholder="Kritik Saran" required></textarea>
                 <div class="validate"></div>
               </div>
-              <div class="text-center" style="margin-bottom:20px;"><button type="submit" class="btn btn-primary">Kirim Pesan</button></div>
+              <div class="text-center" style="margin-bottom:20px;"><button type="submit" class="btn" style="background-color:#49b5e7;color:#ffffff">Kirim Pesan</button></div>
             </form>
           </div>
         </div>

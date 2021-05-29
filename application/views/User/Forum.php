@@ -1,5 +1,5 @@
 <section id="team" class="team section" style="margin-top:50px; ">
-  <div class="container" style="background-color:#f4fbfe; margin-top:-30px;">
+  <div class="container" style="background-color:#f4fbfe; margin-top:-10px;">
     <div class="section-title">
       <h2><br>Forum Diskusi</h2>
       <p>Jika terdapat pertanyaan yang belum dibahas pada forum dapat menekan button tanya forum</p>

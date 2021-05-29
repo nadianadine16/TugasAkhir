@@ -628,7 +628,7 @@ class User extends CI_Controller {
             if($this->input->post('submit')){ //jika ada aksi submit
                 $keyword = $this->input->post('keyword'); //mengambil inputan dari keyword
 
-                $data['nama_tutor'] = $this->User_model->Search_Chat($keyword); //menampilkan daftar tutor sesuai dengan keyword yg dicari
+                $data['nama_tutor'] = $this->User_model->cari_tutor_chat($keyword); //menampilkan daftar tutor sesuai dengan keyword yg dicari
             }
 
             $this->load->view('template/header_user', $data);

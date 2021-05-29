@@ -1,5 +1,5 @@
 <section id="team" class="team section" style="margin-top:80px">
-  <div class="container" style="background-color: #f4fbfe; margin-top: -50px;">
+  <div class="container" style="background-color: #f4fbfe; margin-top: -30px;">
     <div class="section-title">
       <h2><br>Daftar Tutor</h2>        
     </div>
@@ -22,7 +22,7 @@
 
     <div class="row">
         <?php foreach($nama_tutor as $n):?>
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" style="margin-top:30px;">
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" style="margin-top:50px;">
           <a href="<?=base_url()?>User/Detail_Tutor/<?=$n['id_tutor'];?>">
             <div class="member">
               <div class="member-img" style="height:200px;">

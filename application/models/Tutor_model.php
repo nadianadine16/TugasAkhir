@@ -212,6 +212,7 @@
             $this->db->join('tutor', 'tutor.id_tutor = materi.id_tutor');
             $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');
             $this->db->where('tugas.status', $status);
+            $this->db->where('materi.id_tutor', $this->session->userdata('id_tutor'));
 
             $query = $this->db->get();
             return $query->result_array();
@@ -222,10 +223,12 @@
 
             $this->db->select('*');
             $this->db->from('tugas');
-            $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');
             $this->db->join('konten', 'konten.id_konten = tugas.id_konten');
-            $this->db->join('tutor', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');
+            $this->db->join('materi', 'materi.id_materi = konten.id_materi');
+            $this->db->join('tutor', 'tutor.id_tutor = materi.id_tutor');
+            $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');
             $this->db->where('tugas.status', $status);
+            $this->db->where('materi.id_tutor', $this->session->userdata('id_tutor'));
 
             $query = $this->db->get();
             return $query->result_array();
@@ -236,10 +239,12 @@
 
             $this->db->select('*');
             $this->db->from('tugas');
-            $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');
-            $this->db->join('tutor', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');            
             $this->db->join('konten', 'konten.id_konten = tugas.id_konten');
+            $this->db->join('materi', 'materi.id_materi = konten.id_materi');
+            $this->db->join('tutor', 'tutor.id_tutor = materi.id_tutor');
+            $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');
             $this->db->where('tugas.status', $status);
+            $this->db->where('materi.id_tutor', $this->session->userdata('id_tutor'));
 
             $query = $this->db->get();
             return $query->result_array();
