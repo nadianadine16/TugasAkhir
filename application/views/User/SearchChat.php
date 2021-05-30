@@ -7,7 +7,7 @@
       <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Cari Tutor. . ." name="keyword" autocomplete="off" autofocus>
         <div class="input-group-append">
-          <input class="btn btn-primary" type="submit" name="submit"></button>
+          <input class="btn" type="submit" name="submit" style="background-color:#49b5e7;color:#ffffff;"></button>
         </div>
       </div>
     </form>

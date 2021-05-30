@@ -52,7 +52,7 @@
 
                             <label for="tugas"><b>Link Github Revisi Tugas Anda</b></label>
                             <input type="text" class="form-control" id="tugas" name="tugas" autocomplete="off" required><br>               
-                            <center><button type="submit" class="btn btn-primary" id= "button" name="submit" class="btn btn-primary float-right">Submit</button></center>
+                            <center><button type="submit" class="btn" id= "button" name="submit" style="background-color:#49b5e7;color:#ffffff;">Submit</button></center>
                         <?php }
                         else if($cek_tugas != NULL && $c["status"] == 'Diajukan') {?>
                             <label for="tugas"><b>Link Github Tugas Anda</b></label>

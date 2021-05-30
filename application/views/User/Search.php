@@ -7,7 +7,7 @@
       
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="">
-        <form class="form-inline" action ="<?= base_url('User/carimateri/'.$d['id_kategori_materi']);?>" method="post">
+        <form class="form-inline" action ="<?= base_url('User/cari');?>" method="post">
           <select class="form-control" id="id_kategori_materi" name="id_kategori_materi">
             <option value="" selected="true" disabled="disabled">- Pilih Kategori Forum -</option>
                 <?php foreach($kategori_forum as $kf) : ?>
@@ -16,16 +16,16 @@
           </select>&nbsp;
           <input type="text" class="form-control" placeholder="Cari Tutor . . ." name="keyword" autocomplete="off" autofocus>
           &nbsp;
-          <input class="btn btn-primary" type="submit" name="submit">
+          <input class="btn" type="submit" name="submit" style="background-color:#49b5e7;color:#ffffff;">
         </form>
         
       </div>
-      <div style="margin-left:-85px;"><a href="<?= base_url();?>User/Tanya_Forum" class="btn btn-primary" style="margin-left:365%;">+ Tanya Forum</a></div>
+      <div style="margin-left:-85px;"><a href="<?= base_url();?>User/Tanya_Forum" class="btn" style="margin-left:365%;background-color:#49b5e7;color:#ffffff;">+ Tanya Forum</a></div>
     </div>
     <br>
 
     <?php if($forum == NULL) {?>
-      <center><p>Kata kunci yang Anda cari tidak ditemukan.<b> Silahkan coba lagi.</b><br><br><br></p></center>
+      <center><p><br><br>Kata kunci yang Anda cari tidak ditemukan.<b> Silahkan coba lagi.</b><br><br><br></p></center>
     <?php }
     else {?>
       <div class="row" style="margin-rop:15px;">
@@ -38,7 +38,7 @@
                 <h5 class="card-title" style="font-size:15px;"><b>Kategori : </b> <?=$p["nama_kategori"];?></h5>
                 <p class="card-text" style="font-size:13px;"><b>Pertanyaan : </b><?= substr($p["pertanyaan"],0,100)?></p>
                 <p class="card-text" style="font-size:13px;text-align: right;"><?php echo date("d-F-Y", strtotime($tanggal));?></p>
-                <a href="<?= base_url();?>user/Detail_Forum/<?=$p['id_forum'];?>" class="btn btn-primary" style="float:right">Lihat Forum</a>
+                <a href="<?= base_url();?>user/Detail_Forum/<?=$p['id_forum'];?>" class="btn" style="float:right;background-color:#49b5e7;color:#ffffff;">Lihat Forum</a>
               </div>
             </div><br>
           </div>

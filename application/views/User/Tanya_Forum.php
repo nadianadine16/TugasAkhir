@@ -18,7 +18,7 @@
                 <textarea class="form-control" name="pertanyaan" required rows="5" data-rule="required" data-msg="Masukkan Pertanyaan Anda" placeholder="Tulis Pertanyaan Anda Disini . . . "></textarea>
                 <div class="validate"></div>
               </div>
-              <div class="text-center"><button type="submit" class="btn btn-primary">Kirim</button></div>
+              <div class="text-center"><button type="submit" class="btn" style="background-color:#49b5e7;color:#ffffff;">Kirim</button></div>
             </form>
 
           </div>

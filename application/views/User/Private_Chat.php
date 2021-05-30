@@ -7,13 +7,13 @@
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Cari Tutor. . ." name="keyword" autocomplete="off" autofocus>
             <div class="input-group-append">
-              <input class="btn btn-primary" type="submit" name="submit"></button>
+              <input class="btn" type="submit" name="submit" style="background-color:#49b5e7;color:#ffffff;"></button>
             </div>
           </div>
         </form>
       </div>
 
-  <div class="kotak" style="width:80%; height:600px; margin-top:18%;position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+  <div class="kotak" style="width:80%; height:600px; margin-top:16%;position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
   <?php foreach($nama_tutor as $n):?>
     <div class="kotakSatu">    
       <div class="card border-info mb-3">

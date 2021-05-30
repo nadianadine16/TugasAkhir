@@ -36,7 +36,7 @@
                 <textarea class="form-control" name="chat" required rows="5" data-rule="required" data-msg="Masukkan Pertanyaan Anda" placeholder="Tulis Pertanyaan Anda Disini . . . "></textarea>
                 <div class="validate"></div>
               </div>
-              <center><button type="submit" class="btn btn-primary" style="margin-left:4%;margin-bottom:20px;">Kirim</button></div>
+              <center><button type="submit" class="btn" style="margin-left:4%;margin-bottom:20px;background-color:#49b5e7;color:#ffffff;">Kirim</button></div>
             </form>
         </div>
       </div>

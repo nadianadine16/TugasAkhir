@@ -584,6 +584,7 @@ class User extends CI_Controller {
             $data['hitung_chat']= $this->User_model->hitung_chat(); //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['notif_jawaban_baru'] = $this->User_model->notif_jawaban_baru(); //menampilkan notifikasi jawaban forum baru
             $data['hitung_jawaban_baru']= $this->User_model->hitung_jawaban_baru(); //menghitung jumlah notifikasi jawaban baru forum
+            $data['kategori_forum'] = $this->User_model->getAllKategoriMateri();
 
             $data['forum'] = $this->User_model->getAllForum_cari();
 

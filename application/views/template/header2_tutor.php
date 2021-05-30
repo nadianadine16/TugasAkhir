@@ -117,19 +117,21 @@
                                                             <center><p style="margin-top:15px;"><b>Notifikasi Pesan</b></p></center>
                                                         </div>
                                                         <ul class="message-menu" style="margin-top:-15px;">
-                                                           
                                                             <li>
-                                                            <?php foreach($notif_chat_tutor as $nt):?>
-                                                                <a href="<?= base_url('Tutor/change_status_chat_tutor/'.$nt['from'])?>" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; ">                                                                    
-                                                                    <div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;">                                                                        
-                                                                        <b><?=$nt['nama'];?></b><br>
-                                                                        <?=$nt['message'];?><br>
-                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=$nt['created_at'];?>
-                                                                    </div>
-                                                                </a>
-                                                                <?php endforeach;?>
-                                                            </li>
-                                                                                                                        
+                                                            <?php if ($hitung_chat_tutor > 0) {?>
+                                                                <?php foreach($notif_chat_tutor as $nt):?>
+                                                                    <a href="<?= base_url('Tutor/change_status_chat_tutor/'.$nt['from'])?>" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; ">                                                                    
+                                                                        <div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;">                                                                        
+                                                                            <b><?=$nt['nama'];?></b><br>
+                                                                            <?=$nt['message'];?><br>
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=$nt['created_at'];?>
+                                                                        </div>
+                                                                    </a>
+                                                                    <?php endforeach;?>
+                                                                <?php } else {?>
+                                                                    <center><p><br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Anda belum memiliki pesan baru.</p></center>
+                                                                <?php }?>
+                                                            </li>                                                     
                                                         </ul>
                                                         <div class="message-view">
                                                             

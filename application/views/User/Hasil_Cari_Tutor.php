@@ -1,5 +1,5 @@
-<section id="team" class="team section" style="margin-top:80px">
-  <div class="container" style="background-color: #f4fbfe; margin-top: -50px;">
+<section id="team" class="team section" style="margin-top:70px">
+  <div class="container" style="background-color: #f4fbfe; margin-top: -30px;">
     <div class="section-title">
       <h2><br>Daftar Tutor</h2>        
     </div>
@@ -15,7 +15,7 @@
           </select>&nbsp;
           <input type="text" class="form-control" placeholder="Cari Tutor . . ." name="keyword" autocomplete="off" autofocus>
           &nbsp;
-          <input class="btn btn-primary" type="submit" name="submit">
+          <input class="btn" type="submit" name="submit" style="background-color:#49b5e7;color:#ffffff;">
         </form>
       </div>
     </div>
@@ -26,7 +26,7 @@
       <?php }
       else {?>
           <?php foreach($nama_tutor as $n):?>
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" style="margin-top:30px;">
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" style="margin-top:50px;">
           <a href="<?=base_url()?>User/Detail_Tutor/<?=$n['id_tutor'];?>">
             <div class="member">
               <div class="member-img" style="height:200px;">
@@ -46,11 +46,5 @@
         <?php endforeach;?>  
       <?php }?>         
     </div>
-
-    <!-- <div class="row">
-      <div class="col">
-          <?php echo $pagination; ?>
-      </div>
-    </div> -->
   </div>
 </section>

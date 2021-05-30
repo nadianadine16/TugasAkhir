@@ -1,4 +1,4 @@
-<section id="team" class="team section" style="margin-top:80px">
+<section id="team" class="team section" style="margin-top:70px">
   <div class="container" style="background-color: #f4fbfe; margin-top: -30px;">
     <div class="section-title">
       <h2><br>Daftar Tutor</h2>        
@@ -15,7 +15,7 @@
           </select>&nbsp;
           <input type="text" class="form-control" placeholder="Cari Tutor . . ." name="keyword" autocomplete="off" autofocus>
           &nbsp;
-          <input class="btn btn-primary" type="submit" name="submit">
+          <input class="btn" type="submit" name="submit" style="background-color:#49b5e7;color:#ffffff;">
         </form>
       </div>
     </div>
