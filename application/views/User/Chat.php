@@ -48,14 +48,14 @@ x y{
 <?php endforeach;?> 
 <div class="container">	
 	<div id="tmp">
-	<div class="border rounded" id="border_rounded" style="height:500px;;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">
+	<div class="border rounded" id="border_rounded" style="height:420px;;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">
 		<?php 
 		$id = $this->session->userdata('id_mahasiswa');
 		foreach ($chats as $item) {
 		?>
 			<?php if ($item->from == $id) {?>
 				<x>
- 					<y class="me"><?= $item->message ?></y>
+ 					<y class="me" style=" max-width:400px"><?= $item->message ?></y>
 				</x><br>
 				<p style="font-size:11px;float:right;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></p>
 				<!-- <div class="me"><span  style="font-size:18px;"><?= $item->message ?></span><br>
@@ -63,7 +63,7 @@ x y{
 				</div> -->
 			<?php }else { ?>
 				<x>
- 					<y class="him"><?= $item->message ?></y>
+ 					<y class="him" style=" max-width:400px"><?= $item->message ?></y>
 				</x><br>
 				<p style="font-size:11px;float:left;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></p>
 				<!-- <div class="him"><span  style="font-size:18px;"><?= $item->message ?></span><br>
@@ -78,7 +78,7 @@ x y{
     <input type="hidden" name="from" value="<?=$this->session->userdata('id_mahasiswa');?>">    
 		<div class="row">
 			<div class="col-10">
-				<input type="text" name="message" class="form-control" placeholder="Tulis Pesan Kamu" required>
+				<input type="text" name="message" class="form-control" placeholder="Tulis Pesan Kamu" required autocomplete="off">
 			</div>
 			<div class="col-2">
 				<button class="btn btn-primary btn-block">Kirim</button>

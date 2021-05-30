@@ -32,7 +32,18 @@
         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="width:99%;"><br>
           <div class="courses-inner res-mg-b-30">
             <div class="courses-title">                                
-              <h2><?=$n["nama"];?></h2>
+            <?php if($n["strength"] == 0){?>
+              <h2><?=$n["nama"];?>
+              </h2>
+              <?php
+                } 
+              else { ?>
+                <h2><?=$n["nama"];?>&nbsp;&nbsp;                            
+                <span class="badge badge-light" style="background-color:red; color:white;"><?=$n["strength"];?></span>              
+                </h2>
+              <?php
+              } 
+              ?>
             </div>          
             <div class="course-des">
               <p><b>NIM:</b> <?=$n["nim"];?></p>

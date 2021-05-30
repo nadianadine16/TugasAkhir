@@ -13,11 +13,22 @@
         </form>
       </div>
 
-  <div class="kotak" style="width:80%; height:600px; margin-top:15%;position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+  <div class="kotak" style="width:80%; height:600px; margin-top:18%;position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
   <?php foreach($nama_tutor as $n):?>
     <div class="kotakSatu">    
       <div class="card border-info mb-3">
-        <div class="card-header"><b><?=$n["nama"]?></b></div>        
+        <div class="card-header">
+        <?php if($n["total"] == 0){?>
+        <b><?=$n["nama"]?></b>        
+        <?php
+        } 
+         else { ?>          
+         <b><?=$n["nama"]?></b>
+         <span class="badge badge-light" style="background-color:red; color: white"><?=$n["total"];?></span>             
+         <?php
+          } 
+          ?>
+        </div>        
         <div class="card-body text-info">    
         <?php if($n["foto"] == NULL){?>    
           <div class="card-text" style="text-align:justify;padding:5px;">
