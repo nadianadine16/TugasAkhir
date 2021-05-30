@@ -84,10 +84,18 @@
     <?php $no=1; foreach($forum as $f):?>
         <tr>
             <td><?=$no++;?></td>
+            <?php if($f["total"] == 0){?>
             <td><?=$f["nama_kategori"];?></td>
+            <?php
+            } 
+            else { ?>          
+            <td><?=$f["nama_kategori"];?>
+            <span class="badge badge-light" style="background-color:red; color: white"><?=$f["total"]?></span>             
+            </td>
+            <?php }?>
             <td><?=$f["pertanyaan"];?></td>
             <td><?=$f["created_at"];?></td>
-            <td><a href="<?= base_url();?>User/Detail_Forum/<?=$f['id_forum'];?>"><center><button class="btn btn-primary btn-sm">Lihat Forum</button></center></a></td>
+            <td><a href="<?= base_url();?>User/change_status_jawaban/<?=$f['id_forum'];?>"><center><button class="btn btn-primary btn-sm">Lihat Forum</button></center></a></td>
         </tr>
         <?php endforeach;?>
     </tbody>

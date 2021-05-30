@@ -317,11 +317,18 @@ class User_model extends CI_Model {
     public function Jawab_Forum($id) { //function untuk menjawab forum sesuai dengan id_forum yg dipilih
         $this->id_chat_forum = uniqid();
         date_default_timezone_set('Asia/Jakarta');
+        if ($this->input->post('id_user') == $this->session->userdata('id_mahasiswa')) {
+            $status = 2;
+        }
+        else{
+            $status = 1;
+        }
 
         $data = [
             "id_forum" => $this->input->post('id_forum', $id),
             "id_user" => $this->input->post('id_user', true),
             "chat" => $this->input->post('chat', true),
+            "status" => $this->input->post('status',$status),
             "created_at" => date('Y-m-d H:i:s', time())
         ];
 
@@ -372,12 +379,7 @@ class User_model extends CI_Model {
     }
 
     public function Forum_yang_dibuat($id_mahasiswa) { //function untuk menampilkan forum yg dibuat oleh mhs yg sedang login
-        $this->db->select('*');
-        $this->db->from('forum');
-        $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
-        $this->db->where('id_mahasiswa', $id_mahasiswa);     
-
-        $query = $this->db->get();
+        $query=$this->db->query("SELECT forum. id_forum, forum.id_mahasiswa, kategori_materi.nama_kategori, forum.pertanyaan, forum.created_at, IFNULL(t2.total, 0) AS total FROM `forum` LEFT OUTER JOIN (SELECT chat_forum.id_forum, COUNT(chat_forum.chat) AS total FROM chat_forum WHERE chat_forum.status = 1 GROUP BY chat_forum.id_forum ) t2 ON forum.id_forum = t2.id_forum JOIN kategori_materi ON kategori_materi.id_kategori_materi = forum.id_kategori_materi WHERE forum.id_mahasiswa = $id_mahasiswa");
         return $query->result_array();
     }
 
@@ -527,8 +529,8 @@ class User_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function change_status_jawaban($id_chat_forum) { //function untuk mengupdate jawaban forum menjadi sudah terbaca => 2
-        $this->db->query("UPDATE chat_forum SET status = 2 WHERE id_chat_forum = $id_chat_forum");
+    public function change_status_jawaban($id_forum) { //function untuk mengupdate jawaban forum menjadi sudah terbaca => 2
+        $this->db->query("UPDATE chat_forum SET status = 2 WHERE id_chat_forum IN (SELECT id_chat_forum from (select*from chat_forum) as c where (c.id_forum = $id_forum))");
     }
 
     public function hitung_jawaban_baru() { //function untuk menghitung jawaban forum baru yg masih belum terbaca
