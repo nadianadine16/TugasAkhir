@@ -3,21 +3,26 @@
     <div class="section-title">
       <h2><br>Forum Diskusi</h2>
       <p>Jika terdapat pertanyaan yang belum dibahas pada forum dapat menekan button tanya forum</p>
-    </div>
+    </div><br><br>
       
-    <div class="row">      
-      <div class="col-md-5">
-        <form action ="<?= base_url('user/cari');?>" method="post">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search.." name="keyword" autocomplete="off" autofocus>
-            <div class="input-group-append">
-              <input class="btn btn-primary" type="submit" name="submit"></button>
-            </div>
-          </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="">
+        <form class="form-inline" action ="<?= base_url('User/cari');?>" method="post">
+          <select class="form-control" id="id_kategori_materi" name="id_kategori_materi">
+            <option value="" selected="true" disabled="disabled">- Pilih Kategori Forum -</option>
+                <?php foreach($kategori_forum as $kf) : ?>
+                    <option value="<?=$kf["id_kategori_materi"];?>"><?=$kf["nama_kategori"];?></option>
+                <?php endforeach;?>
+          </select>&nbsp;
+          <input type="text" class="form-control" placeholder="Cari Tutor . . ." name="keyword" autocomplete="off" autofocus>
+          &nbsp;
+          <input class="btn" style="background-color:#49b5e7;color:#ffffff" type="submit" name="submit">
         </form>
+        
       </div>
-      <span><div><a href="<?= base_url();?>User/Tanya_Forum" class="btn btn-primary" style="margin-left:365%;">+ Tanya Forum</a></div></span>
-    </div><br>
+      <div style="margin-left:-85px;"><a href="<?= base_url();?>User/Tanya_Forum" class="btn" style="background-color:#49b5e7;color:#ffffff;margin-left:365%;">+ Tanya Forum</a></div>
+    </div>
+    <br>
 
     <?php if($cek_forum == NULL) {?>
       <center><p>Sayang sekali, belum ada yang membuat forum. <b>Jadilah yang pertama!</b></p></center>
@@ -33,7 +38,7 @@
                 <h5 class="card-title" style="font-size:15px;"><b>Kategori : </b> <?=$p["nama_kategori"];?></h5>
                 <p class="card-text" style="font-size:13px;"><b>Pertanyaan : </b><?= substr($p["pertanyaan"],0,100)?></p>
                 <p class="card-text" style="font-size:13px;text-align: right;"><?php echo date("d-F-Y", strtotime($tanggal));?></p>
-                <a href="<?= base_url();?>user/Detail_Forum/<?=$p['id_forum'];?>" class="btn btn-primary" style="float:right">Lihat Forum</a>
+                <a href="<?= base_url();?>user/Detail_Forum/<?=$p['id_forum'];?>" class="btn" style="float:right;background-color:#49b5e7;color:#ffffff;">Lihat Forum</a>
               </div>
             </div><br>
           </div>

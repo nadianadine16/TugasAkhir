@@ -1,23 +1,28 @@
 <section id="team" class="team section" style="margin-top:50px; ">
-  <div class="container" style="background-color:#f4fbfe; margin-top:-30px;">
+  <div class="container" style="background-color:#f4fbfe; margin-top:-10px;">
     <div class="section-title">
       <h2><br>Forum Diskusi</h2>
       <p>Jika terdapat pertanyaan yang belum dibahas pada forum dapat menekan button tanya forum</p>
-    </div>
+    </div><br><br>
       
-    <div class="row">      
-      <div class="col-md-5">
-        <form action ="<?= base_url('user/cari');?>" method="post">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search.." name="keyword" autocomplete="off" autofocus>
-            <div class="input-group-append">
-              <input class="btn btn-primary" type="submit" name="submit"></button>
-            </div>
-          </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="">
+        <form class="form-inline" action ="<?= base_url('User/carimateri/'.$d['id_kategori_materi']);?>" method="post">
+          <select class="form-control" id="id_kategori_materi" name="id_kategori_materi">
+            <option value="" selected="true" disabled="disabled">- Pilih Kategori Forum -</option>
+                <?php foreach($kategori_forum as $kf) : ?>
+                    <option value="<?=$kf["id_kategori_materi"];?>"><?=$kf["nama_kategori"];?></option>
+                <?php endforeach;?>
+          </select>&nbsp;
+          <input type="text" class="form-control" placeholder="Cari Tutor . . ." name="keyword" autocomplete="off" autofocus>
+          &nbsp;
+          <input class="btn btn-primary" type="submit" name="submit">
         </form>
+        
       </div>
-      <span><div><a href="<?= base_url();?>User/Tanya_Forum" class="btn btn-primary" style="margin-left:365%;">+ Tanya Forum</a></div></span>
-    </div><br>
+      <div style="margin-left:-85px;"><a href="<?= base_url();?>User/Tanya_Forum" class="btn btn-primary" style="margin-left:365%;">+ Tanya Forum</a></div>
+    </div>
+    <br>
 
     <?php if($forum == NULL) {?>
       <center><p>Kata kunci yang Anda cari tidak ditemukan.<b> Silahkan coba lagi.</b><br><br><br></p></center>
@@ -39,13 +44,6 @@
           </div>
         <?php endforeach;?>
       </div>
-
-      <!-- <div class="row">
-        <div class="col">
-          Tampilkan pagination
-          <?php echo $pagination; ?>
-        </div>
-      </div> -->
     <?php } ?>
   </div>
 </section>

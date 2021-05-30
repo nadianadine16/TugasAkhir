@@ -120,27 +120,22 @@ class Tutor extends CI_Controller {
 
     public function Tambah_Tutor()
     {
-        if (isset($_SESSION['id_tutor'])) {
-            $data['title'] = 'Daftar Tutor';
+        $data['title'] = 'Daftar Tutor';
 
-            // form validation untuk memeriksa kelengkapan isian form
-            $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');
-            $this->form_validation->set_rules('id_kategori_materi', 'id_kategori_materi', 'required');
-            
-            if($this->form_validation->run() == FALSE) {
-                echo"<script>alert('Surat Pernyataan Wajib Diisi');</script>";
-                redirect('Tutor/Daftar_Tutor','refresh');
-            }
-            else {
-                // menuju ke tutor_model untuk melakukan aksi tambah tutor
-                $this->Tutor_model->Tambah_Tutor();
-                echo"<script>alert('Terdaftar');</script>";
-                // kembali ke halaman login
-                redirect('Login/index','refresh');
-            }
+        // form validation untuk memeriksa kelengkapan isian form
+        $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');
+        $this->form_validation->set_rules('id_kategori_materi', 'id_kategori_materi', 'required');
+        
+        if($this->form_validation->run() == FALSE) {
+            echo"<script>alert('Surat Pernyataan Wajib Diisi');</script>";
+            redirect('Tutor/Daftar_Tutor','refresh');
         }
         else {
-            redirect('Login/logout');
+            // menuju ke tutor_model untuk melakukan aksi tambah tutor
+            $this->Tutor_model->Tambah_Tutor();
+            echo"<script>alert('Terdaftar');</script>";
+            // kembali ke halaman login
+            redirect('Login/index','refresh');
         }
     }
 

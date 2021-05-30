@@ -72,6 +72,7 @@ class User extends CI_Controller {
             $data['notif_jawaban_baru'] = $this->User_model->notif_jawaban_baru(); //menampilkan notifikasi jawaban forum baru
             $data['hitung_jawaban_baru']= $this->User_model->hitung_jawaban_baru(); //menghitung jumlah notifikasi jawaban baru forum
             $data['pagination'] = $this->pagination->create_links(); //membuat pagination
+            $data['kategori_forum'] = $this->User_model->getAllKategoriMateri();
 
             $this->load->view('template/header_user', $data);
             $this->load->view('user/forum', $data);
@@ -575,14 +576,25 @@ class User extends CI_Controller {
 
     public function cari() {
         if(isset($_SESSION['id_mahasiswa'])) {
-            $keyword=  $this->input->post('keyword'); //menagmbil inputan keyword
+            // $keyword=  $this->input->post('keyword'); //menagmbil inputan keyword
 
             $data['title'] = 'Forum';        
-            $data['forum'] = $this->User_model->search(); //menampilkan data forum sesuai dengan keyword yg dicari
+            // $data['forum'] = $this->User_model->search(); //menampilkan data forum sesuai dengan keyword yg dicari
             $data['notif_chat_user'] = $this->User_model->notif_chat(); //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['hitung_chat']= $this->User_model->hitung_chat(); //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['notif_jawaban_baru'] = $this->User_model->notif_jawaban_baru(); //menampilkan notifikasi jawaban forum baru
             $data['hitung_jawaban_baru']= $this->User_model->hitung_jawaban_baru(); //menghitung jumlah notifikasi jawaban baru forum
+
+            $data['forum'] = $this->User_model->getAllForum_cari();
+
+            if($this->input->post('submit')){
+                // mengambil data inputan saat pencarian
+                $kategori = $this->input->post('id_kategori_materi');
+                $keyword = $this->input->post('keyword');
+
+                // menuju tutor_model untuk mencari forum sesuai dengan kategori/pertanyaan
+                $data['forum'] = $this->User_model->Search($kategori, $keyword);
+            }
 
             $this->load->view('template/header_user', $data);
             $this->load->view("user/Search",$data);
@@ -593,12 +605,12 @@ class User extends CI_Controller {
         }      
     }
 
-    public function carimateri() {
+    public function carimateri($id_kategori_materi) {
         if(isset($_SESSION['id_mahasiswa'])) {
             $keyword=  $this->input->post('keyword'); //mengambil inputan dari keyword    
 
             $data['title'] = 'Daftar Materi';        
-            $data['cari_materi'] = $this->User_model->cari_materi(); //menampilkan materi sesuai dengan keyword yg dicari
+            $data['cari_materi'] = $this->User_model->cari_materi($id_kategori_materi); //menampilkan materi sesuai dengan keyword yg dicari
             $data['notif_chat_user'] = $this->User_model->notif_chat(); //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['hitung_chat']= $this->User_model->hitung_chat(); //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['notif_jawaban_baru'] = $this->User_model->notif_jawaban_baru(); //menampilkan notifikasi jawaban forum baru

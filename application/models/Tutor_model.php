@@ -547,7 +547,7 @@
 
         public function notif_chat_tutor() { //query untuk menampilkan pesan baru dari mhs yang belum dibaca (status = 1) oleh tutor
             $id_mahasiswa = $this->session->userdata('id_mahasiswa');
-            $query = $this->db->query("SELECT private_chat.id_pesan, private_chat.from, private_chat.to, mahasiswa.nama,  private_chat.message
+            $query = $this->db->query("SELECT *
             FROM private_chat
             JOIN mahasiswa 
             ON mahasiswa.id_mahasiswa = private_chat.from

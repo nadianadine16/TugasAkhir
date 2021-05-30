@@ -42,8 +42,8 @@
     <?php $no=1; foreach($tugas as $t):?>
         <tr>
             <td><?=$no++;?></td>
-            <td><?=$t["judul"];?></td>
-            <td><?=$t["tugas"];?></td>
+            <td style="width:300px;"><?=$t["judul"];?></td>
+            <td style="width:700px;"><?=$t["tugas"];?></td>
             <td>
             <?php if($t["status"] == "Revisi"){?>
                 <a href="<?= base_url();?>User/kumpulkanTugas/<?=$t['id_konten'];?>"><center><button class="btn btn-danger btn-sm" style="width:60px;align-text:center;">Revisi</button></center></a>
@@ -73,9 +73,9 @@
     <thead>
         <tr>
             <th><center>No</center></th>
-            <th><center>Kategori Forum</center></th>
-            <th><center>Pertanyaan</center></th>
-            <th><center>Dibuat pada</center></th>
+            <th style="width:200px;"><center>Kategori Forum</center></th>
+            <th style="width:700px;"><center>Pertanyaan</center></th>
+            <th style="width:100px;"><center>Dibuat pada</center></th>
             <!-- <th><center>Jumlah Respon</center></th> -->
             <th><center>Aksi</center></th>
         </tr>

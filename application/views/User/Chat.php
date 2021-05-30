@@ -48,7 +48,7 @@ x y{
 <?php endforeach;?> 
 <div class="container">	
 	<div id="tmp">
-	<div class="border rounded" id="border_rounded" style="height:500px;;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">
+	<div class="border rounded" id="border_rounded" style="height:480px;;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">
 		<?php 
 		$id = $this->session->userdata('id_mahasiswa');
 		foreach ($chats as $item) {
@@ -58,17 +58,11 @@ x y{
  					<y class="me"><?= $item->message ?></y>
 				</x><br>
 				<p style="font-size:11px;float:right;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></p>
-				<!-- <div class="me"><span  style="font-size:18px;"><?= $item->message ?></span><br>
-					<span style="font-size:11px;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></span>
-				</div> -->
 			<?php }else { ?>
 				<x>
  					<y class="him"><?= $item->message ?></y>
 				</x><br>
 				<p style="font-size:11px;float:left;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></p>
-				<!-- <div class="him"><span  style="font-size:18px;"><?= $item->message ?></span><br>
-					<span style="font-size:11px;" class="text-secondary ml-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></span>
-				</div> -->
 			<?php } ?>
 		<?php } ?>
 	</div>
@@ -87,23 +81,8 @@ x y{
 	</form>
 </div>
 
-<!-- <script type="text/javascript">
-	myFunction();
-
-	function myFunction() {
-	  setInterval(ajaxChat, 5000);
-	}
-
-	function ajaxChat() {
-	  $.ajax({
-	  	url: "<?= base_url('User/ajax/'.$to) ?>", 
-	  	success: function(result){
-	    $("#tmp").html(result);
-	  }});
-	}
-
-</script> -->
 <script type="text/javascript">
- $('#border_rounded').scrollTop($('#border_rounded')[0].scrollHeight);
+	$('#border_rounded').scrollTop($('#border_rounded')[0].scrollHeight);
 </script>
+
 </section>

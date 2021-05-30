@@ -146,7 +146,7 @@ class User_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function cari_materi() { //function untuk menampilkan pencarian materi sesuai keyword
+    public function cari_materi($id_kategori_materi) { //function untuk menampilkan pencarian materi sesuai keyword
         $keyword = $this->input->post('keyword'); //mengambil inputan keyword materi
 
         $this->db->select('*');
@@ -155,7 +155,7 @@ class User_model extends CI_Model {
         $this->db->join('tutor', 'materi.id_tutor = tutor.id_tutor');
         $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');        
         $this->db->like('materi.nama_materi', $keyword);  
-        $this->db->or_like('kategori_materi.nama_kategori', $keyword);  
+        $this->db->where ('kategori_materi.id_kategori_materi', $id_kategori_materi);  
 
         $query = $this->db->get();
         return $query->result_array();
@@ -275,6 +275,17 @@ class User_model extends CI_Model {
         $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
         $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');    
         $this->db->limit($limit,$start);
+        $this->db->order_by('forum.created_at', 'DESC');
+                
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function getAllForum_cari() { //function untuk menampilkan forum per page
+        $this->db->select('*');
+        $this->db->from('forum');
+        $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
+        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');    
         $this->db->order_by('forum.created_at', 'DESC');
                 
         $query = $this->db->get();
@@ -414,16 +425,17 @@ class User_model extends CI_Model {
         return $query->result_array();                        
     }             
 
-    public function search() { //function untuk melakukan pencarian forum
-        $keyword=$this->input->post('keyword'); //mengambil inputan keyword
+    public function search($kategori, $keyword) { //function untuk melakukan pencarian forum
+        $keyword = $this->input->post('keyword'); //mengambil inputan keyword
+        $kategori = $this->input->post('id_kategori_materi');
 
         $this->db->select('*');
-        $this->db->from('forum');
-        $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
-        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');            
-        $this->db->like('kategori_materi.nama_kategori', $keyword);        
-        $this->db->or_like('forum.pertanyaan', $keyword);
-        $this->db->order_by('forum.created_at', 'DESC'); 
+            $this->db->from('forum');
+            $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
+            $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');            
+            $this->db->like('forum.id_kategori_materi', $kategori); 
+            $this->db->like('forum.pertanyaan', $keyword);        
+            $this->db->order_by('forum.created_at', 'DESC'); 
 
         $query = $this->db->get();
         return $query->result_array();
@@ -465,7 +477,7 @@ class User_model extends CI_Model {
     public function notif_chat() { //function untuk menampilkan notifikasi pesan masuk
         $id_mahasiswa = $this->session->userdata('id_mahasiswa'); //menyimpan session id_mahasiswa
 
-        $query = $this->db->query("SELECT private_chat.id_pesan, private_chat.from, private_chat.to, mahasiswa.nama,  private_chat.message
+        $query = $this->db->query("SELECT *
         FROM private_chat
         JOIN mahasiswa 
         ON mahasiswa.id_mahasiswa = private_chat.from

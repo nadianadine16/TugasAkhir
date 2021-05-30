@@ -5,7 +5,9 @@
     </div>
     <div class="row">      
       <div class="col-md-5" style="margin-left:71%;margin-bottom:30px;">
-        <form class="form-inline" action ="<?= base_url('User/carimateri');?>" method="post">
+      <?php foreach($daftar_materi as $d):?>
+        <form class="form-inline" action ="<?= base_url('User/carimateri/'.$d['id_kategori_materi']);?>" method="post">
+      <?php endforeach;?> 
           <input type="text" class="form-control" placeholder="Cari Materi . . ." name="keyword" autocomplete="off" autofocus required> 
           <input class="btn btn-primary" type="submit" name="submit">
         </form>

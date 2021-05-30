@@ -114,19 +114,22 @@
                                                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-message edu-chat-pro" aria-hidden="true"></i><span class="badge badge-light" style="background-color:red"><?php echo $hitung_chat_tutor ;?></span></a>
                                                     <div role="menu" class="author-message-top dropdown-menu animated zoomIn">
                                                         <div class="message-single-top">
-                                                            <h1>Private Chat</h1>
+                                                            <center><p style="margin-top:15px;"><b>Notifikasi Pesan</b></p></center>
                                                         </div>
-                                                        <ul class="message-menu">
-                                                        <?php foreach($notif_chat_tutor as $nt):?>   
+                                                        <ul class="message-menu" style="margin-top:-15px;">
+                                                           
                                                             <li>
-                                                                <a href="<?= base_url('Tutor/change_status_chat_tutor/'.$nt['from'])?>">                                                                    
-                                                                    <div class="message-content">                                                                        
-                                                                        <h2><?=$nt['nama'];?></h2>
-                                                                        <p><?=$nt['message'];?>.</p>
+                                                            <?php foreach($notif_chat_tutor as $nt):?>
+                                                                <a href="<?= base_url('Tutor/change_status_chat_tutor/'.$nt['from'])?>" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; ">                                                                    
+                                                                    <div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;">                                                                        
+                                                                        <b><?=$nt['nama'];?></b><br>
+                                                                        <?=$nt['message'];?><br>
+                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=$nt['created_at'];?>
                                                                     </div>
                                                                 </a>
+                                                                <?php endforeach;?>
                                                             </li>
-                                                            <?php endforeach;?>                                                            
+                                                                                                                        
                                                         </ul>
                                                         <div class="message-view">
                                                             
