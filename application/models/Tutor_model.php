@@ -473,8 +473,8 @@
             $this->db->select('*');
             $this->db->from('tutor'); 
             $this->db->join('mahasiswa', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');
-            $this->db->join('kategori_materi', 'kategori_materi.id_kategori_materi = tutor.id_tutor');
-            $this->db->where('id_tutor', $id_tutor);
+            $this->db->join('kategori_materi', 'kategori_materi.id_kategori_materi = tutor.id_kategori_materi');
+            $this->db->where('tutor.id_tutor', $id_tutor);
             $query = $this->db->get();
             return $query->result_array();                        
         }
