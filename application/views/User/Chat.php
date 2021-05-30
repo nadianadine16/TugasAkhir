@@ -55,12 +55,12 @@ x y{
 		?>
 			<?php if ($item->from == $id) {?>
 				<x>
- 					<y class="me"><?= $item->message ?></y>
+ 					<y class="me" style=" max-width:400px"><?= $item->message ?></y>
 				</x><br>
 				<p style="font-size:11px;float:right;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></p>
 			<?php }else { ?>
 				<x>
- 					<y class="him"><?= $item->message ?></y>
+ 					<y class="him" style=" max-width:400px"><?= $item->message ?></y>
 				</x><br>
 				<p style="font-size:11px;float:left;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></p>
 			<?php } ?>
@@ -72,7 +72,7 @@ x y{
     <input type="hidden" name="from" value="<?=$this->session->userdata('id_mahasiswa');?>">    
 		<div class="row">
 			<div class="col-10">
-				<input type="text" name="message" class="form-control" placeholder="Tulis Pesan Kamu" required>
+				<input type="text" name="message" class="form-control" placeholder="Tulis Pesan Kamu" required autocomplete="off">
 			</div>
 			<div class="col-2">
 				<button class="btn btn-primary btn-block">Kirim</button>

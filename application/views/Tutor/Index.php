@@ -66,6 +66,7 @@
                             <h1 class="text-success">Total : <?=$materi?></h1>
                             <small>
                                 Materi merupakan judul dari topik yang akan dibahas, didalamnya terdapat banyak konten.
+                                <?=$this->session->userdata('id_kategori_materi');?>
                             </small>
                         </div>
                     </div>

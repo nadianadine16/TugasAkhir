@@ -693,7 +693,7 @@ class Tutor extends CI_Controller {
             //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
             //menghitung jumlah notifikasi pesan yang belum dibaca
-            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();            
             // menampilkan semua data mahasiswa per page
             $data['mahasiswa'] = $this->Tutor_model->Mahasiswa($config["per_page"], $data['page']);
             // membuat pagination
