@@ -9,7 +9,7 @@
         <form class="form-inline" action ="<?= base_url('User/carimateri/'.$d['id_kategori_materi']);?>" method="post">
       <?php endforeach;?> 
           <input type="text" class="form-control" placeholder="Cari Materi . . ." name="keyword" autocomplete="off" autofocus required> 
-          <input class="btn" type="submit" name="submit" style="background-color:#49b5e7;color:#ffffff">
+          <input class="btn" type="submit" name="submit" style="background-color:#49b5e7;color:#ffffff;">
         </form>
       </div>
     </div>

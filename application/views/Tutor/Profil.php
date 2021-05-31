@@ -66,14 +66,14 @@
         <div class="row">
         <?php foreach($tutor as $t):?>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <div class="profile-info-inner" style="width:314%;">
+                <div class="profile-info-inner" style="width:270%;margin-left:200px;">
                 <center><h3>Profil Anda</h3></center>
                     <div class="card kartu">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="foto">
                                     <?php if($t["foto"] == NULL){?>
-                                        <img src="<?= base_url('upload/user.png')?>" alt="" style="margin-left:-20px;width:200px;height:200px;"/>
+                                        <img src="<?= base_url('upload/user.png')?>" alt="" />
                                     <?php } else {?>
                                         <img src="<?= base_url('upload/'.$t['foto'])?>" alt="" />
                                     <?php }?>

@@ -170,32 +170,6 @@ class User extends CI_Controller {
         }
     }
 
-    // public function kategoriMateri() {
-    //     if(isset($_SESSION['id_mahasiswa'])) {
-    //         $data['title'] ='Daftar Kategori Materi';
-    //         $data['kategori_materi'] = $this->User_model->getAllKategoriMateri();
-    //         $data['notif_chat_user'] = $this->User_model->notif_chat();
-    //         $data['hitung_chat']= $this->User_model->hitung_chat();
-            
-    //         $this->load->view('template/header_user', $data);
-    //         $this->load->view('user/Kategori_Materi', $data);
-    //         $this->load->view('template/footer_user', $data);
-    //     }
-    //     else {
-    //         redirect('Login/logout');
-    //     }
-    // }
-
-    // public function daftarMateri($id){
-    //     $data['title'] ='Daftar Materi';
-    //     $data['daftar_materi'] = $this->User_model->daftar_materi($id);
-    //     $data['notif_chat_user'] = $this->User_model->notif_chat();
-    //     $data['hitung_chat']= $this->User_model->hitung_chat();
-
-    //     $this->load->view('template/header_user', $data);
-    //     $this->load->view('user/Daftar_Materi', $data);
-    //     $this->load->view('template/footer_user', $data);
-    // }
     public function daftarMateribyKategori() {
         if(isset($_SESSION['id_mahasiswa'])) {
             $data['title'] ='Daftar Materi';
@@ -270,24 +244,6 @@ class User extends CI_Controller {
             redirect('Login/logout');
         }
     }
-
-    // public function detailKonten($id) {
-    //     if(isset($_SESSION['id_mahasiswa'])) {
-    //         $data['title'] ='Detail Materi';
-    //         $data['detail_materi'] = $this->User_model->detail_konten($id); //get 
-    //         $data['notif_chat_user'] = $this->User_model->notif_chat(); //menampilkan notifikasi pesan private chat yang belum dibaca
-    //         $data['hitung_chat']= $this->User_model->hitung_chat(); //menghitung jumlah notifikasi pesan yang belum dibaca
-    //         $data['notif_jawaban_baru'] = $this->User_model->notif_jawaban_baru(); //menampilkan notifikasi jawaban forum baru
-    //         $data['hitung_jawaban_baru']= $this->User_model->hitung_jawaban_baru(); //menghitung jumlah notifikasi jawaban baru forum
-
-    //         $this->load->view('template/header_user', $data);
-    //         $this->load->view('user/Detail_Materi', $data);
-    //         $this->load->view('template/footer_user', $data);
-    //     }
-    //     else {
-    //         redirect('Login/logout');
-    //     }
-    // }
 
     public function kumpulkanTugas($id) {
         if(isset($_SESSION['id_mahasiswa'])) {

@@ -454,12 +454,12 @@ class User_model extends CI_Model {
         $kategori = $this->input->post('id_kategori_materi');
 
         $this->db->select('*');
-            $this->db->from('forum');
-            $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
-            $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');            
-            $this->db->like('forum.id_kategori_materi', $kategori); 
-            $this->db->like('forum.pertanyaan', $keyword);        
-            $this->db->order_by('forum.created_at', 'DESC'); 
+        $this->db->from('forum');
+        $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
+        $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');            
+        $this->db->like('forum.id_kategori_materi', $kategori); 
+        $this->db->like('forum.pertanyaan', $keyword);        
+        $this->db->order_by('forum.created_at', 'DESC'); 
 
         $query = $this->db->get();
         return $query->result_array();
@@ -470,7 +470,7 @@ class User_model extends CI_Model {
     }
 
     public function jumlah_materi() { //function untuk menghitung jumlah data materi
-    return $this->db->count_all('materi');
+        return $this->db->count_all('materi');
     }
 
     public function jumlah_kategori() { //function untuk menghitung jumlah data kategori maeri
@@ -478,7 +478,7 @@ class User_model extends CI_Model {
     }
 
     public function jumlah_konten() { //function untuk menghitung jumlah konten
-    return $this->db->count_all('konten');
+        return $this->db->count_all('konten');
     }
 
     public function cek_forum() { //function untuk memeriksa apakah forum masih kosong/sudah terisi
