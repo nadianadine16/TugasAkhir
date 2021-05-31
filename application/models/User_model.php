@@ -316,23 +316,33 @@ class User_model extends CI_Model {
 
     public function Jawab_Forum($id) { //function untuk menjawab forum sesuai dengan id_forum yg dipilih
         $this->id_chat_forum = uniqid();
-        date_default_timezone_set('Asia/Jakarta');
-        if ($this->input->post('id_user') == $this->session->userdata('id_mahasiswa')) {
-            $status = 2;
-        }
-        else{
-            $status = 1;
-        }
-
-        $data = [
-            "id_forum" => $this->input->post('id_forum', $id),
-            "id_user" => $this->input->post('id_user', true),
-            "chat" => $this->input->post('chat', true),
-            "status" => $this->input->post('status',$status),
-            "created_at" => date('Y-m-d H:i:s', time())
-        ];
-
-        $this->db->insert('chat_forum', $data);
+        $idmhs= $this->session->userdata('id_mahasiswa');        
+        date_default_timezone_set('Asia/Jakarta');             
+        $cek=$this->db->query("SELECT id_mahasiswa From forum
+        where id_forum=$id LIMIT 1");                
+            $a=$cek->row_array();    
+            if ($a['id_mahasiswa'] != $idmhs) {
+            $data = [
+                "id_forum" => $this->input->post('id_forum', $id),
+                "id_user" => $this->input->post('id_user', true),
+                "chat" => $this->input->post('chat', true),
+                "status" => 1,
+                "created_at" => date('Y-m-d H:i:s', time())
+            ];
+    
+            $this->db->insert('chat_forum', $data);    
+            }
+            else{
+            $data = [
+                "id_forum" => $this->input->post('id_forum', $id),
+                "id_user" => $this->input->post('id_user', true),
+                "chat" => $this->input->post('chat', true),   
+                "status" => 2,
+                "created_at" => date('Y-m-d H:i:s', time())
+            ];
+    
+            $this->db->insert('chat_forum', $data);    
+        }        
     }
 
     public function Jawab_Private_Chat($id_mahasiswa, $id_tutor) { //function untuk membalas chat; $id_mahasiswa = from; $id_tutor = to;

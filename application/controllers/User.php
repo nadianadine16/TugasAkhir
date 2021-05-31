@@ -538,6 +538,7 @@ class User extends CI_Controller {
                 $this->load->view('template/footer_user', $data);
             }
             else {
+                                                
                 $this->User_model->Jawab_Forum($id);
                 echo"<script>alert('Jawaban Anda Berhasil Dikirim');</script>";
                 redirect('User/Detail_Forum/'.$id ,'refresh');
