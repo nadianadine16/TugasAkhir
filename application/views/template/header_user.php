@@ -161,8 +161,8 @@
           <b>Akun</b>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="<?= base_url();?>User/Detail_Akun/<?= $this->session->userdata('id_mahasiswa');?>">Kelola Akun</a>
-            <a class="dropdown-item" href="<?= base_url();?>Login/logout">Logout</a>
+            <a class="dropdown-item" href="<?= base_url();?>User/Detail_Akun/<?= $this->session->userdata('id_mahasiswa');?>"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>  Kelola Akun</a>
+            <a class="dropdown-item" href="<?= base_url();?>Login/logout"><span><i class="fa fa-sign-out" aria-hidden="true"></i></span>  Logout</a>
           </div>
         </li>
       </ul>

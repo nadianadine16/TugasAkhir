@@ -665,13 +665,20 @@ class User extends CI_Controller {
     }
 
     //mengubah status jawaban forum menjadi sudah dibaca sesuai dengan id_chat frorum
-    public function change_status_jawaban($id_forum){ 
-        $this->User_model->change_status_jawaban($id_forum);
-        redirect('User/Detail_Forum/'.$id_forum,'refresh');
-    }
-    public function change_status_jawaban2($id_forum){ 
-        $this->User_model->change_status_jawaban($id_forum);
-        redirect('User/forum/'.$id_forum,'refresh');
+    public function change_status_jawaban($id_forum){
+        // $idmhs = $this->session->userdata('id_mahasiswa');
+        $cek=$this->db->query("SELECT id_mahasiswa From forum where id_forum=$id_forum LIMIT 1");                
+        $a=$cek->row_array();
+
+        if ($a['id_mahasiswa'] != $this->session->userdata('id_mahasiswa')) {
+            // $this->User_model->change_status_jawaban($id_forum);
+            redirect('User/Detail_Forum/'.$id_forum,'refresh');
+        }
+        else {
+            $this->User_model->change_status_jawaban($id_forum);
+            // redirect('User/Detail_Forum/'.$id_forum,'refresh');
+            redirect('User/Detail_Forum/'.$id_forum,'refresh');
+        }
     }
         
     public function Chat($to) {    

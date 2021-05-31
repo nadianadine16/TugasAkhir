@@ -41,7 +41,7 @@
                 <input type="text" class="form-control" name="github" id="github" value="<?= $this->session->userdata('github');?>" style="width:1000px;" required/>                
               </div>
               <div class="text-center">
-                <center><button type="submit" class="btn btn-primary" style="margin-left:35%;">Edit</button></center>
+                <center><button type="submit" class="btn" style="margin-left:35%;background-color:#49b5e7;color:#ffffff;">Edit</button></center>
               </div><br><br>
             </form>
           </div>

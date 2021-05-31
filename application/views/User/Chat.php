@@ -42,25 +42,24 @@ x y{
 </style>
 
 <section id="team" class="team section-bg" style="margin-top:50px">
-<!-- <a href="<?= base_url('User/Private_Chat') ?>" style="margin-left:9%">Back</a> -->
 <?php foreach($nama_tujuan as $n):?>
 <center><h4 style="font-size: 20px; padding-top:10px;padding-left:30px;">Tutor : <b><?=$n["nama"]?></b></h4></center>
 <?php endforeach;?> 
 <div class="container">	
 	<div id="tmp">
-	<div class="border rounded" id="border_rounded" style="height:480px;;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">
+	<div class="border rounded" id="border_rounded" style="height:450px;;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">
 		<?php 
 		$id = $this->session->userdata('id_mahasiswa');
 		foreach ($chats as $item) {
 		?>
 			<?php if ($item->from == $id) {?>
 				<x>
- 					<y class="me" style=" max-width:400px"><?= $item->message ?></y>
+ 					<y class="me" style=" max-width:400px; margin-right:10px;margin-top:10px;"><?= $item->message ?></y>
 				</x><br>
 				<p style="font-size:11px;float:right;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></p>
 			<?php }else { ?>
 				<x>
- 					<y class="him" style=" max-width:400px"><?= $item->message ?></y>
+ 					<y class="him" style=" max-width:400px; margin-left:10px; margin-top:10px;"><?= $item->message ?></y>
 				</x><br>
 				<p style="font-size:11px;float:left;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></p>
 			<?php } ?>
@@ -68,14 +67,14 @@ x y{
 	</div>
 	</div>
 
-	<form method="post" action="<?= base_url('User/Chat/'.$to) ?>" style="margin-top: 10px;">
+	<form method="post" action="<?= base_url('User/Chat/'.$to) ?>" style="margin-top: 10px;margin-bottom:-50px;">
     <input type="hidden" name="from" value="<?=$this->session->userdata('id_mahasiswa');?>">    
 		<div class="row">
 			<div class="col-10">
-				<input type="text" name="message" class="form-control" placeholder="Tulis Pesan Kamu" required autocomplete="off">
+				<input type="text" name="message" class="form-control" placeholder="Tulis Pesan Kamu . . ." required autocomplete="off">
 			</div>
 			<div class="col-2">
-				<button class="btn btn-primary btn-block">Kirim</button>
+				<button class="btn btn-block" style="background-color:#49b5e7;color:#ffffff;">Kirim</button>
 			</div>
 		</div>
 	</form>

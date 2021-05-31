@@ -13,7 +13,7 @@
         </form>
       </div>
 
-  <div class="kotak" style="width:80%; height:600px; margin-top:16%;position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+  <div class="kotak" style="width:80%; height:600px; margin-top:18%;position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
   <?php foreach($nama_tutor as $n):?>
     <div class="kotakSatu">    
       <div class="card border-info mb-3">

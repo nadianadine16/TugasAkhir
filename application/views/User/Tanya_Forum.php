@@ -1,7 +1,7 @@
 <section id="hero" class="d-flex align-items-center">
     <div class="container">
     <div class="section-title">
-      <h2>Tanyakan Pada Forum</h2>
+      <h2>Tanya Forum</h2>
     </div> 
         <div class="col-lg-12 mt-5 mt-lg-0">
             <form action="<?=base_url('User/Tanya_Forum')?>" method="post" >

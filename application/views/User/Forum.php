@@ -38,7 +38,7 @@
                 <h5 class="card-title" style="font-size:15px;"><b>Kategori : </b> <?=$p["nama_kategori"];?></h5>
                 <p class="card-text" style="font-size:13px;"><b>Pertanyaan : </b><?= substr($p["pertanyaan"],0,100)?></p>
                 <p class="card-text" style="font-size:13px;text-align: right;"><?php echo date("d-F-Y", strtotime($tanggal));?></p>
-                <a href="<?= base_url();?>user/Detail_Forum/<?=$p['id_forum'];?>" class="btn" style="float:right;background-color:#49b5e7;color:#ffffff;">Lihat Forum</a>
+                <a href="<?= base_url();?>user/change_status_jawaban/<?=$p['id_forum'];?>" class="btn" style="float:right;background-color:#49b5e7;color:#ffffff;">Lihat Forum</a>
               </div>
             </div><br>
           </div>

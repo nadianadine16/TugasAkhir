@@ -144,9 +144,6 @@
                                   <div class="row">
                                       <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
                                           <div class="menu-switcher-pro">
-                                              <!-- <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
-                            <i class="educate-icon educate-nav"></i>
-                          </button> -->
                                           </div>
                                       </div>
                                       <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
@@ -167,9 +164,9 @@
                                                         <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
                                                       </a>
                                                       <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
-                                                          <li><a href="<?= base_url()?>/admin/profile"><span class="edu-icon edu-user-rounded author-log-ic"></span>Ubah Password</a>
+                                                          <li><a href="<?= base_url()?>/admin/profile"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>  Ubah Password</a>
                                                           </li>
-                                                          <li><a href="<?= base_url();?>login/logout"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
+                                                          <li><a href="<?= base_url();?>login/logout"><span><i class="fa fa-sign-out" aria-hidden="true"></i></span>  Log Out</a>
                                                           </li>
                                                       </ul>
                                                   </li>
