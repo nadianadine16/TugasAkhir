@@ -664,9 +664,13 @@ class User extends CI_Controller {
     }
 
     //mengubah status jawaban forum menjadi sudah dibaca sesuai dengan id_chat frorum
-    public function change_status_jawaban($id_chat_forum, $id_forum){ 
-        $this->User_model->change_status_jawaban($id_chat_forum);
+    public function change_status_jawaban($id_forum){ 
+        $this->User_model->change_status_jawaban($id_forum);
         redirect('User/Detail_Forum/'.$id_forum,'refresh');
+    }
+    public function change_status_jawaban2($id_forum){ 
+        $this->User_model->change_status_jawaban($id_forum);
+        redirect('User/forum/'.$id_forum,'refresh');
     }
         
     public function Chat($to) {    

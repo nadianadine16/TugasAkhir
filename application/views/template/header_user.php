@@ -50,6 +50,9 @@
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
+  /* height:400px; */
+  display:block; 
+  overflow:auto;
   /* height:200px; */
   display:none;
   overflow:auto;
@@ -138,11 +141,11 @@
         <li>
           <div class="dropdown">
           <button class="dropbtn"><span class="badge"><?php echo $hitung_jawaban_baru ;?></span></button>
-          <div class="dropdown-content">
+          <div class="dropdown-content" style="width:250px;">
             <center><p style="margin-bottom:-8px;"><b>Notifikasi Pesan</b></p></center><hr>
             <?php if ($hitung_jawaban_baru > 0) {?>
               <?php foreach($notif_jawaban_baru as $njb):?>        
-                <a href="<?=base_url('User/change_status_jawaban/'.$njb['id_chat_forum'].'/'.$njb['id_forum'])?>"><b><?=$njb["nama"];?> </b><br><?=$njb['chat'];?><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=$njb['created_at'];?></a>
+                <a href="<?=base_url('User/change_status_jawaban/'.$njb['id_forum'])?>"><b><?=$njb["nama"];?> </b><br><?=$njb['chat'];?><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($njb['created_at'])) ?></a><hr>
               <?php endforeach;?>
             <?php } else {?>
               <center><b>Belum ada yang menjawab forum kamu.</b></center>
