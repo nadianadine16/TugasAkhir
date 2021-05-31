@@ -20,7 +20,7 @@
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/custom.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="<?= base_url()?>/assets_admin/img/favicon.png?3">
+    <link rel="shortcut icon" href="<?= base_url()?>/assets_admin/img/iconjti.png?3">
   </head>
   <body>
     <div class="page-holder d-flex align-items-center">

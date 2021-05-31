@@ -7,7 +7,7 @@
     <title><?=$title?></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url()?>/assets_admin1/<?= base_url()?>/assets_admin1/img/favicon.ico">
+    <link rel="shortcut icon" href="<?= base_url()?>/assets_admin/img/iconjti.png?3">
     <link href="<?= base_url()?>/assets_admin1/https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/bootstrap.min.css">
     <script src="<?= base_url()?>/assets_admin1/Chart.js"></script>

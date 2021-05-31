@@ -50,13 +50,13 @@
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-  /* height:400px; */
+  height:300px;
   display:block; 
   overflow:auto;
   /* height:200px; */
-  display:none;
-  overflow:auto;
-  /* display: none; */
+  /* display:none; */
+  /* overflow:auto; */
+  display: none;
   position: absolute;
   /* background-color: #f4fbfe; */
   background-color: #ffffff;
@@ -127,7 +127,7 @@
             <center><p style="margin-bottom:-8px;"><b>Notifikasi Pesan</b></p></center><hr>
             <?php if ($hitung_chat > 0) {?>
               <?php foreach($notif_chat_user as $nc):?>
-                <a href="<?= base_url('User/change_status_chat/'.$nc['from'])?>"><b><?=$nc["nama"];?> </b><br><?=$nc['message'];?><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=$nc['created_at'];?></a>
+                <a href="<?= base_url('User/change_status_chat/'.$nc['from'])?>"><b><?=$nc["nama"];?> </b><br><?=$nc['message'];?><br><?=date('d-m-Y H:i',strtotime($nc['created_at']))?></a>
               <?php endforeach;?>
             <?php } else {?>
                 <center><b>Belum ada pesan baru untuk kamu.</b></center>
@@ -145,7 +145,7 @@
             <center><p style="margin-bottom:-8px;"><b>Notifikasi Pesan</b></p></center><hr>
             <?php if ($hitung_jawaban_baru > 0) {?>
               <?php foreach($notif_jawaban_baru as $njb):?>        
-                <a href="<?=base_url('User/change_status_jawaban/'.$njb['id_forum'])?>"><b><?=$njb["nama"];?> </b><br><?=$njb['chat'];?><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($njb['created_at'])) ?></a><hr>
+                <a href="<?=base_url('User/change_status_jawaban/'.$njb['id_forum'])?>"><b><?=$njb["nama"];?> </b><br><?=$njb['chat'];?><br><?= date('d-m-Y H:i',strtotime($njb['created_at'])) ?></a><hr>
               <?php endforeach;?>
             <?php } else {?>
               <center><b>Belum ada yang menjawab forum kamu.</b></center>
