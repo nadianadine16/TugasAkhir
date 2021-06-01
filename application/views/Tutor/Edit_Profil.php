@@ -75,6 +75,7 @@
                         </div>
                         <div class="form-group">
                             <label for="foto">Unggah Foto Profil</label>
+                            <input type="hidden" name="old_profil" value="<?=$t2['foto'];?>" />
                             <input type="file" class="form-control" id="foto" name="foto">
                             <p style="color:#808080;">Format .jpg .png Maks 500Kb || <?=$t2['foto'];?></p>
                         </div>

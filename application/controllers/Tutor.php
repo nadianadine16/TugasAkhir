@@ -652,7 +652,7 @@ class Tutor extends CI_Controller {
         }
         else{
             echo"<script>alert('Mohon maaf Anda gagal / belum mendaftar menjadi tutor');</script>";
-            redirect('Tutor/Cek_Status_pendaftaran','refresh');
+            redirect('Login/index','refresh');
         }
     }
 

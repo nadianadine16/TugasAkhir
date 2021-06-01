@@ -506,6 +506,7 @@
             if($this->upload->do_upload('foto')) {
                 return $this->upload->data("file_name");
             }
+            return $this->input->post('old_profil', true);
         }
 
         public function revisi($id_tugas) { //menambah revisi tugas mhs sesuai dengan id_tugas
