@@ -27,7 +27,7 @@
                 <form action="<?= base_url('tutor/cari');?>" method="post">
                     <div class="form-group">
                       <label for="email" class="sr-only">NIM</label>
-                      <input id="search" type="text" placeholder="Masukan NIM" name="keyword" autocomplete="off" class="form-control" style="width:155%;"/>                    
+                      <input id="search" type="text" placeholder="Masukan NIM" name="keyword" autocomplete="off" class="form-control" autofocus="true" style="width:155%;"/>                    
                     </div>                  
                 <button name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" style="width:155%;">Cek Status</button>
                 </form>                
