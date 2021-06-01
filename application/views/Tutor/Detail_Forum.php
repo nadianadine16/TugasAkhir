@@ -42,7 +42,7 @@
                     <?php endforeach;?>
                     <input type="hidden" name="id_forum" value="<?=$p["id_forum"];?>">                
                   <div class="form-group">
-                    <textarea class="form-control" name="chat" rows="5" data-rule="required" data-msg="Masukkan Jawaban Anda" placeholder="Tulis Jawaban Anda Disini . . . "></textarea>
+                    <textarea class="form-control" name="chat" rows="5" data-rule="required" data-msg="Masukkan Jawaban Anda" placeholder="Tulis Jawaban Anda Disini . . . " autofocus="true"></textarea>
                     <div class="validate"></div>
                   </div>
                   <div class="text-center"><button type="submit" class="btn btn-primary">Kirim</button></div>

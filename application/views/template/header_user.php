@@ -120,39 +120,36 @@
         <li <?php if ($title == 'Private Chat') echo 'class="nav-item active"'; ?>>
           <a class="nav-link" href="<?=base_url()?>User/Private_Chat" style="font-family: Arial, Helvetica, sans-serif;"><b>Private Chat </b><span class="sr-only">(current)</span></a>
         </li>
+        <?php if ($hitung_chat > 0) {?>
         <li>
           <div class="dropdown">
           <button class="dropbtn"></i><span class="badge"><?php echo $hitung_chat ;?></span></button>
           <div class="dropdown-content">
             <center><p style="margin-bottom:-8px;"><b>Notifikasi Pesan</b></p></center><hr>
-            <?php if ($hitung_chat > 0) {?>
               <?php foreach($notif_chat_user as $nc):?>
                 <a href="<?= base_url('User/change_status_chat/'.$nc['from'])?>"><b><?=$nc["nama"];?> </b><br><?=$nc['message'];?><br><?=date('d-m-Y H:i',strtotime($nc['created_at']))?></a>
               <?php endforeach;?>
-            <?php } else {?>
-                <center><b>Belum ada pesan baru untuk kamu.</b></center>
-            <?php }?>
           </div>
           </div>        
         </li>
+        <?php }?>
         <li <?php if ($title == 'Forum' || $title == 'Chat Forum') echo 'class="nav-item active"'; ?>>
           <a class="nav-link" href="<?= base_url()?>User/Forum" style="font-family: Arial, Helvetica, sans-serif;"><b>Forum </b><span class="sr-only">(current)</span></a>
         </li>
+        <?php if ($hitung_jawaban_baru > 0) {?>
         <li>
           <div class="dropdown">
           <button class="dropbtn"><span class="badge"><?php echo $hitung_jawaban_baru ;?></span></button>
           <div class="dropdown-content" style="width:250px;">
-            <center><p style="margin-bottom:-8px;"><b>Notifikasi Pesan</b></p></center><hr>
-            <?php if ($hitung_jawaban_baru > 0) {?>
+            <center><p style="margin-bottom:-8px;"><b>Notifikasi Forum</b></p></center><hr>
+            
               <?php foreach($notif_jawaban_baru as $njb):?>        
                 <a href="<?=base_url('User/change_status_jawaban/'.$njb['id_forum'])?>"><b><?=$njb["nama"];?> </b><br><?=$njb['chat'];?><br><?= date('d-m-Y H:i',strtotime($njb['created_at'])) ?></a><hr>
               <?php endforeach;?>
-            <?php } else {?>
-              <center><b>Belum ada yang menjawab forum kamu.</b></center>
-            <?php }?>
           </div>
           </div>        
         </li>
+        <?php }?>
         <li <?php if ($title == 'Daftar Tutor' || $title == 'Detail Tutor') echo 'class="nav-item active"'; ?>>
           <a class="nav-link" href="<?= base_url()?>User/SeeAllTutor" style="font-family: Arial, Helvetica, sans-serif;"><b>Tutor </b><span class="sr-only">(current)</span></a>
         </li>

@@ -15,7 +15,7 @@
     </div>
     <div class="row">
       <?php if($cari_materi == NULL) {?>
-      <center><p style="width:100%;margin-left:100%;">Sayang sekali, materi pada kategori ini belum ada :)</p></center>
+      <center><p style="width:100%;margin-left:100%;">Sayang sekali, materi pada kategori ini belum ada :)</p></center><br>
       <?php }
       else {?>
       <?php foreach($cari_materi as $d):?>

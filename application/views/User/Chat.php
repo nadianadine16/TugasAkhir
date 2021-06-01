@@ -71,7 +71,7 @@ x y{
     <input type="hidden" name="from" value="<?=$this->session->userdata('id_mahasiswa');?>">    
 		<div class="row">
 			<div class="col-10">
-				<input type="text" name="message" class="form-control" placeholder="Tulis Pesan Kamu . . ." required autocomplete="off">
+				<input type="text" name="message" autofocus="true" class="form-control" placeholder="Tulis Pesan Kamu . . ." required autocomplete="off">
 			</div>
 			<div class="col-2">
 				<button class="btn btn-block" style="background-color:#49b5e7;color:#ffffff;">Kirim</button>
