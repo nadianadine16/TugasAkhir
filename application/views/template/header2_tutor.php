@@ -7,7 +7,7 @@
     <title><?=$title?></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="<?= base_url()?>/assets_admin/img/iconjti.png?3">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url()?>/assets_admin1/img/favicon.png">
     <link href="<?= base_url()?>/assets_admin1/https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/bootstrap.min.css">
     <script src="<?= base_url()?>/assets_admin1/Chart.js"></script>
@@ -94,9 +94,6 @@
                                 <div class="row">
                                     <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
                                         <div class="menu-switcher-pro">
-                                            <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
-													<i class="educate-icon educate-nav"></i>
-												</button>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">

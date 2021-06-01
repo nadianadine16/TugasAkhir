@@ -158,8 +158,8 @@ class User_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function cari_materi($id_kategori_materi) { //function untuk menampilkan pencarian materi sesuai keyword
-        $keyword = $this->input->post('keyword'); //mengambil inputan keyword materi
+    public function cari_materi($keyword) { //function untuk menampilkan pencarian materi sesuai keyword
+        $kategori = $this->session->userdata('id_kategori_materi');
 
         $this->db->select('*');
         $this->db->from('materi');
@@ -167,7 +167,7 @@ class User_model extends CI_Model {
         $this->db->join('tutor', 'materi.id_tutor = tutor.id_tutor');
         $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');        
         $this->db->like('materi.nama_materi', $keyword);  
-        $this->db->where ('materi.id_kategori_materi', $id_kategori_materi);  
+        $this->db->where ('materi.id_kategori_materi', $kategori);  
 
         $query = $this->db->get();
         return $query->result_array();

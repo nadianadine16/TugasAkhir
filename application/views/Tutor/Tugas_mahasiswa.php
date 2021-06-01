@@ -42,8 +42,8 @@
                         <div class="datatable-dashv1-list custom-datatable-overright">
                             <div id="toolbar">
                             </div>
-                            <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
-                            data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                            <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-refresh="true" data-key-events="true"  data-cookie="true"
+                            data-cookie-id-table="saveId" data-click-to-select="true" data-toolbar="#toolbar">
                                 <thead>
                                     <tr>
                                         <th data-field="id">No</th>
@@ -63,9 +63,8 @@
                                         <td><?=$t["judul"];?></td>
                                         <td><a href=http://<?=$t["tugas"];?>><?=$t["tugas"];?></td>
                                         <td class="datatable-ct">
-                                            <a href="<?= base_url();?>Tutor/Verifikasi_Tugas/<?=$t['id_tugas'];?>" class="pd-setting-ed"><i class="fa fa-check" aria-hidden="true"></i></a>
-                                            <!-- <a onclick="return konfirmasi()" href="<?= base_url();?>Tutor/Hapus_Tugas/<?=$t['id_tugas'];?>" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></a> -->
-                                            <a href="<?= base_url();?>Tutor/Revisi/<?=$t['id_tugas'];?>" class="pd-setting-ed"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                            <a href="<?= base_url();?>Tutor/Verifikasi_Tugas/<?=$t['id_tugas'];?>" class="btn btn-success btn-xs" style="color:#ffffff;">Verifikasi</a>
+                                            <a href="<?= base_url();?>Tutor/Revisi/<?=$t['id_tugas'];?>" class="btn btn-warning btn-xs" style="color:#ffffff;">Revisi</a>
                                         </td>
                                     </tr>
                                     <?php endforeach;?>     
@@ -93,8 +92,8 @@
                         <div class="datatable-dashv1-list custom-datatable-overright">
                             <div id="toolbar">
                             </div>
-                            <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
-                            data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                            <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-refresh="true" data-key-events="true"  data-cookie="true"
+                            data-cookie-id-table="saveId" data-click-to-select="true" data-toolbar="#toolbar">
                                 <thead>
                                     <tr>
                                         <th data-field="id">No</th>
@@ -138,8 +137,8 @@
                         <div class="datatable-dashv1-list custom-datatable-overright">
                             <div id="toolbar">
                             </div>
-                            <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
-                            data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                            <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-refresh="true" data-key-events="true"  data-cookie="true"
+                            data-cookie-id-table="saveId" data-click-to-select="true" data-toolbar="#toolbar">
                                 <thead>
                                     <tr>
                                         <th data-field="id">No</th>
@@ -159,7 +158,7 @@
                                         <td><?=$tv["judul"];?></td>
                                         <td><?=$tv["tugas"];?></td>
                                         <td class="datatable-ct">
-                                            <a onclick="return konfirmasi()" href="<?= base_url();?>Tutor/Hapus_Tugas/<?=$tv['id_tugas'];?>" class="pd-setting-ed" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                            <a onclick="return konfirmasi()" href="<?= base_url();?>Tutor/Hapus_Tugas/<?=$tv['id_tugas'];?>" class="btn btn-danger btn-xs" style="color:#ffffff;">Hapus</a>
                                         </td>
                                     </tr>
                                     <?php endforeach;?>     

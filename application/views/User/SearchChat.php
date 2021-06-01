@@ -15,7 +15,7 @@
   <div class="kotak" style="width:80%; height:600px; margin-top:18%;position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
     <?php if($nama_tutor == NULL) {?>
       <div class="kotak2" style="background-color: #f4fbfe; width:100%; height:12%; margin-top:10%;">
-      <center><p><br>Tutor yang Anda cari tidak ditemukan.<b>Silahkan coba lagi.</b><br></p></center>
+      <center><p><br>Tutor yang Anda cari tidak ditemukan.<b> Silahkan coba lagi.</b><br></p></center>
     <?php } 
     else {?>
       <?php foreach($nama_tutor as $n):?>

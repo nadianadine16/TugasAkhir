@@ -563,12 +563,12 @@ class User extends CI_Controller {
         }      
     }
 
-    public function carimateri($id_kategori_materi) {
+    public function carimateri() {
         if(isset($_SESSION['id_mahasiswa'])) {
             $keyword=  $this->input->post('keyword'); //mengambil inputan dari keyword    
 
             $data['title'] = 'Daftar Materi';        
-            $data['cari_materi'] = $this->User_model->cari_materi($id_kategori_materi); //menampilkan materi sesuai dengan keyword yg dicari
+            $data['cari_materi'] = $this->User_model->cari_materi($keyword); //menampilkan materi sesuai dengan keyword yg dicari
             $data['notif_chat_user'] = $this->User_model->notif_chat(); //menampilkan notifikasi pesan private chat yang belum dibaca
             $data['hitung_chat']= $this->User_model->hitung_chat(); //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['notif_jawaban_baru'] = $this->User_model->notif_jawaban_baru(); //menampilkan notifikasi jawaban forum baru

@@ -48,7 +48,7 @@
                         <div class="datatable-dashv1-list custom-datatable-overright">
                             <div id="toolbar">
                             </div>
-                            <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-refresh="true" data-key-events="true"  data-cookie="true"
+                            <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-refresh="true" data-key-events="true"  data-cookie="true"
                             data-cookie-id-table="saveId" data-click-to-select="true" data-toolbar="#toolbar">
                                 <thead>
                                     <tr>
@@ -65,9 +65,9 @@
                                         <td><img src="<?= base_url('upload/cover_materi/'.$m['cover'])?>" style="height: 70px; width: 100px;"></td>
                                         <td><?=$m["nama_materi"];?></td>
                                         <td class="datatable-ct">
-                                            <a href="<?= base_url();?>Tutor/Detail_Materi/<?=$m["id_materi"];?>" class="pd-setting-ed"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                            <a href="<?= base_url();?>Tutor/Edit_Materi/<?=$m['id_materi'];?>" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                            <a onclick="return konfirmasi()" href="<?= base_url();?>Tutor/Hapus_Materi/<?=$m['id_materi'];?>" class="pd-setting-ed" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                            <a href="<?= base_url();?>Tutor/Detail_Materi/<?=$m["id_materi"];?>" class="btn btn-primary btn-xs" style="color:#ffffff;">Konten</a>
+                                            <a href="<?= base_url();?>Tutor/Edit_Materi/<?=$m['id_materi'];?>" class="btn btn-warning btn-xs" style="color:#ffffff;">Edit</a>
+                                            <a onclick="return konfirmasi()" href="<?= base_url();?>Tutor/Hapus_Materi/<?=$m['id_materi'];?>" class="btn btn-danger btn-xs" style="color:#ffffff;">Hapus</a>
                                         </td>
                                     </tr>
                                     <?php endforeach;?>     
