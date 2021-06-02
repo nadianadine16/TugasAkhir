@@ -9,70 +9,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
     ============================================ -->
-    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url()?>/assets_admin1/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url()?>/assets_admin/img/favicon.png">
     <!-- Google Fonts
     ============================================ -->
-    <link href="<?= base_url()?>/assets_admin1/https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+    <link href="<?= base_url()?>/assets_admin/https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
     <!-- Bootstrap CSS
     ============================================ -->
-    <script src="<?= base_url()?>/assets_admin1/Chart.js"></script>
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/bootstrap.min.css">
+    <script src="<?= base_url()?>/assets_admin/Chart.js"></script>
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/bootstrap.min.css">
     <!-- Bootstrap CSS
     ============================================ -->
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/font-awesome.min.css">
     <!-- owl.carousel CSS
     ============================================ -->
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/owl.carousel.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/owl.theme.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/owl.transitions.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/owl.carousel.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/owl.theme.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/owl.transitions.css">
     <!-- animate CSS
     ============================================ -->
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/animate.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/animate.css">
     <!-- normalize CSS
     ============================================ -->
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/normalize.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/normalize.css">
     <!-- meanmenu icon CSS
     ============================================ -->
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/meanmenu.min.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/meanmenu.min.css">
     <!-- main CSS
     ============================================ -->
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/main.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/main.css">
     <!-- educate icon CSS
     ============================================ -->
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/educate-custon-icon.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/educate-custon-icon.css">
     <!-- morrisjs CSS
     ============================================ -->
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/morrisjs/morris.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/morrisjs/morris.css">
     <!-- mCustomScrollbar CSS
     ============================================ -->
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/scrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/scrollbar/jquery.mCustomScrollbar.min.css">
     <!-- metisMenu CSS
     ============================================ -->
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/metisMenu/metisMenu.min.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/metisMenu/metisMenu-vertical.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/metisMenu/metisMenu.min.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/metisMenu/metisMenu-vertical.css">
     <!-- calendar CSS
     ============================================ -->
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/calendar/fullcalendar.min.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/calendar/fullcalendar.print.min.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/calendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/calendar/fullcalendar.print.min.css">
     <!-- x-editor CSS
     ============================================ -->
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/editor/select2.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/editor/datetimepicker.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/editor/bootstrap-editable.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/editor/x-editor-style.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/editor/select2.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/editor/datetimepicker.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/editor/bootstrap-editable.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/editor/x-editor-style.css">
     <!-- normalize CSS
     ============================================ -->
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/data-table/bootstrap-table.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/data-table/bootstrap-editable.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/data-table/bootstrap-table.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/data-table/bootstrap-editable.css">
     <!-- style CSS
     ============================================ -->
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/style.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/style.css">
     <!-- responsive CSS
     ============================================ -->
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/responsive.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/responsive.css">
     <!-- modernizr JS
     ============================================ -->
-    <script src="<?= base_url()?>/assets_admin1/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="<?= base_url()?>/assets_admin/js/vendor/modernizr-2.8.3.min.js"></script>
   </head>
 
   <body>
@@ -81,7 +81,7 @@
 
         <!-- header menampilkan logo coding jti -->
         <div class="sidebar-header">
-          <a href="<?= base_url()?>Admin/index"><img class="main-logo" src="<?= base_url()?>/assets_admin1/img/logo/cjti.png" style="width:170px;height:50px;margin-top:10px;margin-bottom:10px;" /></a>
+          <a href="<?= base_url()?>Admin/index"><img class="main-logo" src="<?= base_url()?>/assets_admin/img/logo/cjti.png" style="width:170px;height:50px;margin-top:10px;margin-bottom:10px;" /></a>
         </div>
 
         <!-- sidebar -->
@@ -130,7 +130,7 @@
               <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <div class="logo-pro">
-                          <a href="<?= base_url()?>/assets_admin1/index.html"><img class="main-logo" src="<?= base_url()?>/assets_admin1/img/logo/logo.png" alt="" /></a>
+                          <a href="<?= base_url()?>/assets_admin/index.html"><img class="main-logo" src="<?= base_url()?>/assets_admin/img/logo/logo.png" alt="" /></a>
                       </div>
                   </div>
               </div>
@@ -158,8 +158,8 @@
                                                   <li class="nav-item dropdown">
                                                   </li>
                                                   <li class="nav-item">
-                                                      <a href="<?= base_url()?>/assets_admin1/#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-                                                        <img src="<?= base_url()?>/assets_admin1/img/product/admin.png" style="width:30px; height:30px;" />
+                                                      <a href="<?= base_url()?>/assets_admin/#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                                                        <img src="<?= base_url()?>/assets_admin/img/product/admin.png" style="width:30px; height:30px;" />
                                                         <span class="admin-name">Halo Admin, <?= $this->session->userdata('nama');?></span>
                                                         <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
                                                       </a>

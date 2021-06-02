@@ -12,9 +12,9 @@
             <?php foreach($detail as $n):?>
                 <div class="col-xl-5 col-lg-6 d-flex justify-content-center">
                     <?php if($n["foto"] == NULL){?>
-                        <img src="<?= base_url('upload/user.png')?>" class="img-fluid" alt="" style="width:100%;height:100%;">
+                        <img src="<?= base_url('upload/profil/user.png')?>" class="img-fluid" alt="" style="width:100%;height:100%;">
                     <?php } else {?>
-                        <img src="<?= base_url('upload/'.$n['foto'])?>" class="img-fluid" alt="">
+                        <img src="<?= base_url('upload/profil/'.$n['foto'])?>" class="img-fluid" alt="">
                     <?php }?> 
                 </div>
 

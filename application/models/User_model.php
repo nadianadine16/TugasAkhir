@@ -96,13 +96,7 @@ class User_model extends CI_Model {
         JOIN kategori_materi ON kategori_materi.id_kategori_materi = tutor.id_kategori_materi
         ORDER BY time desc
         LIMIT $limit OFFSET $start");
-        // $this->db->select('*');
-        // $this->db->from('mahasiswa');
-        // $this->db->join('tutor', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');  
-        // $this->db->join('kategori_materi', 'kategori_materi.id_kategori_materi = tutor.id_kategori_materi');
-        // $this->db->limit($limit,$start);
-        
-        // $query = $this->db->get();
+
         return $query->result_array();
     }
 

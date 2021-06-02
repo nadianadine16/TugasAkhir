@@ -7,43 +7,43 @@
     <title><?=$title?></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url()?>/assets_admin1/img/favicon.png">
-    <link href="<?= base_url()?>/assets_admin1/https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/bootstrap.min.css">
-    <script src="<?= base_url()?>/assets_admin1/Chart.js"></script>
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/owl.carousel.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/owl.theme.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/owl.transitions.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/animate.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/normalize.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/meanmenu.min.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/main.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/educate-custon-icon.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/morrisjs/morris.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/scrollbar/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/metisMenu/metisMenu.min.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/metisMenu/metisMenu-vertical.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/calendar/fullcalendar.min.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/calendar/fullcalendar.print.min.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/editor/select2.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/editor/datetimepicker.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/editor/bootstrap-editable.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/editor/x-editor-style.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/data-table/bootstrap-table.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/data-table/bootstrap-editable.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/alerts.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/style.css">
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin1/css/responsive.css">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url()?>/assets_admin/img/favicon.png">
+    <link href="<?= base_url()?>/assets_admin/https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/bootstrap.min.css">
+    <script src="<?= base_url()?>/assets_admin/Chart.js"></script>
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/owl.carousel.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/owl.theme.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/owl.transitions.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/animate.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/normalize.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/meanmenu.min.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/main.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/educate-custon-icon.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/morrisjs/morris.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/scrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/metisMenu/metisMenu.min.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/metisMenu/metisMenu-vertical.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/calendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/calendar/fullcalendar.print.min.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/editor/select2.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/editor/datetimepicker.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/editor/bootstrap-editable.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/editor/x-editor-style.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/data-table/bootstrap-table.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/data-table/bootstrap-editable.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/alerts.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/style.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/responsive.css">
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-    <script src="<?= base_url()?>/assets_admin1/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="<?= base_url()?>/assets_admin/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body>
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header">
-                <a href="<?= base_url()?>Tutor/index"><img class="main-logo" src="<?= base_url()?>/assets_admin1/img/logo/cjti.png" style="width:170px;height:50px;margin-top:10px;margin-bottom:10px;" /></a>
+                <a href="<?= base_url()?>Tutor/index"><img class="main-logo" src="<?= base_url()?>/assets_admin/img/logo/cjti.png" style="width:170px;height:50px;margin-top:10px;margin-bottom:10px;" /></a>
             </div>
             <div class="left-custom-menu-adp-wrap comment-scrollbar">
                 <nav class="sidebar-nav left-sidebar-menu-pro">
@@ -80,7 +80,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="logo-pro">
-                        <img class="main-logo" src="<?= base_url()?>/assets_admin1/img/logo/logo.png" alt="" /></a>
+                        <img class="main-logo" src="<?= base_url()?>/assets_admin/img/logo/logo.png" alt="" /></a>
                     </div>
                 </div>
             </div>
@@ -121,7 +121,7 @@
                                                                         <div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;">                                                                        
                                                                             <b><?=$nt['nama'];?></b><br>
                                                                             <?=$nt['message'];?><br>
-                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i:',strtotime($nt['created_at'])) ?>
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($nt['created_at'])) ?>
                                                                         </div>
                                                                     </a>
                                                                     <?php endforeach;?>
@@ -138,12 +138,12 @@
                                                 
                                                 <li class="nav-item">
                                                 <?php $val = $this->session->userdata('nama');?>;
-                                                    <a href="<?= base_url()?>/assets_admin1/#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                                                    <a href="<?= base_url()?>/assets_admin/#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                                                         <?php foreach($foto_tutor as $ft):?>
                                                             <?php if($ft["foto"] == NULL){?>
-                                                                <img src="<?= base_url('upload/user.png')?>" style="width:30px;height:30px;"/>
+                                                                <img src="<?= base_url('upload/profil/user.png')?>" style="width:30px;height:30px;"/>
                                                             <?php } else {?>
-                                                                <img src="<?= base_url('upload/'.$ft['foto'])?>" style="width:30px; height:30px;" />
+                                                                <img src="<?= base_url('upload/profil/'.$ft['foto'])?>" style="width:30px; height:30px;" />
                                                             <?php }?>
                                                         <?php endforeach;?>
                                                         <?php foreach($kategori_header as $kh):?>

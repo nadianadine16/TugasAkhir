@@ -51,7 +51,7 @@
         }
 
         public function upload_surat_pernyataan() {
-            $config['upload_path'] = './upload/'; //file akan disimpan di dalam folder upload
+            $config['upload_path'] = './upload/surat_pernyataan/'; //file akan disimpan di dalam folder upload
             $config['allowed_types'] = 'pdf|doc|docx|ppt|pptx|xls|xlsx'; //ekstensi yang diizinkan hanya pdf
             $config['overwrite'] = true;
 
@@ -409,10 +409,6 @@
         }
 
         public function mahasiswa($limit, $start) { //menampilkan data mhs per page untuk halaman private chat         
-            // $this->db->select('*');
-            // $this->db->from('mahasiswa');
-            // $this->db->where('NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = mahasiswa.id_mahasiswa)', '', FALSE);
-            // $this->db->limit($limit,$start);
             $idmhs = $this->session->userdata('id_mahasiswa');
             $query = $this->db->query("SELECT t1.id_mahasiswa,t1.nama, t1.nim, t1.prodi, t1.jurusan, 
             IFNULL(t2.total, 0) AS strength, IFNULL(t3.waktu, 0) AS time FROM mahasiswa t1 
@@ -422,7 +418,7 @@
             FROM private_chat GROUP BY private_chat.from) t3 ON t3.from=t1.id_mahasiswa 
             WHERE NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = t1.id_mahasiswa) ORDER BY time desc
             LIMIT $limit OFFSET $start");            
-            // $query = $this->db->get();
+
             return $query->result_array();
         }
 
@@ -497,7 +493,7 @@
         }
 
         public function upload_foto() { //upload foto profil tutor
-            $config['upload_path'] = './upload/'; //file akan disimpan di dalam folder upload
+            $config['upload_path'] = './upload/profil/'; //file akan disimpan di dalam folder upload
             $config['allowed_types'] = 'jpg|png|jpeg'; //ekstensi yg diizinkan adalah jpg dan png
             $config['overwrite'] = true;
 

@@ -8,26 +8,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_login/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- Google fonts - Popppins for copy-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,800">
     <!-- orion icons-->
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/orionicons.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_login/css/orionicons.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_login/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/custom.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_login/css/custom.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="<?= base_url()?>/assets_login/images/favicon.png">
+    <link rel="shortcut icon" href="<?= base_url()?>/assets_login/img/favicon.png">
   </head>
   <body>
     <div class="page-holder d-flex align-items-center">
       <div class="container">
         <div class="row align-items-center py-5">
           <div class="col-5 col-lg-7 mx-auto mb-5 mb-lg-0">
-            <div class="pr-lg-5"><img src="<?= base_url()?>/assets_admin/img/study.png" alt="" class="img-fluid"></div>
+            <div class="pr-lg-5"><img src="<?= base_url()?>/assets_login/img/study.png" alt="" class="img-fluid"></div>
           </div>
           <div class="col-lg-5 px-lg-4">
             <h1 class="text-base text-primary text-uppercase mb-4">Coding-JTI</h1>
@@ -59,13 +59,13 @@
     </div>
 
     <!-- JavaScript files-->
-    <script src="<?= base_url()?>/assets_admin/vendor/jquery/jquery.min.js"></script>
-    <script src="<?= base_url()?>/assets_admin/vendor/popper.js/umd/popper.min.js"> </script>
-    <script src="<?= base_url()?>/assets_admin/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="<?= base_url()?>/assets_admin/vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="<?= base_url()?>/assets_admin/vendor/chart.js/Chart.min.js"></script>
+    <script src="<?= base_url()?>/assets_login/vendor/jquery/jquery.min.js"></script>
+    <script src="<?= base_url()?>/assets_login/vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="<?= base_url()?>/assets_login/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?= base_url()?>/assets_login/vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="<?= base_url()?>/assets_login/vendor/chart.js/Chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-    <script src="<?= base_url()?>/assets_admin/js/front.js"></script>
+    <script src="<?= base_url()?>/assets_login/js/front.js"></script>
     
   </body>
 </html>

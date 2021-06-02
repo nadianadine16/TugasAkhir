@@ -25,13 +25,13 @@
             <div class="card-body text-info">    
             <?php if($n["foto"] == NULL){?>    
               <div class="card-text" style="text-align:justify;padding:5px;">
-              <img src="<?= base_url('upload/user.png')?>" style="width:110px;height:140px;float:left; margin:0 10px 4px 0;" />
+              <img src="<?= base_url('upload/profil/user.png')?>" style="width:110px;height:140px;float:left; margin:0 10px 4px 0;" />
               <br><b>Kategori Tutor :</b> <?=$n["nama_kategori"]?><br>
               <b>Tahun Masuk :</b> <?=$n["tahun_masuk"]?>
               </div>
               <?php } else {?>
               <div class="card-text" style="text-align:justify;width:75%;padding:5px;">
-              <img src="<?= base_url('upload/'.$n['foto'])?>" style="width:110px;height:140px;float:left; margin:0 10px 4px 0;" />
+              <img src="<?= base_url('upload/profil/'.$n['foto'])?>" style="width:110px;height:140px;float:left; margin:0 10px 4px 0;" />
               <br><b>Kategori Tutor :</b> <?=$n["nama_kategori"]?><br>
               <b>Tahun Masuk :</b> <?=$n["tahun_masuk"]?>
               </div>

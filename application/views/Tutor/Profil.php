@@ -73,9 +73,9 @@
                             <div class="col-md-4">
                                 <div class="foto">
                                     <?php if($t["foto"] == NULL){?>
-                                        <img src="<?= base_url('upload/user.png')?>" alt="" />
+                                        <img src="<?= base_url('upload/profil/user.png')?>" alt="" />
                                     <?php } else {?>
-                                        <img src="<?= base_url('upload/'.$t['foto'])?>" alt="" />
+                                        <img src="<?= base_url('upload/profil/'.$t['foto'])?>" alt="" />
                                     <?php }?>
                                 </div>
                             </div>

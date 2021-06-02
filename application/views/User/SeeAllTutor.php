@@ -27,9 +27,9 @@
             <div class="member">
               <div class="member-img" style="height:200px;">
               <?php if($n["foto"] == NULL){?>
-                <center><img src="<?= base_url('upload/user.png')?>" class="img-fluid" alt="" style="width:70%;height:70%;"></center>
+                <center><img src="<?= base_url('upload/profil/user.png')?>" class="img-fluid" alt="" style="width:70%;height:70%;"></center>
               <?php } else {?>
-                <center><img src="<?= base_url('upload/'.$n['foto'])?>" class="img-fluid" alt="" style="width:70%;height:70%;"></center>
+                <center><img src="<?= base_url('upload/profil/'.$n['foto'])?>" class="img-fluid" alt="" style="width:70%;height:70%;"></center>
               <?php }?>            
               </div>          
               <div class="member-info">
