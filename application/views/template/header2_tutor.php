@@ -104,10 +104,10 @@
                                     </div>
                                     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                         <div class="header-right-info">
-                                            <ul class="nav navbar-nav mai-top-nav header-right-menu">
+                                            <ul class="d-flex nav navbar-nav mai-top-nav header-right-menu">
                                                 <li class="nav-item dropdown">
                                                 </li>
-                                                <li class="nav-item dropdown">
+                                                <li class="nav-item dropdown" style="float:left">
                                                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-message edu-chat-pro" aria-hidden="true"></i><span class="badge badge-light" style="background-color:red"><?php echo $hitung_chat_tutor ;?></span></a>
                                                     <div role="menu" class="author-message-top dropdown-menu animated zoomIn">
                                                         <div class="message-single-top">
@@ -137,6 +137,7 @@
                                                 </li>
                                                 
                                                 <li class="nav-item">
+                                                <?php $val = $this->session->userdata('nama');?>;
                                                     <a href="<?= base_url()?>/assets_admin1/#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                                                         <?php foreach($foto_tutor as $ft):?>
                                                             <?php if($ft["foto"] == NULL){?>
@@ -146,7 +147,7 @@
                                                             <?php }?>
                                                         <?php endforeach;?>
                                                         <?php foreach($kategori_header as $kh):?>
-															<span class="admin-name">Halo Tutor <?=$kh['nama_kategori']?>, <?= $this->session->userdata('nama');?></span>
+															<span class="admin-name">Tutor <?=$kh['nama_kategori']?>, <?php echo strtok($val, " ");?></span>
                                                         <?php endforeach;?>
 														<i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
 													</a>

@@ -52,7 +52,7 @@
 
         public function upload_surat_pernyataan() {
             $config['upload_path'] = './upload/'; //file akan disimpan di dalam folder upload
-            $config['allowed_types'] = 'pdf'; //ekstensi yang diizinkan hanya pdf
+            $config['allowed_types'] = 'pdf|doc|docx|ppt|pptx|xls|xlsx'; //ekstensi yang diizinkan hanya pdf
             $config['overwrite'] = true;
 
             $this->upload->initialize($config);
@@ -77,7 +77,7 @@
 
         public function upload_cover() { //mengupload cover materi
             $config['upload_path'] = './upload/cover_materi/'; //file akan disimpan di dalam folder upload/cover_materi
-            $config['allowed_types'] = 'jpg|png'; //ekstensi yang diizinkan hanya jpg dan png
+            $config['allowed_types'] = 'jpg|png|jpeg'; //ekstensi yang diizinkan hanya jpg dan png
             $config['overwrite'] = true;
 
             $this->upload->initialize($config);
@@ -148,7 +148,7 @@
 
         public function upload_file_pendukung() { //mengupload file pendukung di setiap konten
             $config['upload_path'] = './upload/materi/'; //file pendukung akan tersimpan di dalam folder upload/materi
-            $config['allowed_types'] = 'pdf'; //ekstensi yang dizinkan hanya pdf
+            $config['allowed_types'] = 'pdf|doc|docx|ppt|pptx|xls|xlsx'; //ekstensi yang dizinkan hanya pdf
             $config['overwrite'] = true;
 
             $this->upload->initialize($config);
@@ -498,7 +498,7 @@
 
         public function upload_foto() { //upload foto profil tutor
             $config['upload_path'] = './upload/'; //file akan disimpan di dalam folder upload
-            $config['allowed_types'] = 'jpg|png'; //ekstensi yg diizinkan adalah jpg dan png
+            $config['allowed_types'] = 'jpg|png|jpeg'; //ekstensi yg diizinkan adalah jpg dan png
             $config['overwrite'] = true;
 
             $this->upload->initialize($config);
