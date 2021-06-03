@@ -87,7 +87,8 @@
               <input type="hidden" name="status" value="<?=$p["id_forum"];?>">
               
               <div class="form-group" style="width:79%; margin-left:130px;">
-                <textarea class="form-control" name="chat" required rows="5" data-rule="required" data-msg="Masukkan Pertanyaan Anda" placeholder="Tulis Balasan Anda Disini . . . " autofocus="true"></textarea>
+                <textarea class="form-control" name="chat" required rows="5" data-rule="required" data-msg="Masukkan Pertanyaan Anda" placeholder="Tulis Balasan Anda Disini . . . " autofocus="true"style="width:91%;" id="input_pesan" onkeyup="cek_jumlah_karakter()"></textarea>
+                <p style="margin-top:-16px;margin-left:-16px;font-size:13px;color:#808080;float:right;" id="limit_teks"></p>
                 <div class="validate"></div>
               </div>
               <div class="form-group" style="width:79%; margin-left:130px;">
@@ -107,4 +108,19 @@
 
 <script type="text/javascript">
   $('#kotak').scrollTop($('#kotak')[0].scrollHeight);
+</script>
+<script>
+  var cek = document.getElementById("input_pesan");
+  var batas_karakter = 2000;
+  function cek_jumlah_karakter() {
+    if(cek.value.length >= batas_karakter) {
+      alert('Anda mencapai batas maksimal karakter!');
+      document.getElementById("limit_teks").innerHTML = batas_karakter+"/"+batas_karakter;
+
+    }
+    else{
+      var jumlah_karakter = cek.value.length;
+      document.getElementById("limit_teks").innerHTML = jumlah_karakter+"/"+batas_karakter;
+    }
+  }
 </script>

@@ -116,11 +116,14 @@
                   <?php endforeach;?>
                   <input type="hidden" name="id_forum" value="<?=$p["id_forum"];?>">                
                   <div class="form-group">
-                    <textarea class="form-control" name="chat" rows="5" data-rule="required" data-msg="Masukkan Jawaban Anda" placeholder="Tulis Balasan Anda Disini . . . " autofocus="true" required></textarea>
+                    <textarea class="form-control" name="chat" rows="5" data-rule="required" data-msg="Masukkan Jawaban Anda" placeholder="Tulis Balasan Anda Disini . . . " autofocus="true" required style="width:93%;float:left;margin-top:-50px;" id="input_pesan" onkeyup="cek_jumlah_karakter()"></textarea>
                     <div class="validate"></div>
                   </div>
                   <div class="form-group">
-                    <label for="link_jawab" style="float:left;">Link Referensi (Opsional)</label>
+                    <p style="margin-top:60px;margin-left:-16px;font-size:13px;color:#808080;" id="limit_teks"></p>
+                  </div>
+                  <div class="form-group">
+                    <label for="link_jawab" style="float:left;"><br>Link Referensi (Opsional)</label>
                     <input type="text" class="form-control" id="link_jawab" name="link_jawab" autocomplete="off" placeholder="Contoh: https://codingjti.com/">
                   </div>
                   <div class="form-group">
@@ -140,4 +143,19 @@
 <script type="text/javascript">
  var objDiv = document.getElementById("mydiv");
 	objDiv.scrollTop = objDiv.scrollHeight;
+</script>
+<script>
+  var cek = document.getElementById("input_pesan");
+  var batas_karakter = 2000;
+  function cek_jumlah_karakter() {
+    if(cek.value.length >= batas_karakter) {
+      alert('Anda mencapai batas maksimal karakter!');
+      document.getElementById("limit_teks").innerHTML = batas_karakter+"/"+batas_karakter;
+
+    }
+    else{
+      var jumlah_karakter = cek.value.length;
+      document.getElementById("limit_teks").innerHTML = jumlah_karakter+"/"+batas_karakter;
+    }
+  }
 </script>

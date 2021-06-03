@@ -53,7 +53,7 @@ x y{
 <div class="widgets-programs-area">
     <div class="container-fluid">
 	<?php foreach($nama_tujuan as $n):?>
-		<center><h4 style="font-size: 20px; padding-top:10px;padding-left:30px;margin-bottom:20px;">Mahasiswa : <b><?=$n["nama"]?></b></h4><hr style="width:85%;"></center>
+		<center><h4 style="padding-top:10px;padding-left:30px;margin-bottom:20px;">Mahasiswa : <b><?=$n["nama"]?></b></h4><hr style="width:85%;"></center>
 	<?php endforeach;?> 
         <div class="row">
 			<div class="border rounded" id="border_rounded" style="margin-left:30px;;background-color:#ffffff;width:95%;height:450px;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">
@@ -78,11 +78,14 @@ x y{
 			<form method="post" action="<?= base_url('Tutor/Chat/'.$to) ?>" style="margin-top:20px;width:87%;margin-left:30px;">
 			<input type="hidden" name="from" value="<?=$this->session->userdata('id_mahasiswa');?>">    
 			<div class="row">
+				<div class="col-2">
+				<p style="margin-top:5px;font-size:13px;color:#808080;" id="limit_teks">0/2000</p>
+				</div>
 				<div class="col-10">
-					<input type="text" name="message" autofocus="true" class="form-control" placeholder="Tulis Pesan Kamu" autocomplete="off" required>
+					<input type="text" name="message" autofocus="true" class="form-control" placeholder="Tulis Pesan Kamu" autocomplete="off" required style="width:94%;margin-left:50px;margin-top:-45px;" id="input_pesan" onkeyup="cek_jumlah_karakter()">
 				</div>
 				<div class="col-2">
-				<button class="btn btn-primary btn-block" style="width:7%;float:right;margin-right:-85px;margin-top:-38px;">Kirim</button>
+				<button class="btn btn-primary btn-block" style="width:7%;float:right;margin-right:-85px;margin-top:-35px;">Kirim</button>
 				</div>
 			</div>
 		</form>
@@ -94,3 +97,18 @@ x y{
 	var objDiv = document.getElementById("border_rounded");
 	objDiv.scrollTop = objDiv.scrollHeight;
 </script> 
+<script>
+  var cek = document.getElementById("input_pesan");
+  var batas_karakter = 2000;
+  function cek_jumlah_karakter() {
+    if(cek.value.length >= batas_karakter) {
+      alert('Anda mencapai batas maksimal karakter!');
+      document.getElementById("limit_teks").innerHTML = batas_karakter+"/"+batas_karakter;
+
+    }
+    else{
+      var jumlah_karakter = cek.value.length;
+      document.getElementById("limit_teks").innerHTML = jumlah_karakter+"/"+batas_karakter;
+    }
+  }
+</script>
