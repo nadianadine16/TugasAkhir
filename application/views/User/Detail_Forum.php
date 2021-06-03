@@ -111,7 +111,7 @@
 </script>
 <script>
   var cek = document.getElementById("input_pesan");
-  var batas_karakter = 2000;
+  var batas_karakter = 4000;
   function cek_jumlah_karakter() {
     if(cek.value.length >= batas_karakter) {
       alert('Anda mencapai batas maksimal karakter!');
