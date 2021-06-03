@@ -312,10 +312,24 @@
                 "id_forum" => $this->input->post('id_forum', $id),
                 "id_user" => $this->input->post('id_user', true),
                 "chat" => $this->input->post('chat', true),
-                "created_at" => date('Y-m-d H:i:s', time())
+                "created_at" => date('Y-m-d H:i:s', time()),
+                "link_jawab" => $this->input->post('link_jawab', true),
+                "gambar_jawab" => $this->upload_gambar_jawab()
             ];
     
             $this->db->insert('chat_forum', $data);
+        }
+
+        public function upload_gambar_jawab() { //upload foto profil tutor
+            $config['upload_path'] = './upload/gambar_jawab/'; //file akan disimpan di dalam folder upload
+            $config['allowed_types'] = 'jpg|png|jpeg'; //ekstensi yg diizinkan adalah jpg dan png
+            $config['overwrite'] = true;
+    
+            $this->upload->initialize($config);
+            $this->load->library('upload',$config);
+            if($this->upload->do_upload('gambar_jawab')) {
+                return $this->upload->data("file_name");
+            }
         }
     
         public function jawaban($id) { //menampilkan jawaban forum sesuai id_forum

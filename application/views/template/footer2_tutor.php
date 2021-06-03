@@ -28,6 +28,9 @@
 		============================================ -->
     <script src="<?= base_url()?>/assets_admin/js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="<?= base_url()?>/assets_admin/js/scrollbar/mCustomScrollbar-active.js"></script>
+
+    <script src="<?= base_url()?>/assets_admin/js/summernote/summernote.min.js"></script>
+    <script src="<?= base_url()?>/assets_admin/js/summernote/summernote-active.js"></script>
     <!-- metisMenu JS
 		============================================ -->
     <script src="<?= base_url()?>/assets_admin/js/metisMenu/metisMenu.min.js"></script>

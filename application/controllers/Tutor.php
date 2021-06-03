@@ -569,6 +569,7 @@ class Tutor extends CI_Controller {
 
             // form validation untuk memeriksa kelengkapan isian form
             $this->form_validation->set_rules('chat', 'chat', 'required');
+            $this->form_validation->set_rules('link_jawab', 'link_jawab');
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_tutor', $data);

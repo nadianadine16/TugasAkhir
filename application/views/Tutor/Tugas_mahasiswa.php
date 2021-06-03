@@ -61,7 +61,7 @@
                                         <td><?=$t["nim"];?></td>
                                         <td><?=$t["nama"];?></td>
                                         <td><?=$t["judul"];?></td>
-                                        <td><a href=http://<?=$t["tugas"];?>><?=$t["tugas"];?></td>
+                                        <td><a href=http://<?=$t["tugas"];?>><?=$t["tugas"];?></a></td>
                                         <td class="datatable-ct">
                                             <a href="<?= base_url();?>Tutor/Verifikasi_Tugas/<?=$t['id_tugas'];?>" class="btn btn-success btn-xs" style="color:#ffffff;">Verifikasi</a>
                                             <a href="<?= base_url();?>Tutor/Revisi/<?=$t['id_tugas'];?>" class="btn btn-warning btn-xs" style="color:#ffffff;">Revisi</a>

@@ -64,13 +64,13 @@ x y{
 						<?php if ($item->from == $id) {?>
 							<x>
 								<y class="me"><?= $item->message ?></y>
-							</x><br>
-							<p style="font-size:11px;float:right;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></p>
+							</x>
+							<span>&nbsp;&nbsp;<p style="font-size:11px;float:right;margin-top:13px;margin-right:5px;max-width:400px;" class="text-secondary mr-2"><?= date('d-m-Y H:i',strtotime($item->created_at)) ?></p></span>
 						<?php }else { ?>
 							<x>
 								<y class="him"><?= $item->message ?></y>
-							</x><br>
-							<p style="font-size:11px;float:left;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></p>
+							</x>
+							<p style="font-size:11px;float:left;margin-top:13px; margin-left:5px;max-width:400px;" class="text-secondary mr-2"><?= date('d-m-Y H:i',strtotime($item->created_at)) ?></p>
 						<?php } ?>
 					<?php } ?>
 				</div>
@@ -79,7 +79,7 @@ x y{
 			<input type="hidden" name="from" value="<?=$this->session->userdata('id_mahasiswa');?>">    
 			<div class="row">
 				<div class="col-10">
-					<input type="text" name="message" autofocus="true" class="form-control" placeholder="Tulis Pesan Kamu" autocomplete="off">
+					<input type="text" name="message" autofocus="true" class="form-control" placeholder="Tulis Pesan Kamu" autocomplete="off" required>
 				</div>
 				<div class="col-2">
 				<button class="btn btn-primary btn-block" style="width:7%;float:right;margin-right:-85px;margin-top:-38px;">Kirim</button>

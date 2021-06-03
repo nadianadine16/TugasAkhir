@@ -1,8 +1,8 @@
 <section id="team" class="team section" style="margin-top:50px; ">
   <div class="container" style="background-color:#f4fbfe; margin-top:-10px;">
     <div class="section-title">
-      <h2><br>Forum Diskusi</h2>
-      <p>Jika terdapat pertanyaan yang belum dibahas pada forum dapat menekan button tanya forum</p>
+      <h2><br>- &nbsp;Forum Diskusi&nbsp;  -</h2>
+      <p>Kamu bisa membuat forum disini. <b>Mahasiswa lain akan membantu memecahkan masalah kamu.</b></p>
     </div><br><br>
       
     <div class="row">
@@ -20,7 +20,7 @@
         </form>
         
       </div>
-      <div style="margin-left:-85px;"><a href="<?= base_url();?>User/Tanya_Forum" class="btn btn-sm" style="background-color:#49b5e7;color:#ffffff;margin-left:440%;"><span> <i class="fa fa-plus"></i></span> Tanya Forum</a></div>
+      <div style="margin-left:-85px;"><a href="<?= base_url();?>User/Tanya_Forum" class="btn btn-sm" style="background-color:#49b5e7;color:#ffffff;margin-left:480%;"><span> <i class="fa fa-plus"></i></span> Buat Forum</a></div>
     </div>
     <br>
 

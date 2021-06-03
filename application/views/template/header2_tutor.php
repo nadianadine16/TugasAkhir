@@ -10,6 +10,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="<?= base_url()?>/assets_admin/img/favicon.png">
     <link href="<?= base_url()?>/assets_admin/https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/bootstrap.min.css">
     <script src="<?= base_url()?>/assets_admin/Chart.js"></script>
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/owl.carousel.css">
@@ -35,6 +36,7 @@
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/alerts.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin/style.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/responsive.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/summernote/summernote.css">
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <script src="<?= base_url()?>/assets_admin/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
@@ -43,7 +45,7 @@
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header">
-                <a href="<?= base_url()?>Tutor/index"><img class="main-logo" src="<?= base_url()?>/assets_admin/img/logo/cjti.png" style="width:170px;height:50px;margin-top:10px;margin-bottom:10px;" /></a>
+                <a href="<?= base_url()?>Tutor/index"><img class="main-logo" src="<?= base_url()?>/assets_admin/img/cjti.png" style="width:170px;height:50px;margin-top:10px;margin-bottom:10px;" /></a>
             </div>
             <div class="left-custom-menu-adp-wrap comment-scrollbar">
                 <nav class="sidebar-nav left-sidebar-menu-pro">
@@ -107,6 +109,7 @@
                                             <ul class="d-flex nav navbar-nav mai-top-nav header-right-menu">
                                                 <li class="nav-item dropdown">
                                                 </li>
+                                                <?php if($hitung_chat_tutor > 0 && $hitung_chat_tutor < 10) {?>
                                                 <li class="nav-item dropdown" style="float:left">
                                                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-message edu-chat-pro" aria-hidden="true"></i><span class="badge badge-light" style="background-color:red"><?php echo $hitung_chat_tutor ;?></span></a>
                                                     <div role="menu" class="author-message-top dropdown-menu animated zoomIn">
@@ -131,11 +134,67 @@
                                                             </li>                                                     
                                                         </ul>
                                                         <div class="message-view">
-                                                            
                                                         </div>
                                                     </div>
                                                 </li>
-                                                
+                                                <?php } else if ($hitung_chat_tutor >= 10) {?>
+                                                    <li class="nav-item dropdown" style="float:left">
+                                                        <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-message edu-chat-pro" aria-hidden="true"></i><span class="badge badge-light" style="background-color:red">9+</span></a>
+                                                        <div role="menu" class="author-message-top dropdown-menu animated zoomIn">
+                                                            <div class="message-single-top">
+                                                                <center><p style="margin-top:15px;"><b>Notifikasi Pesan</b></p></center>
+                                                            </div>
+                                                            <ul class="message-menu" style="margin-top:-15px;">
+                                                                <li>
+                                                                <?php if ($hitung_chat_tutor > 0) {?>
+                                                                    <?php foreach($notif_chat_tutor as $nt):?>
+                                                                        <a href="<?= base_url('Tutor/change_status_chat_tutor/'.$nt['from'])?>" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; ">                                                                    
+                                                                            <div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;">                                                                        
+                                                                                <b><?=$nt['nama'];?></b><br>
+                                                                                <?=$nt['message'];?><br>
+                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($nt['created_at'])) ?>
+                                                                            </div>
+                                                                        </a>
+                                                                        <?php endforeach;?>
+                                                                    <?php } else {?>
+                                                                        <center><p><br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Anda belum memiliki pesan baru.</p></center>
+                                                                    <?php }?>
+                                                                </li>                                                     
+                                                            </ul>
+                                                            <div class="message-view">
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                <?php } else {?>
+                                                    <li class="nav-item dropdown" style="float:left">
+                                                        <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-message edu-chat-pro" aria-hidden="true"></i></a>
+                                                        <div role="menu" class="author-message-top dropdown-menu animated zoomIn">
+                                                            <div class="message-single-top">
+                                                                <center><p style="margin-top:15px;"><b>Notifikasi Pesan</b></p></center>
+                                                            </div>
+                                                            <ul class="message-menu" style="margin-top:-15px;">
+                                                                <li>
+                                                                <?php if ($hitung_chat_tutor > 0) {?>
+                                                                    <?php foreach($notif_chat_tutor as $nt):?>
+                                                                        <a href="<?= base_url('Tutor/change_status_chat_tutor/'.$nt['from'])?>" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; ">                                                                    
+                                                                            <div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;">                                                                        
+                                                                                <b><?=$nt['nama'];?></b><br>
+                                                                                <?=$nt['message'];?><br>
+                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($nt['created_at'])) ?>
+                                                                            </div>
+                                                                        </a>
+                                                                        <?php endforeach;?>
+                                                                    <?php } else {?>
+                                                                        <center><p><br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Anda belum memiliki pesan baru.</p></center>
+                                                                    <?php }?>
+                                                                </li>                                                     
+                                                            </ul>
+                                                            <div class="message-view">
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                <?php }?>
+
                                                 <li class="nav-item">
                                                 <?php $val = $this->session->userdata('nama');?>;
                                                     <a href="<?= base_url()?>/assets_admin/#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">

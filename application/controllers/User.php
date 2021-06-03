@@ -345,6 +345,7 @@ class User extends CI_Controller {
             $data['hitung_jawaban_baru']= $this->User_model->hitung_jawaban_baru(); //menghitung jumlah notifikasi jawaban baru forum
 
             $this->form_validation->set_rules('pertanyaan', 'pertanyaan', 'required'); //form validasi untuk memeriksa kelengkapan isian form
+            $this->form_validation->set_rules('link_tanya', 'link_tanya');
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header_user', $data);
@@ -487,6 +488,7 @@ class User extends CI_Controller {
             $data['hitung_jawaban_baru']= $this->User_model->hitung_jawaban_baru(); //menghitung jumlah notifikasi jawaban baru forum
 
             $this->form_validation->set_rules('chat', 'chat', 'required'); //form validasi untuk memeriksa kelengkapan isian form
+            $this->form_validation->set_rules('link_jawab', 'link_jawab');
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header_user', $data);
