@@ -132,6 +132,12 @@
                       <div class="logo-pro">
                           <a href="<?= base_url()?>/assets_admin/index.html"><img class="main-logo" src="<?= base_url()?>/assets_admin/img/logo/logo.png" alt="" /></a>
                       </div>
+                      <div class="logo-pro">
+                          <a href="<?= base_url()?>/assets_admin/index.html"><img class="main-logo" src="<?= base_url()?>/assets_admin/img/logo/logo.png" alt="" /></a>
+                      </div>
+                      <div class="logo-pro">
+                          <a href="<?= base_url()?>/assets_admin/index.html"><img class="main-logo" src="<?= base_url()?>/assets_admin/img/logo/logo.png" alt="" /></a>
+                      </div>
                   </div>
               </div>
           </div>

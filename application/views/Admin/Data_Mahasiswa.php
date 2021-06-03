@@ -38,14 +38,14 @@
                             <center><h1>Data <span class="table-project-n">Mahasiswa</span></h1></center>
                         </div>
                     </div>
+                    <?= $this->session->flashdata('message');?>
                     <a href="<?= base_url()?>/Admin/tambah_data_mahasiswa" class="btn btn-primary btn-icon-split">
                         <span class="icon text-white-50">
                             <i class="fa fa-plus"></i>
                         </span>
                         <span class="text">Tambah Mahasiswa</span>
                     </a>
-                    <?= $this->session->flashdata('message');?>
-                    <a href="<?= site_url('Admin/create') ?>" class="btn btn-primary mb-3">Import</a>
+                    <a href="<?= site_url('Admin/create') ?>" class="btn btn-primary mb-3"><i class="fa fa-upload mr-1"></i> Import Data Mahasiswa</a>
                     <div class="sparkline13-graph">
                         <div class="datatable-dashv1-list custom-datatable-overright">
                             <div id="toolbar">

@@ -508,20 +508,12 @@ class Admin extends CI_Controller {
         
                 $this->db->insert_batch('mahasiswa', $data);
         
-                $message = array(
-                    'message'=>'<div class="alert alert-success">Import file excel berhasil disimpan di database</div>',
-                );
-                
-                $this->session->set_flashdata($message);
+                echo"<script>alert('Data Mahasiswa Berhasil Diimport!');</script>";
                 redirect('Admin/data_mahasiswa');
             }
             else
             {
-                 $message = array(
-                    'message'=>'<div class="alert alert-danger">Import file gagal, coba lagi</div>',
-                );
-                
-                $this->session->set_flashdata($message);
+                echo"<script>alert('Data Mahasiswa Gagal Diimport!');</script>";
                 redirect('Admin/data_mahasiswa');
             }
         }
