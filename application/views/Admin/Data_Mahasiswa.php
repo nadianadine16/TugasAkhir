@@ -44,10 +44,12 @@
                         </span>
                         <span class="text">Tambah Mahasiswa</span>
                     </a>
+                    <?= $this->session->flashdata('message');?>
+                    <a href="<?= site_url('Admin/create') ?>" class="btn btn-primary mb-3">Import</a>
                     <div class="sparkline13-graph">
                         <div class="datatable-dashv1-list custom-datatable-overright">
                             <div id="toolbar">
-                            </div>
+                            </div>                            
                             <table id="table" data-toggle="table" data-pagination="true" data-search="true"   data-show-refresh="true" data-key-events="true"  data-resizable="true" data-cookie="true"
                             data-cookie-id-table="saveId"  data-click-to-select="true" data-toolbar="#toolbar">
                                 <thead>

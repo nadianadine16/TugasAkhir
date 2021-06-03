@@ -81,7 +81,7 @@
 
         <!-- header menampilkan logo coding jti -->
         <div class="sidebar-header">
-          <a href="<?= base_url()?>Admin/index"><img class="main-logo" src="<?= base_url()?>/assets_admin/img/logo/cjti.png" style="width:170px;height:50px;margin-top:10px;margin-bottom:10px;" /></a>
+          <a href="<?= base_url()?>Admin/index"><img class="main-logo" src="<?= base_url()?>/assets_admin/img/cjti.png" style="width:170px;height:50px;margin-top:10px;margin-bottom:10px;" /></a>
         </div>
 
         <!-- sidebar -->
@@ -159,7 +159,7 @@
                                                   </li>
                                                   <li class="nav-item">
                                                       <a href="<?= base_url()?>/assets_admin/#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-                                                        <img src="<?= base_url()?>/assets_admin/img/product/admin.png" style="width:30px; height:30px;" />
+                                                        <img src="<?= base_url()?>/assets_admin/img/user.png" style="width:30px; height:30px;" />
                                                         <span class="admin-name">Halo Admin, <?= $this->session->userdata('nama');?></span>
                                                         <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
                                                       </a>
