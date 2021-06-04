@@ -66,7 +66,12 @@
                 </div>
                 <div class="form-group">
                     <label for="github">Alamat Github</label>
-                    <p><?=($m['github']); ?></p>
+                    <?php if($m['github'] != NULL) {?>
+                        <p><?=($m['github']); ?></p>
+                    <?php }
+                    else {?>
+                        <p>-</p>
+                    <?php }?>                    
                 </div>
             </div>
             <?php endforeach; ?>
