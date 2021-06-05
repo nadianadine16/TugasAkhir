@@ -661,7 +661,7 @@ class Tutor extends CI_Controller {
         if (isset($_SESSION['id_tutor'])) {  
             $config['base_url'] = site_url('Tutor/Private_Chat'); //site url
             $config['total_rows'] = $this->Tutor_model->hitung_mahasiswa(); //total row
-            $config['per_page'] = 5;  //show record per halaman
+            $config['per_page'] = 20;  //show record per halaman
             $config["uri_segment"] = 3;  // uri parameter
             $choice = $config["total_rows"] / $config["per_page"];
             $config["num_links"] = floor($choice);

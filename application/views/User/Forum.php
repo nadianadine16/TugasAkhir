@@ -6,7 +6,7 @@
     </div><br><br>
       
     <div class="row">
-      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-left:25%;">
         <form class="form-inline" action ="<?= base_url('User/cari');?>" method="post">
           <select class="form-control" id="id_kategori_materi" name="id_kategori_materi">
             <option value="" selected="true" disabled="disabled">- Pilih Kategori Forum -</option>
@@ -14,13 +14,14 @@
                     <option value="<?=$kf["id_kategori_materi"];?>"><?=$kf["nama_kategori"];?></option>
                 <?php endforeach;?>
           </select>&nbsp;
-          <input type="text" class="form-control" placeholder="Cari Pertanyaan . . ." name="keyword" autocomplete="off" autofocus>
+          <input type="text" class="form-control" placeholder="Cari Pertanyaan . . ." name="keyword" autocomplete="off">
           &nbsp;
-          <input class="btn btn-sm" style="background-color:#49b5e7;color:#ffffff;" type="submit" name="submit">
+          <input class="btn" style="background-color:#49b5e7;color:#ffffff;" type="submit" name="submit">
         </form>
-        
+        <center><p style="margin-top:10px;margin-bottom:0px;">atau</p>
+        <a href="<?= base_url();?>User/Tanya_Forum" class="btn" style="margin-top:10px;margin-bottom:10px;margin-left:-5px;background-color:#49b5e7;color:#ffffff;"><span> <i class="fa fa-plus"></i></span> Buat Forum</a>
       </div>
-      <div style="margin-left:-85px;"><a href="<?= base_url();?>User/Tanya_Forum" class="btn btn-sm" style="background-color:#49b5e7;color:#ffffff;margin-left:480%;"><span> <i class="fa fa-plus"></i></span> Buat Forum</a></div>
+      
     </div>
     <br>
 
@@ -47,7 +48,6 @@
 
       <div class="row">
         <div class="col">
-          <!--Tampilkan pagination-->
           <?php echo $pagination; ?>
         </div>
       </div>

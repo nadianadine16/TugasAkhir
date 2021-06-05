@@ -5,7 +5,7 @@
     </div>
 
     <div class="row">
-      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-left:52%;">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <form class="form-inline" action ="<?= base_url('User/Cari_Tutor');?>" method="post">
           <select class="form-control" id="id_kategori_materi" name="id_kategori_materi">
             <option value="" selected="true" disabled="disabled">- Pilih Kategori Tutor -</option>

@@ -81,7 +81,7 @@
 
         <!-- header menampilkan logo coding jti -->
         <div class="sidebar-header">
-          <a href="<?= base_url()?>Admin/index"><img class="main-logo" src="<?= base_url()?>/assets_admin/img/cjti.png" style="width:170px;height:50px;margin-top:10px;margin-bottom:10px;" /></a>
+          <a href="<?= base_url()?>Admin/index"><img class="main-logo" src="<?= base_url()?>/assets_admin/img/stucode.png" style="width:170px;height:50px;margin-top:10px;margin-bottom:10px;" /></a>
         </div>
 
         <!-- sidebar -->

@@ -120,7 +120,7 @@
                     <div class="validate"></div>
                   </div>
                   <div class="form-group">
-                    <p style="margin-top:60px;margin-left:-16px;font-size:13px;color:#808080;" id="limit_teks"></p>
+                    <p style="margin-top:60px;margin-left:-16px;font-size:13px;color:#808080;" id="limit_teks">0/4000</p>
                   </div>
                   <div class="form-group">
                     <label for="link_jawab" style="float:left;"><br>Link Referensi (Opsional)</label>

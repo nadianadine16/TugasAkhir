@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets_search/assets/css/login.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="<?= base_url()?>/assets_login/img/favicon.png">
   </head>
-  <body style="background-color:#eddfd8">
+  <body style="background-color:#f4fbfe;">
     <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
       <div class="container">
         <div class="card login-card">
@@ -21,15 +23,15 @@
             <div class="col-md-7">
               <div class="card-body">
                 <div class="brand-wrapper">                
-                  <h2><b>E-Learning</b></h2>
+                  <h2><b>Stucode - JTI</b></h2>
                 </div>
-                <p class="login-card-description">Masukan NIM Anda untuk mengecek status pendaftaran.</p>
+                <p class="login-card-description">Masukan NIM Anda untuk memeriksa status pendaftaran.</p>
                 <form action="<?= base_url('tutor/cari');?>" method="post">
                     <div class="form-group">
                       <label for="email" class="sr-only">NIM</label>
                       <input id="search" type="text" placeholder="Masukan NIM" name="keyword" autocomplete="off" class="form-control" autofocus="true" style="width:155%;"/>                    
                     </div>                  
-                <button name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" style="width:155%;">Cek Status</button>
+                <button name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" style="width:155%; background-color:#49b5e7;">Cek Status</button>
                 </form>                
               </div>
             </div>

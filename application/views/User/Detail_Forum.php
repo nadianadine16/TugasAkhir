@@ -88,7 +88,7 @@
               
               <div class="form-group" style="width:79%; margin-left:130px;">
                 <textarea class="form-control" name="chat" required rows="5" data-rule="required" data-msg="Masukkan Pertanyaan Anda" placeholder="Tulis Balasan Anda Disini . . . " autofocus="true"style="width:91%;" id="input_pesan" onkeyup="cek_jumlah_karakter()"></textarea>
-                <p style="margin-top:-16px;margin-left:-16px;font-size:13px;color:#808080;float:right;" id="limit_teks"></p>
+                <p style="margin-top:-16px;margin-left:-16px;font-size:13px;color:#808080;float:right;" id="limit_teks">0/4000</p>
                 <div class="validate"></div>
               </div>
               <div class="form-group" style="width:79%; margin-left:130px;">

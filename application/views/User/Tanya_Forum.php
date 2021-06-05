@@ -18,7 +18,7 @@
       <div class="form-group">
       <label for="pertanyaan"><b>Pertanyaan</b></label>
         <textarea class="form-control" name="pertanyaan" required rows="5" data-rule="required" data-msg="Masukkan Pertanyaan Anda" placeholder="Tulis Pertanyaan Anda Disini . . . " style="width:93%;" id="input_pesan" onkeyup="cek_jumlah_karakter()"></textarea>
-        <p style="margin-top:-16px;margin-left:-16px;font-size:13px;color:#808080;float:right;" id="limit_teks"></p>
+        <p style="margin-top:-16px;margin-left:-16px;font-size:13px;color:#808080;float:right;" id="limit_teks">0/2000</p>
         <div class="validate"></div>
       </div>
       <div class="col-1">

@@ -5,9 +5,9 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 </head>
-<div class="single-pro-review-area mt-t-30 mg-b-15">
-    <div class="container-fluid">
-    <center><h3 style="margin-top:50px;">Daftar Tutor Coding JTI</h3></center><br>
+<div class="single-pro-review-area mt-t-30 mg-b-15" style="background-color:#f4fbfe;">
+    <div class="container-fluid" style="height:100%;">
+    <center><h3 style="margin-top:50px;">Daftar Tutor Stucode - JTI</h3></center><br>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-payment-inner-st">

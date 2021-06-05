@@ -63,14 +63,14 @@ x y{
 					?>
 						<?php if ($item->from == $id) {?>
 							<x>
-								<y class="me"><?= $item->message ?></y>
+								<y class="me" style="max-width:400px;"><?= $item->message ?></y>
 							</x>
-							<span>&nbsp;&nbsp;<p style="font-size:11px;float:right;margin-top:13px;margin-right:5px;max-width:400px;" class="text-secondary mr-2"><?= date('d-m-Y H:i',strtotime($item->created_at)) ?></p></span>
+							<span>&nbsp;&nbsp;<p style="font-size:11px;float:right;margin-top:1%;margin-right:5px;" class="text-secondary mr-2"><?= date('d-m-Y H:i',strtotime($item->created_at)) ?></p></span>
 						<?php }else { ?>
 							<x>
-								<y class="him"><?= $item->message ?></y>
+								<y class="him" style="max-width:400px;"><?= $item->message ?></y>
 							</x>
-							<p style="font-size:11px;float:left;margin-top:13px; margin-left:5px;max-width:400px;" class="text-secondary mr-2"><?= date('d-m-Y H:i',strtotime($item->created_at)) ?></p>
+							<p style="font-size:11px;float:left;margin-top:1%; margin-left:5px;" class="text-secondary mr-2"><?= date('d-m-Y H:i',strtotime($item->created_at)) ?></p>
 						<?php } ?>
 					<?php } ?>
 				</div>
@@ -82,7 +82,7 @@ x y{
 				<p style="margin-top:5px;font-size:13px;color:#808080;" id="limit_teks">0/2000</p>
 				</div>
 				<div class="col-10">
-					<input type="text" name="message" autofocus="true" class="form-control" placeholder="Tulis Pesan Kamu" autocomplete="off" required style="width:94%;margin-left:50px;margin-top:-45px;" id="input_pesan" onkeyup="cek_jumlah_karakter()">
+					<input type="text" name="message" autofocus="true" class="form-control" placeholder="Tulis Pesan Kamu" autocomplete="off" required style="width:94%;margin-left:64px;margin-top:-45px;" id="input_pesan" onkeyup="cek_jumlah_karakter()">
 				</div>
 				<div class="col-2">
 				<button class="btn btn-primary btn-block" style="width:7%;float:right;margin-right:-85px;margin-top:-35px;">Kirim</button>

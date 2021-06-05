@@ -54,14 +54,14 @@ x y{
 		?>
 			<?php if ($item->from == $id) {?>
 				<x>
- 					<y class="me" style=" max-width:400px; margin-right:10px;margin-top:10px;"><?= $item->message ?></y>
+ 					<y class="me" style=" max-width:400px;"><?= $item->message ?></y>
 				</x><br>
-				<p style="font-size:11px;float:right;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></p>
+				<span>&nbsp;&nbsp;<p style="font-size:11px;float:right;margin-top:1%;margin-right:5px;" class="text-secondary mr-2"><?= date('d-m-Y H:i',strtotime($item->created_at)) ?></p></span>
 			<?php }else { ?>
 				<x>
- 					<y class="him" style=" max-width:400px; margin-left:10px; margin-top:10px;"><?= $item->message ?></y>
+ 					<y class="him" style=" max-width:400px;"><?= $item->message ?></y>
 				</x><br>
-				<p style="font-size:11px;float:left;" class="text-secondary mr-2"><?= date('d-m-Y H:i:s',strtotime($item->created_at)) ?></p>
+				<p style="font-size:11px;float:left;margin-top:1%; margin-left:5px;" class="text-secondary mr-2"><?= date('d-m-Y H:i',strtotime($item->created_at)) ?></p>
 			<?php } ?>
 		<?php } ?>
 	</div>
@@ -71,10 +71,10 @@ x y{
     <input type="hidden" name="from" value="<?=$this->session->userdata('id_mahasiswa');?>">    
 		<div class="row">
 			<div class="col-10">
-				<input type="text" name="message" autofocus="true" class="form-control" placeholder="Tulis Pesan Kamu . . ." required autocomplete="off" onkeyup="cek_jumlah_karakter()" id="input_pesan">
+				<input type="text" name="message" autofocus="true" class="form-control" placeholder="Tulis Pesan Kamu . . ." required autocomplete="off" onkeyup="cek_jumlah_karakter()" id="input_pesan" style="width:98%;">
 			</div>
 			<div class="col-1">
-				<p style="margin-top:8px;margin-left:-16px;font-size:13px;color:#808080;" id="limit_teks"></p>
+				<p style="margin-top:8px;margin-left:-35px;font-size:13px;color:#808080;" id="limit_teks">0/1000</p>
 			</div>
 			<div class="col-1">
 				<button class="btn btn-block" style="background-color:#49b5e7;color:#ffffff;width:200%;margin-left:-60px;">Kirim</button>
