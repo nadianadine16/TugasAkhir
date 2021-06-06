@@ -51,7 +51,7 @@
                 <nav class="sidebar-nav left-sidebar-menu-pro">
                     <ul class="metismenu" id="menu1">
                         <li>
-                            <a class="mini-click-non" href="<?= base_url()?>Tutor/index">
+                            <a class="" href="<?= base_url()?>Tutor/index" aria-expanded="false">
                                 <span class="educate-icon educate-home icon-wrap"></span>
                                 <span class="mini-click-non">Dashboard</span>
 							</a>
@@ -93,7 +93,10 @@
                             <div class="header-top-wraper">
                                 <div class="row">
                                     <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
-                                        <div class="menu-switcher-pro">
+                                    <div class="menu-switcher-pro">
+                                            <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
+													<i class="educate-icon educate-nav"></i>
+												</button>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
@@ -194,7 +197,7 @@
                                                 <?php }?>
 
                                                 <li class="nav-item">
-                                                <?php $val = $this->session->userdata('nama');?>;
+                                                <?php $val = $this->session->userdata('nama');?>
                                                     <a href="<?= base_url()?>/assets_admin/#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                                                         <?php foreach($foto_tutor as $ft):?>
                                                             <?php if($ft["foto"] == NULL){?>

@@ -89,13 +89,13 @@
           <nav class="sidebar-nav left-sidebar-menu-pro">
             <ul class="metismenu" id="menu1">
               <li>
-                <a class="mini-click-non" href="<?= base_url()?>admin/index">
+                <a title="Landing Page" href="<?= base_url()?>admin/index" aria-expanded="false">
                   <span class="educate-icon educate-home icon-wrap"></span>
                   <span class="mini-click-non">Dashboard</span>
                 </a>
               </li>
             <li>
-              <a class="mini-click-non" href="<?= base_url()?>admin/data_mahasiswa">
+              <a title="Landing Page" href="<?= base_url()?>admin/data_mahasiswa" aria-expanded="false">
                 <span class="educate-icon educate-student icon-wrap"></span>
                 <span class="mini-click-non">Mahasiswa</span>
               </a>
@@ -108,16 +108,16 @@
               </ul>
             </li>
             <li>
-              <a class="mini-click-non" href="<?= base_url()?>admin/data_kategori_materi">
+              <a title="Landing Page" href="<?= base_url()?>admin/data_kategori_materi" aria-expanded="false">
                 <span class="educate-icon educate-library icon-wrap"></span>
                 <span class="mini-click-non">Kategori Materi</span>
               </a>
             </li>
               <li>
-                <a class="" href="<?= base_url();?>admin/data_kritik_saran" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Kritik & Saran</span></a>
+                <a title="Landing Page" href="<?= base_url();?>admin/data_kritik_saran" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Kritik & Saran</span></a>
               </li>
               <li>
-                <a class="" href="<?= base_url();?>admin/Forum" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Forum</span></a>
+                <a href="<?= base_url();?>admin/Forum" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Forum</span></a>
               </li>
             </ul>
           </nav>
@@ -141,6 +141,11 @@
                               <div class="header-top-wraper">
                                   <div class="row">
                                       <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
+                                      <div class="menu-switcher-pro">
+                                            <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
+													<i class="educate-icon educate-nav"></i>
+												</button>
+                                        </div>
                                           <div class="menu-switcher-pro">
                                           </div>
                                       </div>
