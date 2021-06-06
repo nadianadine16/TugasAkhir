@@ -182,4 +182,49 @@
                       </div>
                   </div>
               </div>
+              <div class="mobile-menu-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="mobile-menu">
+                                <nav id="dropdown">
+                                    <ul class="mobile-menu-nav">
+                                    <li>
+                <a title="Landing Page" href="<?= base_url()?>admin/index" aria-expanded="false">
+                  <span class="educate-icon educate-home icon-wrap"></span>
+                  <span class="mini-click-non">Dashboard</span>
+                </a>
+              </li>
+            <li>
+              <a title="Landing Page" href="<?= base_url()?>admin/data_mahasiswa" aria-expanded="false">
+                <span class="educate-icon educate-student icon-wrap"></span>
+                <span class="mini-click-non">Mahasiswa</span>
+              </a>
+            </li>
+            <li>
+              <a class="has-arrow" href="all-professors.html" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Tutor</span></a>
+              <ul class="submenu-angle" aria-expanded="false">
+                <li><a title="All Professors" href="<?= base_url();?>admin/data_tutor"><span class="mini-sub-pro">Data Tutor</span></a></li>
+                <li><a title="Add Professor" href="<?= base_url();?>admin/data_tutor_belum_verifikasi"><span class="mini-sub-pro">Verifikasi Tutor</span></a></li>
+              </ul>
+            </li>
+            <li>
+              <a title="Landing Page" href="<?= base_url()?>admin/data_kategori_materi" aria-expanded="false">
+                <span class="educate-icon educate-library icon-wrap"></span>
+                <span class="mini-click-non">Kategori Materi</span>
+              </a>
+            </li>
+              <li>
+                <a title="Landing Page" href="<?= base_url();?>admin/data_kritik_saran" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Kritik & Saran</span></a>
+              </li>
+              <li>
+                <a href="<?= base_url();?>admin/Forum" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Forum</span></a>
+              </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
           </div>  

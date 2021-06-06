@@ -227,5 +227,40 @@
                     </div>
                 </div>
             </div>
+            <div class="mobile-menu-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="mobile-menu">
+                                <nav id="dropdown">
+                                    <ul class="mobile-menu-nav">
+                                    <li>
+                            <a class="" href="<?= base_url()?>Tutor/index" aria-expanded="false">
+                                <span class="educate-icon educate-home icon-wrap"></span>
+                                <span class="mini-click-non">Dashboard</span>
+							</a>
+                        </li>
+                        <li>
+                            <a class="" href="<?= base_url()?>Tutor/Data_Materi" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Materi</span></a>
+                        </li>
+                        <li>
+                            <a class="" href="<?= base_url()?>Tutor/Tugas_mahasiswa" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Tugas Mahasiswa</span></a>
+                        </li>
+                        <li>
+                            <a class="" href="<?= base_url()?>Tutor/Private_Chat" aria-expanded="false"><span class="educate-icon educate-message icon-wrap"></span> <span class="mini-click-non">Private Chat</span></a>
+                        </li>
+                        <li>
+                            <a class="" href="<?= base_url()?>Tutor/Forum" aria-expanded="false"><span class="educate-icon educate-interface icon-wrap"></span> <span class="mini-click-non">Forum</span></a>
+                        </li>
+                        <li>
+                            <a class="" href="<?= base_url()?>Tutor/Kritik_Saran" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Kritik & Saran</span></a>
+                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     
