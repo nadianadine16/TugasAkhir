@@ -394,6 +394,15 @@ class User_model extends CI_Model {
         return $query->result_array();                        
     }
 
+    public function profil_mahasiswa($id_mahasiswa) //get data sesuai dengan id_tutor yg dipilih
+    {
+        $this->db->select('*');
+        $this->db->from('mahasiswa'); 
+        $this->db->where('id_mahasiswa', $id_mahasiswa);
+        $query = $this->db->get();
+        return $query->result_array();                        
+    }
+
     public function Daftar_Materi_by_tutor($id_tutor) { //function untuk menampilkan daftar materi sesuai dgn id_tutor
         $this->db->select('*');
         $this->db->from('materi');     

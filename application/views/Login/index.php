@@ -40,11 +40,11 @@
               <div class="form-group mb-4">
                 <input type="password" name="pwd1" placeholder="Password" class="form-control border-0 shadow form-control-lg text-violet" autocomplete="off">
               </div>
-              <button type="submit" class="btn btn-primary shadow px-5" style="width:250px; margin-left:100px;">Log in</button>
+              <center><button type="submit" class="btn btn-primary shadow px-5" style="width:250px;">Log in</button></center>
             </form>
-            <a href="<?= base_url();?>Tutor/Daftar_Tutor" class="btn btn-primary shadow px-5" style="width:250px; margin-left:100px; margin-top:10px;">Daftar Tutor</a>
-            <a href="<?= base_url();?>Tutor/Cek_Status_Pendaftaran" class="btn btn-primary shadow" style="width:250px; margin-left:100px; margin-top:10px; margin-bottom:10px">Cek Status Pendaftaran</a>
-            <div class="alert alert-info" role="alert" style="width:345px;margin-left:45px;">
+            <center><a href="<?= base_url();?>Tutor/Daftar_Tutor" class="btn btn-primary shadow px-5" style="width:250px;margin-top:10px;">Daftar Tutor</a></center>
+            <center><a href="<?= base_url();?>Tutor/Cek_Status_Pendaftaran" class="btn btn-primary shadow" style="width:250px; margin-top:10px; margin-bottom:10px">Cek Status Pendaftaran</a></center>
+            <center><div class="alert alert-info" role="alert" style="width:345px;">
               <?php
               if(isset($pesan)) {
                 echo $pesan;
@@ -53,7 +53,7 @@
                 echo "Masukkan Username Dan Password Anda";
                 }
               ?>
-            </div>
+            </div></center>
           </div>
       </div>
     </div>

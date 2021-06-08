@@ -112,6 +112,7 @@ class User extends CI_Controller {
             $data['hitung_chat']= $this->User_model->hitung_chat(); //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['notif_jawaban_baru'] = $this->User_model->notif_jawaban_baru(); //menampilkan notifikasi jawaban forum baru
             $data['hitung_jawaban_baru']= $this->User_model->hitung_jawaban_baru(); //menghitung jumlah notifikasi jawaban baru forum
+            $data['profil_mhs'] = $this->User_model->profil_mahasiswa($id_mahasiswa); //get data mhs sesuai id_mhs
 
             $this->load->view('template/header_user', $data);
             $this->load->view('User/Edit_Profil', $data);

@@ -8,7 +8,7 @@
             <?php foreach($mahasiswa as $m):?>
                 <div class="kotak" style="width: 100%; height:100%;">  
                     <h4><b><?=$m['nama']?></b><span><a href="<?=base_url()?>/User/Edit_Profil/<?=$m['id_mahasiswa'];?>">
-                    <button class="btn" style="float:right; margin-right:-80%;background-color:#49b5e7;color:#ffffff;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit Profil</button></a></span></h4><hr style="width:1030px;"><br>
+                    <button class="btn btn-sm" style="background-color:#49b5e7;color:#ffffff;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  </button></a></span></h4><hr style="width:180%;"><br>
                     <p><b>NIM</b> : <?=$m['nim']?></h5>
                     <p><b>Jenis Kelamin</b> : <?=$m['jenis_kelamin']?></h5>
                     <p><b>Jurusan</b> : <?=$m['jurusan']?></h5>
