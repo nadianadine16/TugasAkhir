@@ -194,7 +194,10 @@
 
         // menghitung jumlah data tutor
         public function getCountTutor() {
-            return $this->db->count_all('tutor');
+            $i = 2;
+            $this->db->where('status', $i); // OTHER CONDITIONS IF ANY
+            $this->db->from('tutor'); //TABLE NAME
+            return $this->db->count_all_results();
         }
 
         // menghitung jumlah data kategori materi

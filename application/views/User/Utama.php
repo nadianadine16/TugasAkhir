@@ -105,19 +105,19 @@
 
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></i></div>
-              <h4 class="title"><a href="">Materi Langsung dari Tutornya</a></h4>
+              <h4 class="title">Materi Langsung dari Tutornya</h4>
               <p class="description">Materi yang disajikan dibuat sendiri oleh tutor khusus untuk mahasiswa yang belajar coding pada website ini</p>
             </div>
 
             <div class="icon-box">
               <div class="icon"><i class="bx bx-group"></i></div>
-              <h4 class="title"><a href="">Forum Diskusi</a></h4>
+              <h4 class="title">Forum Diskusi</h4>
               <p class="description">Forum merupakan media diskusi baik antar mahasiswa satu dengan lainnya maupun bersama dengan tutor</p>
             </div>
 
             <div class="icon-box">
               <div class="icon"><i class="bx bx-chat"></i></div>
-              <h4 class="title"><a href="">Private Chat dengan Tutor Secara Langsung</a></h4>
+              <h4 class="title">Private Chat dengan Tutor Secara Langsung</h4>
               <p class="description">Dengan website ini kamu bisa menghubungi tutor secara langsung melalui private chat yang tersedia</p>
             </div>
 

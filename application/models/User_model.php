@@ -499,7 +499,11 @@ class User_model extends CI_Model {
     }
 
     public function jumlah_tutor() { //function untuk menghitung jumlah data tutor
-        return $this->db->count_all('tutor');
+        // return $this->db->count_all('tutor');
+        $i = 2;
+        $this->db->where('status', $i); // OTHER CONDITIONS IF ANY
+        $this->db->from('tutor'); //TABLE NAME
+        return $this->db->count_all_results();
     }
 
     public function jumlah_materi() { //function untuk menghitung jumlah data materi
