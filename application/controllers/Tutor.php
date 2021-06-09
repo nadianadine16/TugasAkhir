@@ -123,7 +123,7 @@ class Tutor extends CI_Controller {
         $data['title'] = 'Daftar Tutor';
 
         // form validation untuk memeriksa kelengkapan isian form
-        $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');
+        // $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');
         $this->form_validation->set_rules('id_kategori_materi', 'id_kategori_materi', 'required');
         
         if($this->form_validation->run() == FALSE) {
@@ -131,11 +131,17 @@ class Tutor extends CI_Controller {
             redirect('Tutor/Daftar_Tutor','refresh');
         }
         else {
-            // menuju ke tutor_model untuk melakukan aksi tambah tutor
-            $this->Tutor_model->Tambah_Tutor();
-            echo"<script>alert('Terdaftar');</script>";
-            // kembali ke halaman login
-            redirect('Login/index','refresh');
+            // menuju ke tutor_model untuk melakukan aksi tambah tutor            
+            $cek = $this->db->query("SELECT tutor.id_mahasiswa FROM tutor JOIN mahasiswa ON mahasiswa.id_mahasiswa= tutor.id_mahasiswa where mahasiswa.nim='".$this->input->post('nim')."'")->num_rows();
+            if ($cek<=0){
+                $this->Tutor_model->Tambah_Tutor();
+                echo"<script>alert('Terdaftar');</script>";
+                redirect('Login/index','refresh');
+            }else{
+                // kembali ke halaman login            
+                echo"<script>alert('Nim telah terdaftar');</script>";
+                redirect('Tutor/Daftar_Tutor','refresh');
+            }
         }
     }
 

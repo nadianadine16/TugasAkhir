@@ -590,6 +590,15 @@
               return $row->total;
             }
             return 0;      
-        }        
+        }     
+        public function cek_tutor($nim)   {
+            $query = $this->db->query("SELECT tutor.id_mahasiswa FROM tutor JOIN mahasiswa ON mahasiswa.id_mahasiswa= tutor.id_mahasiswa WHERE mahasiswa.nim = '$nim'");        
+            if ($query->num_rows() > 0 )
+            {
+              $row = $query->row();
+              return $row->total;
+            }
+            return 0;      
+        }
     }
 ?>
