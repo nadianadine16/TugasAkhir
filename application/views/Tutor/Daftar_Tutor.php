@@ -13,15 +13,7 @@
                 <div class="product-payment-inner-st">
                     <h5> Silahkan download file surat pernyataan berikut terlebih dahulu :</h5>
                     <a href="<?= base_url('assets_tutor/pdf/SURAT PERNYATAAN KESANGGUPAN.pdf')?>"><button type="button" class="btn btn-primary"><i class="fa fa-download edu-avatar" aria-hidden="true"></i>  Download </button></a><br><br>
-                    <form action="<?=base_url('Tutor/Tambah_Tutor')?>" method="post" enctype="multipart/form-data">
-                        <!-- <div class="form-group">
-                            <label for="nim">NIM</label><br>
-                            <select class="myselect" style="width:100%;" id="id_mahasiswa" name="id_mahasiswa">
-                                <?php foreach($mahasiswa as $m) : ?>
-                                    <option value="<?=$m["id_mahasiswa"];?>"><?=$m["nim"];?></option>
-                                <?php endforeach;?>
-                            </select>
-                        </div> -->
+                    <form action="<?=base_url('Tutor/Tambah_Tutor')?>" method="post" enctype="multipart/form-data">                        
                         <div class="form-group">
                             <label for="nama">NIM</label>
                                 <input type="text" class="form-control" id="nim" name="nim" required autocomplete="off">

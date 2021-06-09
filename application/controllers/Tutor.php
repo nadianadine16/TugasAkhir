@@ -125,6 +125,7 @@ class Tutor extends CI_Controller {
         // form validation untuk memeriksa kelengkapan isian form
         // $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');
         $this->form_validation->set_rules('id_kategori_materi', 'id_kategori_materi', 'required');
+        $nim = $this->input->post('nim');
         
         if($this->form_validation->run() == FALSE) {
             echo"<script>alert('Surat Pernyataan Wajib Diisi');</script>";
@@ -133,13 +134,20 @@ class Tutor extends CI_Controller {
         else {
             // menuju ke tutor_model untuk melakukan aksi tambah tutor            
             $cek = $this->db->query("SELECT tutor.id_mahasiswa FROM tutor JOIN mahasiswa ON mahasiswa.id_mahasiswa= tutor.id_mahasiswa where mahasiswa.nim='".$this->input->post('nim')."'")->num_rows();
-            if ($cek<=0){
-                $this->Tutor_model->Tambah_Tutor();
-                echo"<script>alert('Terdaftar');</script>";
-                redirect('Login/index','refresh');
-            }else{
-                // kembali ke halaman login            
-                echo"<script>alert('Nim telah terdaftar');</script>";
+            $cek_mahasiswa = $this->db->query("SELECT mahasiswa.id_mahasiswa FROM mahasiswa where mahasiswa.nim='".$this->input->post('nim')."'")->num_rows();
+            if ($cek_mahasiswa>0) { //jika mahasiswa terdaftar pada tabel mahasiswa
+                if ($cek<=0){ //jika mahasiswa tidak terdaftar sebagai tutor
+                    $this->Tutor_model->Tambah_Tutor();
+                    echo"<script>alert('Terdaftar');</script>";
+                    redirect('Login/index','refresh');
+                }
+                else{                    
+                    echo"<script>alert('Nim Telah Terdaftar');</script>";
+                    redirect('Tutor/Daftar_Tutor','refresh');    
+                }            
+            }
+            else{                
+                echo"<script>alert('NIM Tidak Terdaftar');</script>";
                 redirect('Tutor/Daftar_Tutor','refresh');
             }
         }
