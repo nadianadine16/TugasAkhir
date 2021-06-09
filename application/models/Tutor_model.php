@@ -37,17 +37,13 @@
         }
 
         public function Tambah_Tutor() { //mendaftar tutor
-            $status = 1;
-
+            $status = 1;            
+            $kategori_materi = $this->input->post('id_kategori_materi');
+            $surat_pernyataan = $this->upload_surat_pernyataan();            
             $this->id_tutor = uniqid();
-            $data = [
-                "id_mahasiswa" => $this->input->post('id_mahasiswa', true),
-                "id_kategori_materi" => $this->input->post('id_kategori_materi', true),
-                "status" => $this->input->post('status', $status),
-                "surat_pernyataan" => $this->upload_surat_pernyataan()
-            ];
-
-            $this->db->insert('tutor', $data);
+            $sql = "insert into tutor (id_mahasiswa, id_kategori_materi, surat_pernyataan, status)
+                    values ((SELECT id_mahasiswa FROM mahasiswa where nim='".$this->input->post('nim')."'), '$kategori_materi', '$surat_pernyataan', '$status')";
+            $this->db->query($sql);            
         }
 
         public function upload_surat_pernyataan() {
