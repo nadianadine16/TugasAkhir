@@ -33,8 +33,8 @@
     <thead>
         <tr>
             <th><center>No</center></th>
-            <th><center>Judul Konten</center></th>
-            <th><center>Tugas</center></th>
+            <th style="width:300px;"><center>Judul Konten</center></th>
+            <th style="width:700px;"><center>Tugas</center></th>
             <th><center>Status</center></th>
         </tr>
     </thead>
@@ -42,8 +42,8 @@
     <?php $no=1; foreach($tugas as $t):?>
         <tr>
             <td><?=$no++;?></td>
-            <td style="width:300px;"><?=$t["judul"];?></td>
-            <td style="width:700px;"><?=$t["tugas"];?></td>
+            <td><?=$t["judul"];?></td>
+            <td><?=$t["tugas"];?></td>
             <td>
             <?php if($t["status"] == "Revisi"){?>
                 <a href="<?= base_url();?>User/kumpulkanTugas/<?=$t['id_konten'];?>"><center><button class="btn btn-danger btn-sm" style="width:60px;align-text:center;">Revisi</button></center></a>
