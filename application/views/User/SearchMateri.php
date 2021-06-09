@@ -6,7 +6,7 @@
     <div class="row">      
       <div class="col-md-5" style="margin-bottom:30px;">
         <form class="form-inline" action ="<?= base_url('User/carimateri');?>" method="post">
-          <input type="text" class="form-control" placeholder="Cari Materi . . ." name="keyword" autocomplete="off" autofocus required> 
+          <input type="text" class="form-control" value="<?=$hasil_cari?>" name="keyword" autocomplete="off" required> 
           <input class="btn" type="submit" name="submit" style="background-color:#49b5e7;color:#ffffff;">
         </form>
       </div>

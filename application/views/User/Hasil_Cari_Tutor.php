@@ -8,12 +8,12 @@
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <form class="form-inline" action ="<?= base_url('User/Cari_Tutor');?>" method="post">
           <select class="form-control" id="id_kategori_materi" name="id_kategori_materi">
-            <option value="" selected="true" disabled="disabled">- Pilih Kategori Tutor -</option>
+            <option value="" selected="true" disabled="disabled"><?=$hasil_cari_tutor?></option>
                 <?php foreach($kategori_tutor as $kt) : ?>
                     <option value="<?=$kt["id_kategori_materi"];?>"><?=$kt["nama_kategori"];?></option>
                 <?php endforeach;?>
           </select>&nbsp;
-          <input type="text" class="form-control" placeholder="Cari Tutor . . ." name="keyword" autocomplete="off" autofocus>
+          <input type="text" class="form-control" value="<?=$hasil_cari?>" name="keyword" autocomplete="off">
           &nbsp;
           <input class="btn" type="submit" name="submit" style="background-color:#49b5e7;color:#ffffff;">
         </form>

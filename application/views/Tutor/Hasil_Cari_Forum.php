@@ -7,12 +7,12 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <form class="form-inline" action ="<?= base_url('Tutor/Cari_Forum');?>" method="post">
                           <select class="form-control" id="id_kategori_materi" name="id_kategori_materi">
-                            <option value="" selected="true" disabled="disabled">- Pilih Kategori Forum -</option>
+                            <option value="" selected="true" disabled="disabled"><?=$hasil_cari_kategori?></option>
                                 <?php foreach($kategori_forum as $kf) : ?>
                                     <option value="<?=$kf["id_kategori_materi"];?>"><?=$kf["nama_kategori"];?></option>
                                 <?php endforeach;?>
                           </select>
-                          <input type="text" class="form-control" placeholder="Cari Pertanyaan.." name="keyword" autocomplete="off" autofocus>
+                          <input type="text" class="form-control" value="<?=$hasil_cari?>" name="keyword" autocomplete="off" >
                           <input class="btn btn-primary" type="submit" name="submit">
                         </form>
                         </div>

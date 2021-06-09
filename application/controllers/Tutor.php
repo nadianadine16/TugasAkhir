@@ -608,6 +608,8 @@ class Tutor extends CI_Controller {
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
             // menampilkan hasil forum yang dicari
             $data['forum'] = $this->Tutor_model->getAllForum_cari();
+            $data['hasil_cari_kategori'] = $this->input->post('id_kategori_materi');
+            $data['hasil_cari'] = $this->input->post('keyword');
 
             if($this->input->post('submit')){
                 // mengambil data inputan saat pencarian
@@ -718,7 +720,7 @@ class Tutor extends CI_Controller {
     public function carichat(){
         if (isset($_SESSION['id_tutor'])) {  
             // mengambil inputan dari form pencarian
-            $keyword=  $this->input->post('keyword'); 
+            $keyword =  $this->input->post('keyword'); 
 
             $data['title'] = 'Private Chat';
             $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
@@ -729,6 +731,7 @@ class Tutor extends CI_Controller {
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
             // menampilkan data mahasiswa sesuai keyword per page      
             $data['hasilsearch'] = $this->Tutor_model->searchchat($keyword);
+            $data['hasil_cari'] = $this->input->post('keyword');
 
             $this->load->view('template/header2_tutor', $data);
             $this->load->view("Tutor/Search_Private_Chat",$data);
