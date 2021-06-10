@@ -42,6 +42,7 @@
               </div>
               <center><button type="submit" class="btn btn-primary shadow px-5" style="width:250px;">Log in</button></center>
             </form>
+            <center><p style="margin-top:10px;margin-bottom:0px;">atau</p></center>
             <center><a href="<?= base_url();?>Tutor/Daftar_Tutor" class="btn btn-primary shadow px-5" style="width:250px;margin-top:10px;">Daftar Tutor</a></center>
             <center><a href="<?= base_url();?>Tutor/Cek_Status_Pendaftaran" class="btn btn-primary shadow" style="width:250px; margin-top:10px; margin-bottom:10px">Cek Status Pendaftaran</a></center>
             <center><div class="alert alert-info" role="alert" style="width:345px;">

@@ -459,62 +459,70 @@ class Admin extends CI_Controller {
         }
     }
     public function create()
-        {
-            $data['title'] = "Upload File Excel";
-            $this->load->view('template/header2_admin',$data);
-            $this->load->view('Admin/create', $data);
-            $this->load->view('template/footer2_admin',$data);
-        }
+    {
+        $data['title'] = "Upload File Excel";
+        $this->load->view('template/header2_admin',$data);
+        $this->load->view('Admin/create', $data);
+        $this->load->view('template/footer2_admin',$data);
+    }
 
-        public function excel()
-        {
-            if(isset($_FILES["file"]["name"])){
-                  // upload
-                $file_tmp = $_FILES['file']['tmp_name'];
-                $file_name = $_FILES['file']['name'];
-                $file_size =$_FILES['file']['size'];
-                $file_type=$_FILES['file']['type'];                
-                
-                $object = PHPExcel_IOFactory::load($file_tmp);
-        
-                foreach($object->getWorksheetIterator() as $worksheet){
-        
-                    $highestRow = $worksheet->getHighestRow();
-                    $highestColumn = $worksheet->getHighestColumn();
-        
-                    for($row=2; $row<=$highestRow; $row++){
-        
-                        $nim = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
-                        $nama = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-                        $jenis_kelamin = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-                        $jurusan = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
-                        $prodi = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-                        $kelas = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
-                        $tahun_masuk = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
+    public function excel()
+    {
+        if(isset($_FILES["file"]["name"])){
+                // upload
+            $file_tmp = $_FILES['file']['tmp_name'];
+            $file_name = $_FILES['file']['name'];
+            $file_size =$_FILES['file']['size'];
+            $file_type=$_FILES['file']['type'];                
+            
+            $object = PHPExcel_IOFactory::load($file_tmp);
+    
+            foreach($object->getWorksheetIterator() as $worksheet){
+    
+                $highestRow = $worksheet->getHighestRow();
+                $highestColumn = $worksheet->getHighestColumn();
+    
+                for($row=2; $row<=$highestRow; $row++){
+    
+                    $nim = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+                    $nama = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+                    $jenis_kelamin = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+                    $jurusan = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+                    $prodi = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+                    $kelas = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+                    $tahun_masuk = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
 
-                        $data[] = array(
-                            'nim'          => $nim,
-                            'nama'          =>$nama,
-                            'jenis_kelamin'         =>$jenis_kelamin,
-                            'jurusan'         =>$jurusan,
-                            'prodi'         =>$prodi,
-                            'kelas'         =>$kelas,
-                            'tahun_masuk'         =>$tahun_masuk,
-                        );
-        
-                    } 
-        
-                }
-        
-                $this->db->insert_batch('mahasiswa', $data);
-        
-                echo"<script>alert('Data Mahasiswa Berhasil Diimport!');</script>";
-                redirect('Admin/data_mahasiswa');
+                    $data[] = array(
+                        'nim'          => $nim,
+                        'nama'          =>$nama,
+                        'jenis_kelamin'         =>$jenis_kelamin,
+                        'jurusan'         =>$jurusan,
+                        'prodi'         =>$prodi,
+                        'kelas'         =>$kelas,
+                        'tahun_masuk'         =>$tahun_masuk,
+                    );
+    
+                } 
+    
             }
-            else
-            {
-                echo"<script>alert('Data Mahasiswa Gagal Diimport!');</script>";
-                redirect('Admin/data_mahasiswa');
-            }
+    
+            $this->db->insert_batch('mahasiswa', $data);
+    
+            $message = array(
+                'message'=>'<div class="alert alert-success">Import File Berhasil</div>',
+            );
+
+            $this->session->set_flashdata($message);
+            redirect('Admin/data_mahasiswa');
         }
+        else
+        {
+            $message = array(
+                'message'=>'<div class="alert alert-danger">Import File Gagal</div>',
+            );
+
+            $this->session->set_flashdata($message);
+            redirect('Admin/data_mahasiswa');
+        }
+    }
 }

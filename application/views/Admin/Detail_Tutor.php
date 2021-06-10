@@ -66,23 +66,23 @@
     <div class="container-fluid">
         <div class="row">
         <?php foreach($detail_tutor as $t):?>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <div class="profile-info-inner" style="width:314%;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-24">
+                <div class="profile-info-inner">
                 <center><h3>Detail Tutor</h3></center>
-                    <div class="card kartu">
+                    <div class="card">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="foto">
                                     <?php if($t["foto"] == NULL){?>
-                                        <img src="<?= base_url('upload/user.png')?>" alt="" style="margin-left:-20px;width:200px;height:200px;"/>
+                                        <img src="<?= base_url('upload/profil/user.png')?>" alt="" style="margin-left:-20px;width:200px;height:200px;"/>
                                     <?php } else {?>
-                                        <img src="<?= base_url('upload/'.$t['foto'])?>" alt="" />
+                                        <img src="<?= base_url('upload/profil/'.$t['foto'])?>" alt="" />
                                     <?php }?>
                                 </div>
                             </div>
                             <div class="col-md-8 kertas-biodata">
                                 <div class="biodata">
-                                    <table width="100%" style="margin-left:-30px;">
+                                    <table width="100%" style="margin-left:20px;">
                                         <tbody>
                                             <tr>
                                                 <td>
@@ -137,7 +137,11 @@
                                                             <tr>
                                                                 <td valign="top" class="textt">Alamat Github</td>
                                                                 <td valign="top">:</td>
-                                                                <td><?=$t["github"];?></td>
+                                                                <?php if($t["github"] != NULL) {?>
+                                                                    <td><?=$t["github"];?></td>
+                                                                <?php } else {?>
+                                                                    <td>Belum Ditambahkan</td>
+                                                                <?php }?>
                                                             </tr>
                                                             <tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr>
                                                             <tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr>
