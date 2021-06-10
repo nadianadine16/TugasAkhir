@@ -499,6 +499,17 @@ class User_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+    public function keySearchForum($kategori)
+    {
+        $this->db->select('kategori_materi.nama_kategori');
+        $this->db->from('kategori_materi');
+        $this->db->join('forum', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
+        $this->db->where('forum.id_kategori_materi', $kategori);
+        $this->db->limit(1);
+                        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
     public function jumlah_tutor() { //function untuk menghitung jumlah data tutor
         // return $this->db->count_all('tutor');

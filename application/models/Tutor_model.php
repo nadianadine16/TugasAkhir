@@ -289,6 +289,16 @@
             $query = $this->db->get();
             return $query->result_array();
         }
+        public function keySearchForum($kategori){
+        $this->db->select('kategori_materi.nama_kategori');
+        $this->db->from('kategori_materi');
+        $this->db->join('forum', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
+        $this->db->where('forum.id_kategori_materi', $kategori);
+        $this->db->limit(1);
+                        
+        $query = $this->db->get();
+        return $query->result_array();
+        }
 
         public function detail_pertanyaan($id_forum) { //menampilkan detail pertanyaan forum sesuai id_forum
             $this->db->select('*');

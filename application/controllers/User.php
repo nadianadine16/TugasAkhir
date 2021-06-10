@@ -548,8 +548,8 @@ class User extends CI_Controller {
             $data['notif_jawaban_baru'] = $this->User_model->notif_jawaban_baru(); //menampilkan notifikasi jawaban forum baru
             $data['hitung_jawaban_baru']= $this->User_model->hitung_jawaban_baru(); //menghitung jumlah notifikasi jawaban baru forum
             $data['kategori_forum'] = $this->User_model->getAllKategoriMateri();
-            $data['hasil_cari_kategori'] = $this->input->post('id_kategori_materi');
-            $data['hasil_cari'] = $this->input->post('keyword');
+            // $data['hasil_cari_kategori'] = $this->input->post('id_kategori_materi');
+            // $data['hasil_cari'] = $this->input->post('keyword');
 
             $data['forum'] = $this->User_model->getAllForum_cari();
 
@@ -559,6 +559,8 @@ class User extends CI_Controller {
                 $keyword = $this->input->post('keyword');
 
                 // menuju tutor_model untuk mencari forum sesuai dengan kategori/pertanyaan
+                $data['hasil_cari_kategori'] = $this->User_model->keySearchForum($kategori);
+                $data['hasil_cari'] = $this->input->post('keyword');
                 $data['forum'] = $this->User_model->Search($kategori, $keyword);
             }
 
