@@ -615,15 +615,14 @@ class Tutor extends CI_Controller {
             //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
             // menampilkan hasil forum yang dicari
-            $data['forum'] = $this->Tutor_model->getAllForum_cari();
-            $data['hasil_cari_kategori'] = $this->input->post('id_kategori_materi');
-            $data['hasil_cari'] = $this->input->post('keyword');
+            $data['forum'] = $this->Tutor_model->getAllForum_cari();            
 
             if($this->input->post('submit')){
                 // mengambil data inputan saat pencarian
                 $kategori = $this->input->post('id_kategori_materi');
                 $keyword = $this->input->post('keyword');
-
+                $data['hasil_cari_kategori'] = $this->Tutor_model->keySearchForum($kategori);
+                $data['hasil_cari'] = $this->input->post('keyword');
                 // menuju tutor_model untuk mencari forum sesuai dengan kategori/pertanyaan
                 $data['forum'] = $this->Tutor_model->Cari_Forum($kategori, $keyword);
             }

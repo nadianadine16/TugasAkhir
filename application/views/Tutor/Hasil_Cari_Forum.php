@@ -7,7 +7,9 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <form class="form-inline" action ="<?= base_url('Tutor/Cari_Forum');?>" method="post">
                           <select class="form-control" id="id_kategori_materi" name="id_kategori_materi">
-                            <option value="" selected="true" disabled="disabled"><?=$hasil_cari_kategori?></option>
+                          <?php foreach($hasil_cari_kategori as $hc) : ?>
+                            <option value="" selected="true" disabled="disabled"><?=$hc["nama_kategori"];?></option>
+                          <?php endforeach;?>
                                 <?php foreach($kategori_forum as $kf) : ?>
                                     <option value="<?=$kf["id_kategori_materi"];?>"><?=$kf["nama_kategori"];?></option>
                                 <?php endforeach;?>
