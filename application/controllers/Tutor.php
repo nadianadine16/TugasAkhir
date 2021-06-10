@@ -128,7 +128,7 @@ class Tutor extends CI_Controller {
         $nim = $this->input->post('nim');
         
         if($this->form_validation->run() == FALSE) {
-            echo"<script>alert('Surat Pernyataan Wajib Diisi');</script>";
+            echo"<script>alert('Semua Data Wajib Diisi');</script>";
             redirect('Tutor/Daftar_Tutor','refresh');
         }
         else {
