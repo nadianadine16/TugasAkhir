@@ -563,9 +563,8 @@ class User_model extends CI_Model {
     }
 
     public function change_status_chat($from) { //function untuk mengupdate status pesan chat menjadi sudah dibaca => 2
-        $this->db->query("UPDATE private_chat
-        SET status_chat = 2
-        WHERE id_pesan IN (SELECT id_pesan from (select*from private_chat) as p where (p.from = $from))");        
+        $to = $this->session->userdata('id_mahasiswa'); //menyimpan session id_mahasiswa
+        $this->db->query("UPDATE private_chat SET status_chat = 2 WHERE id_pesan IN (SELECT id_pesan from (select*from private_chat) as p where (p.from = $from) AND (p.to = $to))");        
     }
 
     public function hitung_chat() { //function untuk menghitung chat yang belum dibaca

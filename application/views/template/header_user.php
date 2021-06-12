@@ -131,7 +131,10 @@
           <div class="dropdown-content">
             <center><p style="margin-bottom:-8px;"><b>Notifikasi Pesan</b></p></center><hr>
               <?php foreach($notif_chat_user as $nc):?>
-                <a href="<?= base_url('User/change_status_chat/'.$nc['from'])?>"><b><?=$nc["nama"];?> </b><br><?=$nc['message'];?><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=date('d-m-Y H:i',strtotime($nc['created_at']))?></a>
+                <a href="<?= base_url('User/change_status_chat/'.$nc['from'])?>">
+                <b><?=$nc["nama"];?> </b><br>
+                <?=(strlen($nc['message']) > 25 ? substr($nc['message'], 0, 25)."..." : $nc['message']) ;?><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=date('d-m-Y H:i',strtotime($nc['created_at']))?></a>
               <?php endforeach;?>
           </div>
           </div>        
@@ -143,7 +146,10 @@
             <div class="dropdown-content">
               <center><p style="margin-bottom:-8px;"><b>Notifikasi Pesan</b></p></center><hr>
                 <?php foreach($notif_chat_user as $nc):?>
-                  <a href="<?= base_url('User/change_status_chat/'.$nc['from'])?>"><b><?=$nc["nama"];?> </b><br><?=$nc['message'];?><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=date('d-m-Y H:i',strtotime($nc['created_at']))?></a>
+                  <a href="<?= base_url('User/change_status_chat/'.$nc['from'])?>">
+                  <b><?=$nc["nama"];?> </b><br>
+                  <?=(strlen($nc['message']) > 25 ? substr($nc['message'], 0, 25)."..." : $nc['message']) ;?><br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=date('d-m-Y H:i',strtotime($nc['created_at']))?></a>
                 <?php endforeach;?>
             </div>
             </div>        
@@ -160,7 +166,10 @@
             <center><p style="margin-bottom:-8px;"><b>Notifikasi Forum</b></p></center><hr>
             
               <?php foreach($notif_jawaban_baru as $njb):?>        
-                <a href="<?=base_url('User/change_status_jawaban/'.$njb['id_forum'])?>"><b><?=$njb["nama"];?> </b><br><?=$njb['chat'];?><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($njb['created_at'])) ?></a>
+                <a href="<?=base_url('User/change_status_jawaban/'.$njb['id_forum'])?>">
+                <b><?=$njb["nama"];?> </b><br>
+                <?=(strlen($njb['chat']) > 25 ? substr($njb['chat'], 0, 25)."..." : $njb['chat']) ;?>
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($njb['created_at'])) ?></a>
               <?php endforeach;?>
           </div>
           </div>        
@@ -173,7 +182,10 @@
               <center><p style="margin-bottom:-8px;"><b>Notifikasi Forum</b></p></center><hr>
               
                 <?php foreach($notif_jawaban_baru as $njb):?>        
-                  <a href="<?=base_url('User/change_status_jawaban/'.$njb['id_forum'])?>"><b><?=$njb["nama"];?> </b><br><?=$njb['chat'];?><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($njb['created_at'])) ?></a>
+                  <a href="<?=base_url('User/change_status_jawaban/'.$njb['id_forum'])?>">
+                  <b><?=$njb["nama"];?> </b>
+                  <?=(strlen($njb['chat']) > 25 ? substr($njb['chat'], 0, 25)."..." : $njb['chat']) ;?>
+                  <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($njb['created_at'])) ?></a>
                 <?php endforeach;?>
             </div>
             </div>        
