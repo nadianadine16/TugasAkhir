@@ -485,8 +485,8 @@ class User_model extends CI_Model {
     }             
 
     public function search($kategori, $keyword) { //function untuk melakukan pencarian forum
-        $keyword = $this->input->post('keyword'); //mengambil inputan keyword
-        $kategori = $this->input->post('id_kategori_materi');
+        // $keyword = $this->input->post('keyword'); //mengambil inputan keyword
+        // $kategori = $this->input->post('id_kategori_materi');
 
         $this->db->select('*');
         $this->db->from('forum');
@@ -499,12 +499,12 @@ class User_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
-    public function keySearchForum($kategori)
+
+    public function keySearch($kategori)
     {
-        $this->db->select('kategori_materi.nama_kategori');
+        $this->db->select('nama_kategori');
         $this->db->from('kategori_materi');
-        $this->db->join('forum', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
-        $this->db->where('forum.id_kategori_materi', $kategori);
+        $this->db->where('id_kategori_materi', $kategori);
         $this->db->limit(1);
                         
         $query = $this->db->get();

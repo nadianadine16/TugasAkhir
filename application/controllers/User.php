@@ -10,6 +10,7 @@ class User extends CI_Controller {
         $this->load->model('User_model');
         $this->load->library('form_validation');
         $this->load->library('pagination');
+
     }
 
     public function index() {
@@ -461,13 +462,13 @@ class User extends CI_Controller {
             $data['hitung_chat']= $this->User_model->hitung_chat(); //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['notif_jawaban_baru'] = $this->User_model->notif_jawaban_baru(); //menampilkan notifikasi jawaban forum baru
             $data['hitung_jawaban_baru']= $this->User_model->hitung_jawaban_baru(); //menghitung jumlah notifikasi jawaban baru forum
-            
-            $data['hasil_cari_tutor'] = $this->input->post('id_kategori_materi');
-            $data['hasil_cari'] = $this->input->post('keyword');
 
             if($this->input->post('submit')) { //jika ada aksi submit 
                 $kategori = $this->input->post('id_kategori_materi'); //mengambil inputan id_kategori_materi 
                 $keyword = $this->input->post('keyword'); //mengambil inputan keyword
+
+                $data['hasil_cari_kategori'] = $this->User_model->keySearch($kategori);
+                $data['hasil_cari'] = $this->input->post('keyword');
 
                 //menampilkan tutor yg dicari sesuai dengan kategori/nama tutor (keyword)
                 $data['nama_tutor'] = $this->User_model->Cari_Tutor($kategori, $keyword);
@@ -559,7 +560,7 @@ class User extends CI_Controller {
                 $keyword = $this->input->post('keyword');
 
                 // menuju tutor_model untuk mencari forum sesuai dengan kategori/pertanyaan
-                $data['hasil_cari_kategori'] = $this->User_model->keySearchForum($kategori);
+                $data['hasil_cari_kategori'] = $this->User_model->keySearch($kategori);
                 $data['hasil_cari'] = $this->input->post('keyword');
                 $data['forum'] = $this->User_model->Search($kategori, $keyword);
             }

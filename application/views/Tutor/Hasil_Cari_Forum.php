@@ -38,7 +38,7 @@
     <?php }
     else {?>
   <div class="row">
-  <center><h3>Forum Diskusi <?php foreach($forum as $p):?><?=$p["nama_kategori"];?><?php endforeach;?></h3></center><br>
+  <center><h3>Forum Diskusi <?php foreach($hasil_cari_kategori as $hc) : ?><?=$hc["nama_kategori"];?><?php endforeach;?></h3></center><br>
     <?php $no=1; foreach($forum as $p):?>
       <?php $tanggal = $p["created_at"];?>
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

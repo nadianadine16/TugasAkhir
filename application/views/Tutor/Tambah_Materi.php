@@ -49,7 +49,7 @@
                 </div>
                 <div class="form-group">
                     <label for="cover">Unggah Gambar</label>
-                        <input type="file" class="form-control" id="cover" name="cover">
+                        <input type="file" class="form-control" id="cover" name="cover" required>
                         <p style="color:#808080;">Format .jpg .png</p>
                 </div>
                 <center><button type="submit" name="submit" class="btn btn-primary float-right">Tambah</button></center>

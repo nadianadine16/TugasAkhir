@@ -150,6 +150,7 @@
   function cek_jumlah_karakter() {
     if(cek.value.length >= batas_karakter) {
       alert('Anda mencapai batas maksimal karakter!');
+      
       document.getElementById("limit_teks").innerHTML = batas_karakter+"/"+batas_karakter;
 
     }
