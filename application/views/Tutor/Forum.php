@@ -42,7 +42,7 @@
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <div class="courses-inner res-mg-b-30">
           <div class="course-des">
-          <p><?=$p["pertanyaan"];?></p><br>
+          <?=(strlen($p['pertanyaan']) > 72 ? substr($p['pertanyaan'], 0, 72)."..." : $p['pertanyaan']) ;?>
           <p><span><i class="fa fa-clock"></i></span> <b>Kategori:</b> <?=$p["nama_kategori"];?></p>
             <p><span><i class="fa fa-clock"></i></span> <b>Nama Penanya:</b> <?=$p["nama"];?></p>            
             <p><span><i class="fa fa-clock"></i></span> <b>Dibuat pada:</b> <?php echo date("d-F-Y", strtotime($tanggal));?></p>
