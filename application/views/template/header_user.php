@@ -169,7 +169,7 @@
                 <a href="<?=base_url('User/change_status_jawaban/'.$njb['id_forum'])?>">
                 <b><?=$njb["nama"];?> </b><br>
                 <?=(strlen($njb['chat']) > 25 ? substr($njb['chat'], 0, 25)."..." : $njb['chat']) ;?>
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($njb['created_at'])) ?></a>
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($njb['send_time'])) ?></a>
               <?php endforeach;?>
           </div>
           </div>        
@@ -185,7 +185,7 @@
                   <a href="<?=base_url('User/change_status_jawaban/'.$njb['id_forum'])?>">
                   <b><?=$njb["nama"];?> </b>
                   <?=(strlen($njb['chat']) > 25 ? substr($njb['chat'], 0, 25)."..." : $njb['chat']) ;?>
-                  <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($njb['created_at'])) ?></a>
+                  <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($njb['send_time'])) ?></a>
                 <?php endforeach;?>
             </div>
             </div>        

@@ -60,7 +60,7 @@
               <?php }
               else {?>
                 <?php $no=1; foreach($jawaban as $m):?>
-                  <?php $tgl = $m["created_at"];?>
+                  <?php $tgl = $m["send_time"];?>
                   <?php if($m["link_jawab"] && $m["gambar_jawab"] != NULL) {?>
                     <div class="chat-message">							
                       <div class="message" style="width:90%" >

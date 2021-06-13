@@ -35,7 +35,7 @@
     <?php }
     else {?>
       <?php foreach($jawaban as $m):?>
-        <?php $tanggal = $m["created_at"]?>
+        <?php $tanggal = $m["send_time"]?>
         <?php if($m["link_jawab"] && $m["gambar_jawab"] != NULL) {?>
           <div class="card border-secondary mb-2" style="max-width: 80%;margin-left:100px;">
             <div class="card-header"><b><?=$m["nama"]?></b></div>

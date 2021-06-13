@@ -337,7 +337,7 @@ class User_model extends CI_Model {
                 "id_user" => $this->input->post('id_user', true),
                 "chat" => $this->input->post('chat', true),
                 "status" => 1,
-                "created_at" => date('Y-m-d H:i:s', time()),
+                "send_time" => date('Y-m-d H:i:s', time()),
                 "link_jawab" => $this->input->post('link_jawab', true),
                 "gambar_jawab" => $this->upload_gambar_jawab()
             ];
@@ -350,7 +350,7 @@ class User_model extends CI_Model {
                 "id_user" => $this->input->post('id_user', true),
                 "chat" => $this->input->post('chat', true),   
                 "status" => 2,
-                "created_at" => date('Y-m-d H:i:s', time()),
+                "send_time" => date('Y-m-d H:i:s', time()),
                 "link_jawab" => $this->input->post('link_jawab', true),
                 "gambar_jawab" => $this->upload_gambar_jawab()
             ];
@@ -466,7 +466,7 @@ class User_model extends CI_Model {
         $this->db->join('mahasiswa', 'chat_forum.id_user = mahasiswa.id_mahasiswa');
         $this->db->join('forum', 'forum.id_forum = chat_forum.id_forum');
         $this->db->where('forum.id_forum', $id);
-        $this->db->order_by('chat_forum.created_at','ASC');
+        $this->db->order_by('chat_forum.send_time','ASC');
 
         $query = $this->db->get();
         return $query->result_array();
@@ -583,7 +583,7 @@ class User_model extends CI_Model {
     public function notif_jawaban_baru() { //function untuk menampilkan jawaban forum terbaru
         $id_mahasiswa = $this->session->userdata('id_mahasiswa'); //menyimpan session id_mahasiswa
 
-        $query = $this->db->query("SELECT * FROM chat_forum AS cf JOIN mahasiswa AS m ON m.id_mahasiswa = cf.id_user JOIN forum AS f ON cf.id_forum = f.id_forum WHERE f.id_mahasiswa = $id_mahasiswa AND cf.status = 1 ORDER BY cf.created_at DESC");
+        $query = $this->db->query("SELECT * FROM chat_forum AS cf JOIN mahasiswa AS m ON m.id_mahasiswa = cf.id_user JOIN forum AS f ON cf.id_forum = f.id_forum WHERE f.id_mahasiswa = $id_mahasiswa AND cf.status = 1 ORDER BY cf.send_time DESC");
 
         return $query->result_array();
     }
