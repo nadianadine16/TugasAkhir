@@ -318,9 +318,7 @@
                 "id_forum" => $this->input->post('id_forum', $id),
                 "id_user" => $this->input->post('id_user', true),
                 "chat" => $this->input->post('chat', true),
-                "send_time" => date('Y-m-d H:i:s', time()),
-                "link_jawab" => $this->input->post('link_jawab', true),
-                "gambar_jawab" => $this->upload_gambar_jawab()
+                "send_time" => date('Y-m-d H:i:s', time())                
             ];
     
             $this->db->insert('chat_forum', $data);

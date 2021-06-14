@@ -17,21 +17,13 @@
       </div>
       <div class="form-group">
       <label for="pertanyaan"><b>Pertanyaan</b></label>
-        <textarea class="form-control" name="pertanyaan" required rows="5" data-rule="required" data-msg="Masukkan Pertanyaan Anda" placeholder="Tulis Pertanyaan Anda Disini . . . " style="width:93%;" id="input_pesan" onkeyup="cek_jumlah_karakter()"></textarea>
-        <p style="margin-top:-16px;margin-left:-16px;font-size:13px;color:#808080;float:right;" id="limit_teks">0/2000</p>
+        <textarea class="form-control" id="summernoteForum" name="pertanyaan" required rows="5" data-rule="required" data-msg="Masukkan Pertanyaan Anda" placeholder="Tulis Pertanyaan Anda Disini . . . " style="width:93%;" id="input_pesan" onkeyup="cek_jumlah_karakter()"></textarea>        
         <div class="validate"></div>
       </div>
+      
       <div class="col-1">
-			</div>
-      <div class="form-group">
-        <label for="link_tanya" style="float:left;"><b>Link Referensi (Opsional)</b></label>
-        <input type="text" class="form-control" id="link_tanya" name="link_tanya" autocomplete="off" placeholder="Contoh: https://codingjti.com/">
-      </div>
-      <div class="form-group">
-        <label for="gambar_tanya" style="float:left;"><b>Unggah Gambar (Opsional)</b></label>
-        <input type="file" class="form-control" id="gambar_tanya" name="gambar_tanya">
-        <p style="color:#808080;float:left;">Format .jpg .png</p>
-      </div><br>
+			</div>      
+      <br>
       <div class="text-center">
         <button type="submit" class="btn" style="background-color:#49b5e7;color:#ffffff;">Kirim</button>
       </div><br>

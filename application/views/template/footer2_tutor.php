@@ -97,6 +97,60 @@
         });
 
     </script>
+     <script>
+        $(document).ready(function(){
+            $('#summernoteForum').summernote({
+                height: "300px",
+                toolbar: [                  
+                  ['font', ['bold', 'underline', 'clear']],
+                  ['fontname', ['fontname']],
+                  ['para', ['ul', 'ol', 'paragraph']],                  
+                  ['insert', ['link', 'picture']],
+                ],
+                callbacks: {
+                    onImageUpload: function(image) {
+                        uploadImage(image[0]);
+                    },
+                    onMediaDelete : function(target) {
+                        deleteImage(target[0].src);
+                    }
+                }
+            });
+
+            function uploadImage(image) {
+                var data = new FormData();
+                data.append("image", image);
+                $.ajax({
+                    url: "<?php echo site_url('Tutor/upload_image')?>",
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    type: "POST",
+                    success: function(url) {
+                        $('#summernoteForum').summernote("insertImage", url);
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+                });
+            }
+
+            function deleteImage(src) {
+                $.ajax({
+                    data: {src : src},
+                    type: "POST",
+                    url: "<?php echo site_url('Tutor/delete_image')?>",
+                    cache: false,
+                    success: function(response) {
+                        console.log(response);
+                    }
+                });
+            }
+
+        });
+
+    </script>
 </body>
 
 </html>
