@@ -393,6 +393,24 @@ class Tutor extends CI_Controller {
             redirect('Login/logout');
         }
     }
+    public function Detail_Revisi($id_tugas){
+        if (isset($_SESSION['id_tutor'])) {
+            $data['title'] = 'Revisi Tugas Mahasiswa';
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
+            $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
+            $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
+
+            $data['detail_revisi'] = $this->Tutor_model->detailRevisi($id_tugas);
+            $this->load->view('template/header2_tutor',$data);
+            $this->load->view('Tutor/Detail_Revisi', $data);
+            $this->load->view('template/footer2_tutor', $data);
+        }
+        else {
+            redirect('Login/logout');
+        }
+    }
 
     public function Revisi($id_tugas) {
         if (isset($_SESSION['id_tutor'])) {

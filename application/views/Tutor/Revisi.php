@@ -52,8 +52,16 @@
                     <strong>Catatan</strong> :<br>
                     Untuk menautkan beberapa kode yang disorot, maka lakukan klik baris kode pertama lalu tekan Ctrl + Shift dan klik sampai baris kode yang terakhir.
                 </div><br>
-
-                <form action="<?=base_url('Tutor/Revisi/'.$tugas['id_tugas'])?>" method="post">
+                <form action="<?=base_url('Tutor/Revisi/'.$tugas['id_tugas'])?>" method="post">                
+                <input type="hidden" name="id_tugas" value="<?=$tugas['id_tugas'];?>">
+                <input type="hidden" name="status" value="3">
+                <div class="form-group">
+                    <label>Revisi : </label>
+                    <textarea name="revisi" id="summernote"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary float-right">Kirim</button>                
+            </form>
+                <!-- <form action="<?=base_url('Tutor/Revisi/'.$tugas['id_tugas'])?>" method="post">
                 <input type="hidden" name="id_tugas" value="<?=$tugas['id_tugas'];?>">
                 <input type="hidden" name="status" value="3">
                 <div class="form-group">
@@ -61,7 +69,7 @@
                     <textarea name="revisi"></textarea>
                 </div>
                 <center><button type="submit" name="submit" class="btn btn-primary float-right">Kirim</button></center>
-            </form>
+            </form> -->
             </div>
         </div>
     </div>

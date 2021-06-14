@@ -539,6 +539,15 @@
             $query=$this->db->get_where('tugas',array('id_tugas'=>$id_tugas));
             return $query->row_array();
         }
+        public function detailRevisi($id_tugas){
+            $this->db->select('*');
+            $this->db->from('tugas');
+            $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');
+            $this->db->join('konten', 'konten.id_konten = tugas.id_konten');
+            $this->db->where('tugas.id_tugas', $id_tugas);
+            $query = $this->db->get();
+            return $query->result_array();                                                                             
+        }
 
         // menghitung session 5 mahasiswa yang sering aktif
         public function getCountSessionMahasiswa() {

@@ -67,6 +67,36 @@
     <!-- main JS
 		============================================ -->
     <script src="<?= base_url()?>/assets_admin/js/main.js"></script>
+    
+    <script src="<?= base_url()?>/assets/bootstrap/jquery/jquery3.js"></script>
+    <script src="<?= base_url()?>/assets/bootstrap/popper/popper.js"></script>
+    <script src="<?= base_url()?>/assets/bootstrap/js/bootstrap.js"></script>
+    <script src="<?= base_url()?>/assets/summernote/summernote-bs4.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#summernote').summernote({
+                height: "200px",
+                toolbar: [                  
+                  ['font', ['bold', 'underline', 'clear']],
+                  ['fontname', ['fontname']],
+                  ['para', ['ul', 'ol', 'paragraph']],                  
+                  ['insert', ['link']],                  
+                ],
+                // callbacks: {
+                //     onImageUpload: function(image) {
+                //         uploadImage(image[0]);
+                //     },
+                //     onMediaDelete : function(target) {
+                //         deleteImage(target[0].src);
+                //     }
+                //     // .note-group-select-from-files {
+                //     //   display: none;
+                //     //   }
+                // }
+            });            
+        });
+
+    </script>
 </body>
 
 </html>

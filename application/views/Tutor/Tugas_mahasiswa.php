@@ -99,8 +99,8 @@
                                         <th data-field="id">No</th>
                                         <th data-field="nim" data-editable="true">NIM</th>
                                         <th data-field="nama_mahasiswa" data-editable="true">Nama Mahasiswa</th>
-                                        <th data-field="judul_konten" data-editable="true">Judul Konten</th>
-                                        <th data-field="revisi" data-editable="true">Revisi</th>
+                                        <th data-field="judul_konten" data-editable="true">Judul Konten</th>                                        
+                                        <th data-field="action">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -109,8 +109,10 @@
                                         <td><?=$no++?></td>
                                         <td><?=$rt["nim"];?></td>
                                         <td><?=$rt["nama"];?></td>
-                                        <td><?=$rt["judul"];?></td>
-                                        <td><?=$rt["revisi"];?></td>
+                                        <td><?=$rt["judul"];?></td>   
+                                        <td class="datatable-ct">
+                                            <a href="<?= base_url();?>Tutor/Detail_Revisi/<?=$rt['id_tugas'];?>" class="btn btn-success btn-xs" style="color:#ffffff;">Detail</a>                                            
+                                        </td>                             
                                     </tr>
                                     <?php endforeach;?>     
                                 </tbody>
