@@ -67,7 +67,7 @@ x y{
 	</div>
 	</div>
 
-	<form method="post" action="<?= base_url('User/Chat/'.$to) ?>" style="margin-top: 10px;margin-bottom:-50px;">
+	<form method="post" action="<?= base_url('User/Chat/'.$to) ?>" style="margin-top: 10px;margin-bottom:-50px;" id="balas">
     <input type="hidden" name="from" value="<?=$this->session->userdata('id_mahasiswa');?>">    
 		<div class="row">
 			<div class="col-10">
@@ -89,10 +89,11 @@ x y{
 </script>
 <script>
 	var cek = document.getElementById("input_pesan");
-	var batas_karakter = 1000;
+	var batas_karakter = 10;
 	function cek_jumlah_karakter() {
 		if(cek.value.length >= batas_karakter) {
-			alert('Anda mencapai batas maksimal karakter!');
+			// alert('Anda mencapai batas maksimal karakter!');
+			cek.value = str.substring(0, 20);
 			document.getElementById("limit_teks").innerHTML = batas_karakter+"/"+batas_karakter;
 
 		}

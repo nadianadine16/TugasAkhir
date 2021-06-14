@@ -124,7 +124,8 @@
                                                                     <a href="<?= base_url('Tutor/change_status_chat_tutor/'.$nt['from'])?>" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; ">                                                                    
                                                                         <div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;">                                                                        
                                                                             <b><?=$nt['nama'];?></b><br>
-                                                                            <?=$nt['message'];?><br>
+                                                                            <?=(strlen($nt['message']) > 25 ? substr($nt['message'], 0, 25)."..." : $nt['message']) ;?>                                                                            
+                                                                            <br>
                                                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($nt['created_at'])) ?>
                                                                         </div>
                                                                     </a>
@@ -152,7 +153,8 @@
                                                                         <a href="<?= base_url('Tutor/change_status_chat_tutor/'.$nt['from'])?>" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; ">                                                                    
                                                                             <div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;">                                                                        
                                                                                 <b><?=$nt['nama'];?></b><br>
-                                                                                <?=$nt['message'];?><br>
+                                                                                <?=(strlen($nt['message']) > 25 ? substr($nt['message'], 0, 25)."..." : $nt['message']) ;?>                                                                                
+                                                                                <br>
                                                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($nt['created_at'])) ?>
                                                                             </div>
                                                                         </a>
@@ -180,7 +182,8 @@
                                                                         <a href="<?= base_url('Tutor/change_status_chat_tutor/'.$nt['from'])?>" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; ">                                                                    
                                                                             <div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;">                                                                        
                                                                                 <b><?=$nt['nama'];?></b><br>
-                                                                                <?=$nt['message'];?><br>
+                                                                                <?=(strlen($nt['message']) > 25 ? substr($nt['message'], 0, 25)."..." : $nt['message']) ;?>                                                                                
+                                                                                <br>
                                                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($nt['created_at'])) ?>
                                                                             </div>
                                                                         </a>
