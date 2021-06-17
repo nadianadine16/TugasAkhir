@@ -12,6 +12,7 @@ class Tutor extends CI_Controller {
         $this->load->model('Tutor_model');
         $this->load->library('form_validation');
         $this->load->library('pagination');
+        $this->load->helper('file');
     }
 
     public function index()
@@ -188,10 +189,11 @@ class Tutor extends CI_Controller {
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             // form validation untuk memeriksa kelengkapan isian form
-            $this->form_validation->set_rules('nama_materi', 'nama_materi', 'required');
-            $this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
-            $this->form_validation->set_rules('requirement', 'requirement', 'required');
+            $this->form_validation->set_rules('nama_materi', 'Judul Materi', 'required');
+            $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+            $this->form_validation->set_rules('requirement', 'Requirement', 'required');
             $this->form_validation->set_rules('id_tutor', 'id_tutor', 'required');
+            $this->form_validation->set_rules('cover', '', 'callback_file_check');
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_tutor',$data);
@@ -209,6 +211,30 @@ class Tutor extends CI_Controller {
         else {
             redirect('Login/logout');
         }
+    }
+
+    public function file_check($str){
+        $allowed_mime_type_arr = array('image/jpeg','image/pjpeg','image/png','image/x-png');
+        $mime = get_mime_by_extension($_FILES['cover']['name']);
+        if(isset($_FILES['cover']['name']) && $_FILES['cover']['name']!=""){
+            if(in_array($mime, $allowed_mime_type_arr)){
+                // return true;
+                if (filesize($_FILES['cover']['tmp_name']) > 2097152) {
+                    $this->form_validation->set_message('file_check', 'The Image file size shoud not exceed 2MB!');
+                    return false;
+                }
+            }
+            else{
+                $this->form_validation->set_message('file_check', 'Please select only jpeg/jpg/png file.');
+                return false;
+            }
+        }
+        else{
+            $this->form_validation->set_message('file_check', 'Please choose a file to upload.');
+            return false;
+        }
+
+        
     }
 
     public function Hapus_Materi($id_materi) {

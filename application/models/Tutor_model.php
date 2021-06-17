@@ -74,6 +74,7 @@
         public function upload_cover() { //mengupload cover materi
             $config['upload_path'] = './upload/cover_materi/'; //file akan disimpan di dalam folder upload/cover_materi
             $config['allowed_types'] = 'jpg|png|jpeg'; //ekstensi yang diizinkan hanya jpg dan png
+            // $config['max_size']      = 1024;
             $config['overwrite'] = true;
 
             $this->upload->initialize($config);

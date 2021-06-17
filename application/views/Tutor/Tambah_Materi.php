@@ -32,6 +32,11 @@
                     <?php echo validation_errors(); ?>
                 </div>
             <?php endif; ?>
+            <?php 
+    if(!empty($success_msg)){
+        echo '<p class="statusMsg">'.$success_msg.'</p>';
+    }
+?>
                 <form action="<?= base_url('Tutor/Tambah_Materi')?>" method="post" enctype="multipart/form-data" >
                 <input type="hidden" class="form-control" id="id_tutor" name="id_tutor" value="<?= $this->session->userdata('id_tutor');?>">
                 <input type="hidden" class="form-control" id="id_kategori_materi" name="id_kategori_materi" value="<?= $this->session->userdata('id_kategori_materi');?>">
@@ -49,7 +54,8 @@
                 </div>
                 <div class="form-group">
                     <label for="cover">Unggah Gambar</label>
-                        <input type="file" class="form-control" id="cover" name="cover" required>
+                    <?php echo form_error('cover','<p class="help-block">','</p>'); ?>
+                        <input type="file" class="form-control" id="cover" name="cover" >
                         <p style="color:#808080;">Format .jpg .png</p>
                 </div>
                 <center><button type="submit" name="submit" class="btn btn-primary float-right">Tambah</button></center>
