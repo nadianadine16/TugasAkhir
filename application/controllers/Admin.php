@@ -462,9 +462,6 @@ class Admin extends CI_Controller {
     public function create()
     {
         $data['title'] = "Upload File Excel";
-
-
-
             $this->load->view('template/header2_admin',$data);
             $this->load->view('Admin/create', $data);
             $this->load->view('template/footer2_admin',$data);
@@ -472,7 +469,7 @@ class Admin extends CI_Controller {
     }
 
     public function file_check($str){
-        $allowed_mime_type_arr = array('application/xlx','application/xlxs');
+        $allowed_mime_type_arr = array('xlsx' => ('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'), 'xls' => ('application/vnd.ms-excel'));        
         $mime = get_mime_by_extension($_FILES['file']['name']);
         if(isset($_FILES['file']['name']) && $_FILES['file']['name']!=""){
             if(in_array($mime, $allowed_mime_type_arr)){
@@ -494,18 +491,16 @@ class Admin extends CI_Controller {
     }
 
     public function excel()
-    {
-        $data['title'] = "Upload File Excel";
+    {                
         $this->form_validation->set_rules('file', '', 'callback_file_check');
 
         if($this->form_validation->run() == FALSE) {
-            $this->load->view('template/header2_admin',$data);
+            $data['title'] = "Upload File Excel";
+            $this->load->view('template/header2_admin', $data);
             $this->load->view('Admin/create', $data);
-            $this->load->view('template/footer2_admin',$data);
+            $this->load->view('template/footer2_admin', $data);
         }
-        else {
-            
-        
+        else {                    
         if(isset($_FILES["file"]["name"])){
                 // upload
             $file_tmp = $_FILES['file']['tmp_name'];
@@ -538,11 +533,11 @@ class Admin extends CI_Controller {
                         'prodi'         =>$prodi,
                         'kelas'         =>$kelas,
                         'tahun_masuk'         =>$tahun_masuk,
-                    );
-    
+                    );    
+                                        
                 } 
     
-            }
+            }            
     
             $this->db->insert_batch('mahasiswa', $data);
     
