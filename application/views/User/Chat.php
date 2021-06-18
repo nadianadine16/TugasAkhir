@@ -71,10 +71,10 @@ x y{
     <input type="hidden" name="from" value="<?=$this->session->userdata('id_mahasiswa');?>">    
 		<div class="row">
 			<div class="col-10">
-				<input type="text" name="message" autofocus="true" class="form-control" placeholder="Tulis Pesan Kamu . . ." required autocomplete="off" onkeyup="cek_jumlah_karakter()" id="input_pesan" style="width:98%;">
+				<input type="text" name="message" autofocus="true" class="form-control" placeholder="Tulis Pesan Kamu . . ." required autocomplete="off" onkeyup="cek_jumlah_karakter()" id="input_pesan" style="width:98%;"  maxlength="2000">
 			</div>
 			<div class="col-1">
-				<p style="margin-top:8px;margin-left:-35px;font-size:13px;color:#808080;" id="limit_teks">0/1000</p>
+				<p style="margin-top:8px;margin-left:-35px;font-size:13px;color:#808080;" id="limit_teks">0/2000</p>
 			</div>
 			<div class="col-1">
 				<button class="btn btn-block" style="background-color:#49b5e7;color:#ffffff;width:200%;margin-left:-60px;">Kirim</button>
@@ -89,11 +89,11 @@ x y{
 </script>
 <script>
 	var cek = document.getElementById("input_pesan");
-	var batas_karakter = 1000;
+	var batas_karakter = 2000;
 	function cek_jumlah_karakter() {
-		if(cek.value.length >= batas_karakter) {
-			alert('Anda mencapai batas maksimum karakter!');
-			document.getElementById("limit_teks").innerHTML = batas_karakter+"/"+batas_karakter;
+		if(cek.value.length >= batas_karakter) {			
+			var jumlah_karakter = cek.value.length;
+			document.getElementById("limit_teks").innerHTML = jumlah_karakter+"/"+batas_karakter;
 
 		}
 		else{

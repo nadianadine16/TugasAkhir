@@ -65,13 +65,21 @@
                                 <?php if($k["video"] != NULL){?>
                                     <?php
                                     $url = $k["video"];
-                                    preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
+                                    $match_count = preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
+                                    if($match_count>0){
                                     $id = $match[1];
                                     $width = '400px';
                                     $height = '300px'; ?>
                                     <p><b>Video</b><br>                                    
                                     </p>
                                     <center><iframe id="ytplayer" type="text/html" width="<?php echo $width ?>" height="<?php echo $height ?>" src="https://www.youtube.com/embed/<?php echo $id ?>?rel=0&showinfo=0&color=white&iv_load_policy=3" frameborder="0" allowfullscreen></iframe></center>
+                                    <?php
+                                    } 
+                                    else { ?>
+                                        <b>Video : </b><br>Video tidak dapat ditampilkan karena video yang diberikan oleh tutor tidak sesuai<br><br>
+                                    <?php
+                                        } 
+                                    ?>
                                     <?php
                                         } 
                                         else { ?>

@@ -508,7 +508,7 @@ class User extends CI_Controller {
             $data['jawaban_forum'] = $this->User_model->Cek_Jawaban($id);
             $data['jawaban'] = $this->User_model->jawaban($id);
 
-            $this->form_validation->set_rules('chat', 'Kolom Balas', 'required'); //form validasi untuk memeriksa kelengkapan isian form
+            $this->form_validation->set_rules('chat', 'message', 'required'); //form validasi untuk memeriksa kelengkapan isian form
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header_user', $data);

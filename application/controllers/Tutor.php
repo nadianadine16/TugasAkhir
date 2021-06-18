@@ -725,7 +725,7 @@ class Tutor extends CI_Controller {
             $data['get_id_mahasiswa'] = $this->Tutor_model->get_id_mahasiswa($this->session->userdata('id_tutor'));
 
             // form validation untuk memeriksa kelengkapan isian form
-            $this->form_validation->set_rules('chat', 'Kolom Balas', 'required');
+            $this->form_validation->set_rules('chat', 'message', 'required');
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_tutor', $data);

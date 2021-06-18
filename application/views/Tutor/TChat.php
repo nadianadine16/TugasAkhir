@@ -82,7 +82,7 @@ x y{
 				<p style="margin-top:5px;font-size:13px;color:#808080;" id="limit_teks">0/2000</p>
 				</div>
 				<div class="col-10">
-					<input type="text" name="message" autofocus="true" class="form-control" placeholder="Tulis Pesan Kamu" autocomplete="off" required style="width:94%;margin-left:64px;margin-top:-45px;" id="input_pesan" onkeyup="cek_jumlah_karakter()">
+					<input type="text" name="message" autofocus="true" class="form-control" placeholder="Tulis Pesan Kamu" autocomplete="off" required style="width:94%;margin-left:64px;margin-top:-45px;"maxlength="2000" id="input_pesan" onkeyup="cek_jumlah_karakter()">
 				</div>
 				<div class="col-2">
 				<button class="btn btn-primary btn-block" style="width:7%;float:right;margin-right:-85px;margin-top:-35px;">Kirim</button>
@@ -100,13 +100,14 @@ x y{
 <script>
   var cek = document.getElementById("input_pesan");
   var batas_karakter = 2000;
+  
   function cek_jumlah_karakter() {
-    if(cek.value.length >= batas_karakter) {
-      alert('Anda mencapai batas maksimum karakter!');
-      document.getElementById("limit_teks").innerHTML = batas_karakter+"/"+batas_karakter;
+    if(cek.value.length >= batas_karakter) { 
+      var jumlah_karakter = cek.value.length;     
+      document.getElementById("limit_teks").innerHTML = jumlah_karakter+"/"+batas_karakter;
 
     }
-    else{
+    else{      
       var jumlah_karakter = cek.value.length;
       document.getElementById("limit_teks").innerHTML = jumlah_karakter+"/"+batas_karakter;
     }
