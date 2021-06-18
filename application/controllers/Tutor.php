@@ -13,6 +13,7 @@ class Tutor extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('pagination');
         $this->load->helper('file');
+        $this->load->library('upload');
     }
 
     public function index()
@@ -414,6 +415,24 @@ class Tutor extends CI_Controller {
             $this->load->view('template/header2_tutor',$data);
             $this->load->view('Tutor/Tugas_mahasiswa', $data);
             $this->load->view('template/footer2_tutor',$data);
+        }
+        else {
+            redirect('Login/logout');
+        }
+    }
+    public function Detail_Revisi($id_tugas){
+        if (isset($_SESSION['id_tutor'])) {
+            $data['title'] = 'Revisi Tugas Mahasiswa';
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
+            $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
+            $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
+
+            $data['detail_revisi'] = $this->Tutor_model->detailRevisi($id_tugas);
+            $this->load->view('template/header2_tutor',$data);
+            $this->load->view('Tutor/Detail_Revisi', $data);
+            $this->load->view('template/footer2_tutor', $data);
         }
         else {
             redirect('Login/logout');
@@ -822,6 +841,41 @@ class Tutor extends CI_Controller {
         }
         else {
             redirect('Login/logout');
+        }
+    }
+    function upload_image(){
+        if(isset($_FILES["image"]["name"])){
+            $config['upload_path'] = './assets/images/';
+            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            $this->upload->initialize($config);
+            if(!$this->upload->do_upload('image')){
+                $this->upload->display_errors();
+                return FALSE;
+            }else{
+                $data = $this->upload->data();
+                //Compress Image
+                $config['image_library']='gd2';
+                $config['source_image']='./assets/images/'.$data['file_name'];
+                $config['create_thumb']= FALSE;
+                $config['maintain_ratio']= TRUE;
+                $config['quality']= '60%';
+                $config['width']= 200;
+                $config['height']= 200;
+                $config['new_image']= './assets/images/'.$data['file_name'];
+                $this->load->library('image_lib', $config);
+                $this->image_lib->resize();
+                echo base_url().'assets/images/'.$data['file_name'];
+            }
+        }
+    }
+
+    // Delete image Summernote
+    function delete_image() {
+        $src = $this->input->post('src');
+        $file_name = str_replace(base_url(), '', $src);
+        if(unlink($file_name))
+        {
+            echo 'File Delete Successfully';
         }
     }
 }

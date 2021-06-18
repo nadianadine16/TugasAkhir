@@ -271,9 +271,7 @@ class User_model extends CI_Model {
             "id_mahasiswa" => $this->input->post('id_mahasiswa', true),
             "id_kategori_materi" => $this->input->post('id_kategori_materi', true),
             "pertanyaan" => $this->input->post('pertanyaan', true),
-            "created_at" => date('Y-m-d H:i:s', time()),
-            "link_tanya" => $this->input->post('link_tanya', true),
-            "gambar_tanya" => $this->upload_gambar_tanya()
+            "created_at" => date('Y-m-d H:i:s', time())            
         ];
 
         $this->db->insert('forum', $data);
@@ -337,9 +335,7 @@ class User_model extends CI_Model {
                 "id_user" => $this->input->post('id_user', true),
                 "chat" => $this->input->post('chat', true),
                 "status" => 1,
-                "send_time" => date('Y-m-d H:i:s', time()),
-                "link_jawab" => $this->input->post('link_jawab', true),
-                "gambar_jawab" => $this->upload_gambar_jawab()
+                "send_time" => date('Y-m-d H:i:s', time())                
             ];
     
             $this->db->insert('chat_forum', $data);    
@@ -350,9 +346,7 @@ class User_model extends CI_Model {
                 "id_user" => $this->input->post('id_user', true),
                 "chat" => $this->input->post('chat', true),   
                 "status" => 2,
-                "send_time" => date('Y-m-d H:i:s', time()),
-                "link_jawab" => $this->input->post('link_jawab', true),
-                "gambar_jawab" => $this->upload_gambar_jawab()
+                "send_time" => date('Y-m-d H:i:s', time())
             ];
     
             $this->db->insert('chat_forum', $data);    

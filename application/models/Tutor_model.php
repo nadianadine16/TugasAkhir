@@ -318,9 +318,7 @@
                 "id_forum" => $this->input->post('id_forum', $id),
                 "id_user" => $this->input->post('id_user', true),
                 "chat" => $this->input->post('chat', true),
-                "send_time" => date('Y-m-d H:i:s', time()),
-                "link_jawab" => $this->input->post('link_jawab', true),
-                "gambar_jawab" => $this->upload_gambar_jawab()
+                "send_time" => date('Y-m-d H:i:s', time())                
             ];
     
             $this->db->insert('chat_forum', $data);
@@ -538,6 +536,15 @@
         public function getTugasById($id_tugas) { //get data tugas sesuai dengan did_tugas
             $query=$this->db->get_where('tugas',array('id_tugas'=>$id_tugas));
             return $query->row_array();
+        }
+        public function detailRevisi($id_tugas){
+            $this->db->select('*');
+            $this->db->from('tugas');
+            $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');
+            $this->db->join('konten', 'konten.id_konten = tugas.id_konten');
+            $this->db->where('tugas.id_tugas', $id_tugas);
+            $query = $this->db->get();
+            return $query->result_array();                                                                             
         }
 
         // menghitung session 5 mahasiswa yang sering aktif
