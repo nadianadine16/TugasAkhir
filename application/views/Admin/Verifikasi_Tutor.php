@@ -50,7 +50,6 @@
                                         <th>Nama</th>
                                         <th>Kategori Materi</th>
                                         <th>Prodi</th>
-                                        <th>Kelas</th>
                                         <th>File</th>
                                         <th data-field="action">Action</th>
                                     </tr>
@@ -63,7 +62,6 @@
                                         <td><?=$m["nama"];?></td>
                                         <td><?=$m["nama_kategori"];?></td>
                                         <td><?=$m["prodi"];?></td>
-                                        <td><?=$m["kelas"];?></td>
                                         <td><a href="<?= base_url('upload/surat_pernyataan/'.$m["surat_pernyataan"])?>" style="color:#3495eb;"><?=$m["surat_pernyataan"];?></a></td>
                                         <td class="datatable-ct">
                                         <form action ="<?= base_url();?>admin/status_pendaftaran/<?=$m["id_tutor"];?>" method="post">

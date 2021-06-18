@@ -1,3 +1,13 @@
+<style>
+.info {
+  background-color: #e7f3fe;
+  border-left: 6px solid #2196F3;
+  padding-left: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+</style>
+
 <div class="breadcome-area">
     <div class="container-fluid">
         <div class="row">
@@ -48,12 +58,18 @@
                     <label for="judul">Judul</label>
                         <input type="text" class="form-control" id="judul" name="judul" autocomplete="off">
                 </div>
+                <div class="info">
+                    <p><strong>Petunjuk Pengisian Link Video.</strong></p>
+                    1. Unggah video konten Anda ke platform Youtube<br>
+                    2. Klik Bagikan<br>
+                    3. Salin link video dan tempel pada kolom dibawah ini<br>
+                </div><br>
                 <div class="form-group">
-                    <label for="video">Link Video</label>
-                        <input type="text" class="form-control" id="video" name="video" autocomplete="off">
+                    <label for="video">Link Video Youtube Konten</label>
+                        <input type="url" class="form-control" id="video" name="video" autocomplete="off" placeholder="Contoh: https://youtu.be/dJjWjg4rwh0">
                 </div>
                 <div class="form-group">
-                    <label for="file_pendukung">Unggah File Pendukung</label>
+                    <label for="file_pendukung">Unggah File Pendukung (Opsional)</label>
                         <input type="file" class="form-control" id="file_pendukung" name="file_pendukung">
                         <p style="color:#808080;">Format .pdf</p>
                 </div>

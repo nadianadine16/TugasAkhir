@@ -102,7 +102,7 @@ x y{
   var batas_karakter = 2000;
   function cek_jumlah_karakter() {
     if(cek.value.length >= batas_karakter) {
-      alert('Anda mencapai batas maksimal karakter!');
+      alert('Anda mencapai batas maksimum karakter!');
       document.getElementById("limit_teks").innerHTML = batas_karakter+"/"+batas_karakter;
 
     }

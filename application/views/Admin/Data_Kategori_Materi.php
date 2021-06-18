@@ -1,10 +1,11 @@
 <script type="text/javascript" language="JavaScript">
  function konfirmasi()
- {
- tanya = confirm("Anda Yakin Akan Menghapus Data ?");
- if (tanya == true) return true;
- else return false;
- }</script>
+    {
+        tanya = confirm("Apakah Anda yakin akan menghapus data?");
+        if (tanya == true) return true;
+            else return false;
+    }
+ </script>
 <!-- Mobile Menu end -->
 <div class="breadcome-area">
     <div class="container-fluid">
@@ -51,9 +52,9 @@
                             data-cookie-id-table="saveId"  data-click-to-select="true" data-toolbar="#toolbar">
                                 <thead>
                                     <tr>
-                                        <th data-field="id"><center>No</center></th>
-                                        <th data-field="email" data-editable="true"><center>Nama Kategori Materi</center></th>
-                                        <th data-field="action"><center>Action</center></th>
+                                        <th data-field="No"><center>No</center></th>
+                                        <th data-field="Nama Kategori Materi"><center>Nama Kategori Materi</center></th>
+                                        <th data-field="Action"><center>Action</center></th>
                                     </tr>
                                 </thead>
                                 <tbody>

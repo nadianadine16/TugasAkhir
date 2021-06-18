@@ -13,14 +13,19 @@
                 <div class="product-payment-inner-st">
                     <h5> Silahkan download file surat pernyataan berikut terlebih dahulu :</h5>
                     <a href="<?= base_url('assets_tutor/pdf/SURAT PERNYATAAN KESANGGUPAN.pdf')?>"><button type="button" class="btn btn-primary"><i class="fa fa-download edu-avatar" aria-hidden="true"></i>  Download </button></a><br><br>
+                    <?php if (validation_errors()): ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo validation_errors(); ?>
+                        </div>
+                    <?php endif; ?>
                     <form action="<?=base_url('Tutor/Tambah_Tutor')?>" method="post" enctype="multipart/form-data">                        
                         <div class="form-group">
                             <label for="nama">NIM</label>
-                                <input type="text" class="form-control" id="nim" name="nim" required autocomplete="off">
+                                <input type="text" class="form-control" id="nim" name="nim" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label for="status">Kategori Materi yang Dipilih</label>
-                            <select class="form-control" id="id_kategori_materi" name="id_kategori_materi">
+                            <select class="form-control" id="id_kategori_materi" name="id_kategori_materi" required>
                                 <?php foreach($KategoriMateri as $k) : ?>
                                     <option value="<?=$k["id_kategori_materi"];?>"><?=$k["nama_kategori"];?></option>
                                 <?php endforeach;?>
@@ -28,7 +33,7 @@
                         </div>
                         <div class="form-group">
                             <label for="surat_pernyataan">Unggah Surat Pernyataan</label>
-                            <input type="file" class="form-control" id="surat_pernyataan" name="surat_pernyataan" required>
+                            <input type="file" class="form-control" id="surat_pernyataan" name="surat_pernyataan">
                             <p style="color:#808080;">Format nama : NIM_Nama_Surat Pernyataan.pdf</p>
                         </div>
                         <input type="hidden" name="status" value="1">

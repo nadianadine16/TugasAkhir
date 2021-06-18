@@ -39,7 +39,7 @@
               </div>
               <div class="form-group">
                 <label><b>Alamat Github</b></label>
-                <input type="text" class="form-control" name="github" id="github" value="<?=$pm['github']?>" style="width:1000px;" required/>                
+                <input type="url" class="form-control" name="github" id="github" value="<?=$pm['github']?>" style="width:1000px;" required autocomplete="off"/>                
               </div>
               <div class="text-center">
                 <center><button type="submit" class="btn" style="margin-left:35%;background-color:#49b5e7;color:#ffffff;">Edit</button></center>

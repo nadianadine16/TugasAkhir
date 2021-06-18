@@ -145,7 +145,7 @@
 
         public function upload_file_pendukung() { //mengupload file pendukung di setiap konten
             $config['upload_path'] = './upload/materi/'; //file pendukung akan tersimpan di dalam folder upload/materi
-            $config['allowed_types'] = 'pdf|doc|docx|ppt|pptx|xls|xlsx'; //ekstensi yang dizinkan hanya pdf
+            $config['allowed_types'] = 'pdf'; //ekstensi yang dizinkan hanya pdf
             $config['overwrite'] = true;
 
             $this->upload->initialize($config);
@@ -378,7 +378,7 @@
             $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
             $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');            
             $this->db->like('forum.id_kategori_materi', $kategori); 
-            $this->db->like('forum.pertanyaan', $keyword);        
+            $this->db->like('forum.topik', $keyword);        
             $this->db->order_by('forum.created_at', 'DESC'); 
 
             $query = $this->db->get();

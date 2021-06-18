@@ -1,3 +1,13 @@
+<style>
+.info {
+  background-color: #e7f3fe;
+  border-left: 6px solid #2196F3;
+  padding-left: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+</style>
+
 <div class="breadcome-area">
     <div class="container-fluid">
         <div class="row">
@@ -40,15 +50,27 @@
                     <label for="judul">Judul</label>
                         <input type="text" class="form-control" id="judul" name="judul" autocomplete="off" value="<?=$konten["judul"];?>">
                 </div>
+                <div class="info">
+                    <p><strong>Petunjuk Pengisian Link Video.</strong></p>
+                    1. Unggah video konten Anda ke platform Youtube<br>
+                    2. Klik Bagikan<br>
+                    3. Salin link video dan tempel pada kolom dibawah ini<br>
+                </div><br>
                 <div class="form-group">
-                    <label for="video">Link Video</label>
-                        <input type="text" class="form-control" id="video" name="video" autocomplete="off" value="<?=$konten["video"];?>">
+                    <label for="video">Link Video Youtube Konten</label>
+                        <input type="text" class="form-control" id="video" name="video" autocomplete="off" value="<?=$konten["video"];?>" placeholder="Contoh: https://youtu.be/dJjWjg4rwh0">
                 </div>
                 <div class="form-group">
-                    <label for="file_pendukung">Unggah File Pendukung</label>
+                    <label for="file_pendukung">Unggah File Pendukung (Opsional)</label>
                         <input type="hidden" name="old_file" value="<?= $konten['file_pendukung'];?>" />
                         <input type="file" class="form-control" id="file_pendukung" name="file_pendukung">
-                        <p style="color:#808080;">Format .pdf || <?=$konten['file_pendukung'];?></p>
+                        <p style="color:#808080;">Format .pdf || 
+                            <?php if($konten['file_pendukung'] != NULL) {?>
+                            <?=$konten['file_pendukung'];?>
+                            <?php } else {?>
+                            <?php echo 'File pendukung belum ditambahkan'; ?>
+                            <?php }?>
+                        </p>
                 </div>
                 <div class="form-group">
                     <label for="soal">Soal Latihan</label>

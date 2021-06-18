@@ -82,7 +82,7 @@ class Tutor extends CI_Controller {
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
     
             // form validation untuk memeriksa kelengkapan isian form
-            $this->form_validation->set_rules('github', 'github', 'required');        
+            $this->form_validation->set_rules('foto', '', 'callback_file_check_foto');        
             
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_tutor',$data);
@@ -99,6 +99,23 @@ class Tutor extends CI_Controller {
         }
         else {
             redirect('Login/logout');
+        }
+    }
+
+    public function file_check_foto($str){
+        $allowed_mime_type_arr = array('image/jpeg','image/pjpeg','image/png','image/x-png');
+        $mime = get_mime_by_extension($_FILES['foto']['name']);
+        if(isset($_FILES['foto']['name']) && $_FILES['foto']['name']!=""){
+            if(in_array($mime, $allowed_mime_type_arr)){
+                if (filesize($_FILES['foto']['tmp_name']) > 2097152) {
+                    $this->form_validation->set_message('file_check_foto', 'The Image file size shoud not exceed 2MB!');
+                    return false;
+                }
+            }
+            else{
+                $this->form_validation->set_message('file_check_foto', 'Please select only jpeg/jpg/png file.');
+                return false;
+            }
         }
     }
 
@@ -123,24 +140,27 @@ class Tutor extends CI_Controller {
     public function Tambah_Tutor()
     {
         $data['title'] = 'Daftar Tutor';
+        $data['KategoriMateri'] = $this->Tutor_model->getAllKategoriMateri();
 
         // form validation untuk memeriksa kelengkapan isian form
-        // $this->form_validation->set_rules('id_mahasiswa', 'id_mahasiswa', 'required');
-        $this->form_validation->set_rules('id_kategori_materi', 'id_kategori_materi', 'required');
+        $this->form_validation->set_rules('nim', 'NIM', 'required');
+        $this->form_validation->set_rules('id_kategori_materi', 'Kategori', 'required');
+        $this->form_validation->set_rules('surat_pernyataan', '', 'callback_file_check_surat');
+
         $nim = $this->input->post('nim');
         
         if($this->form_validation->run() == FALSE) {
-            echo"<script>alert('Semua Data Wajib Diisi');</script>";
-            redirect('Tutor/Daftar_Tutor','refresh');
+            $this->load->view('Tutor/Daftar_Tutor', $data);
+            $this->load->view('template/footer_tutor',$data);
         }
         else {
             // menuju ke tutor_model untuk melakukan aksi tambah tutor            
             $cek = $this->db->query("SELECT tutor.id_mahasiswa FROM tutor JOIN mahasiswa ON mahasiswa.id_mahasiswa= tutor.id_mahasiswa where mahasiswa.nim='".$this->input->post('nim')."'")->num_rows();
-            $cek_mahasiswa = $this->db->query("SELECT mahasiswa.id_mahasiswa FROM mahasiswa where mahasiswa.nim='".$this->input->post('nim')."'")->num_rows();
+            $cek_mahasiswa = $this->db->query("SELECT mahasiswa.id_mahasiswa FROM mahasiswa where mahasiswa.nim='".$this->input->post('nim')."' LIMIT 1")->num_rows();
             if ($cek_mahasiswa>0) { //jika mahasiswa terdaftar pada tabel mahasiswa
                 if ($cek<=0){ //jika mahasiswa tidak terdaftar sebagai tutor
                     $this->Tutor_model->Tambah_Tutor();
-                    echo"<script>alert('Terdaftar');</script>";
+                    echo"<script>alert('Anda berhasil mendaftar');</script>";
                     redirect('Login/index','refresh');
                 }
                 else{                    
@@ -152,6 +172,28 @@ class Tutor extends CI_Controller {
                 echo"<script>alert('NIM Tidak Terdaftar');</script>";
                 redirect('Tutor/Daftar_Tutor','refresh');
             }
+        }
+    }
+
+    public function file_check_surat($str){
+        $allowed_mime_type_arr = array('application/pdf');
+        $mime = get_mime_by_extension($_FILES['surat_pernyataan']['name']);
+        if(isset($_FILES['surat_pernyataan']['name']) && $_FILES['surat_pernyataan']['name']!=""){
+            if(in_array($mime, $allowed_mime_type_arr)){
+                // return true;
+                if (filesize($_FILES['surat_pernyataan']['tmp_name']) > 2097152) {
+                    $this->form_validation->set_message('file_check_surat', 'The document file size shoud not exceed 2MB!');
+                    return false;
+                }
+            }
+            else{
+                $this->form_validation->set_message('file_check_surat', 'Please select only pdf file.');
+                return false;
+            }
+        }
+        else{
+            $this->form_validation->set_message('file_check_surat', 'Please choose a file to upload.');
+            return false;
         }
     }
 
@@ -193,7 +235,6 @@ class Tutor extends CI_Controller {
             $this->form_validation->set_rules('nama_materi', 'Judul Materi', 'required');
             $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
             $this->form_validation->set_rules('requirement', 'Requirement', 'required');
-            $this->form_validation->set_rules('id_tutor', 'id_tutor', 'required');
             $this->form_validation->set_rules('cover', '', 'callback_file_check');
 
             if($this->form_validation->run() == FALSE) {
@@ -234,8 +275,23 @@ class Tutor extends CI_Controller {
             $this->form_validation->set_message('file_check', 'Please choose a file to upload.');
             return false;
         }
+    }
 
-        
+    public function file_check_edit($str){
+        $allowed_mime_type_arr = array('image/jpeg','image/pjpeg','image/png','image/x-png');
+        $mime = get_mime_by_extension($_FILES['cover']['name']);
+        if(isset($_FILES['cover']['name']) && $_FILES['cover']['name']!=""){
+            if(in_array($mime, $allowed_mime_type_arr)){
+                if (filesize($_FILES['cover']['tmp_name']) > 2097152) {
+                    $this->form_validation->set_message('file_check_edit', 'The Image file size shoud not exceed 2MB!');
+                    return false;
+                }
+            }
+            else{
+                $this->form_validation->set_message('file_check_edit', 'Please select only jpeg/jpg/png file.');
+                return false;
+            }
+        }
     }
 
     public function Hapus_Materi($id_materi) {
@@ -266,11 +322,10 @@ class Tutor extends CI_Controller {
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
             
             // form validation untuk memeriksa kelengkapan isian form
-            $this->form_validation->set_rules('nama_materi', 'nama_materi', 'required');
-            $this->form_validation->set_rules('id_kategori_materi', 'id_kategori_materi', 'required');
-            $this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
-            $this->form_validation->set_rules('requirement', 'requirement', 'required');
-            $this->form_validation->set_rules('id_tutor', 'id_tutor', 'required');        
+            $this->form_validation->set_rules('nama_materi', 'Judul Materi', 'required');
+            $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+            $this->form_validation->set_rules('requirement', 'Requirement', 'required');
+            $this->form_validation->set_rules('cover', '', 'callback_file_check_edit');      
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_tutor',$data);
@@ -326,9 +381,10 @@ class Tutor extends CI_Controller {
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             // form validation untuk memeriksa kelengkapan isian form
-            $this->form_validation->set_rules('judul', 'judul', 'required');
-            $this->form_validation->set_rules('soal', 'soal', 'required');
-            $this->form_validation->set_rules('video', 'video', 'required');
+            $this->form_validation->set_rules('judul', 'Judul', 'required');
+            $this->form_validation->set_rules('soal', 'Soal Latihan', 'required');
+            $this->form_validation->set_rules('video', 'Link Video', 'required');
+            $this->form_validation->set_rules('file_pendukung', '', 'callback_file_check_create_konten');
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_tutor',$data);
@@ -348,6 +404,24 @@ class Tutor extends CI_Controller {
         }
     }
 
+    public function file_check_create_konten($str){
+        $allowed_mime_type_arr = array('application/pdf');
+        $mime = get_mime_by_extension($_FILES['file_pendukung']['name']);
+        if(isset($_FILES['file_pendukung']['name']) && $_FILES['file_pendukung']['name']!=""){
+            if(in_array($mime, $allowed_mime_type_arr)){
+                // return true;
+                if (filesize($_FILES['file_pendukung']['tmp_name']) > 2097152) {
+                    $this->form_validation->set_message('file_check_create_konten', 'The document file size shoud not exceed 2MB!');
+                    return false;
+                }
+            }
+            else{
+                $this->form_validation->set_message('file_check_create_konten', 'Please select only pdf file.');
+                return false;
+            }
+        }
+    }
+
     public function Edit_Konten($id_konten, $id_materi) {
         if (isset($_SESSION['id_tutor'])) {
             $data['title'] = 'Form Edit Konten';
@@ -361,9 +435,10 @@ class Tutor extends CI_Controller {
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
             // form validation untuk memeriksa kelengkapan isian form
-            $this->form_validation->set_rules('judul', 'judul', 'required');
-            $this->form_validation->set_rules('soal', 'soal', 'required');
-            $this->form_validation->set_rules('video', 'video', 'required');
+            $this->form_validation->set_rules('judul', 'Judul', 'required');
+            $this->form_validation->set_rules('soal', 'Soal Latihan', 'required');
+            $this->form_validation->set_rules('video', 'Link Video', 'required');
+            $this->form_validation->set_rules('file_pendukung', '', 'callback_file_check_edit_konten');
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_tutor',$data);
@@ -373,13 +448,31 @@ class Tutor extends CI_Controller {
             else {
                 // menuju tutor_model untuk melakukan edit konten sesuai dengan id_konten
                 $this->Tutor_model->Edit_Konten($id_konten);
-                echo"<script>alert('Konten Berhasil Di Edit!');</script>";
+                echo"<script>alert('Konten Berhasil Diedit!');</script>";
                 // kembali ke halaman detail materi sesuai id_materi yang dipilih
                 redirect('Tutor/Detail_Materi/'.$id_materi ,'refresh');
             }
         }
         else {
             redirect('Login/logout');
+        }
+    }
+
+    public function file_check_edit_konten($str){
+        $allowed_mime_type_arr = array('application/pdf');
+        $mime = get_mime_by_extension($_FILES['file_pendukung']['name']);
+        if(isset($_FILES['file_pendukung']['name']) && $_FILES['file_pendukung']['name']!=""){
+            if(in_array($mime, $allowed_mime_type_arr)){
+                // return true;
+                if (filesize($_FILES['file_pendukung']['tmp_name']) > 2097152) {
+                    $this->form_validation->set_message('file_check_edit_konten', 'The document file size shoud not exceed 2MB!');
+                    return false;
+                }
+            }
+            else{
+                $this->form_validation->set_message('file_check_edit_konten', 'Please select only pdf file.');
+                return false;
+            }
         }
     }
 
@@ -511,7 +604,6 @@ class Tutor extends CI_Controller {
             // form validation untuk memeriksa kelengkapan isian form
             $this->form_validation->set_rules('kritik_saran', 'Kritik dan Saran', 'required');
             $this->form_validation->set_rules('subject', 'Subject', 'required');
-            $this->form_validation->set_rules('id_user', 'id_user', 'required');
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_tutor',$data);
@@ -625,10 +717,15 @@ class Tutor extends CI_Controller {
             $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
             //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
+            // menampilkan jawaban forum sesuai dengan id_forum
+            $data['jawaban'] = $this->Tutor_model->jawaban($id);
+            // memeriksa apakah jawaban forum sedang kosong atau sudah terisi sesuai dengan id_forum
+            $data['jawaban_forum'] = $this->Tutor_model->Cek_Jawaban($id);
+            //get data id_mahasiswa dari tutor yang sedang login
+            $data['get_id_mahasiswa'] = $this->Tutor_model->get_id_mahasiswa($this->session->userdata('id_tutor'));
 
             // form validation untuk memeriksa kelengkapan isian form
-            $this->form_validation->set_rules('chat', 'chat', 'required');
-            $this->form_validation->set_rules('link_jawab', 'link_jawab');
+            $this->form_validation->set_rules('chat', 'Kolom Balas', 'required');
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_tutor', $data);
@@ -666,10 +763,22 @@ class Tutor extends CI_Controller {
                 // mengambil data inputan saat pencarian
                 $kategori = $this->input->post('id_kategori_materi');
                 $keyword = $this->input->post('keyword');
-                $data['hasil_cari_kategori'] = $this->Tutor_model->keySearchForum($kategori);
-                $data['hasil_cari'] = $this->input->post('keyword');
-                // menuju tutor_model untuk mencari forum sesuai dengan kategori/pertanyaan
-                $data['forum'] = $this->Tutor_model->Cari_Forum($kategori, $keyword);
+                if ($this->input->post('id_kategori_materi') && $this->input->post('keyword') != "") {
+                    $data['hasil_cari_kategori'] = $this->Tutor_model->keySearchForum($kategori);
+                    $data['hasil_cari'] = $this->input->post('keyword');
+                    // menuju tutor_model untuk mencari forum sesuai dengan kategori/pertanyaan
+                    $data['forum'] = $this->Tutor_model->Cari_Forum($kategori, $keyword);
+                }
+                else if($this->input->post('id_kategori_materi') || $this->input->post('keyword') != "") {
+                    $data['hasil_cari_kategori'] = $this->Tutor_model->keySearchForum($kategori);
+                    $data['hasil_cari'] = $this->input->post('keyword');
+                    // menuju tutor_model untuk mencari forum sesuai dengan kategori/pertanyaan
+                    $data['forum'] = $this->Tutor_model->Cari_Forum($kategori, $keyword);
+                }
+                else{
+                    echo"<script>alert('Salah satu kata kunci harus diisi');</script>";
+                    redirect('Tutor/Forum','refresh');
+                }
             }
 
             $this->load->view('template/header2_tutor', $data);
@@ -708,11 +817,11 @@ class Tutor extends CI_Controller {
             $this->load->view('tutor/hasil_search_berhasil',$data);
         }
         else if (empty($cek)) {
-            echo"<script>alert('NIM yang Anda masukkan tidak sesuai');</script>";
+            echo"<script>alert('Masukkan NIM dengan benar');</script>";
             redirect('Tutor/Cek_Status_pendaftaran','refresh');
         }
         else{
-            echo"<script>alert('Mohon maaf Anda gagal / belum mendaftar menjadi tutor');</script>";
+            echo"<script>alert('Mohon maaf Anda gagal atau belum mendaftar menjadi tutor');</script>";
             redirect('Login/index','refresh');
         }
     }
@@ -859,8 +968,8 @@ class Tutor extends CI_Controller {
                 $config['create_thumb']= FALSE;
                 $config['maintain_ratio']= TRUE;
                 $config['quality']= '60%';
-                $config['width']= 200;
-                $config['height']= 200;
+                $config['width']= 800;
+                $config['height']= 300;
                 $config['new_image']= './assets/images/'.$data['file_name'];
                 $this->load->library('image_lib', $config);
                 $this->image_lib->resize();

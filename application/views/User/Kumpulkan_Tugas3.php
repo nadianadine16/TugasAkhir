@@ -43,15 +43,15 @@
                             <?php endforeach;?>
 
                             <div class="info">
-                                <p><strong>Petunjuk Pengumpulan Link Revisi.</strong></p>
+                                <p><strong>Petunjuk Pengumpulan Link Tugas.</strong></p>
                                 1. Unggah tugas Anda ke dalam Github<br>
                                 2. Masuk pada file tugas yang telah Anda kerjakan<br>
-                                3. Copy link file tugas Anda tanpa menggunakan https:// seperti <strong>github.com/shevaputriw/MiniProjectRetrofit/blob/master/app/src/main/AndroidManifest.xml</strong><br>
-                                4. Masukkan dalam kolom revisi dibawah ini
+                                3. Copy link file tugas Anda menggunakan https:// seperti <strong><a href="https://github.com/shevaputriw/MiniProjectRetrofit/blob/master/app/src/main/AndroidManifest.xml">https://github.com/shevaputriw/MiniProjectRetrofit/blob/master/app/src/main/AndroidManifest.xml</a></strong><br>
+                                4. Masukkan dalam kolom dibawah ini
                             </div><br>
 
                             <label for="tugas"><b>Link Github Revisi Tugas Anda</b></label>
-                            <input type="text" class="form-control" id="tugas" name="tugas" autocomplete="off" required><br>               
+                            <input type="url" class="form-control" id="tugas" name="tugas" autocomplete="off" required><br>               
                             <center><button type="submit" class="btn" id= "button" name="submit" style="background-color:#49b5e7;color:#ffffff;">Submit</button></center>
                         <?php }
                         else if($cek_tugas != NULL && $c["status"] == 'Diajukan') {?>

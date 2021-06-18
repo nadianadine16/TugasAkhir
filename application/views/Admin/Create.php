@@ -27,18 +27,22 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-payment-inner-st">
                 <center><h4>Import Data Mahasiswa</h4></center>
-            <form method="POST" action="<?= site_url('Admin/excel') ?>" enctype="multipart/form-data">
+                <?php if (validation_errors()): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo validation_errors(); ?>
+                </div>
+                <?php endif; ?>
+                    <form method="POST" action="<?= site_url('Admin/excel') ?>" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                         <label class="col-form-label text-md-left">Upload File</label> 
-                                            <input type="file" class="form-control" name="file" accept=".xls, .xlsx" required>
+                                            <input type="file" class="form-control" name="file" accept=".xls, .xlsx">
                                             <div class="mt-1">
-                                                <span class="text-secondary"style="color:#808080;">Format File : .xls, xlsx</span>
+                                                <span class="text-secondary"style="color:#808080;">Format File: .xls, xlsx <br>Maks. 2 MB</span>
                                             </div>
-                                            <?= form_error('file','<div class="text-danger">','</div>') ?>
                                         </div>
                                     </div>
                                 </div>

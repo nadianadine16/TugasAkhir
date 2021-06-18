@@ -1,10 +1,11 @@
 <script type="text/javascript" language="JavaScript">
- function konfirmasi()
- {
- tanya = confirm("Anda Yakin Akan Menghapus Data ?");
- if (tanya == true) return true;
- else return false;
- }</script>
+    function konfirmasi()
+    {
+        tanya = confirm("Apakah Anda yakin akan menghapus data?");
+        if (tanya == true) return true;
+            else return false;
+    }
+ </script>
 <!-- Mobile Menu end -->
 <div class="breadcome-area">
     <div class="container-fluid">
@@ -42,15 +43,15 @@
                             <div id="toolbar">
                             </div>
                             <table id="table" data-toggle="table" data-pagination="true" data-search="true"   data-show-refresh="true" data-key-events="true"  data-resizable="true" data-cookie="true"
-                            data-cookie-id-table="saveId"  data-click-to-select="true" data-toolbar="#toolbar">
+                            data-cookie-id-table="saveId" data-click-to-select="true" data-toolbar="#toolbar">
                                 <thead>
                                     <tr>
-                                        <th data-field="id">No</th>
-                                        <th data-field="name" data-editable="true">Nim</th>
-                                        <th data-field="email" data-editable="true">Nama</th>
-                                        <th data-field="phone" data-editable="true">Prodi</th>
-                                        <th data-field="complete">Kelas</th>
-                                        <th data-field="action">Action</th>
+                                        <th data-field="No">No</th>
+                                        <th data-field="NIM">NIM</th>
+                                        <th data-field="Nama">Nama</th>
+                                        <th data-field="Prodi">Prodi</th>
+                                        <th data-field="Kelas">Kelas</th>
+                                        <th data-field="Action">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

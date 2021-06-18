@@ -59,7 +59,7 @@
                     <label>Revisi : </label>
                     <textarea name="revisi" id="summernote"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary float-right">Kirim</button>                
+                <center><button type="submit" class="btn btn-primary float-right">Kirim</button></center> 
             </form>
                 <!-- <form action="<?=base_url('Tutor/Revisi/'.$tugas['id_tugas'])?>" method="post">
                 <input type="hidden" name="id_tugas" value="<?=$tugas['id_tugas'];?>">

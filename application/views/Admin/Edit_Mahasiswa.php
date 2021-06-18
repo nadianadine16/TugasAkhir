@@ -85,7 +85,7 @@
 function validasi_input(form){
   var mincar = 10;
   if (form.nim.value.length > mincar){
-    alert("NIM Maksimal 10 karakter!");
+    alert("NIM maksimal 10 karakter!");
     form.nim.focus();
     return (false);
   }

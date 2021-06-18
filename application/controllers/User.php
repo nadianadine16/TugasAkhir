@@ -90,9 +90,8 @@ class User extends CI_Controller {
         if(isset($_SESSION['id_mahasiswa'])) {
             
             //form validation untuk memeriksa kelengkapan isian form
-            $this->form_validation->set_rules('id_user', 'id_user', 'required');
-            $this->form_validation->set_rules('subject', 'subject', 'required');   
-            $this->form_validation->set_rules('kritik_saran', 'kritik_saran', 'required');   
+            $this->form_validation->set_rules('subject', 'Subject', 'required');   
+            $this->form_validation->set_rules('kritik_saran', 'Kritik Saran', 'required');   
             
             if($this->form_validation->run() == FALSE) {
                 redirect('User/index','refresh');
@@ -348,8 +347,8 @@ class User extends CI_Controller {
             $data['notif_jawaban_baru'] = $this->User_model->notif_jawaban_baru(); //menampilkan notifikasi jawaban forum baru
             $data['hitung_jawaban_baru']= $this->User_model->hitung_jawaban_baru(); //menghitung jumlah notifikasi jawaban baru forum
 
-            $this->form_validation->set_rules('pertanyaan', 'pertanyaan', 'required'); //form validasi untuk memeriksa kelengkapan isian form
-            $this->form_validation->set_rules('link_tanya', 'link_tanya');
+            $this->form_validation->set_rules('pertanyaan', 'Pertanyaan', 'required'); //form validasi untuk memeriksa kelengkapan isian form
+            $this->form_validation->set_rules('topik', 'Topik', 'required');
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header_user', $data);
@@ -358,7 +357,7 @@ class User extends CI_Controller {
             }
             else {
                 $this->User_model->Tanya_Forum();
-                echo"<script>alert('Pertanyaan Anda Berhasil Dikirim');</script>";
+                echo"<script>alert('Forum berhasil dibuat!');</script>";
                 redirect('User/Forum','refresh');
             }
         }
@@ -465,15 +464,28 @@ class User extends CI_Controller {
             $data['notif_jawaban_baru'] = $this->User_model->notif_jawaban_baru(); //menampilkan notifikasi jawaban forum baru
             $data['hitung_jawaban_baru']= $this->User_model->hitung_jawaban_baru(); //menghitung jumlah notifikasi jawaban baru forum
 
-            if($this->input->post('submit')) { //jika ada aksi submit 
-                $kategori = $this->input->post('id_kategori_materi'); //mengambil inputan id_kategori_materi 
-                $keyword = $this->input->post('keyword'); //mengambil inputan keyword
+            if($this->input->post('submit')){
+                // mengambil data inputan saat pencarian
+                $kategori = $this->input->post('id_kategori_materi');
+                $keyword = $this->input->post('keyword');
+                if ($this->input->post('id_kategori_materi') && $this->input->post('keyword') != "") {
+                    $data['hasil_cari_kategori'] = $this->User_model->keySearch($kategori);
+                    $data['hasil_cari'] = $this->input->post('keyword');
 
-                $data['hasil_cari_kategori'] = $this->User_model->keySearch($kategori);
-                $data['hasil_cari'] = $this->input->post('keyword');
+                    //menampilkan tutor yg dicari sesuai dengan kategori/nama tutor (keyword)
+                    $data['nama_tutor'] = $this->User_model->Cari_Tutor($kategori, $keyword);
+                }
+                else if($this->input->post('id_kategori_materi') || $this->input->post('keyword') != "") {
+                    $data['hasil_cari_kategori'] = $this->User_model->keySearch($kategori);
+                    $data['hasil_cari'] = $this->input->post('keyword');
 
-                //menampilkan tutor yg dicari sesuai dengan kategori/nama tutor (keyword)
-                $data['nama_tutor'] = $this->User_model->Cari_Tutor($kategori, $keyword);
+                    //menampilkan tutor yg dicari sesuai dengan kategori/nama tutor (keyword)
+                    $data['nama_tutor'] = $this->User_model->Cari_Tutor($kategori, $keyword);
+                }
+                else{
+                    echo"<script>alert('Salah satu kata kunci harus diisi');</script>";
+                    redirect('User/SeeAllTutor','refresh');
+                }
             }
 
             $this->load->view('template/header_user', $data);
@@ -493,9 +505,10 @@ class User extends CI_Controller {
             $data['hitung_chat']= $this->User_model->hitung_chat(); //menghitung jumlah notifikasi pesan yang belum dibaca
             $data['notif_jawaban_baru'] = $this->User_model->notif_jawaban_baru(); //menampilkan notifikasi jawaban forum baru
             $data['hitung_jawaban_baru']= $this->User_model->hitung_jawaban_baru(); //menghitung jumlah notifikasi jawaban baru forum
+            $data['jawaban_forum'] = $this->User_model->Cek_Jawaban($id);
+            $data['jawaban'] = $this->User_model->jawaban($id);
 
-            $this->form_validation->set_rules('chat', 'chat', 'required'); //form validasi untuk memeriksa kelengkapan isian form
-            $this->form_validation->set_rules('link_jawab', 'link_jawab');
+            $this->form_validation->set_rules('chat', 'Kolom Balas', 'required'); //form validasi untuk memeriksa kelengkapan isian form
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header_user', $data);
@@ -560,11 +573,22 @@ class User extends CI_Controller {
                 // mengambil data inputan saat pencarian
                 $kategori = $this->input->post('id_kategori_materi');
                 $keyword = $this->input->post('keyword');
-
-                // menuju tutor_model untuk mencari forum sesuai dengan kategori/pertanyaan
-                $data['hasil_cari_kategori'] = $this->User_model->keySearch($kategori);
-                $data['hasil_cari'] = $this->input->post('keyword');
-                $data['forum'] = $this->User_model->Search($kategori, $keyword);
+                if ($this->input->post('id_kategori_materi') && $this->input->post('keyword') != "") {
+                    $data['hasil_cari_kategori'] = $this->User_model->keySearch($kategori);
+                    $data['hasil_cari'] = $this->input->post('keyword');
+                    // menuju tutor_model untuk mencari forum sesuai dengan kategori/pertanyaan
+                    $data['forum'] = $this->User_model->Search($kategori, $keyword);   
+                }
+                else if($this->input->post('id_kategori_materi') || $this->input->post('keyword') != "") {
+                    $data['hasil_cari_kategori'] = $this->User_model->keySearch($kategori);
+                    $data['hasil_cari'] = $this->input->post('keyword');
+                    // menuju tutor_model untuk mencari forum sesuai dengan kategori/pertanyaan
+                    $data['forum'] = $this->User_model->Search($kategori, $keyword); 
+                }
+                else{
+                    echo"<script>alert('Salah satu kata kunci harus diisi');</script>";
+                    redirect('User/Forum','refresh');
+                }
             }
 
             $this->load->view('template/header_user', $data);
@@ -757,8 +781,8 @@ class User extends CI_Controller {
                 $config['create_thumb']= FALSE;
                 $config['maintain_ratio']= TRUE;
                 $config['quality']= '60%';
-                $config['width']= 200;
-                $config['height']= 200;
+                $config['width']= 800;
+                $config['height']= 300;
                 $config['new_image']= './assets/images/'.$data['file_name'];
                 $this->load->library('image_lib', $config);
                 $this->image_lib->resize();

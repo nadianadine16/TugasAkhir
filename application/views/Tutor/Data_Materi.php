@@ -1,7 +1,7 @@
 <script type="text/javascript" language="JavaScript">
     function konfirmasi()
     {
-        tanya = confirm("Anda Yakin Akan Menghapus Data ?");
+        tanya = confirm("Apakah Anda yakin akan menghapus data?");
         if (tanya == true) return true;
         else return false;
     }

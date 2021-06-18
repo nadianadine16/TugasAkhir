@@ -1,7 +1,7 @@
 <script type="text/javascript" language="JavaScript">
     function konfirmasi()
     {
-        tanya = confirm("Anda Yakin Akan Menghapus Data?");
+        tanya = confirm("Apakah Anda yakin akan menghapus data?");
         if (tanya == true) return true;
         else return false;
     }
@@ -46,10 +46,10 @@
                             data-cookie-id-table="saveId" data-click-to-select="true" data-toolbar="#toolbar">
                                 <thead>
                                     <tr>
-                                        <th data-field="id">No</th>
-                                        <th data-field="nim" data-editable="true">NIM</th>
-                                        <th data-field="nama_mahasiswa" data-editable="true">Nama Mahasiswa</th>
-                                        <th data-field="nama_materi" data-editable="true">Judul Konten</th>
+                                        <th data-field="No">No</th>
+                                        <th data-field="NIM">NIM</th>
+                                        <th data-field="nama_mahasiswa">Nama Mahasiswa</th>
+                                        <th data-field="nama_materi">Judul Konten</th>
                                         <th data-field="tugas">Link Pengumpulan</th>
                                         <th data-field="action">Action</th>
                                     </tr>
@@ -96,10 +96,10 @@
                             data-cookie-id-table="saveId" data-click-to-select="true" data-toolbar="#toolbar">
                                 <thead>
                                     <tr>
-                                        <th data-field="id">No</th>
-                                        <th data-field="nim" data-editable="true">NIM</th>
-                                        <th data-field="nama_mahasiswa" data-editable="true">Nama Mahasiswa</th>
-                                        <th data-field="judul_konten" data-editable="true">Judul Konten</th>                                        
+                                        <th data-field="No">No</th>
+                                        <th data-field="NIM">NIM</th>
+                                        <th data-field="nama_mahasiswa" >Nama Mahasiswa</th>
+                                        <th data-field="judul_konten">Judul Konten</th>                                        
                                         <th data-field="action">Action</th>
                                     </tr>
                                 </thead>
@@ -144,10 +144,10 @@
                                 <thead>
                                     <tr>
                                         <th data-field="id">No</th>
-                                        <th data-field="nim" data-editable="true">NIM</th>
-                                        <th data-field="nama_mahasiswa" data-editable="true">Nama Mahasiswa</th>
-                                        <th data-field="nama_materi" data-editable="true">Judul Konten</th>
-                                        <th data-field="tugas" data-editable="true">Link Pengumpulan</th>
+                                        <th data-field="nim" >NIM</th>
+                                        <th data-field="nama_mahasiswa" >Nama Mahasiswa</th>
+                                        <th data-field="nama_materi" >Judul Konten</th>
+                                        <th data-field="tugas" >Link Pengumpulan</th>
                                         <th data-field="action">Action</th>
                                     </tr>
                                 </thead>

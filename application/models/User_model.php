@@ -71,13 +71,15 @@ class User_model extends CI_Model {
     public function Cari_Tutor($kategori, $keyword) { //function untukmenampilkan hasil pencarian tutor sesuai dengan kategori dan nama tutor
         $kategori=$this->input->post('id_kategori_materi'); //menambil inputan kategori
         $keyword=$this->input->post('keyword'); //mengambil keyword
+        $status= '2';
 
         $this->db->select('*');
         $this->db->from('tutor');
         $this->db->join('kategori_materi', 'tutor.id_kategori_materi = kategori_materi.id_kategori_materi');
         $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tutor.id_mahasiswa');            
         $this->db->like('tutor.id_kategori_materi', $kategori); 
-        $this->db->like('mahasiswa.nama', $keyword);         
+        $this->db->like('mahasiswa.nama', $keyword);  
+        $this->db->where('status', $status);
 
         $query = $this->db->get();
         return $query->result_array();
@@ -270,6 +272,7 @@ class User_model extends CI_Model {
         $data = [
             "id_mahasiswa" => $this->input->post('id_mahasiswa', true),
             "id_kategori_materi" => $this->input->post('id_kategori_materi', true),
+            "topik" => $this->input->post('topik', true),
             "pertanyaan" => $this->input->post('pertanyaan', true),
             "created_at" => date('Y-m-d H:i:s', time())            
         ];
@@ -418,7 +421,7 @@ class User_model extends CI_Model {
     }
 
     public function Forum_yang_dibuat($id_mahasiswa) { //function untuk menampilkan forum yg dibuat oleh mhs yg sedang login
-        $query=$this->db->query("SELECT forum. id_forum, forum.id_mahasiswa, kategori_materi.nama_kategori, forum.pertanyaan, forum.created_at, IFNULL(t2.total, 0) AS total FROM `forum` LEFT OUTER JOIN (SELECT chat_forum.id_forum, COUNT(chat_forum.chat) AS total FROM chat_forum WHERE chat_forum.status = 1 GROUP BY chat_forum.id_forum ) t2 ON forum.id_forum = t2.id_forum JOIN kategori_materi ON kategori_materi.id_kategori_materi = forum.id_kategori_materi WHERE forum.id_mahasiswa = $id_mahasiswa");
+        $query=$this->db->query("SELECT forum. id_forum, forum.id_mahasiswa, kategori_materi.nama_kategori, forum.topik, forum.created_at, IFNULL(t2.total, 0) AS total FROM `forum` LEFT OUTER JOIN (SELECT chat_forum.id_forum, COUNT(chat_forum.chat) AS total FROM chat_forum WHERE chat_forum.status = 1 GROUP BY chat_forum.id_forum ) t2 ON forum.id_forum = t2.id_forum JOIN kategori_materi ON kategori_materi.id_kategori_materi = forum.id_kategori_materi WHERE forum.id_mahasiswa = $id_mahasiswa");
         return $query->result_array();
     }
 
@@ -487,7 +490,7 @@ class User_model extends CI_Model {
         $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
         $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');            
         $this->db->like('forum.id_kategori_materi', $kategori); 
-        $this->db->like('forum.pertanyaan', $keyword);        
+        $this->db->like('forum.topik', $keyword);        
         $this->db->order_by('forum.created_at', 'DESC'); 
 
         $query = $this->db->get();

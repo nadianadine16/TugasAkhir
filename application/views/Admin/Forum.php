@@ -1,10 +1,11 @@
 <script type="text/javascript" language="JavaScript">
- function konfirmasi()
- {
- tanya = confirm("Anda Yakin Akan Menghapus Data ?");
- if (tanya == true) return true;
- else return false;
- }</script>
+    function konfirmasi()
+    {
+    tanya = confirm("Apakah Anda yakin akan menghapus data?");
+    if (tanya == true) return true;
+    else return false;
+    }
+ </script>
 <!-- Mobile Menu end -->
 <div class="breadcome-area">
     <div class="container-fluid">
@@ -45,12 +46,12 @@
                             data-cookie-id-table="saveId"  data-click-to-select="true" data-toolbar="#toolbar">
                                 <thead>
                                     <tr>
-                                        <th data-field="id">No</th>
-                                        <th data-field="nim" data-editable="true">Nim</th>
-                                        <th data-field="kategori" data-editable="true">Kategori</th>
-                                        <th data-field="nama" data-editable="true">Nama Penanya</th>
-                                        <th data-field="pertanyaan">Pertanyaan</th>
-                                        <th data-field="action">Action</th>
+                                        <th data-field="No">No</th>
+                                        <th data-field="NIM">Nim</th>
+                                        <th data-field="Kategori">Kategori</th>
+                                        <th data-field="Nama">Nama Penanya</th>
+                                        <th data-field="Topik">Topik Forum</th>
+                                        <th data-field="Action">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,7 +61,7 @@
                                         <td><?=$f["nim"];?></td>
                                         <td><?=$f["nama_kategori"];?></td>
                                         <td><?=$f["nama"];?></td>
-                                        <td><?=$f["pertanyaan"];?></td>
+                                        <td><?=$f["topik"];?></td>
                                         <td class="datatable-ct">
                                             <a href="<?= base_url();?>admin/detail_forum/<?=$f['id_forum'];?>" class="pd-setting-ed"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                             <a onclick="return konfirmasi()" href="<?= base_url();?>admin/hapus_forum/<?=$f['id_forum'];?>" class="pd-setting-ed" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>

@@ -158,12 +158,41 @@
           </li>
         <?php }?>
         <li <?php if ($title == 'Forum' || $title == 'Chat Forum') echo 'class="nav-item active"'; ?>>
-        <?php if ($hitung_jawaban_baru > 0) {?>
-          <a class="nav-link" href="<?= base_url()?>User/Forum" style="font-family: Arial, Helvetica, sans-serif;"><b>Forum </b><span class="badge bg-danger badge-dot" style="color:white">New</span></a>
-          <?php } else{ ?>
-            <a class="nav-link" href="<?= base_url()?>User/Forum" style="font-family: Arial, Helvetica, sans-serif;"><b>Forum </b><span class="sr-only">(current)</span></a>
-            <?php }?>
+          <a class="nav-link" href="<?= base_url()?>User/Forum" style="font-family: Arial, Helvetica, sans-serif;"><b>Forum </b><span class="sr-only">(current)</span></a>
         </li>
+        <?php if ($hitung_jawaban_baru > 0 && $hitung_jawaban_baru < 10) {?>
+        <li>
+          <div class="dropdown">
+          <button class="dropbtn"><span class="badge"><?php echo $hitung_jawaban_baru ;?></span></button>
+          <div class="dropdown-content" style="width:250px;">
+            <center><p style="margin-bottom:-8px;"><b>Notifikasi Forum</b></p></center><hr>
+            
+              <?php foreach($notif_jawaban_baru as $njb):?>        
+                <a href="<?=base_url('User/change_status_jawaban/'.$njb['id_forum'])?>">
+                <b><?=$njb["nama"];?> </b><br>
+                <?=(strlen($njb['topik']) > 25 ? substr($njb['topik'], 0, 25)."..." : $njb['topik']) ;?>
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($njb['send_time'])) ?></a>
+              <?php endforeach;?>
+          </div>
+          </div>        
+        </li>
+        <?php } else if ($hitung_jawaban_baru >= 10) {?>
+          <li>
+            <div class="dropdown">
+            <button class="dropbtn"><span class="badge">9+</span></button>
+            <div class="dropdown-content" style="width:250px;">
+              <center><p style="margin-bottom:-8px;"><b>Notifikasi Forum</b></p></center><hr>
+              
+                <?php foreach($notif_jawaban_baru as $njb):?>        
+                  <a href="<?=base_url('User/change_status_jawaban/'.$njb['id_forum'])?>">
+                  <b><?=$njb["nama"];?> </b>
+                  <?=(strlen($njb['topik']) > 25 ? substr($njb['topik'], 0, 25)."..." : $njb['topik']) ;?>
+                  <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($njb['send_time'])) ?></a>
+                <?php endforeach;?>
+            </div>
+            </div>        
+          </li>
+        <?php }?>
         <li <?php if ($title == 'Daftar Tutor' || $title == 'Detail Tutor') echo 'class="nav-item active"'; ?>>
           <a class="nav-link" href="<?= base_url()?>User/SeeAllTutor" style="font-family: Arial, Helvetica, sans-serif;"><b>Tutor </b><span class="sr-only">(current)</span></a>
         </li>

@@ -74,8 +74,8 @@
         <tr>
             <th><center>No</center></th>
             <th style="width:200px;"><center>Kategori Forum</center></th>
-            <th style="width:700px;"><center>Pertanyaan</center></th>
-            <th style="width:100px;"><center>Dibuat pada</center></th>
+            <th style="width:600px;"><center>Topik Forum</center></th>
+            <th style="width:200px;"><center>Dibuat pada</center></th>
             <!-- <th><center>Jumlah Respon</center></th> -->
             <th><center>Aksi</center></th>
         </tr>
@@ -93,7 +93,7 @@
             <span class="badge badge-light" style="background-color:red; color: white"><?=$f["total"]?></span>             
             </td>
             <?php }?>
-            <td><?=$f["pertanyaan"];?></td>
+            <td><?=$f["topik"];?></td>
             <td><?=$f["created_at"];?></td>
             <td><a href="<?= base_url();?>User/change_status_jawaban/<?=$f['id_forum'];?>"><center><button class="btn btn-primary btn-sm">Lihat Forum</button></center></a></td>
         </tr>

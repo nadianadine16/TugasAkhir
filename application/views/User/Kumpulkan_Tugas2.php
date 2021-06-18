@@ -30,13 +30,13 @@
               <p><strong>Petunjuk Pengumpulan Link Tugas.</strong></p>
               1. Unggah tugas Anda ke dalam Github<br>
               2. Masuk pada file tugas yang telah Anda kerjakan<br>
-              3. Copy link file tugas Anda tanpa menggunakan https:// seperti <strong>github.com/shevaputriw/MiniProjectRetrofit/blob/master/app/src/main/AndroidManifest.xml</strong><br>
+              3. Copy link file tugas Anda menggunakan https:// seperti <strong><a href="https://github.com/shevaputriw/MiniProjectRetrofit/blob/master/app/src/main/AndroidManifest.xml">https://github.com/shevaputriw/MiniProjectRetrofit/blob/master/app/src/main/AndroidManifest.xml</a></strong><br>
               4. Masukkan dalam kolom dibawah ini
             </div><br>
 
             <div class="form-group">            
-              <label for="nim"><b>Masukkan Link Github Tugas Anda</b></label>
-              <input type="text" class="form-control" id="tugas" name="tugas" required autocomplete="off"><br>              
+              <label for="link github"><b>Masukkan Link Github Tugas Anda</b></label>
+              <input type="url" class="form-control" id="tugas" name="tugas" required autocomplete="off"><br>              
               <center><button type="submit" class="btn" id= "button" name="submit" style="background-color:#49b5e7;color:#ffffff;">Submit</button></center>                        
             </form>
         </div>      

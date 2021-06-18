@@ -84,10 +84,11 @@ class Admin extends CI_Controller {
             $data['jenis_kelamin'] = ['Laki-laki', 'Perempuan'];
 
             // form validation untuk memeriksa semua isian form apakah semua isian sudah terisi data
-            $this->form_validation->set_rules('nim', 'nim', 'required');
-            $this->form_validation->set_rules('nama', 'nama', 'required');
-            $this->form_validation->set_rules('kelas', 'kelas', 'required');
-            $this->form_validation->set_rules('tahun_masuk', 'tahun_masuk', 'required');
+            $this->form_validation->set_rules('nim', 'NIM', 'required');
+            $this->form_validation->set_rules('nama', 'Nama', 'required');
+            $this->form_validation->set_rules('kelas', 'Kelas', 'required');
+            $this->form_validation->set_rules('tahun_masuk', 'Tahun Masuk', 'required');
+            $this->form_validation->set_rules('github', 'Github');
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_admin',$data);
@@ -115,11 +116,11 @@ class Admin extends CI_Controller {
             $data['jenis_kelamin'] = ['Laki-laki', 'Perempuan'];
 
             // form validation untuk memeriksa semua isian form apakah semua isian sudah terisi data
-            $this->form_validation->set_rules('nim', 'nim', 'required');
-            $this->form_validation->set_rules('nama', 'nama', 'required');
-            $this->form_validation->set_rules('kelas', 'kelas', 'required');
-            $this->form_validation->set_rules('tahun_masuk', 'tahun_masuk', 'required');
-            $this->form_validation->set_rules('github', 'github');
+            $this->form_validation->set_rules('nim', 'NIM', 'required');
+            $this->form_validation->set_rules('nama', 'Nama', 'required');
+            $this->form_validation->set_rules('kelas', 'Kelas', 'required');
+            $this->form_validation->set_rules('tahun_masuk', 'Tahun Masuk', 'required');
+            $this->form_validation->set_rules('github', 'Github');
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_admin',$data);
@@ -205,7 +206,7 @@ class Admin extends CI_Controller {
             $data['kategoriMateri'] = $this->Admin_model->getKategoriMateriById($id);
 
             // form validation untuk memeriksa kelengkapan isian form
-            $this->form_validation->set_rules('nama_kategori', 'nama_kategori', 'required');        
+            $this->form_validation->set_rules('nama_kategori', 'Nama Kategori', 'required');        
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_admin',$data);
@@ -245,7 +246,7 @@ class Admin extends CI_Controller {
             $data['title'] = 'Tambah Kategori Materi';
 
             // form validation untuk memeriksa kelengkapan isian form
-            $this->form_validation->set_rules('nama_kategori', 'nama_kategori', 'required');
+            $this->form_validation->set_rules('nama_kategori', 'Nama Kategori', 'required');
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_admin',$data);
@@ -312,7 +313,7 @@ class Admin extends CI_Controller {
                 if($action == 'tolak') {
                     // menuju admin_model hapus data tutor sesuai dengan id_tutor yang dipilih
                     $this->Admin_model->hapus_data_tutor($id);
-                    echo"<script>alert('Tutor Telah Ditolak!');</script>";
+                    echo"<script>alert('Tutor Berhasil Ditolak!');</script>";
 
                     // kembali ke halaman data tutor
                     redirect('admin/data_tutor', 'refresh');
@@ -362,8 +363,8 @@ class Admin extends CI_Controller {
 
             // form validation untuk memeriksa kelengkapan isian form
             $this->form_validation->set_rules('id_admin', 'id_admin', 'required');
-            $this->form_validation->set_rules('password_lama', 'password_lama', 'required');
-            $this->form_validation->set_rules('password_baru', 'password_baru', 'required');
+            $this->form_validation->set_rules('password_lama', 'Password Lama', 'required');
+            $this->form_validation->set_rules('password_baru', 'Password Baru', 'required');
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_admin',$data);
@@ -386,7 +387,7 @@ class Admin extends CI_Controller {
                     }
                 }
                 else{
-                    echo"<script>alert('Password yang Anda Masukkan Salah!');</script>";
+                    echo"<script>alert('Password lama yang Anda masukkan tidak sesuai!');</script>";
                     redirect('Admin/profile','refresh');
                 }    
             }
@@ -461,13 +462,50 @@ class Admin extends CI_Controller {
     public function create()
     {
         $data['title'] = "Upload File Excel";
-        $this->load->view('template/header2_admin',$data);
-        $this->load->view('Admin/create', $data);
-        $this->load->view('template/footer2_admin',$data);
+
+
+
+            $this->load->view('template/header2_admin',$data);
+            $this->load->view('Admin/create', $data);
+            $this->load->view('template/footer2_admin',$data);
+        
+    }
+
+    public function file_check($str){
+        $allowed_mime_type_arr = array('application/xlx','application/xlxs');
+        $mime = get_mime_by_extension($_FILES['file']['name']);
+        if(isset($_FILES['file']['name']) && $_FILES['file']['name']!=""){
+            if(in_array($mime, $allowed_mime_type_arr)){
+                // return true;
+                if (filesize($_FILES['file']['tmp_name']) > 2097152) {
+                    $this->form_validation->set_message('file_check', 'The Image file size shoud not exceed 2 MB!');
+                    return false;
+                }
+            }
+            else{
+                $this->form_validation->set_message('file_check', 'Please select only xlx or xlxs file.');
+                return false;
+            }
+        }
+        else{
+            $this->form_validation->set_message('file_check', 'Please choose a file to upload.');
+            return false;
+        }
     }
 
     public function excel()
     {
+        $data['title'] = "Upload File Excel";
+        $this->form_validation->set_rules('file', '', 'callback_file_check');
+
+        if($this->form_validation->run() == FALSE) {
+            $this->load->view('template/header2_admin',$data);
+            $this->load->view('Admin/create', $data);
+            $this->load->view('template/footer2_admin',$data);
+        }
+        else {
+            
+        
         if(isset($_FILES["file"]["name"])){
                 // upload
             $file_tmp = $_FILES['file']['tmp_name'];
@@ -524,5 +562,6 @@ class Admin extends CI_Controller {
             $this->session->set_flashdata($message);
             redirect('Admin/data_mahasiswa');
         }
+    }
     }
 }

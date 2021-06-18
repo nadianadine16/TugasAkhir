@@ -28,19 +28,19 @@
             <div class="product-payment-inner-st">
                 <center><h4>Tambah Data Mahasiswa</h4></center>
                 <?php if (validation_errors()): ?>
-                <div class="alert alert-danger" role="alert">
-                    <?php echo validation_errors(); ?>
-                </div>
+                    <div class="alert alert-danger" role="alert">
+                        <?php echo validation_errors(); ?>
+                    </div>
                 <?php endif; ?>
                 <div class="product-payment-inner-st">
                 <form action="<?=base_url('Admin/tambah_data_mahasiswa')?>" method="post" onsubmit="return validasi_input(this)">
                 <div class="form-group">
                     <label for="nim">NIM</label>
-                        <input type="text" class="form-control" id="nim" name="nim" required autocomplete="off">
+                        <input type="text" class="form-control" id="nim" name="nim" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="nama">Nama</label>
-                        <input type="text" class="form-control" id="nama" name="nama" required autocomplete="off">
+                        <input type="text" class="form-control" id="nama" name="nama" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="jenis_kelamin">Jenis Kelamin</label>
@@ -64,11 +64,11 @@
                 </div>  
                 <div class="form-group">
                     <label for="kelas">Kelas</label>
-                        <input type="text" class="form-control" id="kelas" name="kelas" required autocomplete="off">
+                        <input type="text" class="form-control" id="kelas" name="kelas" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="tahun_masuk">Tahun Masuk</label>
-                        <input type="text" class="form-control" id="tahun_masuk" name="tahun_masuk" required autocomplete="off">
+                        <input type="text" class="form-control" id="tahun_masuk" name="tahun_masuk" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="github">Alamat Github</label>
@@ -84,7 +84,7 @@
 function validasi_input(form){
   var mincar = 10;
   if (form.nim.value.length > mincar){
-    alert("NIM Maksimal 10 karakter!");
+    alert("NIM maksimal 10 karakter!");
     form.nim.focus();
     return (false);
   }
@@ -99,7 +99,7 @@ function validasi_input(form){
         status = status && cek;
         }
         if (status == false){
-            alert("NIM harus angka");
+            alert("NIM harus angka!");
             form.nim.focus();
             return false;
         }

@@ -1,5 +1,3 @@
-<!-- Static Table End -->
-
     <!-- jquery
 		============================================ -->
         <script src="<?= base_url()?>/assets_admin/js/vendor/jquery-1.12.4.min.js"></script>
@@ -100,7 +98,7 @@
      <script>
         $(document).ready(function(){
             $('#summernoteForum').summernote({
-                height: "300px",
+                height: "200px",
                 toolbar: [                  
                   ['font', ['bold', 'underline', 'clear']],
                   ['fontname', ['fontname']],

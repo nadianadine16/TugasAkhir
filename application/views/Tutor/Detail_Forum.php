@@ -7,14 +7,15 @@
           <div class="col-md-12 col-sm-8 col-xs-12">
             <div class="review-content-section">
               <div class="chat-discussion" style="height: auto;">
-              <p style="font-size:18px;"><b><?=$p["nama"];?></b></p>
+              <p style="font-size:23px;"><b><?=$p["topik"];?></b></p>
               <p style="font-size:15px;"><?=$p["pertanyaan"];?></p>
-              <p style="font-size:11px;">Diunggah pada: <?php echo date("d-F-Y H:i", strtotime($tanggal));?></p>
+              <br>
+              <p style="font-size:15px;">Oleh: <b><?=$p["nama"];?></b> diunggah pada <?php echo date("d-F-Y H:i", strtotime($tanggal));?></p><br>
                 
   <?php endforeach;?>
-              <div class="kotak" id="mydiv" style="height:340px;display:block;  overflow:auto;" >
+              <div class="kotak" id="mydiv" style="height:500px;display:block;overflow:auto;" >
               <?php if($jawaban_forum == NULL) {?>
-                <center><p style="margin-top:10%;font-size:16px;">Forum ini belum ada yang menjawab. <b>Jadilah yang pertama!</b></p></center>
+                <center><p style="margin-top:20%;font-size:16px;">Forum ini belum ada yang menjawab. <b>Jadilah yang pertama!</b></p></center>
               <?php }
               else {?>
                 <?php $no=1; foreach($jawaban as $m):?>
@@ -35,17 +36,22 @@
           <h4 style="padding-top:5px; color:white;">....</h4>
           <div class="row">
             <div class="col-md-12 col-sm-8 col-xs-12">
+            <center><h4>Balas Forum</h4><br></center>
+            <?php if (validation_errors()): ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo validation_errors(); ?>
+                        </div>
+                    <?php endif; ?>
             <form action="<?=base_url('Tutor/Jawab_Forum/'.$p['id_forum'])?>" method="post" enctype="multipart/form-data">
               <?php  foreach($get_id_mahasiswa as $gid):?>
               <input type="hidden" name="id_user" value="<?=$gid['id_mahasiswa']?>">
               <?php endforeach;?>
               <input type="hidden" name="id_forum" value="<?=$p["id_forum"];?>">      
               <div class="form-group">
-                <label>Jawab Forum</label>
                 <textarea name="chat" id="summernoteForum"></textarea>                
               </div>              
               <span id="total-caracteres"></span>
-              <button type="submit" id="submit" class="btn btn-primary float-right">Submit</button>              
+              <center><button type="submit" id="submit" class="btn btn-primary float-right">Submit</button></center>            
             </form>            
             </div>
           </div>

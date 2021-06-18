@@ -7,7 +7,8 @@
       <?php $tgl = $p["created_at"];?>      
         <p><b><?= $p["nama"];?></b> pada <?php echo date("d-F-Y", strtotime($tgl));?></p>
         <p><b>Kategori</b> : <?= $p["nama_kategori"];?></p>
-        <p><b>Pertanyaan</b> : <?=$p["pertanyaan"];?>      
+        <center><p  style="font-size:23px;"><b><?= $p["topik"];?></b></p></center>
+        <center><p><?=$p["pertanyaan"];?>  </center>    
     <?php endforeach;?>
     <hr>
     <div class ="kotak" id= "kotak"style="margin-top:20px ; height:500px; display:block;  overflow:auto;">
@@ -27,16 +28,21 @@
         <?php endforeach;?>
       <?php }?>
     </div><br><br>
+    <h5 style="margin-left:45%;"><b>Balas Forum </b></h5><br>
     <div class="row">
             <div class="col-md-12 col-sm-8 col-xs-12">
             <form action="<?=base_url('User/Jawab_Forum/'.$p['id_forum'])?>" method="post" enctype="multipart/form-data">              
               <input type="hidden" name="id_user" value="<?= $this->session->userdata('id_mahasiswa');?>">              
               <input type="hidden" name="id_forum" value="<?=$p["id_forum"];?>">      
               <div class="form-group">
-                <label>Jawab Forum</label>
+              <?php if (validation_errors()): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo validation_errors(); ?>
+                </div>
+              <?php endif;?>
                 <textarea name="chat" id="summernoteForum"></textarea>
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>              
+              <center><button type="submit" class="btn" style="background-color:#49b5e7;color:#ffffff;margin-bottom:15px;">Kirim</button></center>   
             </form>    
       </div>
     </section>

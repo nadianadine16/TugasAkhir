@@ -12,7 +12,7 @@
                             <ul class="breadcome-menu">
                                 <li><a href="<?= base_url();?>/Tutor/index" style="color:#088ccf;">Home</a> <span class="bread-slash">/</span></li>
                                 <?php foreach($tutor as $t2):?>
-                                <li><a href="<?= base_url('Tutor/Profil/'.$t2['id_mahasiswa'])?>" style="color:#088ccf;">Profil</a> <span class="bread-slash">/</span></li>
+                                <li><a href="<?= base_url('Tutor/Profil/'.$t2['id_tutor'])?>" style="color:#088ccf;">Profil</a> <span class="bread-slash">/</span></li>
                                 <?php endforeach;?>
                                 <li><span class="bread-blod">Edit Profil</span></li>
                             </ul>
@@ -35,7 +35,7 @@
                         </div>
                     <?php endif; ?>
                     <?php foreach($tutor as $t2):?>
-                    <form action="<?=base_url('Tutor/Edit_Profil/'.$t2['id_mahasiswa'])?>" method="post" enctype="multipart/form-data">
+                    <form action="<?=base_url('Tutor/Edit_Profil/'.$t2['id_tutor'])?>" method="post" enctype="multipart/form-data">
                         <input type="hidden" id="id_mahasiswa" name="id_mahasiswa" value="<?= $this->session->userdata('id_mahasiswa');?>">
                         <div class="form-group">
                             <label for="nama">Nama</label>
@@ -50,7 +50,7 @@
                             <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin" readonly="true" value="<?=$t2['jenis_kelamin'];?>">
                         </div>
                         <div class="form-group">
-                            <label for="kategori_materi">Kategori Materi</label>
+                            <label for="kategori_materi">Kategori Materi yang Diajar</label>
                             <input type="text" class="form-control" id="id_kategori_materi" name="id_kategori_materi" readonly="true" value="<?=$t2['nama_kategori'];?>">
                         </div>
                         <div class="form-group">
@@ -71,13 +71,19 @@
                         </div>
                         <div class="form-group">
                             <label for="github">Alamat Github</label>
-                            <input type="text" class="form-control" id="github" name="github" value="<?=$t2['github'];?>">
+                            <input type="text" class="form-control" id="github" name="github" value="<?=$t2['github'];?>" autocomplete="off" placeholder="Contoh: https://github.com/shevaputriw">
                         </div>
                         <div class="form-group">
                             <label for="foto">Unggah Foto Profil</label>
                             <input type="hidden" name="old_profil" value="<?=$t2['foto'];?>" />
                             <input type="file" class="form-control" id="foto" name="foto">
-                            <p style="color:#808080;">Format .jpg .png Maks 500Kb || <?=$t2['foto'];?></p>
+                            <p style="color:#808080;">Format .jpg .png Maks 2 MB ||
+                                <?php if($t2['foto'] != NULL) {?>
+                                <?=$t2['foto'];?>
+                                <?php } else {?>
+                                <?php echo 'Foto profil belum ditambahkan'; ?>
+                                <?php }?>
+                            </p>
                         </div>
                         <center><button type="submit" name="submit" class="btn btn-primary float-right">Edit</button></center>
                     <?php endforeach;?>

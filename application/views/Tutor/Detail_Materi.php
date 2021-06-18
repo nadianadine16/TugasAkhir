@@ -111,7 +111,7 @@
                                                     ?>
                                                     <?php foreach($materi as $m):?>
                                                     <p><b>Soal Latihan</b><br><?=$k["soal"];?></p>
-                                                    <a style="float:right; margin-right:20px;" href="<?= base_url('Tutor/Hapus_Konten/'.$k['id_konten'].'/'.$m['id_materi'])?>" class="pd-setting-ed" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                    <a onclick="return konfirmasi()" style="float:right; margin-right:20px;" href="<?= base_url('Tutor/Hapus_Konten/'.$k['id_konten'].'/'.$m['id_materi'])?>" class="pd-setting-ed" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                     <a style="float:right; margin-right:5px;" href="<?= base_url('Tutor/Edit_Konten/'.$k['id_konten'].'/'.$m['id_materi'])?>" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                     <?php endforeach;?>
                                             </div>

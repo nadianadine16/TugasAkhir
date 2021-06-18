@@ -13,7 +13,7 @@
                     <option value="<?=$kt["id_kategori_materi"];?>"><?=$kt["nama_kategori"];?></option>
                 <?php endforeach;?>
           </select>&nbsp;
-          <input type="text" class="form-control" placeholder="Cari Tutor . . ." name="keyword" autocomplete="off" autofocus>
+          <input type="text" class="form-control" placeholder="Cari Tutor . . ." name="keyword" autocomplete="off">
           &nbsp;
           <input class="btn" type="submit" name="submit" style="background-color:#49b5e7;color:#ffffff;">
         </form>

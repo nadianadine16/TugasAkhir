@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="product-payment-inner-st">
-                <center><h4>Halaman Ubah Password</h4></center>
+                <center><h4>Ubah Password</h4></center>
                 <?php if (validation_errors()): ?>
                 <div class="alert alert-danger" role="alert">
                     <?php echo validation_errors(); ?>
@@ -38,7 +38,7 @@
 function validasi_input(form){
   var mincar = 8;
   if (form.password_baru.value.length < mincar){
-    alert("Password Minimal 8 karakter!");
+    alert("Password minimal 8 karakter!");
     form.password_baru.focus();
     return (false);
   }  
