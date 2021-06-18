@@ -103,6 +103,15 @@
             return $query->result_array();
         }
 
+        public function detail_mahasiswa($id){
+            $this->db->select('*');
+            $this->db->from('mahasiswa');
+            $this->db->where('id_mahasiswa', $id);
+            
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+
         public function Cek_Jawaban($id_forum) { //pemeriksaan jawaban forum kosong/tidak
             $this->db->select('*');
             $this->db->from('chat_forum');
@@ -467,7 +476,7 @@
         }
 
         public function namaTujuan($send_to){ //get nama untuk tujuan mengirim chat
-            $this->db->select('nama');
+            $this->db->select('nama, id_mahasiswa');
             $this->db->from('mahasiswa');
             $this->db->where('id_mahasiswa', $send_to);
             $query = $this->db->get();

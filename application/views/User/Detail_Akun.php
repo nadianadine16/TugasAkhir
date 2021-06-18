@@ -46,7 +46,7 @@
             <td><?=$t["tugas"];?></td>
             <td>
             <?php if($t["status"] == "Revisi"){?>
-                <a href="<?= base_url();?>User/kumpulkanTugas/<?=$t['id_konten'];?>"><center><button class="btn btn-danger btn-sm" style="width:60px;align-text:center;">Revisi</button></center></a>
+                <a href="<?= base_url();?>User/KumpulkanTugas/<?=$t['id_konten'];?>"><center><button class="btn btn-danger btn-sm" style="width:60px;align-text:center;">Revisi</button></center></a>
             <?php }
             else if ($t["status"] == "Diajukan") { ?>
             <center><button class="btn btn-primary btn-sm" disabled>Diajukan</button></center>
@@ -95,7 +95,7 @@
             <?php }?>
             <td><?=$f["topik"];?></td>
             <td><?=$f["created_at"];?></td>
-            <td><a href="<?= base_url();?>User/change_status_jawaban/<?=$f['id_forum'];?>"><center><button class="btn btn-primary btn-sm">Lihat Forum</button></center></a></td>
+            <td><a href="<?= base_url();?>User/Change_Status_Jawaban/<?=$f['id_forum'];?>"><center><button class="btn btn-primary btn-sm">Lihat Forum</button></center></a></td>
         </tr>
         <?php endforeach;?>
     </tbody>

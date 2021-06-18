@@ -98,7 +98,7 @@
                                     ?>
                                     <?php foreach($materi as $m):?>
                                     <p><b>Soal Latihan</b><br><?=$k["soal"];?></p>
-                                    <a href="<?= base_url();?>user/kumpulkanTugas/<?=$k['id_konten'];?>"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Kumpulkan Tugas Disini</a>
+                                    <a href="<?= base_url();?>User/KumpulkanTugas/<?=$k['id_konten'];?>"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Kumpulkan Tugas Disini</a>
                                 <?php endforeach;?>
                             </div>
                         </div>

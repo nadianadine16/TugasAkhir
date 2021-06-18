@@ -22,9 +22,9 @@
           <p class="card-text"><?= $d["deskripsi"]?></p>      
           <b>Soal: </b><br>
           <p class="card-text"><?= $d["soal"]?></p>      
-          <a href="<?= base_url();?>user/kumpulkanTugas/<?=$d['id_konten'];?>" class="btn btn-primary">Kumpulkan Tugas</a>
+          <a href="<?= base_url();?>user/KumpulkanTugas/<?=$d['id_konten'];?>" class="btn btn-primary">Kumpulkan Tugas</a>
         </div>      
       </div>
       <?php endforeach;?>
   </div>
-</section><!-- End Team Section -->
+</section>

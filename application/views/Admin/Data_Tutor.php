@@ -63,8 +63,8 @@
                                         <td><?=$m["prodi"];?></td>
                                         <td><?=$m["kelas"];?></td>
                                         <td class="datatable-ct">
-                                            <a href="<?= base_url();?>admin/detail_data_tutor/<?=$m['id_tutor'];?>" class="pd-setting-ed"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                            <a onclick="return konfirmasi()" href="<?= base_url();?>admin/hapus_data_tutor/<?=$m['id_tutor'];?>" class="pd-setting-ed" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                            <a href="<?= base_url();?>Admin/Detail_Data_Tutor/<?=$m['id_tutor'];?>" class="pd-setting-ed"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                            <a onclick="return konfirmasi()" href="<?= base_url();?>Admin/Hapus_Data_Tutor/<?=$m['id_tutor'];?>" class="pd-setting-ed" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
                                     <?php endforeach;?>     

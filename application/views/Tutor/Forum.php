@@ -43,7 +43,7 @@
           <div class="courses-inner res-mg-b-30">
             <div class="course-des">
               <p style="font-size:22px;"><?=(strlen($p['topik']) > 35 ? substr($p['topik'], 0, 35)."..." : $p['topik']) ;?></p><br>
-              <p><span><i class="fa fa-clock"></i></span> <b>Nama Penanya:</b> <?=$p["nama"];?></p>    
+              <p><span><i class="fa fa-clock"></i></span> <b>Nama Penanya:</b> <a  href="<?= base_url();?>Tutor/Detail_Mahasiswa/<?=$p['id_mahasiswa'];?>" ><?=$p["nama"];?></a></p>    
               <p><span><i class="fa fa-clock"></i></span> <b>Kategori:</b> <?=$p["nama_kategori"];?></p>           
               <p><span><i class="fa fa-clock"></i></span> <b>Dibuat pada:</b> <?php echo date("d-F-Y", strtotime($tanggal));?></p>
             </div>

@@ -7,7 +7,7 @@
       
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-left:25%;">
-        <form class="form-inline" action ="<?= base_url('User/cari');?>" method="post">
+        <form class="form-inline" action ="<?= base_url('User/Cari');?>" method="post">
           <select class="form-control" id="id_kategori_materi" name="id_kategori_materi">
           <option value="" selected="true" disabled="disabled">- Pilih Kategori Forum -</option>
           <?php foreach($hasil_cari_kategori as $hc) : ?>
@@ -43,7 +43,7 @@
                 <h5 class="card-title" style="font-size:16px;"><b>Kategori : </b> <?=$p["nama_kategori"];?></h5>
                 
                 <p class="card-text" style="font-size:13px;text-align: right;"><?php echo date("d-F-Y", strtotime($tanggal));?></p>
-                <a href="<?= base_url();?>user/change_status_jawaban/<?=$p['id_forum'];?>" class="btn btn-sm" style="float:right;background-color:#49b5e7;color:#ffffff;">Lihat Forum</a>
+                <a href="<?= base_url();?>User/Change_Status_Jawaban/<?=$p['id_forum'];?>" class="btn btn-sm" style="float:right;background-color:#49b5e7;color:#ffffff;">Lihat Forum</a>
               </div>
             </div><br>
           </div>

@@ -18,7 +18,7 @@
                 </div>
                 <?php endif; ?>
                 <div class="product-payment-inner-st">
-                <form action="<?=base_url('Admin/profile')?>" method="post" onsubmit="return validasi_input(this)">
+                <form action="<?=base_url('Admin/Profile')?>" method="post" onsubmit="return validasi_input(this)">
                 <input type="hidden" name="id_admin" value="<?= $this->session->userdata('id_admin');?>">
                 <div class="form-group">
                     <label for="nama_kategori">Password Lama</label>

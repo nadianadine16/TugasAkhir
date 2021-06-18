@@ -5,9 +5,9 @@
     </div>
     <div class="row">      
       <div class="col-md-5" style="margin-bottom:30px;">
-      <form action ="<?= base_url('user/cariChat');?>" method="post">
+      <form action ="<?= base_url('User/CariChat');?>" method="post">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Cari Tutor. . ." name="keyword" autocomplete="off" autofocus>
+            <input type="text" class="form-control" placeholder="Cari Tutor. . ." name="keyword" autocomplete="off">
             <div class="input-group-append">
               <input class="btn" type="submit" name="submit" style="background-color:#49b5e7;color:#ffffff;"></button>
             </div>
@@ -46,7 +46,7 @@
               <b>Tahun Masuk :</b> <?=$n["tahun_masuk"]?>
               </div>
               <?php }?>
-              <a href="<?= base_url();?>user/change_status_chat/<?=$n['id_mahasiswa'];?>"style="float:right;color:#007bff; bottom: 0;right:0; padding: 15px; position: absolute;"><i class="fa fa-envelope" aria-hidden="true"></i> Chat</a>
+              <a href="<?= base_url();?>User/Change_Status_Chat/<?=$n['id_mahasiswa'];?>"style="float:right;color:#007bff; bottom: 0;right:0; padding: 15px; position: absolute;"><i class="fa fa-envelope" aria-hidden="true"></i> Chat</a>
             </div>      
         </div>
         <?php endforeach;?>

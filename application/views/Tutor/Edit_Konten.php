@@ -21,8 +21,8 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
                                 <li><a href="<?= base_url();?>/Tutor/index" style="color:#088ccf;">Home</a> <span class="bread-slash">/</span></li>
-                                <li><a href="<?= base_url();?>/Tutor/data_materi" style="color:#088ccf;">Data Materi</a> <span class="bread-slash">/</span></li>
-                                <li><a href="<?= base_url('Tutor/Detail_materi/'.$konten['id_materi'])?>" style="color:#088ccf;">Konten</a> <span class="bread-slash">/</span></li>
+                                <li><a href="<?= base_url();?>/Tutor/Data_Materi" style="color:#088ccf;">Data Materi</a> <span class="bread-slash">/</span></li>
+                                <li><a href="<?= base_url('Tutor/Detail_Materi/'.$konten['id_materi'])?>" style="color:#088ccf;">Konten</a> <span class="bread-slash">/</span></li>
                                 <li><span class="bread-blod">Edit Konten</span></li>
                             </ul>
                         </div>

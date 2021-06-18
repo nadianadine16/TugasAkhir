@@ -39,13 +39,13 @@
                         </div>
                     </div>
                     <?= $this->session->flashdata('message');?>
-                    <a href="<?= base_url()?>/Admin/tambah_data_mahasiswa" class="btn btn-primary btn-icon-split">
+                    <a href="<?= base_url()?>/Admin/Tambah_Data_Mahasiswa" class="btn btn-primary btn-icon-split">
                         <span class="icon text-white-50">
                             <i class="fa fa-plus"></i>
                         </span>
                         <span class="text">Tambah Mahasiswa</span>
                     </a>
-                    <a href="<?= site_url('Admin/create') ?>" class="btn btn-primary mb-3"><i class="fa fa-upload mr-1"></i> Import Data Mahasiswa</a>
+                    <a href="<?= site_url('Admin/Create') ?>" class="btn btn-primary mb-3"><i class="fa fa-upload mr-1"></i> Import Data Mahasiswa</a>
                     <div class="sparkline13-graph">
                         <div class="datatable-dashv1-list custom-datatable-overright">
                             <div id="toolbar">
@@ -73,9 +73,9 @@
                                         <td><?=$m["prodi"];?></td>
                                         <td><?=$m["kelas"];?></td>
                                         <td class="datatable-ct">
-                                            <a href="<?= base_url();?>admin/detail_data_mahasiswa/<?=$m['id_mahasiswa'];?>" class="pd-setting-ed"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                            <a href="<?= base_url();?>admin/edit_data_mahasiswa/<?=$m['id_mahasiswa'];?>" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                            <a onclick="return konfirmasi()" href="<?= base_url();?>admin/hapus_data_mahasiswa/<?=$m['id_mahasiswa'];?>" class="pd-setting-ed" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                            <a href="<?= base_url();?>Admin/Detail_Data_Mahasiswa/<?=$m['id_mahasiswa'];?>" class="pd-setting-ed"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                            <a href="<?= base_url();?>Admin/Edit_Data_Mahasiswa/<?=$m['id_mahasiswa'];?>" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                            <a onclick="return konfirmasi()" href="<?= base_url();?>Admin/Hapus_Data_Mahasiswa/<?=$m['id_mahasiswa'];?>" class="pd-setting-ed" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
                                     <?php endforeach;?>     

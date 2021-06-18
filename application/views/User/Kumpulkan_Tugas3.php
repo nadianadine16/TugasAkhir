@@ -24,7 +24,7 @@
                 <p class="card-text"><?= $d["soal"]?></p> 
 
                 <?php foreach($cek_tugas as $c):?>
-                <form action="<?=base_url('user/revisi_tugas/'.$c['id_tugas'].'/'.$d['id_konten'])?>" method="post">
+                <form action="<?=base_url('User/Revisi_Tugas/'.$c['id_tugas'].'/'.$d['id_konten'])?>" method="post">
                     <input type="hidden" class="form-control" id="id_mahasiswa" name="id_mahasiswa" value="<?= $this->session->userdata('id_mahasiswa');?>">
                     <input type="hidden" class="form-control" id="id_konten" name="id_konten" value="<?= $d["id_konten"]?>">
                     <input type="hidden" class="form-control" id="id_tugas" name="id_tugas" value="<?= $c["id_tugas"]?>">

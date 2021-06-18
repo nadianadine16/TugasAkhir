@@ -64,7 +64,7 @@
                                         <td><?=$m["prodi"];?></td>
                                         <td><a href="<?= base_url('upload/surat_pernyataan/'.$m["surat_pernyataan"])?>" style="color:#3495eb;"><?=$m["surat_pernyataan"];?></a></td>
                                         <td class="datatable-ct">
-                                        <form action ="<?= base_url();?>admin/status_pendaftaran/<?=$m["id_tutor"];?>" method="post">
+                                        <form action ="<?= base_url();?>Admin/Status_Pendaftaran/<?=$m["id_tutor"];?>" method="post">
                                         <input type="hidden" name="id_tutor" value="<?= $m["id_tutor"];?>">
                                         <input type="hidden" name="status" value="2">
                                         <button class="btn btn-success" type="submit" name="action" value="terima"><i class="fa fa-check"></i></button>

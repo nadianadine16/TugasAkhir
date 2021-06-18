@@ -26,7 +26,7 @@
                   <h2><b>Stucode - JTI</b></h2>
                 </div>
                 <p class="login-card-description">Masukan NIM Anda untuk memeriksa status pendaftaran.</p>
-                <form action="<?= base_url('tutor/cari');?>" method="post">
+                <form action="<?= base_url('Tutor/Cari');?>" method="post">
                     <div class="form-group">
                       <label for="email" class="sr-only">NIM</label>
                       <input id="search" type="text" placeholder="Masukan NIM" name="keyword" autocomplete="off" class="form-control" autofocus="true" style="width:155%;"/>                    

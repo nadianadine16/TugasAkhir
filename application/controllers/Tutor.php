@@ -329,7 +329,7 @@ class Tutor extends CI_Controller {
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_tutor',$data);
-                $this->load->view('Tutor/Edit_Materi', $data);
+                $this->load->view('Tutor/Edit_materi', $data);
                 $this->load->view('template/footer2_tutor',$data);
             }
             else {
@@ -745,6 +745,27 @@ class Tutor extends CI_Controller {
         } 
     }
 
+    public function Detail_Mahasiswa($id_mahasiswa)
+    {
+        if (isset($_SESSION['id_tutor'])) {
+            $data['title'] = 'Detail Data Mahasiswa';
+            // menampilkan data mahasiswa sesuai dengan id_mahasiswa
+            $data['mahasiswa'] = $this->Tutor_model->detail_mahasiswa($id_mahasiswa);
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
+            $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
+            $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
+
+            $this->load->view('template/header2_tutor',$data);
+            $this->load->view('Tutor/Detail_Mahasiswa',$data);
+            $this->load->view('template/footer2_tutor',$data);
+        } 
+        else {
+            redirect('Login/logout');
+        }
+    }
+
     public function Cari_Forum(){
         if (isset($_SESSION['id_tutor'])) {
             $data['title'] = 'Forum';
@@ -782,7 +803,7 @@ class Tutor extends CI_Controller {
             }
 
             $this->load->view('template/header2_tutor', $data);
-            $this->load->view("tutor/Hasil_Cari_Forum",$data);
+            $this->load->view("Tutor/Hasil_Cari_Forum",$data);
             $this->load->view('template/footer2_tutor', $data);  
         }
         else {
@@ -796,7 +817,7 @@ class Tutor extends CI_Controller {
         $this->load->view('Tutor/Cek_Status', $data);        
     }
 
-    public function cari() {
+    public function Cari() {
         // mengambil data input yang dimasukkan saat pencarian NIM calon tutor
         $keyword = $this->input->post('keyword');
 
@@ -814,7 +835,7 @@ class Tutor extends CI_Controller {
         $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
 
         if($berhasil){
-            $this->load->view('tutor/hasil_search_berhasil',$data);
+            $this->load->view('Tutor/Hasil_Search_Berhasil',$data);
         }
         else if (empty($cek)) {
             echo"<script>alert('Masukkan NIM dengan benar');</script>";
@@ -878,7 +899,7 @@ class Tutor extends CI_Controller {
         }       
     }
 
-    public function carichat(){
+    public function CariChat(){
         if (isset($_SESSION['id_tutor'])) {  
             // mengambil inputan dari form pencarian
             $keyword =  $this->input->post('keyword'); 
@@ -903,7 +924,7 @@ class Tutor extends CI_Controller {
         } 
     }
 
-    public function change_status_chat_tutor($from){
+    public function Change_Status_Chat_Tutor($from){
         //mengubah status pesan menjadi sudah dibaca (status = 2)
         $this->Tutor_model->change_status_chat_tutor($from);
         redirect('Tutor/Chat/'.$from,'refresh'); //kembali ke halaman chat

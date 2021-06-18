@@ -41,7 +41,7 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function data_mahasiswa()
+    public function Data_Mahasiswa()
     {
         if (isset($_SESSION['id_admin'])) {
             $data['title'] = 'Data Mahasiswa';
@@ -57,7 +57,7 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function detail_data_mahasiswa($id)
+    public function Detail_Data_Mahasiswa($id)
     {
         if (isset($_SESSION['id_admin'])) {
             $data['title'] = 'Detail Data Mahasiswa';
@@ -73,7 +73,7 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function edit_data_mahasiswa($id) {
+    public function Edit_Data_Mahasiswa($id) {
         if (isset($_SESSION['id_admin'])) {
             $data['title'] = 'Edit Data Mahasiswa';
             // get data mahasiswa sesuai dengan id_mahasiswa yang dipilih
@@ -92,14 +92,14 @@ class Admin extends CI_Controller {
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_admin',$data);
-                $this->load->view('admin/Edit_Mahasiswa', $data);
+                $this->load->view('Admin/Edit_Mahasiswa', $data);
                 $this->load->view('template/footer2_admin');
             }
             else {
                 // menuju ke admin_model edit data mahasiswa sesuai dengan id_mahasiswa yang dipilih
                 $this->Admin_model->edit_data_mahasiswa($id);
                 echo"<script>alert('Data Mahasiswa Berhasil Diedit!');</script>";
-                redirect('Admin/data_mahasiswa','refresh');
+                redirect('Admin/Data_Mahasiswa','refresh');
             }
         }
         else {
@@ -107,7 +107,7 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function tambah_data_mahasiswa(){
+    public function Tambah_Data_Mahasiswa(){
         if (isset($_SESSION['id_admin'])) {
             $data['title'] = 'Tambah Data Mahasiswa';
 
@@ -124,14 +124,14 @@ class Admin extends CI_Controller {
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_admin',$data);
-                $this->load->view('admin/Tambah_Mahasiswa', $data);
+                $this->load->view('Admin/Tambah_Mahasiswa', $data);
                 $this->load->view('template/footer2_admin', $data);
             }
             else {
                 // menuju ke admin_model tambah data mahasiswa
                 $this->Admin_model->tambah_data_mahasiswa();
                 echo"<script>alert('Data Mahasiswa Berhasil Ditambahkan!');</script>";
-                redirect('Admin/data_mahasiswa','refresh');
+                redirect('Admin/Data_Mahasiswa','refresh');
             }    
         }
         else {
@@ -139,21 +139,21 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function hapus_data_mahasiswa($id) {
+    public function Hapus_Data_Mahasiswa($id) {
         if (isset($_SESSION['id_admin'])) {
             // menuju ke admin_model hapus data mahasiswa sesuai id_mahasiswa
             $this->Admin_model->hapus_data_mahasiswa($id);
             echo"<script>alert('Data Mahasiswa Berhasil Dihapus!');</script>";
 
             // kembali ke halaman data mahasiswa
-            redirect('Admin/data_mahasiswa','refresh');
+            redirect('Admin/Data_Mahasiswa','refresh');
         }
         else {
             redirect('Login/logout');
         }
     }
 
-    public function data_tutor()
+    public function Data_Tutor()
     {
         if (isset($_SESSION['id_admin'])) {
             $data['title'] = 'Data Tutor';
@@ -169,21 +169,21 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function hapus_data_tutor($id) {
+    public function Hapus_Data_Tutor($id) {
         if (isset($_SESSION['id_admin'])) {
             // menghapus data tutor sesuai dengan id_tutor
             $this->Admin_model->hapus_data_tutor($id);
             echo"<script>alert('Data Tutor Berhasil Dihapus!');</script>";
 
             // kembali ke halaman data tutor
-            redirect('Admin/data_tutor','refresh');
+            redirect('Admin/Data_Tutor','refresh');
         }
         else {
             redirect('Login/logout');
         }
     }
 
-    public function data_kategori_materi()
+    public function Data_Kategori_Materi()
     {
         if (isset($_SESSION['id_admin'])) {
             $data['title'] = 'Data Kategori Materi';
@@ -199,7 +199,7 @@ class Admin extends CI_Controller {
         }
     }
     
-    public function edit_data_kategori_materi($id) {
+    public function Edit_Data_Kategori_Materi($id) {
         if (isset($_SESSION['id_admin'])) {
             $data['title'] = 'Edit Data Kategori Materi';
             // get data kategori materi sesuai dengan id_kategori_materi
@@ -210,7 +210,7 @@ class Admin extends CI_Controller {
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_admin',$data);
-                $this->load->view('admin/Edit_Kategori_Materi', $data);
+                $this->load->view('Admin/Edit_Kategori_Materi', $data);
                 $this->load->view('template/footer2_admin');
             }
             else {
@@ -219,7 +219,7 @@ class Admin extends CI_Controller {
                 echo"<script>alert('Kategori Materi Berhasil Diedit!');</script>";
 
                 // kembali ke halaman data kategori materi
-                redirect('Admin/data_kategori_materi','refresh');
+                redirect('Admin/Data_Kategori_Materi','refresh');
             }
         }
         else {
@@ -227,21 +227,21 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function hapus_data_kategori_materi($id) {
+    public function Hapus_Data_Kategori_Materi($id) {
         if (isset($_SESSION['id_admin'])) {
             // menuju ke admin_model hapus data kategori materi sesuai id_kategori_materi
             $this->Admin_model->hapus_data_kategori_materi($id);
             echo"<script>alert('Kategori Materi Berhasil Dihapus!');</script>";
 
             // kembali ke halaman data kategori materi
-            redirect('Admin/data_kategori_materi','refresh');
+            redirect('Admin/Data_Kategori_Materi','refresh');
         }
         else {
             redirect('Login/logout');
         }
     }
 
-    public function tambah_kategori_materi(){
+    public function Tambah_Kategori_Materi(){
         if (isset($_SESSION['id_admin'])) {
             $data['title'] = 'Tambah Kategori Materi';
 
@@ -250,7 +250,7 @@ class Admin extends CI_Controller {
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_admin',$data);
-                $this->load->view('admin/Tambah_Kategori_Materi', $data);
+                $this->load->view('Admin/Tambah_Kategori_Materi', $data);
                 $this->load->view('template/footer2_admin', $data);
             }
             else {
@@ -259,7 +259,7 @@ class Admin extends CI_Controller {
                 echo"<script>alert('Kategori Materi Berhasil Ditambahkan!');</script>";
 
                 // kembali ke halaman data kategori materi
-                redirect('Admin/data_kategori_materi','refresh');
+                redirect('Admin/Data_Kategori_Materi','refresh');
             }    
         }
         else {
@@ -267,7 +267,7 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function data_tutor_belum_verifikasi()
+    public function Data_Tutor_Belum_Verifikasi()
     {
         if (isset($_SESSION['id_admin'])) {
             $data['title'] = 'Data Tutor Belum Terverifikasi';
@@ -284,7 +284,7 @@ class Admin extends CI_Controller {
     }
 
     // function untuk proses verifikasi tutor sesuai dengan id_tutor yang dipilih
-    public function status_pendaftaran($id) {
+    public function Status_Pendaftaran($id) {
         if (isset($_SESSION['id_admin'])) {
             $data['title'] = 'Data Tutor Belum Terverifikasi';
             // mendapatkan semua data tutor yang belum diterima (status = 1)
@@ -308,7 +308,7 @@ class Admin extends CI_Controller {
                     echo"<script>alert('Tutor Berhasil Diterima!');</script>";
 
                     // kembali ke halaman data tutor
-                    redirect('admin/data_tutor', 'refresh');
+                    redirect('Admin/Data_Tutor', 'refresh');
                 }
                 if($action == 'tolak') {
                     // menuju admin_model hapus data tutor sesuai dengan id_tutor yang dipilih
@@ -316,7 +316,7 @@ class Admin extends CI_Controller {
                     echo"<script>alert('Tutor Berhasil Ditolak!');</script>";
 
                     // kembali ke halaman data tutor
-                    redirect('admin/data_tutor', 'refresh');
+                    redirect('Admin/Data_Tutor', 'refresh');
                 }
             }
         }
@@ -325,7 +325,7 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function data_kritik_saran()
+    public function Data_Kritik_Saran()
     {
         if (isset($_SESSION['id_admin'])) {
             $data['title'] = 'Data Kritik Saran';
@@ -341,7 +341,7 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function hapus_kritik_saran($id) {
+    public function Hapus_Kritik_Saran($id) {
         if (isset($_SESSION['id_admin'])) {
             // menuju admin model hapus kritik dan saran sesuai id_kritik_saran
             $this->Admin_model->hapus_kritik_saran($id);
@@ -356,7 +356,7 @@ class Admin extends CI_Controller {
     }
 
     // function untuk mengubah password
-    public function profile()
+    public function Profile()
     {
         if (isset($_SESSION['id_admin'])) {
             $data['title'] = 'Ubah Password';
@@ -383,12 +383,12 @@ class Admin extends CI_Controller {
                     }
                     else{
                         echo"<script>alert('Ubah Password Gagal!');</script>";
-                        redirect('Admin/profile','refresh');
+                        redirect('Admin/Profile','refresh');
                     }
                 }
                 else{
                     echo"<script>alert('Password lama yang Anda masukkan tidak sesuai!');</script>";
-                    redirect('Admin/profile','refresh');
+                    redirect('Admin/Profile','refresh');
                 }    
             }
         }
@@ -397,7 +397,7 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function forum() {
+    public function Forum() {
         if (isset($_SESSION['id_admin'])) {
             $data['title'] = 'Forum';
             // mendapatkan semua data forum
@@ -416,11 +416,11 @@ class Admin extends CI_Controller {
         if (isset($_SESSION['id_admin'])) {
             $data['title'] = 'Forum';
             // get data forum sesuai dengan id_forum
-            $data['detail_forum'] = $this->Admin_model->getForumById($id);
-            // get data jawaban forum sesuai dengan id_forum
-            $data['jawaban_forum'] = $this->Admin_model->jawaban_forum($id);
-            // untuk memeriksa apakah jawaban forum masih kosong atau sudah terisi
-            $data['cek_jawaban'] = $this->Admin_model->Cek_Jawaban($id);
+            $data['detail_pertanyaan'] = $this->Admin_model->detail_pertanyaan($id);
+            // menampilkan jawaban forum sesuai dengan id_forum
+            $data['jawaban'] = $this->Admin_model->jawaban($id);
+            // memeriksa apakah jawaban forum sedang kosong atau sudah terisi sesuai dengan id_forum
+            $data['jawaban_forum'] = $this->Admin_model->Cek_Jawaban($id);
 
             $this->load->view('template/header2_admin',$data);
             $this->load->view('Admin/Detail_Forum',$data);
@@ -431,7 +431,7 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function hapus_forum($id) {
+    public function Hapus_Forum($id) {
         if (isset($_SESSION['id_admin'])) {
             // menuju admin_model hapus forum sesuai dengan id_forum
             $this->Admin_model->hapus_forum($id);
@@ -445,7 +445,7 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function detail_data_tutor($id){
+    public function Detail_Data_Tutor($id){
         if (isset($_SESSION['id_admin'])) {
             $data['title'] = 'Detail Tutor';
             // get data tutor sesuai dengan id_tutor yang dipilih
@@ -459,20 +459,18 @@ class Admin extends CI_Controller {
             redirect('Login/logout');
         }
     }
-    public function create()
+    public function Create()
     {
         $data['title'] = "Upload File Excel";
 
-
-
-            $this->load->view('template/header2_admin',$data);
-            $this->load->view('Admin/create', $data);
-            $this->load->view('template/footer2_admin',$data);
+        $this->load->view('template/header2_admin',$data);
+        $this->load->view('Admin/create', $data);
+        $this->load->view('template/footer2_admin',$data);
         
     }
 
     public function file_check($str){
-        $allowed_mime_type_arr = array('application/xlx','application/xlxs');
+        $allowed_mime_type_arr = array('application/xls','application/xlsx');
         $mime = get_mime_by_extension($_FILES['file']['name']);
         if(isset($_FILES['file']['name']) && $_FILES['file']['name']!=""){
             if(in_array($mime, $allowed_mime_type_arr)){
@@ -483,7 +481,7 @@ class Admin extends CI_Controller {
                 }
             }
             else{
-                $this->form_validation->set_message('file_check', 'Please select only xlx or xlxs file.');
+                $this->form_validation->set_message('file_check', 'Please select only xls or xlsx file.');
                 return false;
             }
         }
@@ -504,8 +502,6 @@ class Admin extends CI_Controller {
             $this->load->view('template/footer2_admin',$data);
         }
         else {
-            
-        
         if(isset($_FILES["file"]["name"])){
                 // upload
             $file_tmp = $_FILES['file']['tmp_name'];
@@ -531,17 +527,15 @@ class Admin extends CI_Controller {
                     $tahun_masuk = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
 
                     $data[] = array(
-                        'nim'          => $nim,
-                        'nama'          =>$nama,
-                        'jenis_kelamin'         =>$jenis_kelamin,
-                        'jurusan'         =>$jurusan,
-                        'prodi'         =>$prodi,
-                        'kelas'         =>$kelas,
-                        'tahun_masuk'         =>$tahun_masuk,
+                        'nim'               => $nim,
+                        'nama'              =>$nama,
+                        'jenis_kelamin'     =>$jenis_kelamin,
+                        'jurusan'           =>$jurusan,
+                        'prodi'             =>$prodi,
+                        'kelas'             =>$kelas,
+                        'tahun_masuk'       =>$tahun_masuk,
                     );
-    
                 } 
-    
             }
     
             $this->db->insert_batch('mahasiswa', $data);

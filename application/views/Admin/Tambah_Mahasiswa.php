@@ -11,7 +11,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
                                 <li><a href="<?= base_url();?>/Admin/index" style="color:#088ccf;">Home</a> <span class="bread-slash">/</span></li>
-                                <li><a href="<?= base_url();?>/Admin/data_mahasiswa" style="color:#088ccf;">Data Mahasiswa</a> <span class="bread-slash">/</span></li>
+                                <li><a href="<?= base_url();?>/Admin/Data_Mahasiswa" style="color:#088ccf;">Data Mahasiswa</a> <span class="bread-slash">/</span></li>
                                 <li><span class="bread-blod">Tambah Mahasiswa</span></li>
                             </ul>
                         </div>
@@ -33,7 +33,7 @@
                     </div>
                 <?php endif; ?>
                 <div class="product-payment-inner-st">
-                <form action="<?=base_url('Admin/tambah_data_mahasiswa')?>" method="post" onsubmit="return validasi_input(this)">
+                <form action="<?=base_url('Admin/Tambah_Data_Mahasiswa')?>" method="post" onsubmit="return validasi_input(this)">
                 <div class="form-group">
                     <label for="nim">NIM</label>
                         <input type="text" class="form-control" id="nim" name="nim" autocomplete="off">
