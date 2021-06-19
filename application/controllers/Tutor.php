@@ -729,7 +729,7 @@ class Tutor extends CI_Controller {
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_tutor', $data);
-                $this->load->view('tutor/Detail_Forum', $data);
+                $this->load->view('Tutor/Detail_Forum', $data);
                 $this->load->view('template/footer2_tutor', $data);
             }
             else {

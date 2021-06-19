@@ -23,8 +23,8 @@
                     <p>Tutor Kategori <?=$n['nama_kategori']?></p>
 
                     <div class="icon-box">
-                        <h4 class="title" style="margin-left:0px;"> Jurusan/Program Studi/Kelas :</h4>
-                        <p class="description" style="margin-left:0px;"><?=$n['jurusan']?>/<?=$n['prodi']?>/<?=$n['kelas']?></p>
+                        <h4 class="title" style="margin-left:0px;"> Jurusan/Program Studi :</h4>
+                        <p class="description" style="margin-left:0px;"><?=$n['jurusan']?>/<?=$n['prodi']?></p>
                     </div>
 
                     <div class="icon-box">

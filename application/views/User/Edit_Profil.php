@@ -30,10 +30,6 @@
                 <input type="text" class="form-control" readonly="true" name="prodi" id="subject" value="<?=$pm['prodi']?>" style="width:1000px;"/>                
               </div>
               <div class="form-group">
-                <label><b>Kelas</b></label>
-                <input type="text" class="form-control" readonly="true" name="kelas" id="subject" value="<?=$pm['kelas']?>" style="width:1000px;"/>                
-              </div>
-              <div class="form-group">
                 <label><b>Tahun Masuk</b></label>
                 <input type="text" class="form-control" readonly="true" name="tahun_masuk" id="subject" value="<?=$pm['tahun_masuk']?>" style="width:1000px;"/>                
               </div>

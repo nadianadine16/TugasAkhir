@@ -56,10 +56,6 @@
                     <p><?=($m['prodi']); ?></p>
                 </div>  
                 <div class="form-group">
-                    <label for="kelas">Kelas</label>
-                    <p><?=($m['kelas']); ?></p>
-                </div>
-                <div class="form-group">
                     <label for="tahun_masuk">Tahun Masuk</label>
                     <p><?=($m['tahun_masuk']); ?></p>
                 </div>

@@ -71,7 +71,6 @@ class Login extends CI_Controller {
             $this->session->set_userdata('jenis_kelamin',$data['jenis_kelamin']);
             $this->session->set_userdata('jurusan',$data['jurusan']);
             $this->session->set_userdata('prodi',$data['prodi']);
-            $this->session->set_userdata('kelas',$data['kelas']);
             $this->session->set_userdata('tahun_masuk',$data['tahun_masuk']);
             $this->session->set_userdata('github',$data['github']);             
             

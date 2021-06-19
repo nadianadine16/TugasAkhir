@@ -59,7 +59,6 @@
                                         <th data-field="nama">Nama</th>
                                         <th data-field="jenis_kelamin">Jenis Kelamin</th>
                                         <th data-field="prodi">Program Studi</th>
-                                        <th data-field="kelas">Kelas</th>
                                         <th data-field="action">Action</th>
                                     </tr>
                                 </thead>
@@ -71,7 +70,6 @@
                                         <td><?=$m["nama"];?></td>
                                         <td><?=$m["jenis_kelamin"];?></td>
                                         <td><?=$m["prodi"];?></td>
-                                        <td><?=$m["kelas"];?></td>
                                         <td class="datatable-ct">
                                             <a href="<?= base_url();?>Admin/Detail_Data_Mahasiswa/<?=$m['id_mahasiswa'];?>" class="pd-setting-ed"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                             <a href="<?= base_url();?>Admin/Edit_Data_Mahasiswa/<?=$m['id_mahasiswa'];?>" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

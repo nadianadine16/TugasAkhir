@@ -64,10 +64,6 @@
                     </select>
                 </div>  
                 <div class="form-group">
-                    <label for="kelas">Kelas</label>
-                        <input type="text" class="form-control" id="kelas" name="kelas"value="<?=$mahasiswa['kelas'];?>">
-                </div>
-                <div class="form-group">
                     <label for="tahun_masuk">Tahun Masuk</label>
                         <input type="text" class="form-control" id="tahun_masuk" name="tahun_masuk" value="<?=$mahasiswa['tahun_masuk'];?>">
                 </div>

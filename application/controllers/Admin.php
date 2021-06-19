@@ -86,7 +86,6 @@ class Admin extends CI_Controller {
             // form validation untuk memeriksa semua isian form apakah semua isian sudah terisi data
             $this->form_validation->set_rules('nim', 'NIM', 'required');
             $this->form_validation->set_rules('nama', 'Nama', 'required');
-            $this->form_validation->set_rules('kelas', 'Kelas', 'required');
             $this->form_validation->set_rules('tahun_masuk', 'Tahun Masuk', 'required');
             $this->form_validation->set_rules('github', 'Github');
 
@@ -118,7 +117,6 @@ class Admin extends CI_Controller {
             // form validation untuk memeriksa semua isian form apakah semua isian sudah terisi data
             $this->form_validation->set_rules('nim', 'NIM', 'required');
             $this->form_validation->set_rules('nama', 'Nama', 'required');
-            $this->form_validation->set_rules('kelas', 'Kelas', 'required');
             $this->form_validation->set_rules('tahun_masuk', 'Tahun Masuk', 'required');
             $this->form_validation->set_rules('github', 'Github');
 
@@ -522,8 +520,7 @@ class Admin extends CI_Controller {
                     $jenis_kelamin = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
                     $jurusan = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
                     $prodi = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-                    $kelas = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
-                    $tahun_masuk = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
+                    $tahun_masuk = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
 
                     $data[] = array(
                         'nim'          => $nim,
@@ -531,7 +528,6 @@ class Admin extends CI_Controller {
                         'jenis_kelamin'         =>$jenis_kelamin,
                         'jurusan'         =>$jurusan,
                         'prodi'         =>$prodi,
-                        'kelas'         =>$kelas,
                         'tahun_masuk'         =>$tahun_masuk,
                     );    
                                         

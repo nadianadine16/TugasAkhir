@@ -32,7 +32,6 @@
                 "jenis_kelamin" => $this->input->post('jenis_kelamin', true),
                 "jurusan" => $this->input->post('jurusan', true),
                 "prodi" => $this->input->post('prodi', true),
-                "kelas" => $this->input->post('kelas', true),
                 "tahun_masuk" => $this->input->post('tahun_masuk', true),
                 "github" => $this->input->post('github', true)
             ];
@@ -56,7 +55,6 @@
             $this->jenis_kelamin = $post["jenis_kelamin"];
             $this->jurusan = $post["jurusan"];
             $this->prodi = $post["prodi"];
-            $this->kelas = $post["kelas"];
             $this->tahun_masuk = $post["tahun_masuk"];
             $this->github = $post["github"];
             

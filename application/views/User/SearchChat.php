@@ -7,7 +7,7 @@
       <div class="col-md-5" style="margin-bottom:30px;">
       <form action ="<?= base_url('user/cariChat');?>" method="post">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" value="<?=$hasil_cari?>" name="keyword" autocomplete="off">
+            <input type="text" class="form-control" value="<?=$hasil_cari?>" name="keyword" autocomplete="off" required>
             <div class="input-group-append">
               <input class="btn" type="submit" name="submit" style="background-color:#49b5e7;color:#ffffff;"></button>
             </div>

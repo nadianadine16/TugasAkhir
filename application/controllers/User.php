@@ -154,8 +154,7 @@ class User extends CI_Controller {
             $this->form_validation->set_rules('nim', 'nim', 'required');        
             $this->form_validation->set_rules('nama', 'nama', 'required');        
             $this->form_validation->set_rules('jurusan', 'jurusan', 'required');        
-            $this->form_validation->set_rules('prodi', 'prodi', 'required');        
-            $this->form_validation->set_rules('kelas', 'kelas', 'required');        
+            $this->form_validation->set_rules('prodi', 'prodi', 'required');            
             $this->form_validation->set_rules('tahun_masuk', 'tahun_masuk', 'required');        
             $this->form_validation->set_rules('github', 'github', 'required');        
             

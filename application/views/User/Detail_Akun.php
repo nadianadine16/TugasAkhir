@@ -13,7 +13,6 @@
                     <p><b>Jenis Kelamin</b> : <?=$m['jenis_kelamin']?></h5>
                     <p><b>Jurusan</b> : <?=$m['jurusan']?></h5>
                     <p><b>Program Studi</b> : <?=$m['prodi']?></h5>
-                    <p><b>Kelas</b> : <?=$m['kelas']?></h5>
                     <p><b>Tahun Masuk</b> : <?=$m['tahun_masuk']?></h5>
                     <p><b>Github</b> : <?=$m['github']?></h5>
                 </div> 

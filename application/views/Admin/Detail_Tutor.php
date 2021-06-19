@@ -123,12 +123,6 @@
                                                             </tr>
                                                             <tr><td>&nbsp;</td></tr>
                                                             <tr>
-                                                                <td valign="top" class="textt">Kelas</td>
-                                                                <td valign="top">:</td>
-                                                                <td><?=$t["kelas"];?></td>
-                                                            </tr>
-                                                            <tr><td>&nbsp;</td></tr>
-                                                            <tr>
                                                                 <td valign="top" class="textt">Tahun Masuk</td>
                                                                 <td valign="top">:</td>
                                                                 <td><?=$t["tahun_masuk"];?></td>
