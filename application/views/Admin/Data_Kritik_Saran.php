@@ -63,7 +63,7 @@
                                         <td><?=$k["subject"];?></td>
                                         <td><?=$k["kritik_saran"];?></td>
                                         <td>
-                                        <a onclick="return konfirmasi()" href="<?= base_url();?>admin/hapus_kritik_saran/<?=$k['id_kritiksaran'];?>" class="pd-setting-ed" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                        <a onclick="return konfirmasi()" href="<?= base_url();?>Admin/Hapus_Kritik_Saran/<?=$k['id_kritiksaran'];?>" class="pd-setting-ed" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                         </td>                                        
                                     </tr>
                                     <?php endforeach;?>     

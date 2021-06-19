@@ -10,7 +10,7 @@
               <p style="font-size:23px;"><b><?=$p["topik"];?></b></p>
               <p style="font-size:15px;"><?=$p["pertanyaan"];?></p>
               <br>
-              <p style="font-size:15px;">Oleh: <b><?=$p["nama"];?></b> diunggah pada <?php echo date("d-F-Y H:i", strtotime($tanggal));?></p><br>
+              <p style="font-size:15px;">Oleh: <b><a  href="<?= base_url();?>Tutor/Detail_Mahasiswa/<?=$p['id_mahasiswa'];?>" ><?=$p["nama"];?></a></b> diunggah pada <?php echo date("d-F-Y H:i", strtotime($tanggal));?></p><br>
                 
   <?php endforeach;?>
               <div class="kotak" id="mydiv" style="height:500px;display:block;overflow:auto;" >

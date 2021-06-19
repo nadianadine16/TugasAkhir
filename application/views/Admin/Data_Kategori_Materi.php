@@ -38,7 +38,7 @@
                             <center><h1>Data <span class="table-project-n">Kategori Materi</span></h1></center>
                         </div>
                     </div>
-                    <a href="<?= base_url()?>/Admin/tambah_kategori_materi" class="btn btn-primary btn-icon-split">
+                    <a href="<?= base_url()?>/Admin/Tambah_Kategori_Materi" class="btn btn-primary btn-icon-split">
                         <span class="icon text-white-50">
                             <i class="fa fa-plus"></i>
                         </span>
@@ -63,8 +63,8 @@
                                         <td><center><?=$no++?></center></td>
                                         <td><?=$k["nama_kategori"];?></td>                                        
                                         <td class="datatable-ct">
-                                            <a href="<?= base_url();?>admin/edit_data_kategori_materi/<?=$k['id_kategori_materi'];?>" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                            <a onclick="return konfirmasi()" href="<?= base_url();?>admin/hapus_data_kategori_materi/<?=$k['id_kategori_materi'];?>" class="pd-setting-ed" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                            <a href="<?= base_url();?>Admin/Edit_Data_Kategori_Materi/<?=$k['id_kategori_materi'];?>" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                            <a onclick="return konfirmasi()" href="<?= base_url();?>Admin/Hapus_Data_Kategori_Materi/<?=$k['id_kategori_materi'];?>" class="pd-setting-ed" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
                                     <?php endforeach;?>     

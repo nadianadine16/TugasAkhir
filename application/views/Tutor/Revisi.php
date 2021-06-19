@@ -21,7 +21,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
                                 <li><a href="<?= base_url();?>/Tutor/index" style="color:#088ccf;">Home</a> <span class="bread-slash">/</span></li>
-                                <li><a href="<?= base_url();?>/Tutor/Tugas_mahasiswa" style="color:#088ccf;">Tugas Mahasiswa</a> <span class="bread-slash">/</span></li>
+                                <li><a href="<?= base_url();?>/Tutor/Tugas_Mahasiswa" style="color:#088ccf;">Tugas Mahasiswa</a> <span class="bread-slash">/</span></li>
                                 <li><span class="bread-blod">Tambah Revisi</span></li>
                             </ul>
                         </div>
@@ -61,15 +61,6 @@
                 </div>
                 <center><button type="submit" class="btn btn-primary float-right">Kirim</button></center> 
             </form>
-                <!-- <form action="<?=base_url('Tutor/Revisi/'.$tugas['id_tugas'])?>" method="post">
-                <input type="hidden" name="id_tugas" value="<?=$tugas['id_tugas'];?>">
-                <input type="hidden" name="status" value="3">
-                <div class="form-group">
-                    <label for="revisi">Masukkan Revisi Disini</label>
-                    <textarea name="revisi"></textarea>
-                </div>
-                <center><button type="submit" name="submit" class="btn btn-primary float-right">Kirim</button></center>
-            </form> -->
             </div>
         </div>
     </div>

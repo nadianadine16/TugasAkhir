@@ -5,7 +5,7 @@
     </div>
     <div class="row">      
       <div class="col-md-5" style="margin-bottom:30px;">
-        <form class="form-inline" action ="<?= base_url('User/carimateri');?>" method="post">
+        <form class="form-inline" action ="<?= base_url('User/CariMateri');?>" method="post">
           <input type="text" class="form-control" value="<?=$hasil_cari?>" name="keyword" autocomplete="off" required> 
           <input class="btn" type="submit" name="submit" style="background-color:#49b5e7;color:#ffffff;">
         </form>
@@ -18,7 +18,7 @@
       else {?>
       <?php foreach($cari_materi as $d):?>
       <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-        <a href="<?= base_url();?>user/daftarKonten/<?=$d['id_materi'];?>">
+        <a href="<?= base_url();?>User/DaftarKonten/<?=$d['id_materi'];?>">
           <div class="member" style="max-height:400px;">
             <div class="member-img">
               <img src="<?= base_url('upload/cover_materi/'.$d['cover'])?>" class="img-fluid" alt="" style="width:280px; height:150px;">               

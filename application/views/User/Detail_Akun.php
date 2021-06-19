@@ -13,7 +13,6 @@
                     <p><b>Jenis Kelamin</b> : <?=$m['jenis_kelamin']?></h5>
                     <p><b>Jurusan</b> : <?=$m['jurusan']?></h5>
                     <p><b>Program Studi</b> : <?=$m['prodi']?></h5>
-                    <p><b>Kelas</b> : <?=$m['kelas']?></h5>
                     <p><b>Tahun Masuk</b> : <?=$m['tahun_masuk']?></h5>
                     <p><b>Github</b> : <?=$m['github']?></h5>
                 </div> 
@@ -46,7 +45,7 @@
             <td><?=$t["tugas"];?></td>
             <td>
             <?php if($t["status"] == "Revisi"){?>
-                <a href="<?= base_url();?>User/kumpulkanTugas/<?=$t['id_konten'];?>"><center><button class="btn btn-danger btn-sm" style="width:60px;align-text:center;">Revisi</button></center></a>
+                <a href="<?= base_url();?>User/KumpulkanTugas/<?=$t['id_konten'];?>"><center><button class="btn btn-danger btn-sm" style="width:60px;align-text:center;">Revisi</button></center></a>
             <?php }
             else if ($t["status"] == "Diajukan") { ?>
             <center><button class="btn btn-primary btn-sm" disabled>Diajukan</button></center>
@@ -95,7 +94,7 @@
             <?php }?>
             <td><?=$f["topik"];?></td>
             <td><?=$f["created_at"];?></td>
-            <td><a href="<?= base_url();?>User/change_status_jawaban/<?=$f['id_forum'];?>"><center><button class="btn btn-primary btn-sm">Lihat Forum</button></center></a></td>
+            <td><a href="<?= base_url();?>User/Change_Status_Jawaban/<?=$f['id_forum'];?>"><center><button class="btn btn-primary btn-sm">Lihat Forum</button></center></a></td>
         </tr>
         <?php endforeach;?>
     </tbody>

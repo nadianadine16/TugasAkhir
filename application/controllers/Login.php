@@ -57,7 +57,7 @@ class Login extends CI_Controller {
                 // set session login tutor          
                 $this->session->set_userdata('id_hitung',$login_tutor['id_hitung']);  
                 // menuju galaman utama tutor 
-                redirect('tutor/index');
+                redirect('Tutor/index');
             }
         }
         // jika kondisi $cek_mahasiswa benar
@@ -71,7 +71,6 @@ class Login extends CI_Controller {
             $this->session->set_userdata('jenis_kelamin',$data['jenis_kelamin']);
             $this->session->set_userdata('jurusan',$data['jurusan']);
             $this->session->set_userdata('prodi',$data['prodi']);
-            $this->session->set_userdata('kelas',$data['kelas']);
             $this->session->set_userdata('tahun_masuk',$data['tahun_masuk']);
             $this->session->set_userdata('github',$data['github']);             
             
@@ -81,7 +80,7 @@ class Login extends CI_Controller {
             // set session hasil jumlah session mahasiswa
             $this->session->set_userdata('id_hitung',$login_mahasiswa['id_hitung']);   
             // masuk ke halaman utama user (mahasiswa)
-            redirect('user/index');            
+            redirect('User/index');            
         }
         // jika kondisi $cek_admin benar
         else if($cek_admin->num_rows() > 0){
@@ -94,13 +93,13 @@ class Login extends CI_Controller {
             $this->session->set_userdata('password',$data['password']);
 
             // masuk ke halaman utama admin
-            redirect('admin/index');
+            redirect('Admin/index');
         }
         else {
             $data['title']= 'Login';
             $data['pesan'] = 'Username atau Password Anda Salah';
 
-            $this->load->view('login/index', $data);
+            $this->load->view('Login/index', $data);
         }
     }
 

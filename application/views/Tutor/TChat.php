@@ -53,7 +53,7 @@ x y{
 <div class="widgets-programs-area">
     <div class="container-fluid">
 	<?php foreach($nama_tujuan as $n):?>
-		<center><h4 style="padding-top:10px;padding-left:30px;margin-bottom:20px;">Mahasiswa : <b><?=$n["nama"]?></b></h4><hr style="width:85%;"></center>
+		<center><h4 style="padding-top:10px;padding-left:30px;margin-bottom:20px;">Mahasiswa : <a  href="<?= base_url();?>Tutor/Detail_Mahasiswa/<?=$n['id_mahasiswa'];?>" ><b><?=$n["nama"]?></b></a></h4><hr style="width:85%;"></center>
 	<?php endforeach;?> 
         <div class="row">
 			<div class="border rounded" id="border_rounded" style="margin-left:30px;;background-color:#ffffff;width:95%;height:450px;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">

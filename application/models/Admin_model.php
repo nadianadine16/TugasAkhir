@@ -32,7 +32,6 @@
                 "jenis_kelamin" => $this->input->post('jenis_kelamin', true),
                 "jurusan" => $this->input->post('jurusan', true),
                 "prodi" => $this->input->post('prodi', true),
-                "kelas" => $this->input->post('kelas', true),
                 "tahun_masuk" => $this->input->post('tahun_masuk', true),
                 "github" => $this->input->post('github', true)
             ];
@@ -56,7 +55,6 @@
             $this->jenis_kelamin = $post["jenis_kelamin"];
             $this->jurusan = $post["jurusan"];
             $this->prodi = $post["prodi"];
-            $this->kelas = $post["kelas"];
             $this->tahun_masuk = $post["tahun_masuk"];
             $this->github = $post["github"];
             
@@ -215,6 +213,36 @@
             return $this->db->count_all('forum');
         }
 
+        public function Cek_Jawaban($id_forum) { //pemeriksaan jawaban forum kosong/tidak
+            $this->db->select('*');
+            $this->db->from('chat_forum');
+            $this->db->join('forum', 'forum.id_forum = chat_forum.id_forum');
+            $this->db->where('chat_forum.id_forum', $id_forum);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+
+        public function jawaban($id) { //menampilkan jawaban forum sesuai id_forum
+            $this->db->select('*');
+            $this->db->from('chat_forum');
+            $this->db->join('mahasiswa', 'chat_forum.id_user = mahasiswa.id_mahasiswa');
+            $this->db->join('forum', 'forum.id_forum = chat_forum.id_forum');
+            $this->db->where('forum.id_forum', $id);
+            $this->db->order_by('chat_forum.send_time','ASC');
+            $query = $this->db->get();
+            return $query->result_array();
+        }    
+
+        public function detail_pertanyaan($id_forum) { //menampilkan detail pertanyaan forum sesuai id_forum
+            $this->db->select('*');
+            $this->db->from('forum');
+            $this->db->join('kategori_materi', 'forum.id_kategori_materi = kategori_materi.id_kategori_materi');
+            $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');  
+            $this->db->where('forum.id_forum', $id_forum);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+
         // mendapatkan semua data forum
         public function getAllForum(){
             $this->db->select('*');
@@ -246,17 +274,6 @@
             $this->db->join('forum', 'forum.id_forum = chat_forum.id_forum');
             $this->db->where('forum.id_forum', $id);
             $this->db->order_by('chat_forum.created_at','ASC');
-
-            $query = $this->db->get();
-            return $query->result_array();
-        }
-
-        // memeriksa jawaban forum kosong atau sudah terisi sesuai dengan id_forum nya
-        public function Cek_Jawaban($id_forum) {
-            $this->db->select('*');
-            $this->db->from('chat_forum');
-            $this->db->join('forum', 'forum.id_forum = chat_forum.id_forum');
-            $this->db->where('chat_forum.id_forum', $id_forum);
 
             $query = $this->db->get();
             return $query->result_array();

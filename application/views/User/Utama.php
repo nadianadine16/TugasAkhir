@@ -68,7 +68,7 @@
         <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
         <h4>Ayo Melangkah Lebih Baik dengan Belajar</h4>
                 <p>Pembelajaran model tutor sebaya saat ini menjadi trend karena dengan adanya model ini maka mahasiswa yang mengalami kesulitan tidak akan merasa canggung dalam mengajukan pertanyaan</p>
-                <form action="<?=base_url('User/daftarMateribyKategori')?>" method="post">
+                <form action="<?=base_url('User/DaftarMateribyKategori')?>" method="post">
                     <select class="form-control" id="id_kategori_materi" name="id_kategori_materi" style="width:74%;" required>
                         <option value="" selected="true" disabled="disabled">- Anda ingin belajar apa hari ini? -</option>
                         <?php foreach($kategori_materi as $km) : ?>
@@ -175,7 +175,7 @@
             </div>
           </div>
           <div class="col-lg-8 mt-5 mt-lg-0">
-            <form action="<?=base_url('user/prosesContactus')?>" method="post">
+            <form action="<?=base_url('User/ProsesContactus')?>" method="post">
               <input type="hidden" name="id_user" value="<?= $this->session->userdata('id_mahasiswa');?>">
               <div class="form-group">
                 <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" autocomplete="off" required/>

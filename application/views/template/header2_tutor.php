@@ -62,7 +62,7 @@
                             <a class="" href="<?= base_url()?>Tutor/Data_Materi" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Materi</span></a>
                         </li>
                         <li>
-                            <a class="" href="<?= base_url()?>Tutor/Tugas_mahasiswa" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Tugas Mahasiswa</span></a>
+                            <a class="" href="<?= base_url()?>Tutor/Tugas_Mahasiswa" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Tugas Mahasiswa</span></a>
                         </li>
                         <li>
                             <a class="" href="<?= base_url()?>Tutor/Private_Chat" aria-expanded="false"><span class="educate-icon educate-message icon-wrap"></span> <span class="mini-click-non">Private Chat</span></a>
@@ -123,7 +123,7 @@
                                                             <li>
                                                             <?php if ($hitung_chat_tutor > 0) {?>
                                                                 <?php foreach($notif_chat_tutor as $nt):?>
-                                                                    <a href="<?= base_url('Tutor/change_status_chat_tutor/'.$nt['from'])?>" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; ">                                                                    
+                                                                    <a href="<?= base_url('Tutor/Change_Status_Chat_Tutor/'.$nt['from'])?>" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; ">                                                                    
                                                                         <div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;">                                                                        
                                                                             <b><?=$nt['nama'];?></b><br>
                                                                             <?=(strlen($nt['message']) > 25 ? substr($nt['message'], 0, 25)."..." : $nt['message']) ;?>                                                                            
@@ -152,7 +152,7 @@
                                                                 <li>
                                                                 <?php if ($hitung_chat_tutor > 0) {?>
                                                                     <?php foreach($notif_chat_tutor as $nt):?>
-                                                                        <a href="<?= base_url('Tutor/change_status_chat_tutor/'.$nt['from'])?>" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; ">                                                                    
+                                                                        <a href="<?= base_url('Tutor/Change_Status_Chat_Tutor/'.$nt['from'])?>" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; ">                                                                    
                                                                             <div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;">                                                                        
                                                                                 <b><?=$nt['nama'];?></b><br>
                                                                                 <?=(strlen($nt['message']) > 25 ? substr($nt['message'], 0, 25)."..." : $nt['message']) ;?>                                                                                
@@ -181,7 +181,7 @@
                                                                 <li>
                                                                 <?php if ($hitung_chat_tutor > 0) {?>
                                                                     <?php foreach($notif_chat_tutor as $nt):?>
-                                                                        <a href="<?= base_url('Tutor/change_status_chat_tutor/'.$nt['from'])?>" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; ">                                                                    
+                                                                        <a href="<?= base_url('Tutor/Change_Status_Chat_Tutor/'.$nt['from'])?>" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; ">                                                                    
                                                                             <div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;">                                                                        
                                                                                 <b><?=$nt['nama'];?></b><br>
                                                                                 <?=(strlen($nt['message']) > 25 ? substr($nt['message'], 0, 25)."..." : $nt['message']) ;?>                                                                                
@@ -219,7 +219,7 @@
                                                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
                                                         <li><a href="<?= base_url()?>Tutor/Profil/<?= $this->session->userdata('id_tutor');?>"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>  Kelola Akun</a>
                                                         </li>
-                                                        <li><a href="<?= base_url();?>login/logout"><span><i class="fa fa-sign-out" aria-hidden="true"></i></span>  Log Out</a>
+                                                        <li><a href="<?= base_url();?>Login/logout"><span><i class="fa fa-sign-out" aria-hidden="true"></i></span>  Log Out</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -249,7 +249,7 @@
                             <a class="" href="<?= base_url()?>Tutor/Data_Materi" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Materi</span></a>
                         </li>
                         <li>
-                            <a class="" href="<?= base_url()?>Tutor/Tugas_mahasiswa" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Tugas Mahasiswa</span></a>
+                            <a class="" href="<?= base_url()?>Tutor/Tugas_Mahasiswa" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Tugas Mahasiswa</span></a>
                         </li>
                         <li>
                             <a class="" href="<?= base_url()?>Tutor/Private_Chat" aria-expanded="false"><span class="educate-icon educate-message icon-wrap"></span> <span class="mini-click-non">Private Chat</span></a>

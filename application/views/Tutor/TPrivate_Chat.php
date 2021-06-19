@@ -5,7 +5,7 @@
                 <div class="breadcome-list single-page-breadcome">
                     <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <form class="form-inline" action ="<?= base_url('Tutor/carichat');?>" method="post">
+                        <form class="form-inline" action ="<?= base_url('Tutor/CariChat');?>" method="post">
                           <input type="text" class="form-control" placeholder="Cari Mahasiswa.." name="keyword" autocomplete="off" required> 
                           <input class="btn btn-primary" type="submit" name="submit">
                         </form>

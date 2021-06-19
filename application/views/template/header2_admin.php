@@ -89,13 +89,13 @@
           <nav class="sidebar-nav left-sidebar-menu-pro">
             <ul class="metismenu" id="menu1">
               <li>
-                <a title="Landing Page" href="<?= base_url()?>admin/index" aria-expanded="false">
+                <a title="Landing Page" href="<?= base_url()?>Admin/index" aria-expanded="false">
                   <span class="educate-icon educate-home icon-wrap"></span>
                   <span class="mini-click-non">Dashboard</span>
                 </a>
               </li>
             <li>
-              <a title="Landing Page" href="<?= base_url()?>admin/data_mahasiswa" aria-expanded="false">
+              <a title="Landing Page" href="<?= base_url()?>Admin/Data_Mahasiswa" aria-expanded="false">
                 <span class="educate-icon educate-student icon-wrap"></span>
                 <span class="mini-click-non">Mahasiswa</span>
               </a>
@@ -103,21 +103,21 @@
             <li>
               <a class="has-arrow" href="all-professors.html" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Tutor</span></a>
               <ul class="submenu-angle" aria-expanded="false">
-                <li><a title="All Professors" href="<?= base_url();?>admin/data_tutor"><span class="mini-sub-pro">Data Tutor</span></a></li>
-                <li><a title="Add Professor" href="<?= base_url();?>admin/data_tutor_belum_verifikasi"><span class="mini-sub-pro">Verifikasi Tutor</span></a></li>
+                <li><a title="All Professors" href="<?= base_url();?>Admin/Data_Tutor"><span class="mini-sub-pro">Data Tutor</span></a></li>
+                <li><a title="Add Professor" href="<?= base_url();?>Admin/Data_Tutor_belum_verifikasi"><span class="mini-sub-pro">Verifikasi Tutor</span></a></li>
               </ul>
             </li>
             <li>
-              <a title="Landing Page" href="<?= base_url()?>admin/data_kategori_materi" aria-expanded="false">
+              <a title="Landing Page" href="<?= base_url()?>Admin/Data_Kategori_Materi" aria-expanded="false">
                 <span class="educate-icon educate-library icon-wrap"></span>
                 <span class="mini-click-non">Kategori Materi</span>
               </a>
             </li>
               <li>
-                <a title="Landing Page" href="<?= base_url();?>admin/data_kritik_saran" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Kritik & Saran</span></a>
+                <a title="Landing Page" href="<?= base_url();?>Admin/Data_Kritik_Saran" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Kritik & Saran</span></a>
               </li>
               <li>
-                <a href="<?= base_url();?>admin/Forum" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Forum</span></a>
+                <a href="<?= base_url();?>Admin/Forum" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Forum</span></a>
               </li>
             </ul>
           </nav>
@@ -167,9 +167,9 @@
                                                         <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
                                                       </a>
                                                       <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
-                                                          <li><a href="<?= base_url()?>/admin/profile"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>  Ubah Password</a>
+                                                          <li><a href="<?= base_url()?>/Admin/Profile"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>  Ubah Password</a>
                                                           </li>
-                                                          <li><a href="<?= base_url();?>login/logout"><span><i class="fa fa-sign-out" aria-hidden="true"></i></span>  Log Out</a>
+                                                          <li><a href="<?= base_url();?>Login/logout"><span><i class="fa fa-sign-out" aria-hidden="true"></i></span>  Log Out</a>
                                                           </li>
                                                       </ul>
                                                   </li>
@@ -191,13 +191,13 @@
                                 <nav id="dropdown">
                                     <ul class="mobile-menu-nav">
                                     <li>
-                <a title="Landing Page" href="<?= base_url()?>admin/index" aria-expanded="false">
+                <a title="Landing Page" href="<?= base_url()?>Admin/index" aria-expanded="false">
                   <span class="educate-icon educate-home icon-wrap"></span>
                   <span class="mini-click-non">Dashboard</span>
                 </a>
               </li>
             <li>
-              <a title="Landing Page" href="<?= base_url()?>admin/data_mahasiswa" aria-expanded="false">
+              <a title="Landing Page" href="<?= base_url()?>Admin/Data_Mahasiswa" aria-expanded="false">
                 <span class="educate-icon educate-student icon-wrap"></span>
                 <span class="mini-click-non">Mahasiswa</span>
               </a>
@@ -205,21 +205,21 @@
             <li>
               <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Tutor</span></a>
               <ul class="submenu-angle" aria-expanded="false">
-                <li><a title="All Professors" href="<?= base_url();?>admin/data_tutor"><span class="mini-sub-pro">Data Tutor</span></a></li>
-                <li><a title="Add Professor" href="<?= base_url();?>admin/data_tutor_belum_verifikasi"><span class="mini-sub-pro">Verifikasi Tutor</span></a></li>
+                <li><a title="All Professors" href="<?= base_url();?>Admin/Data_Tutor"><span class="mini-sub-pro">Data Tutor</span></a></li>
+                <li><a title="Add Professor" href="<?= base_url();?>Admin/Data_Tutor_Belum_Verifikasi"><span class="mini-sub-pro">Verifikasi Tutor</span></a></li>
               </ul>
             </li>
             <li>
-              <a title="Landing Page" href="<?= base_url()?>admin/data_kategori_materi" aria-expanded="false">
+              <a title="Landing Page" href="<?= base_url()?>Admin/Data_Kategori_Materi" aria-expanded="false">
                 <span class="educate-icon educate-library icon-wrap"></span>
                 <span class="mini-click-non">Kategori Materi</span>
               </a>
             </li>
               <li>
-                <a title="Landing Page" href="<?= base_url();?>admin/data_kritik_saran" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Kritik & Saran</span></a>
+                <a title="Landing Page" href="<?= base_url();?>Admin/Data_Kritik_Saran" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Kritik & Saran</span></a>
               </li>
               <li>
-                <a href="<?= base_url();?>admin/Forum" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Forum</span></a>
+                <a href="<?= base_url();?>Admin/Forum" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Forum</span></a>
               </li>
                                     </ul>
                                 </nav>

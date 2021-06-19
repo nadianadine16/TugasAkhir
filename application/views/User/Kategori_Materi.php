@@ -4,19 +4,9 @@
           <br><br><h2>Kategori Materi</h2>        
         </div>
         <div class="row">                
-        <!-- <div class="dropdown" style="margin-left:70px">
-            <button class="btn btn-primary dropdown-toggle" style="width:1000px;" type="button" data-toggle="dropdown">Dropdown Example
-            </button>
-            <ul class="dropdown-menu" style="width:1000px;">            
-            <input class="form-control" id="myInput" type="text" placeholder="Search..">            
-            <?php foreach($kategori_materi as $k):?>
-            <li><a href="<?= base_url();?>user/daftarMateri/<?=$k['id_kategori_materi'];?>"><?= $k["nama_kategori"]?></a></li>            
-            <?php endforeach;?>
-            </ul>
-        </div> -->
         <?php foreach($kategori_materi as $k):?>
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-          <a href="<?= base_url();?>user/daftarMateri/<?=$k['id_kategori_materi'];?>">
+          <a href="<?= base_url();?>User/DaftarMateri/<?=$k['id_kategori_materi'];?>">
             <div class="member">
               <div class="member-img">
                 <img src="<?= base_url('assets_user/img/kategori.png')?>" class="img-fluid" alt="">               

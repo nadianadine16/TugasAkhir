@@ -26,7 +26,7 @@ class User extends CI_Controller {
             $data['jumlah_kategori'] = $this->User_model->jumlah_kategori(); //menghitng jumlah data kategori
             $data['jumlah_konten'] = $this->User_model->jumlah_konten(); //menghitng jumlah data konten
 
-            $this->load->view('user/Utama', $data);
+            $this->load->view('User/Utama', $data);
             $this->load->view('template/footer_user', $data);
         }
         else {
@@ -34,7 +34,7 @@ class User extends CI_Controller {
         }
     }
 
-    public function forum() {
+    public function Forum() {
         if(isset($_SESSION['id_mahasiswa'])) {
             $config['base_url'] = site_url('user/forum'); //site url
             $config['total_rows'] = $this->db->count_all('forum'); //total row
@@ -78,7 +78,7 @@ class User extends CI_Controller {
             $data['forum_cek'] = $this->User_model->Forum_yang_dibuat($id_mahasiswa);
 
             $this->load->view('template/header_user', $data);
-            $this->load->view('user/forum', $data);
+            $this->load->view('User/Forum', $data);
             $this->load->view('template/footer_user', $data);
         }
         else {
@@ -86,7 +86,7 @@ class User extends CI_Controller {
         }
     }
 
-    public function prosesContactus() {
+    public function ProsesContactUs() {
         if(isset($_SESSION['id_mahasiswa'])) {
             
             //form validation untuk memeriksa kelengkapan isian form
@@ -137,7 +137,7 @@ class User extends CI_Controller {
             $data['forum'] = $this->User_model->Forum_yang_dibuat($id_mahasiswa); //get data forum yg dibuat mhs sedang login
 
             $this->load->view('template/header_user', $data);
-            $this->load->view('user/Detail_Akun', $data);
+            $this->load->view('User/Detail_Akun', $data);
             $this->load->view('template/footer_user', $data);
         }
         else {
@@ -145,7 +145,7 @@ class User extends CI_Controller {
         }
     }
 
-    public function prosesEditProfile() {
+    public function ProsesEditProfile() {
         if(isset($_SESSION['id_mahasiswa'])) {
             $data['title'] = 'Profil';
             
@@ -154,18 +154,17 @@ class User extends CI_Controller {
             $this->form_validation->set_rules('nim', 'nim', 'required');        
             $this->form_validation->set_rules('nama', 'nama', 'required');        
             $this->form_validation->set_rules('jurusan', 'jurusan', 'required');        
-            $this->form_validation->set_rules('prodi', 'prodi', 'required');        
-            $this->form_validation->set_rules('kelas', 'kelas', 'required');        
+            $this->form_validation->set_rules('prodi', 'prodi', 'required');            
             $this->form_validation->set_rules('tahun_masuk', 'tahun_masuk', 'required');        
             $this->form_validation->set_rules('github', 'github', 'required');        
             
             if($this->form_validation->run() == FALSE) {
-                redirect('user/profile','refresh');
+                redirect('User/Profile','refresh');
             }
             else {
                 $this->User_model->edit_profile();
                 echo"<script>alert('Akun Anda Berhasil Diedit!');</script>";
-                redirect('user/Detail_Akun/'.$this->session->userdata('id_mahasiswa'),'refresh'); //kembali ke halaman detail akun mhs yg sedang login
+                redirect('User/Detail_Akun/'.$this->session->userdata('id_mahasiswa'),'refresh'); //kembali ke halaman detail akun mhs yg sedang login
             }
         }
         else {
@@ -173,7 +172,7 @@ class User extends CI_Controller {
         }
     }
 
-    public function daftarMateribyKategori() {
+    public function DaftarMateribyKategori() {
         if(isset($_SESSION['id_mahasiswa'])) {
             $data['title'] ='Daftar Materi';
             $data['notif_chat_user'] = $this->User_model->notif_chat(); //menampilkan notifikasi pesan private chat yang belum dibaca
@@ -199,7 +198,7 @@ class User extends CI_Controller {
             }
 
             $this->load->view('template/header_user', $data);
-            $this->load->view('user/Daftar_Materi', $data);
+            $this->load->view('User/Daftar_Materi', $data);
             $this->load->view('template/footer_user', $data);
         }
         else {
@@ -207,7 +206,7 @@ class User extends CI_Controller {
         }
     }
 
-    public function daftar_materi($id) {
+    public function Daftar_Materi($id) {
         if(isset($_SESSION['id_mahasiswa'])) {
             $data['title'] ='Daftar Materi';
             $data['daftar_materi'] = $this->User_model->daftar_materi_byKategori($id); //get data materi sesuai dengan id__kategori_materi yg dipilih
@@ -217,7 +216,7 @@ class User extends CI_Controller {
             $data['hitung_jawaban_baru']= $this->User_model->hitung_jawaban_baru(); //menghitung jumlah notifikasi jawaban baru forum
 
             $this->load->view('template/header_user', $data);
-            $this->load->view('user/Daftar_Materi', $data);
+            $this->load->view('User/Daftar_Materi', $data);
             $this->load->view('template/footer_user', $data);
         }
         else {
@@ -225,7 +224,7 @@ class User extends CI_Controller {
         }
     }
 
-    public function daftarKonten($id) {
+    public function DaftarKonten($id) {
         if(isset($_SESSION['id_mahasiswa'])) {
             $data['title'] ='Daftar Konten';
             // $data['daftar_konten'] = $this->User_model->daftar_konten($id);
@@ -240,7 +239,7 @@ class User extends CI_Controller {
             $data['hitung_jawaban_baru']= $this->User_model->hitung_jawaban_baru(); //menghitung jumlah notifikasi jawaban baru forum
 
             $this->load->view('template/header_user', $data);
-            $this->load->view('user/Daftar_Konten2', $data);
+            $this->load->view('User/Daftar_Konten2', $data);
             $this->load->view('template/footer_user', $data);
         }
         else {
@@ -248,7 +247,7 @@ class User extends CI_Controller {
         }
     }
 
-    public function kumpulkanTugas($id) {
+    public function KumpulkanTugas($id) {
         if(isset($_SESSION['id_mahasiswa'])) {
             $data['title'] ='Kumpulkan Tugas';
             $data['detail_materi'] = $this->User_model->detail_konten($id); //get data materi sesuai dengan id_konten yg dipilih
@@ -265,12 +264,12 @@ class User extends CI_Controller {
             $cek = $this->User_model->cek_tugas($id);
             if($cek->num_rows() > 0){
                 $this->load->view('template/header_user', $data);
-                $this->load->view('user/Kumpulkan_Tugas3', $data);
+                $this->load->view('User/Kumpulkan_Tugas3', $data);
                 $this->load->view('template/footer_user', $data);    
             }
             else{
                 $this->load->view('template/header_user', $data);
-                $this->load->view('user/Kumpulkan_Tugas2', $data);
+                $this->load->view('User/Kumpulkan_Tugas2', $data);
                 $this->load->view('template/footer_user', $data);
             }   
         }
@@ -279,7 +278,7 @@ class User extends CI_Controller {
         }
     }
 
-    public function tambah_tugas($id_konten) {
+    public function Tambah_Tugas($id_konten) {
         if(isset($_SESSION['id_mahasiswa'])) {
             $data['title'] = 'Tambah Tugas';
             $data['notif_chat_user'] = $this->User_model->notif_chat(); //menampilkan notifikasi pesan private chat yang belum dibaca
@@ -294,13 +293,13 @@ class User extends CI_Controller {
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header_user', $data);
-                $this->load->view('user/Kumpulkan_Tugas2', $data);
+                $this->load->view('User/Kumpulkan_Tugas2', $data);
                 $this->load->view('template/footer_user', $data);
             }
             else {
                 $this->User_model->tambah_tugas();
                 echo"<script>alert('Tugas Berhasil Dikirim! Jawaban akan Segera Diperiksa.');</script>";
-                redirect('User/kumpulkanTugas/'.$id_konten,'refresh'); //kembali ke halaman pengumpulan tugas sesuai dengan id_konten
+                redirect('User/KumpulkanTugas/'.$id_konten,'refresh'); //kembali ke halaman pengumpulan tugas sesuai dengan id_konten
             }   
         }
         else {
@@ -308,7 +307,7 @@ class User extends CI_Controller {
         } 
     }
 
-    public function revisi_tugas($id_tugas, $id_konten) {
+    public function Revisi_Tugas($id_tugas, $id_konten) {
         if(isset($_SESSION['id_mahasiswa'])) {
             $data['title'] = 'Revisi Tugas';
             $data['notif_chat_user'] = $this->User_model->notif_chat(); //menampilkan notifikasi pesan private chat yang belum dibaca
@@ -324,13 +323,13 @@ class User extends CI_Controller {
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header_user', $data);
-                $this->load->view('user/Kumpulkan_Tugas3', $data);
+                $this->load->view('User/Kumpulkan_Tugas3', $data);
                 $this->load->view('template/footer_user', $data);
             }
             else {
                 $this->User_model->revisi_tugas($id_tugas); //menuju ke model revisi_tugas sesuai dengan id_tugas yg dipilih
                 echo"<script>alert('Tugas Berhasil Dikirim! Jawaban akan Segera Diperiksa.');</script>";
-                redirect('User/kumpulkanTugas/'.$id_konten,'refresh'); //kembali ke halaman pengumpulan tugas sesuai dengan id_konten
+                redirect('User/KumpulkanTugas/'.$id_konten,'refresh'); //kembali ke halaman pengumpulan tugas sesuai dengan id_konten
             }    
         }
         else {
@@ -352,7 +351,7 @@ class User extends CI_Controller {
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header_user', $data);
-                $this->load->view('user/Tanya_Forum', $data);
+                $this->load->view('User/Tanya_Forum', $data);
                 $this->load->view('template/footer_user', $data);
             }
             else {
@@ -378,7 +377,7 @@ class User extends CI_Controller {
             $data['hitung_jawaban_baru']= $this->User_model->hitung_jawaban_baru(); //menghitung jumlah notifikasi jawaban baru forum
 
             $this->load->view('template/header_user', $data);
-            $this->load->view('user/Detail_Forum', $data);
+            $this->load->view('User/Detail_Forum', $data);
             $this->load->view('template/footer_user', $data);
         }
         else {
@@ -397,7 +396,7 @@ class User extends CI_Controller {
             $data['hitung_jawaban_baru']= $this->User_model->hitung_jawaban_baru(); //menghitung jumlah notifikasi jawaban baru forum
 
             $this->load->view('template/header_user', $data);
-            $this->load->view('user/Detail_Tutor', $data);
+            $this->load->view('User/Detail_Tutor', $data);
             $this->load->view('template/footer_user', $data);
         }
         else {
@@ -446,7 +445,7 @@ class User extends CI_Controller {
             $data['hitung_jawaban_baru']= $this->User_model->hitung_jawaban_baru(); //menghitung jumlah notifikasi jawaban baru forum
 
             $this->load->view('template/header_user', $data);
-            $this->load->view('user/SeeAllTutor', $data);
+            $this->load->view('User/SeeAllTutor', $data);
             $this->load->view('template/footer_user', $data);
         }
         else {
@@ -487,9 +486,8 @@ class User extends CI_Controller {
                     redirect('User/SeeAllTutor','refresh');
                 }
             }
-
             $this->load->view('template/header_user', $data);
-            $this->load->view('user/Hasil_Cari_Tutor', $data);
+            $this->load->view('User/Hasil_Cari_Tutor', $data);
             $this->load->view('template/footer_user', $data);
         }
         else {
@@ -512,7 +510,7 @@ class User extends CI_Controller {
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header_user', $data);
-                $this->load->view('user/Detail_Forum', $data);
+                $this->load->view('User/Detail_Forum', $data);
                 $this->load->view('template/footer_user', $data);
             }
             else {
@@ -539,7 +537,7 @@ class User extends CI_Controller {
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header_user', $data);
-                $this->load->view('user/Detail_Private_Chat', $data);
+                $this->load->view('User/Detail_Private_Chat', $data);
                 $this->load->view('template/footer_user', $data);
             }
             else {
@@ -553,7 +551,7 @@ class User extends CI_Controller {
         }
     }    
 
-    public function cari() {
+    public function Cari() {
         if(isset($_SESSION['id_mahasiswa'])) {
             // $keyword=  $this->input->post('keyword'); //menagmbil inputan keyword
 
@@ -592,7 +590,7 @@ class User extends CI_Controller {
             }
 
             $this->load->view('template/header_user', $data);
-            $this->load->view("user/Search",$data);
+            $this->load->view('User/Search',$data);
             $this->load->view('template/footer_user', $data);  
         }
         else {
@@ -600,7 +598,7 @@ class User extends CI_Controller {
         }      
     }
 
-    public function carimateri() {
+    public function CariMateri() {
         if(isset($_SESSION['id_mahasiswa'])) {
             $keyword=  $this->input->post('keyword'); //mengambil inputan dari keyword    
 
@@ -613,7 +611,7 @@ class User extends CI_Controller {
             $data['hasil_cari'] = $this->input->post('keyword');
 
             $this->load->view('template/header_user', $data);
-            $this->load->view("user/SearchMateri",$data);
+            $this->load->view('User/SearchMateri',$data);
             $this->load->view('template/footer_user', $data);       
         }
         else {
@@ -621,7 +619,7 @@ class User extends CI_Controller {
         }      
     }
 
-    public function cariChat() {
+    public function CariChat() {
         if(isset($_SESSION['id_mahasiswa'])) {
             $keyword=  $this->input->post('keyword');  //mengambil inputan dari keyword
 
@@ -640,7 +638,7 @@ class User extends CI_Controller {
             }
 
             $this->load->view('template/header_user', $data);
-            $this->load->view("user/SearchChat",$data);
+            $this->load->view('User/SearchChat',$data);
             $this->load->view('template/footer_user', $data);  
         }
         else {
@@ -689,7 +687,7 @@ class User extends CI_Controller {
             $data['hitung_jawaban_baru']= $this->User_model->hitung_jawaban_baru(); //menghitung jumlah notifikasi jawaban baru forum
 
             $this->load->view('template/header_user', $data);
-            $this->load->view("user/Private_Chat",$data);
+            $this->load->view('User/Private_Chat',$data);
             $this->load->view('template/footer_user', $data);   
         }
         else {
@@ -697,13 +695,13 @@ class User extends CI_Controller {
         } 
     }    
 
-    public function change_status_chat($from){ //mengubah status pesan menjadi sudah dibaca (status = 2) sesuai dgn $from
+    public function Change_Status_Chat($from){ //mengubah status pesan menjadi sudah dibaca (status = 2) sesuai dgn $from
         $this->User_model->change_status_chat($from);
         redirect('User/Chat/'.$from,'refresh');
     }
 
     //mengubah status jawaban forum menjadi sudah dibaca sesuai dengan id_chat frorum
-    public function change_status_jawaban($id_forum){
+    public function Change_Status_Jawaban($id_forum){
         // $idmhs = $this->session->userdata('id_mahasiswa');
         $cek=$this->db->query("SELECT id_mahasiswa From forum where id_forum=$id_forum LIMIT 1");                
         $a=$cek->row_array();

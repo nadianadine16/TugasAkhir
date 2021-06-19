@@ -23,7 +23,6 @@ class User_model extends CI_Model {
             "nama" => $this->input->post('nama', true),
             "jurusan" => $this->input->post('jurusan', true),
             "prodi" => $this->input->post('prodi', true),
-            "kelas" => $this->input->post('kelas', true),
             "tahun_masuk" => $this->input->post('tahun_masuk', true),
             "github" => $this->input->post('github', true),
         ];

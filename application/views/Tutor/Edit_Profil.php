@@ -62,10 +62,6 @@
                             <input type="text" class="form-control" id="prodi" name="prodi" readonly="true" value="<?=$t2['prodi'];?>">
                         </div>
                         <div class="form-group">
-                            <label for="kelas">Kelas</label>
-                            <input type="text" class="form-control" id="kelas" name="kelas" readonly="true" value="<?=$t2['kelas'];?>">
-                        </div>
-                        <div class="form-group">
                             <label for="tahun_masuk">Tahun Masuk</label>
                             <input type="text" class="form-control" id="tahun_masuk" name="tahun_masuk" readonly="true" value="<?=$t2['tahun_masuk'];?>">
                         </div>

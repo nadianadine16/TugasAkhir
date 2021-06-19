@@ -121,7 +121,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li <?php if ($title == 'Daftar Kategori Materi'  || $title == 'Daftar Materi' || $title == 'Daftar Konten' || $title == 'Kumpulkan Tugas') echo 'class="nav-item active"';?>>
-          <a class="nav-link" href="<?=base_url('User/daftar_materi/'.$this->session->userdata('id_kategori_materi'))?>" style="font-family: Arial, Helvetica, sans-serif;"><b>Materi </b><span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="<?=base_url('User/Daftar_Materi/'.$this->session->userdata('id_kategori_materi'))?>" style="font-family: Arial, Helvetica, sans-serif;"><b>Materi </b><span class="sr-only">(current)</span></a>
         </li>
         <li <?php if ($title == 'Private Chat') echo 'class="nav-item active"'; ?>>
           <a class="nav-link" href="<?=base_url()?>User/Private_Chat" style="font-family: Arial, Helvetica, sans-serif;"><b>Private Chat </b><span class="sr-only">(current)</span></a>
@@ -133,7 +133,7 @@
           <div class="dropdown-content">
             <center><p style="margin-bottom:-8px;"><b>Notifikasi Pesan</b></p></center><hr>
               <?php foreach($notif_chat_user as $nc):?>
-                <a href="<?= base_url('User/change_status_chat/'.$nc['from'])?>">
+                <a href="<?= base_url('User/Change_Status_Chat/'.$nc['from'])?>">
                 <b><?=$nc["nama"];?> </b><br>
                 <?=(strlen($nc['message']) > 25 ? substr($nc['message'], 0, 25)."..." : $nc['message']) ;?><br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=date('d-m-Y H:i',strtotime($nc['created_at']))?></a>
@@ -148,7 +148,7 @@
             <div class="dropdown-content">
               <center><p style="margin-bottom:-8px;"><b>Notifikasi Pesan</b></p></center><hr>
                 <?php foreach($notif_chat_user as $nc):?>
-                  <a href="<?= base_url('User/change_status_chat/'.$nc['from'])?>">
+                  <a href="<?= base_url('User/Change_Status_Chat/'.$nc['from'])?>">
                   <b><?=$nc["nama"];?> </b><br>
                   <?=(strlen($nc['message']) > 25 ? substr($nc['message'], 0, 25)."..." : $nc['message']) ;?><br>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=date('d-m-Y H:i',strtotime($nc['created_at']))?></a>
@@ -168,7 +168,7 @@
             <center><p style="margin-bottom:-8px;"><b>Notifikasi Forum</b></p></center><hr>
             
               <?php foreach($notif_jawaban_baru as $njb):?>        
-                <a href="<?=base_url('User/change_status_jawaban/'.$njb['id_forum'])?>">
+                <a href="<?=base_url('User/Change_Status_Jawaban/'.$njb['id_forum'])?>">
                 <b><?=$njb["nama"];?> </b><br>
                 <?=(strlen($njb['topik']) > 25 ? substr($njb['topik'], 0, 25)."..." : $njb['topik']) ;?>
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($njb['send_time'])) ?></a>
@@ -184,7 +184,7 @@
               <center><p style="margin-bottom:-8px;"><b>Notifikasi Forum</b></p></center><hr>
               
                 <?php foreach($notif_jawaban_baru as $njb):?>        
-                  <a href="<?=base_url('User/change_status_jawaban/'.$njb['id_forum'])?>">
+                  <a href="<?=base_url('User/Change_Status_Jawaban/'.$njb['id_forum'])?>">
                   <b><?=$njb["nama"];?> </b>
                   <?=(strlen($njb['topik']) > 25 ? substr($njb['topik'], 0, 25)."..." : $njb['topik']) ;?>
                   <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($njb['send_time'])) ?></a>

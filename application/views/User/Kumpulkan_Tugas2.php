@@ -22,7 +22,7 @@
             <p class="card-text"><?= $d["nama"]?></p>      
             <b>Soal: </b><br>
             <p class="card-text"><?= $d["soal"]?></p>                
-            <form action="<?=base_url('user/tambah_tugas/'.$d['id_konten'])?>" method="post">
+            <form action="<?=base_url('User/Tambah_Tugas/'.$d['id_konten'])?>" method="post">
             <input type="hidden" class="form-control" id="id_mahasiswa" name="id_mahasiswa" value="<?= $this->session->userdata('id_mahasiswa');?>">
             <input type="hidden" class="form-control" id="id_materi" name="id_konten" value="<?= $d["id_konten"]?>">
 

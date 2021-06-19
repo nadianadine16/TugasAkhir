@@ -63,8 +63,8 @@
                                         <td><?=$f["nama"];?></td>
                                         <td><?=$f["topik"];?></td>
                                         <td class="datatable-ct">
-                                            <a href="<?= base_url();?>admin/detail_forum/<?=$f['id_forum'];?>" class="pd-setting-ed"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                            <a onclick="return konfirmasi()" href="<?= base_url();?>admin/hapus_forum/<?=$f['id_forum'];?>" class="pd-setting-ed" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                            <a href="<?= base_url();?>Admin/Detail_Forum/<?=$f['id_forum'];?>" class="pd-setting-ed"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                            <a onclick="return konfirmasi()" href="<?= base_url();?>Admin/Hapus_Forum/<?=$f['id_forum'];?>" class="pd-setting-ed" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
                                     <?php endforeach;?>     

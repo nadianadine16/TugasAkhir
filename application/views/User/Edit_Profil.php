@@ -7,7 +7,7 @@
         <div class="row mt-5" style="margin-top:-100px;">
           <div class="col-lg-8 mt-5 mt-lg-0" style="margin-left:60px">
           <?php foreach($profil_mhs as $pm):?>
-            <form action="<?=base_url('user/prosesEditProfile')?>" method="post" >
+            <form action="<?=base_url('User/ProsesEditProfile')?>" method="post" >
             <input type="hidden" name="id_mahasiswa" value="<?= $this->session->userdata('id_mahasiswa');?>">
               <div class="form-group">
                 <label><b>NIM</b></label>
@@ -28,10 +28,6 @@
               <div class="form-group">
                 <label><b>Prodi</b></label>
                 <input type="text" class="form-control" readonly="true" name="prodi" id="subject" value="<?=$pm['prodi']?>" style="width:1000px;"/>                
-              </div>
-              <div class="form-group">
-                <label><b>Kelas</b></label>
-                <input type="text" class="form-control" readonly="true" name="kelas" id="subject" value="<?=$pm['kelas']?>" style="width:1000px;"/>                
               </div>
               <div class="form-group">
                 <label><b>Tahun Masuk</b></label>

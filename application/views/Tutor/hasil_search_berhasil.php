@@ -28,7 +28,7 @@
 					<h2>Congratulation</h2>
 					<p class="login-card-description">Terimakasih <b><?php echo $p->nama ?></b> Anda sekarang telah menjadi tutor!</p>              			  
 					</div>
-					<a name="login" href="<?= base_url()?>/login/index" id="login" class="btn btn-block login-btn mb-4" type="button" style="width:300px; float:right; margin-right:50px;background-color:#49b5e7;">Continue</a>
+					<a name="login" href="<?= base_url()?>/Login/index" id="login" class="btn btn-block login-btn mb-4" type="button" style="width:300px; float:right; margin-right:50px;background-color:#49b5e7;">Continue</a>
 				</div>
 				</div>
 			</div>
@@ -52,7 +52,7 @@
 					<h2>Harap Tunggu</h2>
 					<p class="login-card-description">Mohon maaf <b><?php echo $p->nama ?></b> proses pendaftaran anda masih di proses, harap tunggu.</p>              			  
 					</div>
-					<a name="login" href="<?= base_url()?>/login/index" id="login" class="btn btn-block login-btn mb-4" type="button" style="width:300px; float:right; margin-right:50px;background-color:#49b5e7;">Continue</a>
+					<a name="login" href="<?= base_url()?>/Login/index" id="login" class="btn btn-block login-btn mb-4" type="button" style="width:300px; float:right; margin-right:50px;background-color:#49b5e7;">Continue</a>
 				</div>
 				</div>
 			</div>
