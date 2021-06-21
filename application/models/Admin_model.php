@@ -319,6 +319,19 @@
 
             return $query->result();                             
         }        
-        
+        public function tahunAngkatan()
+        {
+            $this->db->select('*');
+            $this->db->from('mahasiswa');            
+            $this->db->group_by('tahun_masuk');
+            $this->db->order_by('tahun_masuk', 'desc');               
+
+            $query = $this->db->get();
+            return $query->result_array();                             
+        }
+        public function Hapus_tahun_masuk($hapus)
+        {
+            return $this->db->delete('mahasiswa',array("tahun_masuk"=>$hapus));
+        }
     }
 ?>

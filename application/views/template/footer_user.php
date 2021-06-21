@@ -20,16 +20,17 @@
 <script src="<?= base_url()?>/assets/bootstrap/js/bootstrap.js"></script>
 <script src="<?= base_url()?>/assets/summernote/summernote-bs4.js"></script>
 
-<script>
+<script>     
     $(document).ready(function(){
         $('#summernoteForum').summernote({
             height: "200px",
-            toolbar: [                  
+            toolbar: [                          
+                ['style', ['style']],
                 ['font', ['bold', 'underline', 'clear']],
                 ['fontname', ['fontname']],
                 ['para', ['ul', 'ol', 'paragraph']],                  
                 ['insert', ['link', 'picture']],
-            ],
+            ],            
             callbacks: {
                 onImageUpload: function(image) {
                     uploadImage(image[0]);

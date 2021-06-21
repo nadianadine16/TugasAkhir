@@ -47,6 +47,7 @@ class Admin extends CI_Controller {
             $data['title'] = 'Data Mahasiswa';
             // menampilkan semua data mahasiswa
             $data['mahasiswa'] = $this->Admin_model->getAllMahasiswa();
+            $data['tahun_angkatan'] = $this->Admin_model->tahunAngkatan();
 
             $this->load->view('template/header2_admin',$data);
             $this->load->view('Admin/Data_Mahasiswa',$data);
@@ -149,6 +150,13 @@ class Admin extends CI_Controller {
         else {
             redirect('Login/logout');
         }
+    }
+    public function Hapus_tahun_masuk()
+    {                
+        $hapus=$this->input->post('tahun_masuk');
+        $this->Admin_model->Hapus_tahun_masuk($hapus);
+        echo"<script>alert('Data berhasil dihapus!');</script>";
+        redirect('Admin/Data_Mahasiswa','refresh');
     }
 
     public function Data_Tutor()
