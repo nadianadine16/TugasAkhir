@@ -1008,5 +1008,17 @@ class Tutor extends CI_Controller {
             echo 'File Delete Successfully';
         }
     }
+    public function hitung_chat_tutor()
+    {
+        // $data['hitung'] = $this->User_model->hitung_chat();
+        $data = $this->Tutor_model->notif_chat_tutor();
+        echo json_encode($data);
+    }
+    public function notif2()
+    {
+        // $data['hitung'] = $this->User_model->hitung_chat();
+        $data = $this->Tutor_model->mahasiswa1();
+        echo json_encode($data);
+    }
 }
 ?>

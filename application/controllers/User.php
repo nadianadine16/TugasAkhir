@@ -797,5 +797,18 @@ class User extends CI_Controller {
             echo 'File Delete Successfully';
         }
     }
+
+    public function hitung_chat()
+    {
+        // $data['hitung'] = $this->User_model->hitung_chat();
+        $data = $this->User_model->notif_chat();
+        echo json_encode($data);
+    }
+    public function notif1()
+    {
+        // $data['hitung'] = $this->User_model->hitung_chat();
+        $data = $this->User_model->notif1();
+        echo json_encode($data);
+    }
 }
 ?>

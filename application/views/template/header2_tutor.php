@@ -111,96 +111,19 @@
                                         <div class="header-right-info">
                                             <ul class="d-flex nav navbar-nav mai-top-nav header-right-menu">
                                                 <li class="nav-item dropdown">
-                                                </li>
-                                                <?php if($hitung_chat_tutor > 0 && $hitung_chat_tutor < 10) {?>
+                                                </li>                                                
                                                 <li class="nav-item dropdown" style="float:left">
-                                                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-message edu-chat-pro" aria-hidden="true"></i><span class="badge badge-light" style="background-color:red"><?php echo $hitung_chat_tutor ;?></span></a>
+                                                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-message edu-chat-pro" aria-hidden="true"></i><span class="badge badge-light" style="background-color:red" id="notifchat"></span></a>
                                                     <div role="menu" class="author-message-top dropdown-menu animated zoomIn">
                                                         <div class="message-single-top">
                                                             <center><p style="margin-top:15px;"><b>Notifikasi Pesan</b></p></center>
                                                         </div>
-                                                        <ul class="message-menu" style="margin-top:-15px;">
-                                                            <li>
-                                                            <?php if ($hitung_chat_tutor > 0) {?>
-                                                                <?php foreach($notif_chat_tutor as $nt):?>
-                                                                    <a href="<?= base_url('Tutor/Change_Status_Chat_Tutor/'.$nt['from'])?>" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; ">                                                                    
-                                                                        <div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;">                                                                        
-                                                                            <b><?=$nt['nama'];?></b><br>
-                                                                            <?=(strlen($nt['message']) > 25 ? substr($nt['message'], 0, 25)."..." : $nt['message']) ;?>                                                                            
-                                                                            <br>
-                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($nt['created_at'])) ?>
-                                                                        </div>
-                                                                    </a>
-                                                                    <?php endforeach;?>
-                                                                <?php } else {?>
-                                                                    <center><p><br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Anda belum memiliki pesan baru.</p></center>
-                                                                <?php }?>
-                                                            </li>                                                     
+                                                        <ul class="message-menu" style="margin-top:-15px;" id="chatnot">                                                            
                                                         </ul>
                                                         <div class="message-view">
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <?php } else if ($hitung_chat_tutor >= 10) {?>
-                                                    <li class="nav-item dropdown" style="float:left">
-                                                        <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-message edu-chat-pro" aria-hidden="true"></i><span class="badge badge-light" style="background-color:red">9+</span></a>
-                                                        <div role="menu" class="author-message-top dropdown-menu animated zoomIn">
-                                                            <div class="message-single-top">
-                                                                <center><p style="margin-top:15px;"><b>Notifikasi Pesan</b></p></center>
-                                                            </div>
-                                                            <ul class="message-menu" style="margin-top:-15px;">
-                                                                <li>
-                                                                <?php if ($hitung_chat_tutor > 0) {?>
-                                                                    <?php foreach($notif_chat_tutor as $nt):?>
-                                                                        <a href="<?= base_url('Tutor/Change_Status_Chat_Tutor/'.$nt['from'])?>" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; ">                                                                    
-                                                                            <div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;">                                                                        
-                                                                                <b><?=$nt['nama'];?></b><br>
-                                                                                <?=(strlen($nt['message']) > 25 ? substr($nt['message'], 0, 25)."..." : $nt['message']) ;?>                                                                                
-                                                                                <br>
-                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($nt['created_at'])) ?>
-                                                                            </div>
-                                                                        </a>
-                                                                        <?php endforeach;?>
-                                                                    <?php } else {?>
-                                                                        <center><p><br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Anda belum memiliki pesan baru.</p></center>
-                                                                    <?php }?>
-                                                                </li>                                                     
-                                                            </ul>
-                                                            <div class="message-view">
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                <?php } else {?>
-                                                    <li class="nav-item dropdown" style="float:left">
-                                                        <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-message edu-chat-pro" aria-hidden="true"></i></a>
-                                                        <div role="menu" class="author-message-top dropdown-menu animated zoomIn">
-                                                            <div class="message-single-top">
-                                                                <center><p style="margin-top:15px;"><b>Notifikasi Pesan</b></p></center>
-                                                            </div>
-                                                            <ul class="message-menu" style="margin-top:-15px;">
-                                                                <li>
-                                                                <?php if ($hitung_chat_tutor > 0) {?>
-                                                                    <?php foreach($notif_chat_tutor as $nt):?>
-                                                                        <a href="<?= base_url('Tutor/Change_Status_Chat_Tutor/'.$nt['from'])?>" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; ">                                                                    
-                                                                            <div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;">                                                                        
-                                                                                <b><?=$nt['nama'];?></b><br>
-                                                                                <?=(strlen($nt['message']) > 25 ? substr($nt['message'], 0, 25)."..." : $nt['message']) ;?>                                                                                
-                                                                                <br>
-                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($nt['created_at'])) ?>
-                                                                            </div>
-                                                                        </a>
-                                                                        <?php endforeach;?>
-                                                                    <?php } else {?>
-                                                                        <center><p><br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Anda belum memiliki pesan baru.</p></center>
-                                                                    <?php }?>
-                                                                </li>                                                     
-                                                            </ul>
-                                                            <div class="message-view">
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                <?php }?>
-
+                                                </li>                                                
                                                 <li class="nav-item">
                                                 <?php $val = $this->session->userdata('nama');?>
                                                     <a href="<?= base_url()?>/assets_admin/#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">

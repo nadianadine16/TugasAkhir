@@ -28,36 +28,10 @@
 <div class="courses-area" style="margin-top:30px">
   <div class="container-fluid">
     <div class="row">
-      <?php $no=1; foreach($mahasiswa as $n):?>  
-        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="width:99%;"><br>
-          <div class="courses-inner res-mg-b-30">
-            <div class="courses-title">                                
-            <?php if($n["strength"] == 0){?>
-              <h2><?=$n["nama"];?>
-              </h2>
-              <?php
-                } 
-              else { ?>
-                <h2><?=$n["nama"];?>&nbsp;&nbsp;                            
-                <span class="badge badge-light" style="background-color:red; color:white;"><?=$n["strength"];?></span>              
-                </h2>
-              <?php
-              } 
-              ?>
-            </div>          
-            <div class="course-des">
-              <p><b>NIM:</b> <?=$n["nim"];?></p>
-              <p><b>Jurusan:</b> <?=$n["prodi"];?></p>
-              <p><b>Prodi:</b> <?=$n["jurusan"]?></p>
-              <a type="button" href="<?= base_url();?>Tutor/change_status_chat_tutor/<?=$n['id_mahasiswa'];?>" class="btn btn-primary" style="float:right;margin-top:-6%;">Chat</a>
-            </div>
-          </div>
-        </div>                  
-      <?php endforeach;?>
+      <div id="list2"></div>
     </div>
     <div class="row">
-        <div class="col">
-    
+        <div class="col">    
             <?php echo $pagination; ?>
         </div>
     </div>
