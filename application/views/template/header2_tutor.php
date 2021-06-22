@@ -41,6 +41,9 @@
     <link rel="stylesheet" href="<?= base_url()?>/assets/summernote/summernote-bs4.css">
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <script src="<?= base_url()?>/assets_admin/js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    
 </head>
 
 <body>

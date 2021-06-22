@@ -2,9 +2,9 @@
     </body>
 </html>
 <!-- Vendor JS Files -->
-<script src="<?= base_url()?>/assets_user/vendor/jquery/jquery.min.js"></script>
+<!-- <script src="<?= base_url()?>/assets_user/vendor/jquery/jquery.min.js"></script> -->
   <!-- <script src="<?= base_url()?>/assets_user/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
-<script src="<?= base_url()?>/assets_user/vendor/jquery.easing/jquery.easing.min.js"></script>
+<!-- <script src="<?= base_url()?>/assets_user/vendor/jquery.easing/jquery.easing.min.js"></script> -->
 <script src="<?= base_url()?>/assets_user/vendor/php-email-form/validate.js"></script>
 <script src="<?= base_url()?>/assets_user/vendor/venobox/venobox.min.js"></script>
 <script src="<?= base_url()?>/assets_user/vendor/waypoints/jquery.waypoints.min.js"></script>
@@ -15,10 +15,10 @@
   <!-- Template Main JS File -->
 <script src="<?= base_url()?>/assets_user/js/main.js"></script>
 
-<script src="<?= base_url()?>/assets/bootstrap/jquery/jquery3.js"></script>
-<script src="<?= base_url()?>/assets/bootstrap/popper/popper.js"></script>
-<script src="<?= base_url()?>/assets/bootstrap/js/bootstrap.js"></script>
-<script src="<?= base_url()?>/assets/summernote/summernote-bs4.js"></script>
+<!-- <script src="<?= base_url()?>/assets/bootstrap/jquery/jquery3.js"></script> -->
+<!-- <script src="<?= base_url()?>/assets/bootstrap/popper/popper.js"></script> -->
+<!-- <script src="<?= base_url()?>/assets/bootstrap/js/bootstrap.js"></script> -->
+<!-- <script src="<?= base_url()?>/assets/summernote/summernote-bs4.js"></script> -->
 
 <script>
     $(document).ready(function(){
@@ -29,6 +29,7 @@
                 ['fontname', ['fontname']],
                 ['para', ['ul', 'ol', 'paragraph']],                  
                 ['insert', ['link', 'picture']],
+                ['style', ['style']]
             ],
             callbacks: {
                 onImageUpload: function(image) {

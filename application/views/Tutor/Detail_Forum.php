@@ -59,23 +59,57 @@
       </div>    
     </div>  
   </div>
-<script type="text/javascript">
- var objDiv = document.getElementById("mydiv");
-	objDiv.scrollTop = objDiv.scrollHeight;
-</script>
-<script>
-  var cek = document.getElementById("summernoteForum");
-  var batas_karakter = 108;
-  function cek_jumlah_karakter() {
-    if(cek.value.length >= batas_karakter) {      
-      // alert('Anda mencapai batas maksimal karakter!');
-      document.getElementById("limit_teks").innerHTML = batas_karakter+"/"+batas_karakter;
-      document.getElementById("submit").disabled = true;
 
+<script>
+  $(document).ready(function(){
+    $('#summernoteForum').summernote({
+      height: "200px",
+      toolbar: [                  
+        ['font', ['bold', 'underline', 'clear']],
+        ['fontname', ['fontname']],
+        ['para', ['ul', 'ol', 'paragraph']],                  
+        ['insert', ['link', 'picture']],
+        ['style', ['style']]
+      ],
+      callbacks: {
+        onImageUpload: function(image) {
+          uploadImage(image[0]);
+        },
+        onMediaDelete : function(target) {
+          deleteImage(target[0].src);
+        }
+      }
+    });
+
+    function uploadImage(image) {
+      var data = new FormData();
+      data.append("image", image);
+      $.ajax({
+        url: "<?php echo site_url('Tutor/upload_image')?>",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: data,
+        type: "POST",
+        success: function(url) {
+          $('#summernoteForum').summernote("insertImage", url);
+        },
+        error: function(data) {
+          console.log(data);
+        }
+      });
     }
-    else{
-      var jumlah_karakter = cek.value.length;
-      document.getElementById("limit_teks").innerHTML = jumlah_karakter+"/"+batas_karakter;
+
+    function deleteImage(src) {
+      $.ajax({
+        data: {src : src},
+        type: "POST",
+        url: "<?php echo site_url('Tutor/delete_image')?>",
+        cache: false,
+        success: function(response) {
+          console.log(response);
+        }
+      });
     }
-  }
-</script>
+  });
+</script> 

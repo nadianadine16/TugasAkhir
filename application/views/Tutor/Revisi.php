@@ -65,3 +65,18 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            height: "200px",
+            toolbar: [                  
+                ['font', ['bold', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['para', ['ul', 'ol', 'paragraph']],                  
+                ['insert', ['link']],
+                ['style', ['style']]               
+            ]
+        });
+    });
+  </script>
