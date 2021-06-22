@@ -71,7 +71,8 @@
     <table id="tabel-data2" class="table table-striped table-bordered" width="100%" cellspacing="0" style="border-width:3px;">
     <thead>
         <tr>
-            <th><center>No</center></th>
+            <!-- <th><center>No</center></th> -->
+            <th><center>Unread</center></th>
             <th style="width:200px;"><center>Kategori Forum</center></th>
             <th style="width:600px;"><center>Topik Forum</center></th>
             <th style="width:200px;"><center>Dibuat pada</center></th>
@@ -79,8 +80,8 @@
             <th><center>Aksi</center></th>
         </tr>
     </thead>
-    <tbody>
-    <?php $no=1; foreach($forum as $f):?>
+    <tbody id="listtab">
+    <!-- <?php $no=1; foreach($forum as $f):?>
         <tr>
             <td><?=$no++;?></td>
             <?php if($f["total"] == 0){?>
@@ -96,7 +97,7 @@
             <td><?=$f["created_at"];?></td>
             <td><a href="<?= base_url();?>User/Change_Status_Jawaban/<?=$f['id_forum'];?>"><center><button class="btn btn-primary btn-sm">Lihat Forum</button></center></a></td>
         </tr>
-        <?php endforeach;?>
+        <?php endforeach;?> -->
     </tbody>
 </table>
     </div>              
@@ -111,8 +112,30 @@
     $(document).ready(function(){
         $('#tabel-data').DataTable();
     });
-
+</script>
+<script>
     $(document).ready(function(){
         $('#tabel-data2').DataTable();
     });
 </script>
+
+<!-- <script type="text/javascript">
+    $(document).ready(function() {
+        $('#tabel-data2').DataTable({
+            ajax:{
+                url: "<?php echo base_url(); ?>User/forum_dibuat",
+                method: "POST",
+            },
+            columns: [
+                { data: "total" }, // Tampilkan nis
+                { data: "nama_kategori" },  // Tampilkan nama                    
+                { data: "topik" }, // Tampilkan telepon
+                { data: "created_at" }, // Tampilkan alamat
+                { data: "id_forum"}
+            ]                            
+        });
+        // setInterval(() => {
+            
+        // }, 1000);
+    })
+</script> -->
