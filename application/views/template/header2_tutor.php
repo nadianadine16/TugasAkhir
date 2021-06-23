@@ -71,7 +71,11 @@
                             <a class="" href="<?= base_url()?>Tutor/Private_Chat" aria-expanded="false"><span class="educate-icon educate-message icon-wrap"></span> <span class="mini-click-non">Private Chat</span></a>
                         </li>
                         <li>
-                            <a class="" href="<?= base_url()?>Tutor/Forum" aria-expanded="false"><span class="educate-icon educate-interface icon-wrap"></span> <span class="mini-click-non">Forum</span></a>
+                            <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-interface icon-wrap"></span> <span class="mini-click-non">Forum</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li><a href="<?= base_url();?>Tutor/Forum"><span class="mini-sub-pro">Semua Forum</span></a></li>
+                                <li><a href="<?= base_url();?>Tutor/Kontribusi_Saya"><span class="mini-sub-pro">Kontribusi Saya</span></a></li>
+                            </ul>
                         </li>
                         <li>
                             <a class="" href="<?= base_url()?>Tutor/Kritik_Saran" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Kritik & Saran</span></a>

@@ -100,7 +100,7 @@
             }
             else if(data.length<1){
               var html = '';
-              html = '<center><p style="margin-top:15px;">Anda belum memiliki pesan</p></center>'
+              html = '<center><p style="margin-top:130px;">Anda belum memiliki pesan</p></center>'
               $('#chatnot').html(html);
             }
               

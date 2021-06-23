@@ -220,6 +220,28 @@ class Tutor extends CI_Controller {
         }
     }
 
+    public function Kontribusi_Saya() {
+        if (isset($_SESSION['id_tutor'])) {
+            $data['title'] = 'Forum yang Saya Jawab';
+            $data['kategori_header'] = $this->Tutor_model->Kategori_header($this->session->userdata('id_kategori_materi'));
+            $data['foto_tutor'] = $this->Tutor_model->Profil($this->session->userdata('id_tutor'));
+            // menyimpan session id_tutor pada variabel $id_tutor
+            $id_tutor = $this->session->userdata('id_tutor');
+            //menampilkan notifikasi pesan private chat yang belum dibaca
+            $data['notif_chat_tutor'] = $this->Tutor_model->notif_chat_tutor();
+            //menghitung jumlah notifikasi pesan yang belum dibaca
+            $data['hitung_chat_tutor']= $this->Tutor_model->hitung_chat_tutor();
+            $data['forum'] = $this->Tutor_model->Forum_yang_dijawab($id_tutor);
+
+            $this->load->view('template/header2_tutor',$data);
+            $this->load->view('Tutor/Kontribusi_Saya', $data);
+            $this->load->view('template/footer2_tutor',$data);
+        }
+        else {
+            redirect('Login/logout');
+        }
+    }
+
     public function Tambah_Materi() {
         if (isset($_SESSION['id_tutor'])) {
             $data['title'] = 'Form Tambah Materi';
