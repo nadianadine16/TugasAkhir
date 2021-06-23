@@ -154,7 +154,7 @@
           </div>
           </div>        
         </li>
-        <?php } else if ($hitung_jawaban_baru >= 10) {?>
+        <!-- <?php } else if ($hitung_jawaban_baru >= 10) {?>
           <li>
             <div class="dropdown">
             <button class="dropbtn"><span class="badge">9+</span></button>
@@ -170,7 +170,7 @@
             </div>
             </div>        
           </li>
-        <?php }?>
+        <?php }?> -->
         <li <?php if ($title == 'Daftar Tutor' || $title == 'Detail Tutor') echo 'class="nav-item active"'; ?>>
           <a class="nav-link" href="<?= base_url()?>User/SeeAllTutor" style="font-family: Arial, Helvetica, sans-serif;"><b>Tutor </b><span class="sr-only">(current)</span></a>
         </li>

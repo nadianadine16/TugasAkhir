@@ -169,3 +169,38 @@
         }, 1000);
     })
 </script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        setInterval(() => {
+            $.ajax({
+                url: "<?php echo base_url(); ?>User/notif1",
+                method: "POST",
+                data: {
+                },
+                async: false,
+                dataType: 'json',
+                success: function(data) {                       
+                                                                
+                    var html = '';
+                    var i;  
+                    for (i = 0; i < data.length; i++) {
+                        if(data[i].total!=0 && data[i].foto!=null){   
+                            html += '<div class="kotakSatu"><div class="card border-info mb-3"><div class="card-header"><b>'+data[i].nama+'</b><span class="badge badge-light" style="background-color:red; color: white">'+data[i].total+'</span></div><div class="card-body text-info"><div class="card-text" style="text-align:justify;width:75%;padding:5px;"><img src="<?= base_url()?>upload/profil/'+data[i].foto+'" style="width:110px;height:140px;float:left; margin:0 10px 4px 0;" /><br><b>Kategori Tutor :</b>'+data[i].nama_kategori+'<br><b>Tahun Masuk :</b> '+data[i].tahun_masuk+'</div><a href="<?= base_url();?>User/Change_Status_Chat/'+data[i].id_mahasiswa+'"style="float:right;color:#007bff; bottom: 0;right:0; padding: 15px; position: absolute;"><i class="fa fa-envelope" aria-hidden="true"></i> Chat</a></div></div>';
+                        }                                        
+                        if(data[i].total==0 && data[i].foto!=null){   
+                            html += '<div class="kotakSatu"><div class="card border-info mb-3"><div class="card-header"><b>'+data[i].nama+'</b></div><div class="card-body text-info"><div class="card-text" style="text-align:justify;width:75%;padding:5px;"><img src="<?= base_url()?>upload/profil/'+data[i].foto+'" style="width:110px;height:140px;float:left; margin:0 10px 4px 0;" /><br><b>Kategori Tutor :</b>'+data[i].nama_kategori+'<br><b>Tahun Masuk :</b> '+data[i].tahun_masuk+'</div><a href="<?= base_url();?>User/Change_Status_Chat/'+data[i].id_mahasiswa+'"style="float:right;color:#007bff; bottom: 0;right:0; padding: 15px; position: absolute;"><i class="fa fa-envelope" aria-hidden="true"></i> Chat</a></div></div>';
+                        }
+                        if(data[i].total==0 && data[i].foto==null){   
+                            html += '<div class="kotakSatu"><div class="card border-info mb-3"><div class="card-header"><b>'+data[i].nama+'</b></div><div class="card-body text-info"><div class="card-text" style="text-align:justify;width:75%;padding:5px;"><img src="<?= base_url()?>upload/profil/user.png" style="width:110px;height:140px;float:left; margin:0 10px 4px 0;" /><br><b>Kategori Tutor :</b>'+data[i].nama_kategori+'<br><b>Tahun Masuk :</b> '+data[i].tahun_masuk+'</div><a href="<?= base_url();?>User/Change_Status_Chat/'+data[i].id_mahasiswa+'"style="float:right;color:#007bff; bottom: 0;right:0; padding: 15px; position: absolute;"><i class="fa fa-envelope" aria-hidden="true"></i> Chat</a></div></div>';
+                        }                                        
+                        if(data[i].total!=0 && data[i].foto==null){   
+                            html += '<div class="kotakSatu"><div class="card border-info mb-3"><div class="card-header"><b>'+data[i].nama+'</b><span class="badge badge-light" style="background-color:red; color: white">'+data[i].total+'</span></div><div class="card-body text-info"><div class="card-text" style="text-align:justify;width:75%;padding:5px;"><img src="<?= base_url()?>upload/profil/user.png" style="width:110px;height:140px;float:left; margin:0 10px 4px 0;" /><br><b>Kategori Tutor :</b>'+data[i].nama_kategori+'<br><b>Tahun Masuk :</b> '+data[i].tahun_masuk+'</div><a href="<?= base_url();?>User/Change_Status_Chat/'+data[i].id_mahasiswa+'"style="float:right;color:#007bff; bottom: 0;right:0; padding: 15px; position: absolute;"><i class="fa fa-envelope" aria-hidden="true"></i> Chat</a></div></div>';
+                        }                                        
+                    }
+                    $('#listprichat').html(html);
+                    
+                }
+            });
+        }, 1000);
+    })
+</script>
