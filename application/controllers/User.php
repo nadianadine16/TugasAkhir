@@ -628,8 +628,7 @@ class User extends CI_Controller {
             $data['notif_jawaban_baru'] = $this->User_model->notif_jawaban_baru(); //menampilkan notifikasi jawaban forum baru
             $data['hitung_jawaban_baru']= $this->User_model->hitung_jawaban_baru(); //menghitung jumlah notifikasi jawaban baru forum
             $data['title'] = 'Private Chat';        
-            $data['caritutor'] = $this->User_model->cari_tutor_chat($keyword); //menampilkan tutor yg dicari sesuai keyword untuk private chat
-            $data['nama_tutor'] = $this->User_model->daftar_tutor2(); //get data semua tutor
+            $data['caritutor'] = $this->User_model->cari_tutor_chat($keyword); //menampilkan tutor yg dicari sesuai keyword untuk private chat            
             $data['hasil_cari'] = $this->input->post('keyword');
 
             if($this->input->post('submit')){ //jika ada aksi submit
@@ -797,6 +796,19 @@ class User extends CI_Controller {
         {
             echo 'File Delete Successfully';
         }
+    }
+
+    public function hitung_chat()
+    {
+        // $data['hitung'] = $this->User_model->hitung_chat();
+        $data = $this->User_model->notif_chat();
+        echo json_encode($data);
+    }
+    public function notif1()
+    {
+        // $data['hitung'] = $this->User_model->hitung_chat();
+        $data = $this->User_model->notif1();
+        echo json_encode($data);
     }
 }
 ?>

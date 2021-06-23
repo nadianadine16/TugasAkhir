@@ -144,22 +144,25 @@
         <li <?php if ($title == 'Private Chat') echo 'class="nav-item active"'; ?>>
           <a class="nav-link" href="<?=base_url()?>User/Private_Chat" style="font-family: Arial, Helvetica, sans-serif;"><b>Private Chat </b><span class="sr-only">(current)</span></a>
         </li>
-        <?php if ($hitung_chat > 0 && $hitung_chat < 10) {?>
+        <!-- <?php if ($hitung_chat > 0 && $hitung_chat < 10) {?> -->
         <li>
           <div class="dropdown">
-          <button class="dropbtn"></i><span class="badge"><?php echo $hitung_chat ;?></span></button>
+          <button class="dropbtn"></i><span class="badge" id="notifchat"></span></button>          
           <div class="dropdown-content">
             <center><p style="margin-bottom:-8px;"><b>Notifikasi Pesan</b></p></center><hr>
-              <?php foreach($notif_chat_user as $nc):?>
+              <div id="list"></div>
+
+              <!-- <?php foreach($notif_chat_user as $nc):?>
                 <a href="<?= base_url('User/Change_Status_Chat/'.$nc['from'])?>">
                 <b><?=$nc["nama"];?> </b><br>
                 <?=(strlen($nc['message']) > 25 ? substr($nc['message'], 0, 25)."..." : $nc['message']) ;?><br>
+                
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=date('d-m-Y H:i',strtotime($nc['created_at']))?></a>
-              <?php endforeach;?>
+              <?php endforeach;?> -->
           </div>
           </div>        
         </li>
-        <?php } else if ($hitung_chat >= 10) { ?>
+        <!-- <?php } else if ($hitung_chat >= 10) { ?>
           <li>
             <div class="dropdown">
             <button class="dropbtn"></i><span class="badge">9+</span></button>
@@ -174,7 +177,7 @@
             </div>
             </div>        
           </li>
-        <?php }?>
+        <?php }?> -->
         <li <?php if ($title == 'Forum' || $title == 'Chat Forum') echo 'class="nav-item active"'; ?>>
           <a class="nav-link" href="<?= base_url()?>User/Forum" style="font-family: Arial, Helvetica, sans-serif;"><b>Forum </b><span class="sr-only">(current)</span></a>
         </li>

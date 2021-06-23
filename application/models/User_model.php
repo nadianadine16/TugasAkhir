@@ -104,14 +104,16 @@ class User_model extends CI_Model {
     }
 
     public function cari_tutor_chat($keyword2) { //function untuk menampilkan daftar tutor yg dicari pada halaman chat
-        $this->db->select('*');
-        $this->db->from('mahasiswa');
-        $this->db->join('tutor', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');         
-        $this->db->join('kategori_materi', 'kategori_materi.id_kategori_materi = tutor.id_kategori_materi');                       
-        $this->db->like('mahasiswa.nama',$keyword2);
-        $this->db->or_like('kategori_materi.nama_kategori',$keyword2);
-
-        $query = $this->db->get();
+        $id_mahasiswa = $this->session->userdata('id_mahasiswa');
+        $query = $this->db->query("SELECT mahasiswa.id_mahasiswa, mahasiswa.nama, mahasiswa.foto, 
+        kategori_materi.nama_kategori, mahasiswa.tahun_masuk, IFNULL(t2.total, 0) AS total , IFNULL(t3.waktu, 0) 
+        AS time FROM mahasiswa LEFT OUTER JOIN (SELECT private_chat.from, COUNT(private_chat.id_pesan) AS total 
+        FROM private_chat WHERE private_chat.to = 2 AND private_chat.status_chat = 1 GROUP BY private_chat.from ) t2 
+        ON mahasiswa.id_mahasiswa = t2.from JOIN tutor ON mahasiswa.id_mahasiswa = tutor.id_mahasiswa LEFT OUTER JOIN 
+        ( SELECT private_chat.from, MAX(private_chat.created_at) as waktu FROM private_chat GROUP BY private_chat.from) 
+        t3 ON t3.from=mahasiswa.id_mahasiswa JOIN kategori_materi 
+        ON kategori_materi.id_kategori_materi = tutor.id_kategori_materi WHERE tutor.status=2 AND mahasiswa.nama 
+        LIKE '$keyword2%' OR kategori_materi.nama_kategori LIKE '$keyword2%' ORDER BY time desc");                        
         return $query->result_array();
     }
 
@@ -600,6 +602,22 @@ class User_model extends CI_Model {
           return $row->total;
         }
         return 0; 
+    }
+
+    public function hitungNew()
+    {
+        $idmhs = $this->session->userdata('id_mahasiswa'); //menyimpan session id_mahasiswa
+
+        $query = $this->db->query("SELECT COUNT(private_chat.from) AS total from private_chat WHERE private_chat.to = '$idmhs' AND private_chat.status_chat=1");     
+        
+        return $query->num_rows();
+    }
+    public function notif1() { //function untuk menampilkan daftar nama tutor per page
+        $id_mahasiswa = $this->session->userdata('id_mahasiswa');
+        $query = $this->db->query("SELECT mahasiswa.id_mahasiswa, mahasiswa.nama, mahasiswa.foto, 
+        kategori_materi.nama_kategori, mahasiswa.tahun_masuk, IFNULL(t2.total, 0) AS total , IFNULL(t3.waktu, 0) AS time FROM mahasiswa LEFT OUTER JOIN (SELECT private_chat.from, COUNT(private_chat.id_pesan) AS total FROM private_chat WHERE private_chat.to = $id_mahasiswa AND private_chat.status_chat = 1 GROUP BY private_chat.from ) t2 ON mahasiswa.id_mahasiswa = t2.from JOIN tutor ON mahasiswa.id_mahasiswa = tutor.id_mahasiswa LEFT OUTER JOIN ( SELECT private_chat.from, MAX(private_chat.created_at) as waktu FROM private_chat GROUP BY private_chat.from) t3 ON t3.from=mahasiswa.id_mahasiswa JOIN kategori_materi ON kategori_materi.id_kategori_materi = tutor.id_kategori_materi WHERE tutor.status=2 ORDER BY time desc");
+
+        return $query->result_array();
     }
 }
 ?>

@@ -450,13 +450,14 @@
         }
 
         public function searchchat($keyword) { //get hasil cari data mahasiswa sesuai keyword untuk private chat
-            $keyword=$this->input->post('keyword');          
-            $this->db->select('*');
-            $this->db->from('mahasiswa');
-            $this->db->where('NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = mahasiswa.id_mahasiswa)', '', FALSE);
-            $this->db->like('mahasiswa.nama',$keyword);
-            
-            $query = $this->db->get();
+            $idmhs = $this->session->userdata('id_mahasiswa');
+            $query = $this->db->query("SELECT t1.id_mahasiswa,t1.nama, t1.nim, t1.prodi, t1.jurusan, 
+            IFNULL(t2.total, 0) AS strength, IFNULL(t3.waktu, 0) AS time FROM mahasiswa t1 
+            LEFT OUTER JOIN (SELECT private_chat.from, COUNT(private_chat.id_pesan) AS total FROM private_chat 
+            WHERE private_chat.to = '$idmhs' AND private_chat.status_chat = 1 GROUP BY private_chat.from ) t2 
+            ON t1.id_mahasiswa = t2.from LEFT OUTER JOIN ( SELECT private_chat.from, MAX(private_chat.created_at) as waktu 
+            FROM private_chat GROUP BY private_chat.from) t3 ON t3.from=t1.id_mahasiswa 
+            WHERE t1.nama LIKE '$keyword%' AND NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = t1.id_mahasiswa) ORDER BY time desc");
             return $query->result_array();            
         }
 
@@ -619,6 +620,18 @@
               return $row->total;
             }
             return 0;      
+        }
+        public function mahasiswa1() { //menampilkan data mhs per page untuk halaman private chat         
+            $idmhs = $this->session->userdata('id_mahasiswa');
+            $query = $this->db->query("SELECT t1.id_mahasiswa,t1.nama, t1.nim, t1.prodi, t1.jurusan, 
+            IFNULL(t2.total, 0) AS strength, IFNULL(t3.waktu, 0) AS time FROM mahasiswa t1 
+            LEFT OUTER JOIN (SELECT private_chat.from, COUNT(private_chat.id_pesan) AS total FROM private_chat 
+            WHERE private_chat.to = '$idmhs' AND private_chat.status_chat = 1 GROUP BY private_chat.from ) t2 
+            ON t1.id_mahasiswa = t2.from LEFT OUTER JOIN ( SELECT private_chat.from, MAX(private_chat.created_at) as waktu 
+            FROM private_chat GROUP BY private_chat.from) t3 ON t3.from=t1.id_mahasiswa 
+            WHERE NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = t1.id_mahasiswa) ORDER BY time desc");            
+
+            return $query->result_array();
         }
     }
 ?>

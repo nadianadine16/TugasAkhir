@@ -15,22 +15,54 @@
   <!-- Template Main JS File -->
 <script src="<?= base_url()?>/assets_user/js/main.js"></script>
 
-<!-- <script src="<?= base_url()?>/assets/bootstrap/jquery/jquery3.js"></script> -->
-<!-- <script src="<?= base_url()?>/assets/bootstrap/popper/popper.js"></script> -->
-<!-- <script src="<?= base_url()?>/assets/bootstrap/js/bootstrap.js"></script> -->
-<!-- <script src="<?= base_url()?>/assets/summernote/summernote-bs4.js"></script> -->
+<!-- <script src="<?= base_url()?>/assets/bootstrap/jquery/jquery3.js"></script>
+<script src="<?= base_url()?>/assets/bootstrap/popper/popper.js"></script>
+<script src="<?= base_url()?>/assets/bootstrap/js/bootstrap.js"></script>
+<script src="<?= base_url()?>/assets/summernote/summernote-bs4.js"></script> -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        setInterval(() => {
+            $.ajax({
+                url: "<?php echo base_url(); ?>User/hitung_chat",
+                method: "POST",
+                data: {
 
-<script>
+                },
+                async: false,
+                dataType: 'json',
+                success: function(data) {
+                    if(data.length >0 && data.length <10){
+                    var html1 = '';
+                    var i;
+                    $("#notifchat").html(data.length);
+                    for (i = 0; i < data.length; i++) {
+                        html1 += '<a href="<?= base_url() ?>User/Change_Status_Chat/' + data[i].from + '"> <b> ' + data[i].nama + ' </b><br>' + data[i].message +'<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + data[i].created_at + '<br>';
+                    }
+                    $('#list').html(html);
+                    }
+                    else if(data.hitung > 9){
+                        $("#notifchat").html("9+");
+                        for (i = 0; i < data.length; i++) {
+                        html += '<a href="<?= base_url() ?>User/Change_Status_Chat/' + data[i].from + '"> <b> ' + data[i].nama + ' </b><br>' + data[i].message +'<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + data[i].created_at + '<br>';
+                    }
+                    $('#list').html(html);
+                    }
+                }
+            });
+        }, 1000);
+    })
+</script>
+<script>     
     $(document).ready(function(){
         $('#summernoteForum').summernote({
             height: "200px",
-            toolbar: [                  
+            toolbar: [                          
+                ['style', ['style']],
                 ['font', ['bold', 'underline', 'clear']],
                 ['fontname', ['fontname']],
                 ['para', ['ul', 'ol', 'paragraph']],                  
                 ['insert', ['link', 'picture']],
-                ['style', ['style']]
-            ],
+            ],            
             callbacks: {
                 onImageUpload: function(image) {
                     uploadImage(image[0]);

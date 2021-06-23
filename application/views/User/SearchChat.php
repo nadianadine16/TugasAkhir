@@ -25,7 +25,18 @@
       <?php foreach($nama_tutor as $n):?>
         <div class="kotakSatu">    
           <div class="card border-info mb-3">
-            <div class="card-header"><b><?=$n["nama"]?></b></div>        
+            <div class="card-header">
+            <?php if($n["total"] == 0){?>
+            <b><?=$n["nama"]?></b>        
+            <?php
+            } 
+            else { ?>          
+            <b><?=$n["nama"]?></b>
+            <span class="badge badge-light" style="background-color:red; color: white"><?=$n["total"];?></span>             
+            <?php
+              } 
+              ?>
+            </div>        
             <div class="card-body text-info">    
             <?php if($n["foto"] == NULL){?>    
               <div class="card-text" style="text-align:justify;padding:5px;">
@@ -40,7 +51,7 @@
               <b>Tahun Masuk :</b> <?=$n["tahun_masuk"]?>
               </div>
               <?php }?>
-              <a href="<?= base_url();?>user/Chat/<?=$n['id_mahasiswa'];?>"style="float:right;color:#007bff; bottom: 0;right:0; padding: 15px; position: absolute;"><i class="fa fa-envelope" aria-hidden="true"></i> Chat</a>
+              <a href="<?= base_url();?>user/change_status_chat/<?=$n['id_mahasiswa'];?>"style="float:right;color:#007bff; bottom: 0;right:0; padding: 15px; position: absolute;"><i class="fa fa-envelope" aria-hidden="true"></i> Chat</a>
             </div>      
         </div>
       <?php endforeach;?>
