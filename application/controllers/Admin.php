@@ -530,17 +530,25 @@ class Admin extends CI_Controller {
                     $prodi = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
                     $tahun_masuk = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
 
+                    $cek_nim=$this->Admin_model->cek_nim($nim);
+                    if($cek_nim->num_rows() > 0){
+                        $message = array(
+                            'message'=>'<div class="alert alert-danger">Ups.. Sepertinya ada NIM yang sudah terdaftar</div>',
+                        );
+            
+                        $this->session->set_flashdata($message);
+                        redirect('Admin/data_mahasiswa');
+                    }
+
                     $data[] = array(
-                        'nim'          => $nim,
-                        'nama'          =>$nama,
-                        'jenis_kelamin'         =>$jenis_kelamin,
-                        'jurusan'         =>$jurusan,
-                        'prodi'         =>$prodi,
-                        'tahun_masuk'         =>$tahun_masuk,
-                    );    
-                                        
+                        'nim'               => $nim,
+                        'nama'              =>$nama,
+                        'jenis_kelamin'     =>$jenis_kelamin,
+                        'jurusan'           =>$jurusan,
+                        'prodi'             =>$prodi,
+                        'tahun_masuk'       =>$tahun_masuk,
+                    );                   
                 } 
-    
             }            
     
             $this->db->insert_batch('mahasiswa', $data);

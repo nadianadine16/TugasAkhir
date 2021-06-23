@@ -1,6 +1,6 @@
     <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-    </body>
-</html>
+    
+
 <!-- Vendor JS Files -->
 <!-- <script src="<?= base_url()?>/assets_user/vendor/jquery/jquery.min.js"></script> -->
   <!-- <script src="<?= base_url()?>/assets_user/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
@@ -15,10 +15,10 @@
   <!-- Template Main JS File -->
 <script src="<?= base_url()?>/assets_user/js/main.js"></script>
 
-<!-- <script src="<?= base_url()?>/assets/bootstrap/jquery/jquery3.js"></script>
-<script src="<?= base_url()?>/assets/bootstrap/popper/popper.js"></script>
-<script src="<?= base_url()?>/assets/bootstrap/js/bootstrap.js"></script>
-<script src="<?= base_url()?>/assets/summernote/summernote-bs4.js"></script> -->
+<!-- <script src="<?= base_url()?>/assets/bootstrap/jquery/jquery3.js"></script> -->
+<!-- <script src="<?= base_url()?>/assets/bootstrap/popper/popper.js"></script> -->
+<!-- <script src="<?= base_url()?>/assets/bootstrap/js/bootstrap.js"></script> -->
+<!-- <script src="<?= base_url()?>/assets/summernote/summernote-bs4.js"></script> -->
 <script type="text/javascript">
     $(document).ready(function() {
         setInterval(() => {
@@ -32,11 +32,11 @@
                 dataType: 'json',
                 success: function(data) {
                     if(data.length >0 && data.length <10){
-                    var html1 = '';
+                    var html = '';
                     var i;
                     $("#notifchat").html(data.length);
                     for (i = 0; i < data.length; i++) {
-                        html1 += '<a href="<?= base_url() ?>User/Change_Status_Chat/' + data[i].from + '"> <b> ' + data[i].nama + ' </b><br>' + data[i].message +'<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + data[i].created_at + '<br>';
+                        html += '<a href="<?= base_url() ?>User/Change_Status_Chat/' + data[i].from + '"> <b> ' + data[i].nama + ' </b><br>' + data[i].message +'<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + data[i].created_at + '<br>';
                     }
                     $('#list').html(html);
                     }
@@ -106,3 +106,5 @@
 
     });
 </script>
+</body>
+</html>

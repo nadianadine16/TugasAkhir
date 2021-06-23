@@ -13,6 +13,11 @@
             return $query->result_array();
         }
 
+        public function cek_nim($nim) {
+            $query=$this->db->query("SELECT nim FROM mahasiswa WHERE nim='$nim' LIMIT 1");
+            return $query;        
+        }
+
         // get data mahasiswa sesuai id_mahasiswa untuk detail mahasiswa
         public function detail_mahasiswa($id){
             $this->db->select('*');
