@@ -804,6 +804,19 @@ class User extends CI_Controller {
         $data = $this->User_model->notif_chat();
         echo json_encode($data);
     }
+    public function hitung_forum()
+    {
+        // $data['hitung'] = $this->User_model->hitung_chat();
+        $data = $this->User_model->notif_jawaban_baru();
+        echo json_encode($data);
+    }
+    public function forum_dibuat()
+    {
+        // $data['hitung'] = $this->User_model->hitung_chat();
+        $data = $this->User_model->forum_sendiri();
+        echo json_encode($data);
+    }
+    
     public function notif1()
     {
         // $data['hitung'] = $this->User_model->hitung_chat();

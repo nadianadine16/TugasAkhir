@@ -40,8 +40,10 @@
                     }
                     $('#list').html(html);
                     }
-                    else if(data.hitung > 9){
+                    else if(data.length > 9){
                         $("#notifchat").html("9+");
+                        var html = '';
+                        var i;
                         for (i = 0; i < data.length; i++) {
                         html += '<a href="<?= base_url() ?>User/Change_Status_Chat/' + data[i].from + '"> <b> ' + data[i].nama + ' </b><br>' + data[i].message +'<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + data[i].created_at + '<br>';
                     }
@@ -106,5 +108,64 @@
 
     });
 </script>
-</body>
-</html>
+<script type="text/javascript">
+    $(document).ready(function() {
+        setInterval(() => {
+            $.ajax({
+                url: "<?php echo base_url(); ?>User/hitung_forum",
+                method: "POST",
+                data: {
+                },
+                async: false,
+                dataType: 'json',
+                success: function(data) {
+                    var html = '';
+                    var i;             
+                    if(data.length >0 && data.length <10){                           
+                    $("#notifforum").html(data.length);                    
+                    for (i = 0; i < data.length; i++) {
+                        html += '<a href="<?=base_url()?>User/Change_Status_Jawaban/'+data[i].id_forum+'"><b>'+data[i].nama+'</b><br>'+data[i].topik+'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '+ data[i].send_time +'</a>';
+                    }
+                    $('#listf').html(html);
+                    }
+                    else if(data.length > 9){
+                    $("#notifforum").html("9+");                    
+                    for (i = 0; i < data.length; i++) {
+                        html += '<a href="<?=base_url()?>User/Change_Status_Jawaban/'+data[i].id_forum+'"><b>'+data[i].nama+'</b><br>'+data[i].topik+'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '+ data[i].send_time +'</a>';
+                    }
+                    $('#listf').html(html);
+                    }
+                }
+            });
+        }, 1000);
+    })
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        setInterval(() => {
+            $.ajax({
+                url: "<?php echo base_url(); ?>User/forum_dibuat",
+                method: "POST",
+                data: {
+                },
+                async: false,
+                dataType: 'json',
+                success: function(data) {                       
+                                                                
+                    var html = '';
+                    var i;  
+                    for (i = 1; i < data.length; i++) {
+                        if(data[i].total!=0){   
+                        html += '<tr><td>'+i+'</td><td>'+data[i].nama_kategori+'<span class="badge badge-light" style="background-color:red; color: white">'+data[i].total+'</span></td><td>'+data[i].topik+'</td><td>'+data[i].created_at+'</td><td><a href="<?= base_url();?>User/Change_Status_Jawaban/'+data[i].id_forum+'"><center><button class="btn btn-primary btn-sm">Lihat Forum</button></center></a></td></tr>';
+                        }                                        
+                        if(data[i].total==0){   
+                        html += '<tr><td>'+i+'</td><td>'+data[i].nama_kategori+'</span></td><td>'+data[i].topik+'</td><td>'+data[i].created_at+'</td><td><a href="<?= base_url();?>User/Change_Status_Jawaban/'+data[i].id_forum+'"><center><button class="btn btn-primary btn-sm">Lihat Forum</button></center></a></td></tr>';
+                        }                                        
+                    }
+                    $('#listtab').html(html);
+                    
+                }
+            });
+        }, 1000);
+    })
+</script>
