@@ -1,24 +1,13 @@
-    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
     
-
-<!-- Vendor JS Files -->
-<!-- <script src="<?= base_url()?>/assets_user/vendor/jquery/jquery.min.js"></script> -->
-  <!-- <script src="<?= base_url()?>/assets_user/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
-<!-- <script src="<?= base_url()?>/assets_user/vendor/jquery.easing/jquery.easing.min.js"></script> -->
 <script src="<?= base_url()?>/assets_user/vendor/php-email-form/validate.js"></script>
 <script src="<?= base_url()?>/assets_user/vendor/venobox/venobox.min.js"></script>
 <script src="<?= base_url()?>/assets_user/vendor/waypoints/jquery.waypoints.min.js"></script>
 <script src="<?= base_url()?>/assets_user/vendor/counterup/counterup.min.js"></script>
 <script src="<?= base_url()?>/assets_user/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 <script src="<?= base_url()?>/assets_user/vendor/owl.carousel/owl.carousel.min.js"></script>
-
-  <!-- Template Main JS File -->
 <script src="<?= base_url()?>/assets_user/js/main.js"></script>
 
-<!-- <script src="<?= base_url()?>/assets/bootstrap/jquery/jquery3.js"></script> -->
-<!-- <script src="<?= base_url()?>/assets/bootstrap/popper/popper.js"></script> -->
-<!-- <script src="<?= base_url()?>/assets/bootstrap/js/bootstrap.js"></script> -->
-<!-- <script src="<?= base_url()?>/assets/summernote/summernote-bs4.js"></script> -->
 <script type="text/javascript">
     $(document).ready(function() {
         setInterval(() => {
@@ -140,35 +129,7 @@
         }, 1000);
     })
 </script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        setInterval(() => {
-            $.ajax({
-                url: "<?php echo base_url(); ?>User/forum_dibuat",
-                method: "POST",
-                data: {
-                },
-                async: false,
-                dataType: 'json',
-                success: function(data) {                       
-                                                                
-                    var html = '';
-                    var i;  
-                    for (i = 1; i < data.length; i++) {
-                        if(data[i].total!=0){   
-                        html += '<tr><td>'+i+'</td><td>'+data[i].nama_kategori+'<span class="badge badge-light" style="background-color:red; color: white">'+data[i].total+'</span></td><td>'+data[i].topik+'</td><td>'+data[i].created_at+'</td><td><a href="<?= base_url();?>User/Change_Status_Jawaban/'+data[i].id_forum+'"><center><button class="btn btn-primary btn-sm">Lihat Forum</button></center></a></td></tr>';
-                        }                                        
-                        if(data[i].total==0){   
-                        html += '<tr><td>'+i+'</td><td>'+data[i].nama_kategori+'</span></td><td>'+data[i].topik+'</td><td>'+data[i].created_at+'</td><td><a href="<?= base_url();?>User/Change_Status_Jawaban/'+data[i].id_forum+'"><center><button class="btn btn-primary btn-sm">Lihat Forum</button></center></a></td></tr>';
-                        }                                        
-                    }
-                    $('#listtab').html(html);
-                    
-                }
-            });
-        }, 1000);
-    })
-</script>
+
 <script type="text/javascript">
     $(document).ready(function() {
         setInterval(() => {
@@ -179,26 +140,24 @@
                 },
                 async: false,
                 dataType: 'json',
-                success: function(data) {                       
-                                                                
+                success: function(data) {                                                        
                     var html = '';
                     var i;  
                     for (i = 0; i < data.length; i++) {
                         if(data[i].total!=0 && data[i].foto!=null){   
-                            html += '<div class="kotakSatu"><div class="card border-info mb-3"><div class="card-header"><b>'+data[i].nama+'</b><span class="badge badge-light" style="background-color:red; color: white">'+data[i].total+'</span></div><div class="card-body text-info"><div class="card-text" style="text-align:justify;width:75%;padding:5px;"><img src="<?= base_url()?>upload/profil/'+data[i].foto+'" style="width:110px;height:140px;float:left; margin:0 10px 4px 0;" /><br><b>Kategori Tutor :</b>'+data[i].nama_kategori+'<br><b>Tahun Masuk :</b> '+data[i].tahun_masuk+'</div><a href="<?= base_url();?>User/Change_Status_Chat/'+data[i].id_mahasiswa+'"style="float:right;color:#007bff; bottom: 0;right:0; padding: 15px; position: absolute;"><i class="fa fa-envelope" aria-hidden="true"></i> Chat</a></div></div>';
+                            html += '<div class="kotakSatu"><div class="card border-info mb-3"><div class="card-header"><b>'+data[i].nama+'    </b><span class="badge badge-light" style="background-color:red; color: white">'+data[i].total+'</span></div><div class="card-body text-info"><div class="card-text" style="text-align:justify;width:75%;padding:5px;"><img src="<?= base_url()?>upload/profil/'+data[i].foto+'" style="width:110px;height:140px;float:left; margin:0 10px 4px 0;" /><br><b>Kategori Tutor :</b>'+data[i].nama_kategori+'<br><b>Tahun Masuk :</b> '+data[i].tahun_masuk+'</div><a href="<?= base_url();?>User/Change_Status_Chat/'+data[i].id_mahasiswa+'"style="float:right;color:#007bff; bottom: 0;right:0; padding: 15px; position: absolute;"><i class="fa fa-envelope" aria-hidden="true"></i> Chat</a></div></div>';
                         }                                        
                         if(data[i].total==0 && data[i].foto!=null){   
-                            html += '<div class="kotakSatu"><div class="card border-info mb-3"><div class="card-header"><b>'+data[i].nama+'</b></div><div class="card-body text-info"><div class="card-text" style="text-align:justify;width:75%;padding:5px;"><img src="<?= base_url()?>upload/profil/'+data[i].foto+'" style="width:110px;height:140px;float:left; margin:0 10px 4px 0;" /><br><b>Kategori Tutor :</b>'+data[i].nama_kategori+'<br><b>Tahun Masuk :</b> '+data[i].tahun_masuk+'</div><a href="<?= base_url();?>User/Change_Status_Chat/'+data[i].id_mahasiswa+'"style="float:right;color:#007bff; bottom: 0;right:0; padding: 15px; position: absolute;"><i class="fa fa-envelope" aria-hidden="true"></i> Chat</a></div></div>';
+                            html += '<div class="kotakSatu"><div class="card border-info mb-3"><div class="card-header"><b>'+data[i].nama+'    </b></div><div class="card-body text-info"><div class="card-text" style="text-align:justify;width:75%;padding:5px;"><img src="<?= base_url()?>upload/profil/'+data[i].foto+'" style="width:110px;height:140px;float:left; margin:0 10px 4px 0;" /><br><b>Kategori Tutor :</b>'+data[i].nama_kategori+'<br><b>Tahun Masuk :</b> '+data[i].tahun_masuk+'</div><a href="<?= base_url();?>User/Change_Status_Chat/'+data[i].id_mahasiswa+'"style="float:right;color:#007bff; bottom: 0;right:0; padding: 15px; position: absolute;"><i class="fa fa-envelope" aria-hidden="true"></i> Chat</a></div></div>';
                         }
                         if(data[i].total==0 && data[i].foto==null){   
-                            html += '<div class="kotakSatu"><div class="card border-info mb-3"><div class="card-header"><b>'+data[i].nama+'</b></div><div class="card-body text-info"><div class="card-text" style="text-align:justify;width:75%;padding:5px;"><img src="<?= base_url()?>upload/profil/user.png" style="width:110px;height:140px;float:left; margin:0 10px 4px 0;" /><br><b>Kategori Tutor :</b>'+data[i].nama_kategori+'<br><b>Tahun Masuk :</b> '+data[i].tahun_masuk+'</div><a href="<?= base_url();?>User/Change_Status_Chat/'+data[i].id_mahasiswa+'"style="float:right;color:#007bff; bottom: 0;right:0; padding: 15px; position: absolute;"><i class="fa fa-envelope" aria-hidden="true"></i> Chat</a></div></div>';
+                            html += '<div class="kotakSatu"><div class="card border-info mb-3"><div class="card-header"><b>'+data[i].nama+'    </b></div><div class="card-body text-info"><div class="card-text" style="text-align:justify;width:75%;padding:5px;"><img src="<?= base_url()?>upload/profil/user.png" style="width:110px;height:140px;float:left; margin:0 10px 4px 0;" /><br><b>Kategori Tutor :</b>'+data[i].nama_kategori+'<br><b>Tahun Masuk :</b> '+data[i].tahun_masuk+'</div><a href="<?= base_url();?>User/Change_Status_Chat/'+data[i].id_mahasiswa+'"style="float:right;color:#007bff; bottom: 0;right:0; padding: 15px; position: absolute;"><i class="fa fa-envelope" aria-hidden="true"></i> Chat</a></div></div>';
                         }                                        
                         if(data[i].total!=0 && data[i].foto==null){   
-                            html += '<div class="kotakSatu"><div class="card border-info mb-3"><div class="card-header"><b>'+data[i].nama+'</b><span class="badge badge-light" style="background-color:red; color: white">'+data[i].total+'</span></div><div class="card-body text-info"><div class="card-text" style="text-align:justify;width:75%;padding:5px;"><img src="<?= base_url()?>upload/profil/user.png" style="width:110px;height:140px;float:left; margin:0 10px 4px 0;" /><br><b>Kategori Tutor :</b>'+data[i].nama_kategori+'<br><b>Tahun Masuk :</b> '+data[i].tahun_masuk+'</div><a href="<?= base_url();?>User/Change_Status_Chat/'+data[i].id_mahasiswa+'"style="float:right;color:#007bff; bottom: 0;right:0; padding: 15px; position: absolute;"><i class="fa fa-envelope" aria-hidden="true"></i> Chat</a></div></div>';
+                            html += '<div class="kotakSatu"><div class="card border-info mb-3"><div class="card-header"><b>'+data[i].nama+'    </b><span class="badge badge-light" style="background-color:red; color: white">'+data[i].total+'</span></div><div class="card-body text-info"><div class="card-text" style="text-align:justify;width:75%;padding:5px;"><img src="<?= base_url()?>upload/profil/user.png" style="width:110px;height:140px;float:left; margin:0 10px 4px 0;" /><br><b>Kategori Tutor :</b>'+data[i].nama_kategori+'<br><b>Tahun Masuk :</b> '+data[i].tahun_masuk+'</div><a href="<?= base_url();?>User/Change_Status_Chat/'+data[i].id_mahasiswa+'"style="float:right;color:#007bff; bottom: 0;right:0; padding: 15px; position: absolute;"><i class="fa fa-envelope" aria-hidden="true"></i> Chat</a></div></div>';
                         }                                        
                     }
                     $('#listprichat').html(html);
-                    
                 }
             });
         }, 1000);
