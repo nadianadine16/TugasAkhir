@@ -107,7 +107,9 @@ class Login extends CI_Controller {
         // edit session untuk menambah waktu logout
         $logout_mahasiswa = $this->Login_model->edit_session_mahasiswa();
         // menghapus session ketika logout
-        $this->session->sess_destroy();
+        $_SESSION=array();
+        session_destroy();
+        // $this->session->sess_destroy();
         // kembali ke halaman login
         redirect('Login/index','refresh');
     }

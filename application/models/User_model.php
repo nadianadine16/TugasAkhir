@@ -93,8 +93,8 @@ class User_model extends CI_Model {
         WHERE private_chat.to = $id_mahasiswa AND private_chat.status_chat = 1 GROUP BY private_chat.from ) t2 
         ON mahasiswa.id_mahasiswa = t2.from 
         JOIN tutor ON mahasiswa.id_mahasiswa = tutor.id_mahasiswa 
-        LEFT OUTER JOIN ( SELECT private_chat.from, MAX(private_chat.created_at) as waktu 
-        FROM private_chat GROUP BY private_chat.from) t3 ON t3.from=mahasiswa.id_mahasiswa 
+        LEFT OUTER JOIN ( SELECT private_chat.from, private_chat.to, MAX(private_chat.created_at) as waktu 
+        FROM private_chat WHERE private_chat.to = $id_mahasiswa GROUP BY private_chat.from) t3 ON t3.from=mahasiswa.id_mahasiswa 
         JOIN kategori_materi ON kategori_materi.id_kategori_materi = tutor.id_kategori_materi
         WHERE tutor.status=2
         ORDER BY time desc
@@ -615,7 +615,8 @@ class User_model extends CI_Model {
     public function notif1() { //function untuk menampilkan daftar nama tutor per page
         $id_mahasiswa = $this->session->userdata('id_mahasiswa');
         $query = $this->db->query("SELECT mahasiswa.id_mahasiswa, mahasiswa.nama, mahasiswa.foto, 
-        kategori_materi.nama_kategori, mahasiswa.tahun_masuk, IFNULL(t2.total, 0) AS total , IFNULL(t3.waktu, 0) AS time FROM mahasiswa LEFT OUTER JOIN (SELECT private_chat.from, COUNT(private_chat.id_pesan) AS total FROM private_chat WHERE private_chat.to = $id_mahasiswa AND private_chat.status_chat = 1 GROUP BY private_chat.from ) t2 ON mahasiswa.id_mahasiswa = t2.from JOIN tutor ON mahasiswa.id_mahasiswa = tutor.id_mahasiswa LEFT OUTER JOIN ( SELECT private_chat.from, MAX(private_chat.created_at) as waktu FROM private_chat GROUP BY private_chat.from) t3 ON t3.from=mahasiswa.id_mahasiswa JOIN kategori_materi ON kategori_materi.id_kategori_materi = tutor.id_kategori_materi WHERE tutor.status=2 ORDER BY time desc");
+        kategori_materi.nama_kategori, mahasiswa.tahun_masuk, IFNULL(t2.total, 0) AS total , IFNULL(t3.waktu, 0) AS time FROM mahasiswa LEFT OUTER JOIN (SELECT private_chat.from, COUNT(private_chat.id_pesan) AS total FROM private_chat WHERE private_chat.to = $id_mahasiswa AND private_chat.status_chat = 1 GROUP BY private_chat.from ) t2 ON mahasiswa.id_mahasiswa = t2.from JOIN tutor ON mahasiswa.id_mahasiswa = tutor.id_mahasiswa LEFT OUTER JOIN ( SELECT private_chat.from, private_chat.to, MAX(private_chat.created_at) as waktu 
+        FROM private_chat WHERE private_chat.to = $id_mahasiswa GROUP BY private_chat.from) t3 ON t3.from=mahasiswa.id_mahasiswa JOIN kategori_materi ON kategori_materi.id_kategori_materi = tutor.id_kategori_materi WHERE tutor.status=2 ORDER BY time desc");
 
         return $query->result_array();
     }
