@@ -55,9 +55,9 @@ code, kbd, pre, samp {
 }
 .dropbtn {
   background-color: #ffffff;
-  color: black;
-  padding: 16px;
-  font-size: 16px;
+  color: black;  
+  padding-top: 7px;
+  font-size: 15px;
   border: none;  
 }
 
@@ -106,9 +106,11 @@ code, kbd, pre, samp {
 
 .dropbtn .badge {
   position: absolute;
-  top: 10px;
-  right: 5px;
-  padding: 5px 8px;
+  top:-3px;
+  width: 20px;
+  height: 20px;
+  right: -5px;
+  /* padding: 5px 10px; */
   border-radius: 70%;
   background: red;
   color: white;
@@ -143,69 +145,28 @@ code, kbd, pre, samp {
         </li>
         <li <?php if ($title == 'Private Chat') echo 'class="nav-item active"'; ?>>
           <a class="nav-link" href="<?=base_url()?>User/Private_Chat" style="font-family: Arial, Helvetica, sans-serif;"><b>Private Chat </b><span class="sr-only">(current)</span></a>
-        </li>
-        <!-- <?php if ($hitung_chat > 0 && $hitung_chat < 10) {?> -->
+        </li>        
         <li>
           <div class="dropdown">
-          <button class="dropbtn"></i><span class="badge" id="notifchat"></span></button>          
+          <button class="dropbtn"><i class="fa fa-envelope" aria-hidden="true"></i><span class="badge" id="notifchat"></span></button>          
           <div class="dropdown-content">
             <center><p style="margin-bottom:-8px;"><b>Notifikasi Pesan</b></p></center><hr>
               <div id="list"></div>
           </div>
           </div>        
-        </li>
-        <!-- <?php } else if ($hitung_chat >= 10) { ?>
-          <li>
-            <div class="dropdown">
-            <button class="dropbtn"></i><span class="badge">9+</span></button>
-            <div class="dropdown-content">
-              <center><p style="margin-bottom:-8px;"><b>Notifikasi Pesan</b></p></center><hr>
-                <?php foreach($notif_chat_user as $nc):?>
-                  <a href="<?= base_url('User/Change_Status_Chat/'.$nc['from'])?>">
-                  <b><?=$nc["nama"];?> </b><br>
-                  <?=(strlen($nc['message']) > 25 ? substr($nc['message'], 0, 25)."..." : $nc['message']) ;?><br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=date('d-m-Y H:i',strtotime($nc['created_at']))?></a>
-                <?php endforeach;?>
-            </div>
-            </div>        
-          </li>
-        <?php }?> -->
+        </li>        
         <li <?php if ($title == 'Forum' || $title == 'Chat Forum') echo 'class="nav-item active"'; ?>>
           <a class="nav-link" href="<?= base_url()?>User/Forum" style="font-family: Arial, Helvetica, sans-serif;"><b>Forum </b><span class="sr-only">(current)</span></a>
-        </li>
-        <!-- <?php if ($hitung_jawaban_baru > 0 && $hitung_jawaban_baru < 10) {?> -->
+        </li>        
         <li>
           <div class="dropdown">
-          <button class="dropbtn"><span class="badge" id="notifforum"></span></button>
+          <button class="dropbtn"><i class="fa fa-bell" aria-hidden="true"></i><span class="badge" id="notifforum"></span></button>
           <div class="dropdown-content" style="width:250px;">
             <center><p style="margin-bottom:-8px;"><b>Notifikasi Forum</b></p></center><hr>
-            <div id="listf"></div>   
-              <!-- <?php foreach($notif_jawaban_baru as $njb):?>        
-                <a href="<?=base_url('User/Change_Status_Jawaban/'.$njb['id_forum'])?>">
-                <b><?=$njb["nama"];?> </b><br>
-                <?=(strlen($njb['topik']) > 25 ? substr($njb['topik'], 0, 25)."..." : $njb['topik']) ;?>
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($njb['send_time'])) ?></a>
-              <?php endforeach;?> -->
+            <div id="listf"></div>                 
           </div>
           </div>        
-        </li>
-        <!-- <?php } else if ($hitung_jawaban_baru >= 10) {?>
-          <li>
-            <div class="dropdown">
-            <button class="dropbtn"><span class="badge">9+</span></button>
-            <div class="dropdown-content" style="width:250px;">
-              <center><p style="margin-bottom:-8px;"><b>Notifikasi Forum</b></p></center><hr>
-              
-                <?php foreach($notif_jawaban_baru as $njb):?>        
-                  <a href="<?=base_url('User/Change_Status_Jawaban/'.$njb['id_forum'])?>">
-                  <b><?=$njb["nama"];?> </b>
-                  <?=(strlen($njb['topik']) > 25 ? substr($njb['topik'], 0, 25)."..." : $njb['topik']) ;?>
-                  <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= date('d-m-Y H:i',strtotime($njb['send_time'])) ?></a>
-                <?php endforeach;?>
-            </div>
-            </div>        
-          </li>
-        <?php }?> -->
+        </li>        
         <li <?php if ($title == 'Daftar Tutor' || $title == 'Detail Tutor') echo 'class="nav-item active"'; ?>>
           <a class="nav-link" href="<?= base_url()?>User/SeeAllTutor" style="font-family: Arial, Helvetica, sans-serif;"><b>Tutor </b><span class="sr-only">(current)</span></a>
         </li>

@@ -104,12 +104,22 @@ class Login extends CI_Controller {
     }
 
     public function logout() {
-        // edit session untuk menambah waktu logout
-        $logout_mahasiswa = $this->Login_model->edit_session_mahasiswa();
-        // menghapus session ketika logout
-        $_SESSION=array();
-        session_destroy();
-        // kembali ke halaman login
-        redirect('Login/index','refresh');
+        if (isset($_SESSION['id_admin'])) {
+            $array_items = array('id_admin' => 'id_admin', 'nama' => 'nama', 'username' => 'username', 'password' => 'password');
+            $this->session->unset_userdata($array_items);
+            redirect('Login/index','refresh');
+            }
+        else if (isset($_SESSION['id_tutor'])) {
+            $array_items1 = array('id_tutor' => 'id_tutor', 'id_mahasiswa' => 'id_mahasiswa', 'nama' => 'nama', 'nim' => 'nim', 'id_kategori_materi' => 'id_kategori_materi','status'=> 'status');
+            $logout_mahasiswa = $this->Login_model->edit_session_mahasiswa();
+            $this->session->unset_userdata($array_items1);
+            redirect('Login/index','refresh');
+        }
+        else{
+            $array_items2 = array('id_mahasiswa' => 'id_mahasiswa', 'nama' => 'nama', 'nim' => 'nim', 'jenis_kelamin' => 'jenis_kelamin','jurusan'=> 'jurusan', 'prodi' => 'prodi', 'tahun_masuk'=>'tahun_masuk','github'=>'github');
+            $logout_mahasiswa = $this->Login_model->edit_session_mahasiswa();
+            $this->session->unset_userdata($array_items2);
+            redirect('Login/index','refresh');
+        }
     }
 }
