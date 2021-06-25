@@ -79,6 +79,7 @@ class Admin extends CI_Controller {
             $data['title'] = 'Edit Data Mahasiswa';
             // get data mahasiswa sesuai dengan id_mahasiswa yang dipilih
             $data['mahasiswa'] = $this->Admin_model->getMahasiswaById($id);
+            $data['nim'] = $this->Admin_model->getNimById($id);
 
             // perulangan pada form edit mahasiswa
             $data['prodi'] = ['Manajemen Informatika', 'Teknik Informatika'];
@@ -96,10 +97,21 @@ class Admin extends CI_Controller {
                 $this->load->view('template/footer2_admin');
             }
             else {
-                // menuju ke admin_model edit data mahasiswa sesuai dengan id_mahasiswa yang dipilih
-                $this->Admin_model->edit_data_mahasiswa($id);
-                echo"<script>alert('Data Mahasiswa Berhasil Diedit!');</script>";
-                redirect('Admin/Data_Mahasiswa','refresh');
+                $cek_nim = $this->Admin_model->cek_nim($this->input->post('nim'));
+                if($cek_nim->result_array() == $data['nim'] || $cek_nim->num_rows() < 0){
+                    $this->Admin_model->edit_data_mahasiswa($id);
+                    echo"<script>alert('Data Mahasiswa Berhasil Diedit!');</script>";
+                    redirect('Admin/Data_Mahasiswa','refresh');
+                }
+                else if($cek_nim->num_rows() > 0) {
+                    echo"<script>alert('NIM sudah terdaftar!');</script>";
+                    redirect('Admin/Edit_Data_Mahasiswa/'.$id,'refresh');
+                }
+                else {
+                    $this->Admin_model->edit_data_mahasiswa($id);
+                    echo"<script>alert('Data Mahasiswa Berhasil Diedit!');</script>";
+                    redirect('Admin/Data_Mahasiswa','refresh');
+                }
             }
         }
         else {
@@ -127,10 +139,17 @@ class Admin extends CI_Controller {
                 $this->load->view('template/footer2_admin', $data);
             }
             else {
-                // menuju ke admin_model tambah data mahasiswa
-                $this->Admin_model->tambah_data_mahasiswa();
-                echo"<script>alert('Data Mahasiswa Berhasil Ditambahkan!');</script>";
-                redirect('Admin/Data_Mahasiswa','refresh');
+                // cek nim mahasiswa
+                $cek_nim = $this->Admin_model->cek_nim($this->input->post('nim'));
+                if($cek_nim->num_rows() > 0){
+                    echo"<script>alert('NIM sudah terdaftar!');</script>";
+                    redirect('Admin/Tambah_Data_Mahasiswa','refresh');
+                }
+                else {
+                    $this->Admin_model->tambah_data_mahasiswa();
+                    echo"<script>alert('Data Mahasiswa Berhasil Ditambahkan!');</script>";
+                    redirect('Admin/Data_Mahasiswa','refresh');
+                }
             }    
         }
         else {

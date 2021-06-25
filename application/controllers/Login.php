@@ -109,7 +109,6 @@ class Login extends CI_Controller {
         // menghapus session ketika logout
         $_SESSION=array();
         session_destroy();
-        // $this->session->sess_destroy();
         // kembali ke halaman login
         redirect('Login/index','refresh');
     }

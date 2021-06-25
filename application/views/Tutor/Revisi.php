@@ -57,7 +57,7 @@
                 <input type="hidden" name="status" value="3">
                 <div class="form-group">
                     <label>Revisi : </label>
-                    <textarea name="revisi" id="summernote"></textarea>
+                    <textarea name="revisi" id="summernote_revisi"></textarea>
                 </div>
                 <center><button type="submit" class="btn btn-primary float-right">Kirim</button></center> 
             </form>
@@ -68,7 +68,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#summernote').summernote({
+        $('#summernote_revisi').summernote({
             height: "200px",
             toolbar: [                  
                 ['font', ['bold', 'underline', 'clear']],
@@ -79,4 +79,4 @@
             ]
         });
     });
-  </script>
+</script>
