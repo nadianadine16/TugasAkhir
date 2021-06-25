@@ -8,41 +8,7 @@
 <script src="<?= base_url()?>/assets_user/vendor/owl.carousel/owl.carousel.min.js"></script>
 <script src="<?= base_url()?>/assets_user/js/main.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        setInterval(() => {
-            $.ajax({
-                url: "<?php echo base_url(); ?>User/hitung_chat",
-                method: "POST",
-                data: {
 
-                },
-                async: false,
-                dataType: 'json',
-                success: function(data) {
-                    if(data.length >0 && data.length <10){
-                    var html = '';
-                    var i;
-                    $("#notifchat").html(data.length);
-                    for (i = 0; i < data.length; i++) {
-                        html += '<a href="<?= base_url() ?>User/Change_Status_Chat/' + data[i].from + '"> <b> ' + data[i].nama + ' </b><br>' + data[i].message +'<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + data[i].created_at + '<br>';
-                    }
-                    $('#list').html(html);
-                    }
-                    else if(data.length > 9){
-                        $("#notifchat").html("9+");
-                        var html = '';
-                        var i;
-                        for (i = 0; i < data.length; i++) {
-                        html += '<a href="<?= base_url() ?>User/Change_Status_Chat/' + data[i].from + '"> <b> ' + data[i].nama + ' </b><br>' + data[i].message +'<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + data[i].created_at + '<br>';
-                    }
-                    $('#list').html(html);
-                    }
-                }
-            });
-        }, 1000);
-    })
-</script>
 <script>     
     $(document).ready(function(){
         $('#summernoteForum').summernote({
@@ -101,6 +67,47 @@
     $(document).ready(function() {
         setInterval(() => {
             $.ajax({
+                url: "<?php echo base_url(); ?>User/hitung_chat",
+                method: "POST",
+                data: {
+
+                },
+                async: false,
+                dataType: 'json',
+                success: function(data) {
+                    var html = '';
+                    var i;
+                    if(data.length >0 && data.length <10){                    
+                    $("#notifchat").html(data.length);                    
+                    for (i = 0; i < data.length; i++) {
+                        html += '<a href="<?= base_url() ?>User/Change_Status_Chat/' + data[i].from + '"> <b> ' + data[i].nama + ' </b><br>' + data[i].message +'<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + data[i].created_at + '<br>';
+                    }
+                    $('#list').html(html);                    
+                    }
+                    else if(data.length > 9){
+                        $("#notifchat").html("9+");                                                
+                        for (i = 0; i < data.length; i++) {
+                        html += '<a href="<?= base_url() ?>User/Change_Status_Chat/' + data[i].from + '"> <b> ' + data[i].nama + ' </b><br>' + data[i].message +'<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + data[i].created_at + '<br>';
+                    }
+                    $('#list').html(html);                    
+                    }                    
+                    else if(data.length<0){
+                        for (i = 0; i < data.length; i++) {
+                        html += '<p>Anda belum memiliki pesan baru</p>';
+                    }
+                    $('#list').html(html);                    
+                        
+                    }
+                    
+                }
+            });
+        }, 1000);
+    })
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        setInterval(() => {
+            $.ajax({
                 url: "<?php echo base_url(); ?>User/hitung_forum",
                 method: "POST",
                 data: {
@@ -121,6 +128,12 @@
                     $("#notifforum").html("9+");                    
                     for (i = 0; i < data.length; i++) {
                         html += '<a href="<?=base_url()?>User/Change_Status_Jawaban/'+data[i].id_forum+'"><b>'+data[i].nama+'</b><br>'+data[i].topik+'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '+ data[i].send_time +'</a>';
+                    }
+                    $('#listf').html(html);
+                    }
+                    else if(data.length < 9){                    
+                    for (i = 0; i < data.length; i++) {
+                        html += '<p>Anda belum memiliki jawaban</p>';
                     }
                     $('#listf').html(html);
                     }

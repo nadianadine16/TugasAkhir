@@ -59,7 +59,9 @@
       </div>    
     </div>  
   </div>
-
+  <script type="text/javascript">
+  $('#mydiv').scrollTop($('#mydiv')[0].scrollHeight);
+</script>
 <script>
   $(document).ready(function(){
     $('#summernoteForum').summernote({
