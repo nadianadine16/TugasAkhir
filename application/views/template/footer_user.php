@@ -103,12 +103,10 @@
                     }
                     $('#list').html(html);                    
                     }                    
-                    else if(data.length<0){
-                        for (i = 0; i < data.length; i++) {
-                        html += '<p>Anda belum memiliki pesan baru</p>';
-                    }
-                    $('#list').html(html);                    
-                        
+                    else if(data.length<=0){
+                    var html = '';
+                    html = '<center><p style="margin-top:100px;">Anda belum memiliki pesan</p></center>'
+                    $('#list').html(html);
                     }
                     
                 }
@@ -155,10 +153,9 @@
                     }
                     $('#listf').html(html);
                     }
-                    else if(data.length < 9){                    
-                    for (i = 0; i < data.length; i++) {
-                        html += '<p>Anda belum memiliki jawaban</p>';
-                    }
+                    else if(data.length <= 0){                    
+                    var html = '';
+                    html = '<center><p style="margin-top:100px;">Belum ada notifikasi</p></center>'
                     $('#listf').html(html);
                     }
                 }

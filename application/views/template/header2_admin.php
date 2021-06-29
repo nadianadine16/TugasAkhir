@@ -73,6 +73,7 @@
     <!-- modernizr JS
     ============================================ -->
     <script src="<?= base_url()?>/assets_admin/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="<?= base_url()?>/assets_admin/css/modals.css">
   </head>
 
   <body>
@@ -125,14 +126,16 @@
       </nav>
     </div>
 
-      <div class="all-content-wrapper">
-          <div class="container-fluid">
-              <div class="row">
-                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <br><br><br>
-                  </div>
-              </div>
+    <div class="all-content-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="logo-pro">
+              <a href="index.html"><img class="main-logo" src="<?= base_url()?>/assets_admin/img/stucode.png" alt="" style="width:200px;height:60px;" /></a>
+            </div>
           </div>
+        </div>
+      </div>
           <div class="header-advance-area">
               <div class="header-top-area">
                   <div class="container-fluid">

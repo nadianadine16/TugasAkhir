@@ -107,10 +107,10 @@ code, kbd, pre, samp {
 .dropbtn .badge {
   position: absolute;
   top:-3px;
-  width: 5px;
+  width: 20px;
   height: 20px;
   right: -5px;
-  padding: 5px 10px;
+  /* padding: 5px 10px; */
   border-radius: 70%;
   background: red;
   color: white;

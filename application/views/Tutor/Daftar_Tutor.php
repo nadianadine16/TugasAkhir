@@ -12,7 +12,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-payment-inner-st">
                     <h5> Silahkan download file surat pernyataan berikut terlebih dahulu :</h5>
-                    <a href="<?= base_url('assets_tutor/pdf/SURAT PERNYATAAN KESANGGUPAN.pdf')?>"><button type="button" class="btn btn-primary"><i class="fa fa-download edu-avatar" aria-hidden="true"></i>  Download </button></a><br><br>
+                    <a href="<?= base_url('assets_admin/File/SURAT PERNYATAAN KESANGGUPAN.pdf')?>"><button type="button" class="btn btn-primary"><i class="fa fa-download edu-avatar" aria-hidden="true"></i>  Download </button></a><br><br>
                     <?php if (validation_errors()): ?>
                         <div class="alert alert-danger" role="alert">
                             <?php echo validation_errors(); ?>

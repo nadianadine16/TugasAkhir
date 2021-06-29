@@ -18,6 +18,11 @@
             return $query;        
         }
 
+        public function getNimById($id_mahasiswa) {
+            $query=$this->db->query("SELECT nim FROM mahasiswa WHERE id_mahasiswa = '$id_mahasiswa'");
+            return $query->result_array();        
+        }
+
         // get data mahasiswa sesuai id_mahasiswa untuk detail mahasiswa
         public function detail_mahasiswa($id){
             $this->db->select('*');

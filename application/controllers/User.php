@@ -27,7 +27,7 @@ class User extends CI_Controller {
             $data['jumlah_konten'] = $this->User_model->jumlah_konten(); //menghitng jumlah data konten
 
             $this->load->view('User/Utama', $data);
-            $this->load->view('template/footer_user', $data);
+            // $this->load->view('template/footer_user', $data);
         }
         else {
             redirect('Login/logout');

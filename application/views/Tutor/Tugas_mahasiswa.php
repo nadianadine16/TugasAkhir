@@ -61,7 +61,7 @@
                                         <td><?=$t["nim"];?></td>
                                         <td><?=$t["nama"];?></td>
                                         <td><?=$t["judul"];?></td>
-                                        <td><a href=http://<?=$t["tugas"];?>><?=$t["tugas"];?></a></td>
+                                        <td><a href=<?=$t["tugas"];?>><?=(strlen($t['tugas']) > 70 ? substr($t['tugas'], 0, 70)."..." : $t['tugas']) ;?></a></td>
                                         <td class="datatable-ct">
                                             <a href="<?= base_url();?>Tutor/Verifikasi_Tugas/<?=$t['id_tugas'];?>" class="btn btn-success btn-xs" style="color:#ffffff;">Verifikasi</a>
                                             <a href="<?= base_url();?>Tutor/Revisi/<?=$t['id_tugas'];?>" class="btn btn-warning btn-xs" style="color:#ffffff;">Revisi</a>
@@ -158,7 +158,7 @@
                                         <td><?=$tv["nim"];?></td>
                                         <td><?=$tv["nama"];?></td>
                                         <td><?=$tv["judul"];?></td>
-                                        <td><?=$tv["tugas"];?></td>
+                                        <td><a href=<?=$tv["tugas"];?>><?=(strlen($tv['tugas']) > 70 ? substr($tv['tugas'], 0, 70)."..." : $tv['tugas']) ;?></a></td>
                                         <td class="datatable-ct">
                                             <a onclick="return konfirmasi()" href="<?= base_url();?>Tutor/Hapus_Tugas/<?=$tv['id_tugas'];?>" class="btn btn-danger btn-xs" style="color:#ffffff;">Hapus</a>
                                         </td>

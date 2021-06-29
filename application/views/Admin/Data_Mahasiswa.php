@@ -46,7 +46,7 @@
                         <span class="text">Tambah Mahasiswa</span>
                     </a>
                     <a href="<?= site_url('Admin/Create') ?>" class="btn btn-primary mb-3"><i class="fa fa-upload mr-1"></i> Import Data Mahasiswa</a>
-                    <a class="btn btn-danger mb-3" style="float:right" href="#" data-toggle="modal" data-target="#zoomInDown1">Hapus Mahasiswa</a>                    
+                    <a class="btn btn-danger mb-3" style="float:right" href="#" data-toggle="modal" data-target="#PrimaryModalalert"><i class="fa fa-trash-o"></i>  Hapus Mahasiswa</a>                    
                     <div class="sparkline13-graph">
                         <div class="datatable-dashv1-list custom-datatable-overright">
                             <div id="toolbar">
@@ -60,6 +60,7 @@
                                         <th data-field="nama">Nama</th>
                                         <th data-field="jenis_kelamin">Jenis Kelamin</th>
                                         <th data-field="prodi">Program Studi</th>
+                                        <th data-field="tahun_angkatan">Tahun Angkatan</th>
                                         <th data-field="action">Action</th>
                                     </tr>
                                 </thead>
@@ -71,6 +72,7 @@
                                         <td><?=$m["nama"];?></td>
                                         <td><?=$m["jenis_kelamin"];?></td>
                                         <td><?=$m["prodi"];?></td>
+                                        <td><?=$m["tahun_masuk"];?></td>
                                         <td class="datatable-ct">
                                             <a href="<?= base_url();?>Admin/Detail_Data_Mahasiswa/<?=$m['id_mahasiswa'];?>" class="pd-setting-ed"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                             <a href="<?= base_url();?>Admin/Edit_Data_Mahasiswa/<?=$m['id_mahasiswa'];?>" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
@@ -84,59 +86,37 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-    <div class="sparkline11-list responsive-mg-b-30">                            
-        <div class="sparkline11-graph">
-            <div class="basic-login-form-ad">
-                <div class="row">                                                                                                                                    
-                    <div id="zoomInDown1" class="modal modal-edu-general modal-zoomInDown fade" role="dialog">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-close-area modal-close-df">
-                                    <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="modal-login-form-inner">                                        
-                                        <div class="row">
-                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                <div class="basic-login-inner modal-basic-inner">
-                                                    <h3>Hapus Mahasiswa</h3>
-                                                    <p>Hapus mahasiswa berdasarkan tahun angkatan</p>
-                                                    <form action="<?=base_url('Admin/Hapus_tahun_masuk')?>" method="post">
-                                                        <div class="form-group-inner">
-                                                            <div class="row">
-                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                    <label class="login2">Tahun Angkatan</label>
-                                                                </div>
-                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <div class="form-select-list">
-                                                                    <select class="form-control custom-select-value" name="tahun_masuk">
-                                                                    <?php $no=1; foreach($tahun_angkatan as $ta):?>
-                                                                        <option value="<?= $ta['tahun_masuk'];?>" selected><?php echo $ta['tahun_masuk']?></option>															
-                                                                            <?php endforeach;?>   
-																		</select>
-                                                                </div>
-                                                            </div>
-                                                            </div>
-                                                        </div>                                                        
-                                                        <div class="row">
-                                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
-                                                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                                                <div class="login-horizental">
-                                                                    <button class="btn btn-sm btn-danger login-submit-cs" type="submit" style="float:right">Hapus</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>                                                        
-                                                    </form>                                                    
-                                                </div>
-                                            </div>
+            <div id="PrimaryModalalert" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-close-area modal-close-df">
+                            <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
+                        </div>
+                        <div class="modal-body">
+                            <h3>Hapus Mahasiswa</h3>
+                            <p>Hapus mahasiswa berdasarkan tahun angkatan</p><br><br>
+                            <form action="<?=base_url('Admin/Hapus_tahun_masuk')?>" method="post">
+                                <div class="form-group-inner">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>Tahun Angkatan</label>
+                                            <select class="form-control custom-select-value" name="tahun_masuk">
+                                                <?php $no=1; foreach($tahun_angkatan as $ta):?>
+                                                <option value="<?= $ta['tahun_masuk'];?>" selected><?php echo $ta['tahun_masuk']?></option>												
+                                                <?php endforeach;?>   
+                                            </select>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </div>                                                        
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <div class="login-horizental">
+                                            <button class="btn btn-danger login-submit-cs" type="submit" style="float:right">Hapus</button>
+                                        </div>
+                                    </div>
+                                </div>                                                        
+                            </form> 
                         </div>
                     </div>
                 </div>
