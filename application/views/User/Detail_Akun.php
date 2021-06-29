@@ -97,20 +97,24 @@
                 success: function(data) {                                                            
                     var html = '';
                     var i;  
-                    for (i = 1; i < data.length; i++) {
+                    for (i = 0; i < data.length; i++) {
                         if(data[i].total!=0){   
+                            var oDate = data[i].created_at;
+                            var Ftime = oDate.substr(0,10).split('-').reverse().join('-')+" "+oDate.substr(11,5);
                             var topik = data[i].topik;
                             var hitung = topik.length;
                             var batas1 = topik.substring(0, 40);
                             var batas = hitung > 40 ? batas1+'...' : topik;
-                            html += '<tr><td>'+i+'</td><td>'+data[i].nama_kategori+'</td><td>'+ batas +'    <span class="badge badge-light" style="background-color:red; color: white">'+data[i].total+'</span></td><td>'+data[i].created_at+'</td><td><a href="<?= base_url();?>User/Change_Status_Jawaban/'+data[i].id_forum+'"><center><button class="btn btn-primary btn-sm">Lihat Forum</button></center></a></td></tr>';
+                            html += '<tr><td>'+(i+1)+'</td><td>'+data[i].nama_kategori+'</td><td>'+ batas +'    <span class="badge badge-light" style="background-color:red; color: white">'+data[i].total+'</span></td><td>'+Ftime+'</td><td><a href="<?= base_url();?>User/Change_Status_Jawaban/'+data[i].id_forum+'"><center><button class="btn btn-primary btn-sm">Lihat Forum</button></center></a></td></tr>';
                         }                                        
                         if(data[i].total==0){   
+                            var oDate = data[i].created_at;
+                            var Ftime = oDate.substr(0,10).split('-').reverse().join('-')+" "+oDate.substr(11,5);
                             var topik = data[i].topik;
                             var hitung = topik.length;
                             var batas1 = topik.substring(0, 40);
                             var batas = hitung > 40 ? batas1+'...' : topik;
-                            html += '<tr><td>'+i+'</td><td>'+data[i].nama_kategori+'</span></td><td>'+batas+'</td><td>'+data[i].created_at+'</td><td><a href="<?= base_url();?>User/Change_Status_Jawaban/'+data[i].id_forum+'"><center><button class="btn btn-primary btn-sm">Lihat Forum</button></center></a></td></tr>';
+                            html += '<tr><td>'+(i+1)+'</td><td>'+data[i].nama_kategori+'</span></td><td>'+batas+'</td><td>'+Ftime+'</td><td><a href="<?= base_url();?>User/Change_Status_Jawaban/'+data[i].id_forum+'"><center><button class="btn btn-primary btn-sm">Lihat Forum</button></center></a></td></tr>';
                         }                                        
                     }
                     $('#listtab').html(html);

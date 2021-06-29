@@ -47,23 +47,7 @@ x y{
 <?php endforeach;?> 
 <div class="container">	
 	<div id="tmp">
-	<div class="border rounded" id="border_rounded" style="height:450px;;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">
-		<?php 
-		$id = $this->session->userdata('id_mahasiswa');
-		foreach ($chats as $item) {
-		?>
-			<?php if ($item->from == $id) {?>
-				<x>
- 					<y class="me" style=" max-width:400px;"><?= $item->message ?></y>
-				</x><br>
-				<span>&nbsp;&nbsp;<p style="font-size:11px;float:right;margin-top:1%;margin-right:5px;" class="text-secondary mr-2"><?= date('d-m-Y H:i',strtotime($item->created_at)) ?></p></span>
-			<?php }else { ?>
-				<x>
- 					<y class="him" style=" max-width:400px;"><?= $item->message ?></y>
-				</x><br>
-				<p style="font-size:11px;float:left;margin-top:1%; margin-left:5px;" class="text-secondary mr-2"><?= date('d-m-Y H:i',strtotime($item->created_at)) ?></p>
-			<?php } ?>
-		<?php } ?>
+	<div class="border rounded" id="border_rounded_user" style="height:450px;;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">		
 	</div>
 	</div>
 
@@ -84,9 +68,7 @@ x y{
 </div>
 </section>
 
-<script type="text/javascript">
-	$('#border_rounded').scrollTop($('#border_rounded')[0].scrollHeight);
-</script>
+
 <script>
 	var cek = document.getElementById("input_pesan");
 	var batas_karakter = 2000;
