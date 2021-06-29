@@ -514,9 +514,12 @@ class User extends CI_Controller {
                 $this->load->view('template/footer_user', $data);
             }
             else {
-                                                
-                $this->User_model->Jawab_Forum($id);
+                $chat = $this->input->post('chat');
+                $replace = str_replace('<', '&lt;', $chat);
+                // menuju tutor_model untuk menjawab forum sesuai dengan id_forum
+                $this->User_model->Jawab_Forum($id, $replace);
                 echo"<script>alert('Jawaban Anda Berhasil Dikirim');</script>";
+                // kembali ke halaman detail forum sesuai dengan id_forum
                 redirect('User/Detail_Forum/'.$id ,'refresh');
             }
         }

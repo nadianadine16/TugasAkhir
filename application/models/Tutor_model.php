@@ -319,14 +319,14 @@
             return $query->result_array();
         }
     
-        public function Jawab_Forum($id) { //menjawab forum sesuai forum yang dipilih
+        public function Jawab_Forum($id, $replace) { //menjawab forum sesuai forum yang dipilih
             $this->id_chat_forum = uniqid();
             date_default_timezone_set('Asia/Jakarta');
     
             $data = [
                 "id_forum" => $this->input->post('id_forum', $id),
                 "id_user" => $this->input->post('id_user', true),
-                "chat" => $this->input->post('chat', true),
+                "chat" => $this->input->post('chat', $replace),
                 "send_time" => date('Y-m-d H:i:s', time())                
             ];
     

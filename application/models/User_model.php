@@ -326,7 +326,7 @@ class User_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function Jawab_Forum($id) { //function untuk menjawab forum sesuai dengan id_forum yg dipilih
+    public function Jawab_Forum($id, $replace) { //function untuk menjawab forum sesuai dengan id_forum yg dipilih
         $this->id_chat_forum = uniqid();
         $idmhs= $this->session->userdata('id_mahasiswa');        
         date_default_timezone_set('Asia/Jakarta');             
@@ -337,7 +337,7 @@ class User_model extends CI_Model {
             $data = [
                 "id_forum" => $this->input->post('id_forum', $id),
                 "id_user" => $this->input->post('id_user', true),
-                "chat" => $this->input->post('chat', true),
+                "chat" => $this->input->post('chat', $replace),
                 "status" => 1,
                 "send_time" => date('Y-m-d H:i:s', time())                
             ];
@@ -348,7 +348,7 @@ class User_model extends CI_Model {
             $data = [
                 "id_forum" => $this->input->post('id_forum', $id),
                 "id_user" => $this->input->post('id_user', true),
-                "chat" => $this->input->post('chat', true),   
+                "chat" => $this->input->post('chat', $replace),   
                 "status" => 2,
                 "send_time" => date('Y-m-d H:i:s', time())
             ];

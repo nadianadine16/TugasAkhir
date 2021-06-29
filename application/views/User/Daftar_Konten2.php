@@ -7,25 +7,35 @@
     
     display: none;
     }
-
+     
     .show {
     display: block;
     }
+
     ul > li{
         display:inline-block;
         color:blue;
     }
+
     .filter{
-        background-color: Transparent;
-        background-repeat:no-repeat;
         border: none;
-        cursor:pointer;
-        overflow: hidden;
-        outline:none;    
+        outline: none;
+        padding: 12px 16px;
+        background-color: transparent;
+        cursor: pointer;   
     }
+
     [aria-expanded="false"] > .expanded, [aria-expanded="true"] > .collapsed {
 		display: none;
 	}
+
+    .filter:hover {
+        border-bottom: 2px solid #49b5e7;
+    }
+
+    .filter.active {
+    border-bottom: 2px solid #49b5e7;
+    }
 </style>
 
 <section id="portfolio" class="portfolio" style="margin-top:50px">
@@ -39,7 +49,7 @@
         </div>                        
         <div id="golongan">
             <center><ul>
-                <li> <button class="filter" onclick="filterSelection('cars')">Content &nbsp;&nbsp;|</li>
+                <li> <button class="filter" onclick="filterSelection('cars')">Content</li>&nbsp;&nbsp;|
                 <li> <button class="filter" onclick="filterSelection('animals')">Overview</li>              
             </ul></center>
         </div>        

@@ -755,8 +755,10 @@ class Tutor extends CI_Controller {
                 $this->load->view('template/footer2_tutor', $data);
             }
             else {
+                $chat = $this->input->post('chat');
+                $replace = str_replace('<', '&lt;', $chat);
                 // menuju tutor_model untuk menjawab forum sesuai dengan id_forum
-                $this->Tutor_model->Jawab_Forum($id);
+                $this->Tutor_model->Jawab_Forum($id, $replace);
                 echo"<script>alert('Jawaban Anda Berhasil Dikirim');</script>";
                 // kembali ke halaman detail forum sesuai dengan id_forum
                 redirect('Tutor/Detail_Forum/'.$id ,'refresh');
