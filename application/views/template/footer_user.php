@@ -80,14 +80,26 @@
                     if(data.length >0 && data.length <10){                    
                     $("#notifchat").html(data.length);                    
                     for (i = 0; i < data.length; i++) {
-                        html += '<a href="<?= base_url() ?>User/Change_Status_Chat/' + data[i].from + '"> <b> ' + data[i].nama + ' </b><br>' + data[i].message +'<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + data[i].created_at + '<br>';
+                        var originalDate = data[i].created_at;
+                        var formattedTime = originalDate.substr(0,10).split('-').reverse().join('-')+" "+originalDate.substr(11,5);
+                        var message = data[i].message;
+                        var hitung = message.length;
+                        var batasHitung1 = message.substring(0, 30);
+                        var batasChat = hitung > 30 ? batasHitung1+'...' : message;
+                        html += '<a href="<?= base_url() ?>User/Change_Status_Chat/' + data[i].from + '"> <b> ' + data[i].nama + ' </b><br>' + batasChat +'<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + formattedTime + '<br>';
                     }
                     $('#list').html(html);                    
                     }
                     else if(data.length > 9){
                         $("#notifchat").html("9+");                                                
                         for (i = 0; i < data.length; i++) {
-                        html += '<a href="<?= base_url() ?>User/Change_Status_Chat/' + data[i].from + '"> <b> ' + data[i].nama + ' </b><br>' + data[i].message +'<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + data[i].created_at + '<br>';
+                            var originalDate = data[i].created_at;
+                            var formattedTime = originalDate.substr(0,10).split('-').reverse().join('-')+" "+originalDate.substr(11,5);
+                            var message = data[i].message;
+                            var hitung = message.length;
+                            var batasHitung1 = message.substring(0, 30);
+                            var batasChat = hitung > 30 ? batasHitung1+'...' : message;
+                            html += '<a href="<?= base_url() ?>User/Change_Status_Chat/' + data[i].from + '"> <b> ' + data[i].nama + ' </b><br>' + batasChat +'<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + formattedTime + '<br>';
                     }
                     $('#list').html(html);                    
                     }                    
@@ -120,14 +132,26 @@
                     if(data.length >0 && data.length <10){                           
                     $("#notifforum").html(data.length);                    
                     for (i = 0; i < data.length; i++) {
-                        html += '<a href="<?=base_url()?>User/Change_Status_Jawaban/'+data[i].id_forum+'"><b>'+data[i].nama+'</b><br>'+data[i].topik+'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '+ data[i].send_time +'</a>';
+                        var oDate = data[i].send_time;
+                        var Ftime = oDate.substr(0,10).split('-').reverse().join('-')+" "+oDate.substr(11,5);
+                        var topik = data[i].topik;
+                        var hitung = topik.length;
+                        var batas1 = topik.substring(0, 30);
+                        var batas = hitung > 30 ? batas1+'...' : topik;
+                        html += '<a href="<?=base_url()?>User/Change_Status_Jawaban/'+data[i].id_forum+'"><b>'+data[i].nama+'</b><br>'+batas+'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '+ Ftime +'</a>';
                     }
                     $('#listf').html(html);
                     }
                     else if(data.length > 9){
                     $("#notifforum").html("9+");                    
                     for (i = 0; i < data.length; i++) {
-                        html += '<a href="<?=base_url()?>User/Change_Status_Jawaban/'+data[i].id_forum+'"><b>'+data[i].nama+'</b><br>'+data[i].topik+'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '+ data[i].send_time +'</a>';
+                        var oDate = data[i].send_time;
+                        var Ftime = oDate.substr(0,10).split('-').reverse().join('-')+" "+oDate.substr(11,5);
+                        var topik = data[i].topik;
+                        var hitung = topik.length;
+                        var batas1 = topik.substring(0, 30);
+                        var batas = hitung > 30 ? batas1+'...' : topik;
+                        html += '<a href="<?=base_url()?>User/Change_Status_Jawaban/'+data[i].id_forum+'"><b>'+data[i].nama+'</b><br>'+batas+'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '+ Ftime +'</a>';
                     }
                     $('#listf').html(html);
                     }
@@ -174,6 +198,24 @@
                 }
             });
         }, 1000);
+    })
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var location = window.location.pathname;
+        var id_user = location.substring(location.lastIndexOf('/')+1);
+        var baseUri = location.substring(location.lastIndexOf('/'));
+        var arrayPath = window.location.pathname.split('/');
+        if(arrayPath[3]=="Chat") {
+            setInterval(() => {
+                $.post("<?php echo base_url(); ?>User/bacaChat",{
+                    id_user : id_user
+                }).done(function(data){
+                    $('#border_rounded_user').html(data);
+                    $('#border_rounded_user').scrollTop($('#border_rounded_user')[0].scrollHeight);
+                });                
+            }, 1000);
+        }
     })
 </script>
 </body>

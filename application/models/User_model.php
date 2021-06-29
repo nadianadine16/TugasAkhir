@@ -626,5 +626,14 @@ class User_model extends CI_Model {
         $query=$this->db->query("SELECT forum. id_forum, forum.id_mahasiswa, kategori_materi.nama_kategori, forum.topik, forum.created_at, IFNULL(t2.total, 0) AS total FROM `forum` LEFT OUTER JOIN (SELECT chat_forum.id_forum, COUNT(chat_forum.chat) AS total FROM chat_forum WHERE chat_forum.status = 1 GROUP BY chat_forum.id_forum ) t2 ON forum.id_forum = t2.id_forum JOIN kategori_materi ON kategori_materi.id_kategori_materi = forum.id_kategori_materi WHERE forum.id_mahasiswa = $id_mahasiswa");
         return $query->result_array();
     }
+    public function bacaChat()
+    {
+        $data = [
+            "status_chat" => 2
+        ];
+
+        $this->db->where('to', $this->input->post('id_user'));
+        $this->db->update('private_chat', $data);
+    }
 }
 ?>

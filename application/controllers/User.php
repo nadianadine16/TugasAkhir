@@ -823,5 +823,37 @@ class User extends CI_Controller {
         $data = $this->User_model->notif1();
         echo json_encode($data);
     }
+    public function bacaChat()
+    {
+        // $data['hitung'] = $this->User_model->hitung_chat();        
+        $id_user = $this->input->post('id_user');
+        $id = $this->session->userdata('id_mahasiswa'); //memnyimpan session mahasiswa
+        $this->User_model->change_status_chat($id_user);
+        
+
+        $this->db->where_in('from', [$id,$id_user]);
+        $this->db->where_in('to', [$id,$id_user]);
+        $this->db->order_by('created_at', 'ASC');
+        $to = $id_user;
+        $chats = $this->db->get('private_chat')->result();
+        
+
+		$id = $this->session->userdata('id_mahasiswa');
+		foreach ($chats as $item) {
+		
+		 if ($item->from == $id) {
+				echo '<x>
+ 					<y class="me" style=" max-width:400px;">'.$item->message.'</y>
+				</x><br>
+				<span>&nbsp;&nbsp;<p style="font-size:11px;float:right;margin-top:1%;margin-right:5px;" class="text-secondary mr-2">'.date('d-m-Y H:i',strtotime($item->created_at)).'</p></span>';
+			 }else { 
+				echo '<x>
+ 					<y class="him" style=" max-width:400px;">'.$item->message.'</y>
+				</x><br>
+				<p style="font-size:11px;float:left;margin-top:1%; margin-left:5px;" class="text-secondary mr-2">'.date('d-m-Y H:i',strtotime($item->created_at)).'</p>';
+			}
+        }
+        
+    }
 }
 ?>

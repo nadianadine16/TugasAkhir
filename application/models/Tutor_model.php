@@ -634,8 +634,8 @@
             IFNULL(t2.total, 0) AS strength, IFNULL(t3.waktu, 0) AS time FROM mahasiswa t1 
             LEFT OUTER JOIN (SELECT private_chat.from, COUNT(private_chat.id_pesan) AS total FROM private_chat 
             WHERE private_chat.to = '$idmhs' AND private_chat.status_chat = 1 GROUP BY private_chat.from ) t2 
-            ON t1.id_mahasiswa = t2.from LEFT OUTER JOIN ( SELECT private_chat.from, MAX(private_chat.created_at) as waktu 
-            FROM private_chat GROUP BY private_chat.from) t3 ON t3.from=t1.id_mahasiswa 
+            ON t1.id_mahasiswa = t2.from LEFT OUTER JOIN ( SELECT private_chat.from, private_chat.to, MAX(private_chat.created_at) as waktu 
+            FROM private_chat where private_chat.to=$idmhs GROUP BY private_chat.from) t3 ON t3.from=t1.id_mahasiswa 
             WHERE NOT EXISTS (SELECT * FROM tutor WHERE tutor.id_mahasiswa = t1.id_mahasiswa) ORDER BY time desc");            
 
             return $query->result_array();

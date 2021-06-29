@@ -116,21 +116,22 @@
                                     </div>
                                     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                         <div class="header-right-info">
-                                            <ul class="d-flex nav navbar-nav mai-top-nav header-right-menu">
-                                                <li class="nav-item dropdown">
-                                                </li>                                                
-                                                <li class="nav-item dropdown" style="float:left">
+                                            <ul class="d-flex nav navbar-nav mai-top-nav header-right-menu">                  
+                                            <li class="nav-item dropdown">
                                                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-message edu-chat-pro" aria-hidden="true"></i><span class="badge badge-light" style="background-color:red" id="notifchat"></span></a>
                                                     <div role="menu" class="author-message-top dropdown-menu animated zoomIn">
                                                         <div class="message-single-top">
-                                                            <center><p style="margin-top:15px;"><b>Notifikasi Pesan</b></p></center>
+                                                            <h1>Message</h1>
                                                         </div>
-                                                        <ul class="message-menu" style="margin-top:-15px;" id="chatnot">                                                            
+                                                        <ul class="message-menu">
+                                                            <li id="chatnot">                                                                
+                                                            </li>                                                            
                                                         </ul>
                                                         <div class="message-view">
+                                                            
                                                         </div>
                                                     </div>
-                                                </li>                                                
+                                                </li>                                            
                                                 <li class="nav-item">
                                                 <?php $val = $this->session->userdata('nama');?>
                                                     <a href="<?= base_url()?>/assets_admin/#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">

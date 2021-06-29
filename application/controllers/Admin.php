@@ -508,11 +508,11 @@ class Admin extends CI_Controller {
         }
         else {                    
         if(isset($_FILES["file"]["name"])){
-                // upload
-            $file_tmp = $_FILES['file']['tmp_name'];
-            $file_name = $_FILES['file']['name'];
-            $file_size =$_FILES['file']['size'];
-            $file_type=$_FILES['file']['type'];                
+                // upload 
+            $file_tmp = $_FILES['file']['tmp_name']; //nama file sementara yang akan di upload
+            // $file_name = $_FILES['file']['name'];
+            // $file_size =$_FILES['file']['size'];
+            // $file_type=$_FILES['file']['type'];                
             
             $object = PHPExcel_IOFactory::load($file_tmp);
     

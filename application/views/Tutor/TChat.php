@@ -56,23 +56,7 @@ x y{
 		<center><h4 style="padding-top:10px;padding-left:30px;margin-bottom:20px;">Mahasiswa : <a  href="<?= base_url();?>Tutor/Detail_Mahasiswa/<?=$n['id_mahasiswa'];?>" ><b><?=$n["nama"]?></b></a></h4><hr style="width:85%;"></center>
 	<?php endforeach;?> 
         <div class="row">
-			<div class="border rounded" id="border_rounded" style="margin-left:30px;;background-color:#ffffff;width:95%;height:450px;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">
-					<?php 
-					$id = $this->session->userdata('id_mahasiswa');
-					foreach ($chats as $item) {
-					?>
-						<?php if ($item->from == $id) {?>
-							<x>
-								<y class="me" style="max-width:400px;"><?= $item->message ?></y>
-							</x>
-							<span>&nbsp;&nbsp;<p style="font-size:11px;float:right;margin-top:1%;margin-right:5px;" class="text-secondary mr-2"><?= date('d-m-Y H:i',strtotime($item->created_at)) ?></p></span>
-						<?php }else { ?>
-							<x>
-								<y class="him" style="max-width:400px;"><?= $item->message ?></y>
-							</x>
-							<p style="font-size:11px;float:left;margin-top:1%; margin-left:5px;" class="text-secondary mr-2"><?= date('d-m-Y H:i',strtotime($item->created_at)) ?></p>
-						<?php } ?>
-					<?php } ?>
+			<div class="border rounded" id="border_rounded_tutor" style="margin-left:30px;;background-color:#ffffff;width:95%;height:450px;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">				
 				</div>
 			</div>
 			<form method="post" action="<?= base_url('Tutor/Chat/'.$to) ?>" style="margin-top:20px;width:87%;margin-left:30px;">
@@ -93,10 +77,6 @@ x y{
     </div>
 </div>
 
-<script type="text/javascript">
-	var objDiv = document.getElementById("border_rounded");
-	objDiv.scrollTop = objDiv.scrollHeight;
-</script> 
 <script>
   var cek = document.getElementById("input_pesan");
   var batas_karakter = 2000;

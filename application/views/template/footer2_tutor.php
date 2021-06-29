@@ -85,7 +85,11 @@
               var html = '';
               var i;
               for (i = 0; i < data.length; i++) {
-                html += '<li><a href="<?= base_url() ?>Tutor/Change_Status_Chat_Tutor/' + data[i].from +'" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; "><div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;"><b>' + data[i].nama + '</b><br>' + data[i].message + '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+data[i].created_at+'</div></a>';                html += '<a href="<?= base_url() ?>User/Change_Status_Chat/' + data[i].from + '"> <b> ' + data[i].nama + ' </b><br>' + data[i].message +'<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + data[i].created_at + '<br></li>';
+                var originalDate = data[i].created_at;
+                var formattedTime = originalDate.substr(0,10).split('-').reverse().join('-')+" "+originalDate.substr(11,5);
+                
+                // var newDate = Date("d-m-Y", strtotime(originalDate));
+                html += '<a href="<?= base_url() ?>Tutor/Change_Status_Chat_Tutor/' + data[i].from +'" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; "><div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;"><b>' + data[i].nama + '</b><br>' + data[i].message + '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+formattedTime+'</div></a>';
               }
               $('#chatnot').html(html);
             }
@@ -94,13 +98,15 @@
               var html = '';
               var i;
               for (i = 0; i < data.length; i++) {
-                html += '<li><a href="<?= base_url() ?>Tutor/Change_Status_Chat_Tutor/' + data[i].from +'" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; "><div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;"><b>' + data[i].nama + '</b><br>' + data[i].message + '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+data[i].created_at+'</div></a>';                html += '<a href="<?= base_url() ?>User/Change_Status_Chat/' + data[i].from + '"> <b> ' + data[i].nama + ' </b><br>' + data[i].message +'<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + data[i].created_at + '<br></li>';
+                var originalDate = data[i].created_at;
+                var formattedTime = originalDate.substr(0,10).split('-').reverse().join('-')+" "+originalDate.substr(11,5);                
+                html += '<a href="<?= base_url() ?>Tutor/Change_Status_Chat_Tutor/' + data[i].from +'" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; "><div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;"><b>' + data[i].nama + '</b><br>' + data[i].message + '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+formattedTime+'</div></a>';
               }
               $('#chatnot').html(html);
             }
             else if(data.length<1){
               var html = '';
-              html = '<center><p style="margin-top:130px;">Anda belum memiliki pesan</p></center>'
+              html = '<p style="margin-top:130px;margin-left:70px">Anda belum memiliki pesan</p>'
               $('#chatnot').html(html);
             }
               
@@ -201,6 +207,24 @@
                 }
             });
         }, 1000);
+    })
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var location = window.location.pathname;
+        var id_user = location.substring(location.lastIndexOf('/')+1);
+        var baseUri = location.substring(location.lastIndexOf('/'));
+        var arrayPath = window.location.pathname.split('/');
+        if(arrayPath[3]=="Chat") {
+            setInterval(() => {
+                $.post("<?php echo base_url(); ?>Tutor/bacaChatTutor",{
+                    id_user : id_user
+                }).done(function(data){
+                    $('#border_rounded_tutor').html(data);
+                    $('#border_rounded_tutor').scrollTop($('#border_rounded_tutor')[0].scrollHeight);
+                });                
+            }, 1000);
+        }
     })
 </script>
 </body>
