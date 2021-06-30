@@ -61,6 +61,10 @@
                     <p><?=($m['tahun_masuk']); ?></p>
                 </div>
                 <div class="form-group">
+                    <label for="password">Password</label>
+                    <p><?=($m['password']); ?></p>
+                </div>
+                <div class="form-group">
                     <label for="github">Alamat Github</label>
                     <?php if($m['github'] != NULL) {?>
                         <p><?=($m['github']); ?></p>

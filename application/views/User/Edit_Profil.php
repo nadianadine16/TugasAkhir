@@ -54,7 +54,7 @@
     </section><!-- End Contact Section -->
 <script type="text/javascript">
 function validasi_input(form){
-  var mincar = 9;
+  var mincar = 8;
   var maxchar = 16;
   if (form.password.value.length < mincar){
     alert("Password minimal 8 karakter!");
