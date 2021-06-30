@@ -44,8 +44,12 @@
                     <p><?=$dr["nama"]; ?></p>
                 </div>
                 <div class="form-group">
-                    <label for="konten">konten</label>
+                    <label for="konten">Nama Konten</label>
                     <p><?=$dr["judul"]; ?></p>
+                </div> 
+                <div class="form-group">
+                    <label for="tugas">Tugas Mahasiswa</label>
+                    <p><a href="<?=$dr["tugas"]; ?>"><?=$dr["tugas"]; ?></a></p>
                 </div> 
                 <div class="form-group">
                     <label for="revisi">Revisi Tugas</label>

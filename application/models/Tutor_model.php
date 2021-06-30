@@ -219,6 +219,7 @@
             $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');
             $this->db->where('tugas.status', $status);
             $this->db->where('materi.id_tutor', $this->session->userdata('id_tutor'));
+            $this->db->order_by('id_tugas', 'DESC');
 
             $query = $this->db->get();
             return $query->result_array();
@@ -235,6 +236,7 @@
             $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');
             $this->db->where('tugas.status', $status);
             $this->db->where('materi.id_tutor', $this->session->userdata('id_tutor'));
+            $this->db->order_by('id_tugas', 'DESC');
 
             $query = $this->db->get();
             return $query->result_array();
@@ -251,6 +253,7 @@
             $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = tugas.id_mahasiswa');
             $this->db->where('tugas.status', $status);
             $this->db->where('materi.id_tutor', $this->session->userdata('id_tutor'));
+            $this->db->order_by('id_tugas', 'DESC');
 
             $query = $this->db->get();
             return $query->result_array();
@@ -548,7 +551,7 @@
         }
 
         public function forum_yang_dijawab($id_tutor) {
-            $query = $this->db->query("SELECT * FROM forum AS f JOIN chat_forum AS cf ON f.id_forum = cf.id_forum JOIN kategori_materi as km ON km.id_kategori_materi = f.id_kategori_materi WHERE cf.id_user IN (SELECT m.id_mahasiswa FROM mahasiswa AS m JOIN tutor AS t ON m.id_mahasiswa = t.id_mahasiswa WHERE t.id_tutor = $id_tutor)");
+            $query = $this->db->query("SELECT * FROM forum AS f JOIN chat_forum AS cf ON f.id_forum = cf.id_forum JOIN kategori_materi as km ON km.id_kategori_materi = f.id_kategori_materi WHERE cf.id_user IN (SELECT m.id_mahasiswa FROM mahasiswa AS m JOIN tutor AS t ON m.id_mahasiswa = t.id_mahasiswa WHERE t.id_tutor = $id_tutor) GROUP BY cf.id_forum");
 
             return $query->result_array();
         }

@@ -52,28 +52,29 @@ x y{
 
 <div class="widgets-programs-area">
     <div class="container-fluid">
-	<?php foreach($nama_tujuan as $n):?>
-		<center><h4 style="padding-top:10px;padding-left:30px;margin-bottom:20px;">Mahasiswa : <a  href="<?= base_url();?>Tutor/Detail_Mahasiswa/<?=$n['id_mahasiswa'];?>" ><b><?=$n["nama"]?></b></a></h4><hr style="width:85%;"></center>
-	<?php endforeach;?> 
-        <div class="row">
-			<div class="border rounded" id="border_rounded_tutor" style="margin-left:30px;;background-color:#ffffff;width:95%;height:450px;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">				
-				</div>
-			</div>
-			<form method="post" action="<?= base_url('Tutor/Chat/'.$to) ?>" style="margin-top:20px;width:87%;margin-left:30px;">
-			<input type="hidden" name="from" value="<?=$this->session->userdata('id_mahasiswa');?>">    
-			<div class="row">
-				<div class="col-2">
-				<p style="margin-top:5px;font-size:13px;color:#808080;" id="limit_teks">0/2000</p>
-				</div>
-				<div class="col-10">
-					<input type="text" name="message" autofocus="true" class="form-control" placeholder="Tulis Pesan Kamu" autocomplete="off" required style="width:94%;margin-left:64px;margin-top:-45px;"maxlength="2000" id="input_pesan" onkeyup="cek_jumlah_karakter()">
-				</div>
-				<div class="col-2">
-				<button class="btn btn-primary btn-block" style="width:7%;float:right;margin-right:-85px;margin-top:-35px;">Kirim</button>
-				</div>
-			</div>
-		</form>
+      <?php foreach($nama_tujuan as $n):?>
+        <center><h4 style="padding-top:10px;padding-left:30px;margin-bottom:20px;">Mahasiswa : <a  href="<?= base_url();?>Tutor/Detail_Mahasiswa/<?=$n['id_mahasiswa'];?>" ><b><?=$n["nama"]?></b></a></h4><hr style="width:85%;"></center>
+      <?php endforeach;?> 
+      <div class="row">
+        <div class="border rounded" id="border_rounded_tutor" style="margin-left:30px;;background-color:#ffffff;width:95%;height:450px;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">
+      </div>
+    </div>
+    <div class="container-fluid" style="margin-top:10px;">
+      <div class="row">
+        <div class="col-md-12">
+          <form accept-charset="UTF-8" method="post" action="<?= base_url('Tutor/Chat/'.$to) ?>" style="margin-top:10px;margin-bottom:-50px;">
+          <input type="hidden" name="from" value="<?=$this->session->userdata('id_mahasiswa');?>"> 
+            <div class="form-group-inner">
+              <p style="font-size:13px;color:#808080;margin-top:10px;" id="limit_teks">0/2000</p>
+              <div class="input-group custom-go-button" style="margin-left:50px;margin-top:-40px;">
+              <input type="text"  name="message"  autofocus="true" class="form-control" placeholder="Tulis Pesan Kamu . . ." required autocomplete="off" onkeyup="cek_jumlah_karakter()" id="input_pesan" maxlength="2000">
+              <span class="input-group-btn"><button type="submit" class="btn btn-primary" style="margin-top:-3px;margin-bottom:3px;"><i class="fa fa-paper-plane"></i> </button></span>
+            </div>
+            </div>
+          </form>
         </div>
+      </div>
+    </div>
     </div>
 </div>
 

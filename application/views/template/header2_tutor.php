@@ -123,7 +123,7 @@
                                                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-message edu-chat-pro" aria-hidden="true"></i><span class="badge badge-light" style="background-color:red" id="notifchat"></span></a>
                                                     <div role="menu" class="author-message-top dropdown-menu animated zoomIn">
                                                         <div class="message-single-top">
-                                                            <h1>Message</h1>
+                                                            <h1>Pesan Anda</h1>
                                                         </div>
                                                         <ul class="message-menu">
                                                             <li id="chatnot">                                                                

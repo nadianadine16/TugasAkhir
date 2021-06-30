@@ -66,10 +66,6 @@
 		============================================ -->
     <script src="<?= base_url()?>/assets_admin/js/main.js"></script>
     
-    <!-- <script src="<?= base_url()?>/assets/bootstrap/jquery/jquery3.js"></script>
-    <script src="<?= base_url()?>/assets/bootstrap/popper/popper.js"></script>
-    <script src="<?= base_url()?>/assets/bootstrap/js/bootstrap.js"></script>
-    <script src="<?= base_url()?>/assets/summernote/summernote-bs4.js"></script> -->
     <script type="text/javascript">
     $(document).ready(function() {
       setInterval(() => {
@@ -87,9 +83,13 @@
               for (i = 0; i < data.length; i++) {
                 var originalDate = data[i].created_at;
                 var formattedTime = originalDate.substr(0,10).split('-').reverse().join('-')+" "+originalDate.substr(11,5);
-                
+
+                var message = data[i].message;
+                var hitung = message.length;
+                var batasHitung1 = message.substring(0, 30);
+                var batasChat = hitung > 30 ? batasHitung1+'...' : message;
                 // var newDate = Date("d-m-Y", strtotime(originalDate));
-                html += '<a href="<?= base_url() ?>Tutor/Change_Status_Chat_Tutor/' + data[i].from +'" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; "><div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;"><b>' + data[i].nama + '</b><br>' + data[i].message + '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+formattedTime+'</div></a>';
+                html += '<a href="<?= base_url() ?>Tutor/Change_Status_Chat_Tutor/' + data[i].from +'" style="background-color:#f4fbfe;width:100%;margin-bottom:-15px; "><div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;"><b>' + data[i].nama + '</b><br>' + batasChat + '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+formattedTime+'</div></a>';
               }
               $('#chatnot').html(html);
             }
@@ -99,14 +99,20 @@
               var i;
               for (i = 0; i < data.length; i++) {
                 var originalDate = data[i].created_at;
-                var formattedTime = originalDate.substr(0,10).split('-').reverse().join('-')+" "+originalDate.substr(11,5);                
-                html += '<a href="<?= base_url() ?>Tutor/Change_Status_Chat_Tutor/' + data[i].from +'" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; "><div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;"><b>' + data[i].nama + '</b><br>' + data[i].message + '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+formattedTime+'</div></a>';
+                var formattedTime = originalDate.substr(0,10).split('-').reverse().join('-')+" "+originalDate.substr(11,5);   
+
+                var message = data[i].message;
+                var hitung = message.length;
+                var batasHitung1 = message.substring(0, 30);
+                var batasChat = hitung > 30 ? batasHitung1+'...' : message;             
+                html += '<a href="<?= base_url() ?>Tutor/Change_Status_Chat_Tutor/' + data[i].from +'" style="background-color:#f4fbfe;width:88%;margin-bottom:-15px; "><div class="message-content" style="padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;"><b>' + data[i].nama + '</b><br>' + data[i].message + '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+formattedTime+'</div></a>';
               }
               $('#chatnot').html(html);
             }
             else if(data.length<1){
+              // $("#notifchat").html(" ");   
               var html = '';
-              html = '<p style="margin-top:130px;margin-left:70px">Anda belum memiliki pesan</p>'
+              html = '<p style="margin-top:100px;margin-left:70px">Anda belum memiliki pesan</p>'
               $('#chatnot').html(html);
             }
               

@@ -1,4 +1,9 @@
 <style>
+/* .private_chat form {
+   width: auto;
+   min-height: 200px;
+} */
+
 x{
   list-style: none;
   margin: 0;
@@ -39,6 +44,7 @@ x y{
 .me:last-of-type {
   border-bottom-right-radius: 0px;
 }
+
 </style>
 
 <section id="team" class="team section-bg" style="margin-top:50px">
@@ -50,24 +56,22 @@ x y{
 	<div class="border rounded" id="border_rounded_user" style="height:450px;;display:block; overflow:auto; font-size: 15px; font-family: Times, Times New Roman, Georgia, serif;">		
 	</div>
 	</div>
-
-	<form method="post" action="<?= base_url('User/Chat/'.$to) ?>" style="margin-top: 10px;margin-bottom:-50px;" id="balas">
-    <input type="hidden" name="from" value="<?=$this->session->userdata('id_mahasiswa');?>">    
-		<div class="row">
-			<div class="col-10">
-				<input type="text" name="message" autofocus="true" class="form-control" placeholder="Tulis Pesan Kamu . . ." required autocomplete="off" onkeyup="cek_jumlah_karakter()" id="input_pesan" style="width:98%;"  maxlength="2000">
-			</div>
-			<div class="col-1">
-				<p style="margin-top:8px;margin-left:-35px;font-size:13px;color:#808080;" id="limit_teks">0/2000</p>
-			</div>
-			<div class="col-1">
-				<button class="btn btn-block" style="background-color:#49b5e7;color:#ffffff;width:200%;margin-left:-60px;">Kirim</button>
-			</div>
-		</div>
-	</form>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <form class="form-inline" accept-charset="UTF-8" method="post" action="<?= base_url('User/Chat/'.$to) ?>" style="margin-top:10px;margin-bottom:-50px;">
+      <input type="hidden" name="from" value="<?=$this->session->userdata('id_mahasiswa');?>"> 
+        <div class="input-group flex-fill">
+        <p style="font-size:13px;color:#808080;margin-top:10px;" id="limit_teks">0/2000</p>
+          <input type="text"  name="message" style="margin-left:10px;" autofocus="true" class="form-control" placeholder="Tulis Pesan Kamu . . ." required autocomplete="off" onkeyup="cek_jumlah_karakter()" id="input_pesan" maxlength="2000">
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-primary" style="margin-top:-3px;margin-bottom:3px;"><i class="fa fa-paper-plane"></i> </button>
+          </div> 
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
-</section>
-
 
 <script>
 	var cek = document.getElementById("input_pesan");

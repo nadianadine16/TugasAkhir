@@ -83,6 +83,7 @@
             $this->db->from('tutor');
             $this->db->join('mahasiswa', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');        
             $this->db->where(array('status'=>$status));
+            $this->db->order_by('id_tutor', 'DESC');
 
             $query = $this->db->get();
             return $query->result_array();
@@ -141,6 +142,7 @@
             $this->db->join('mahasiswa', 'tutor.id_mahasiswa = mahasiswa.id_mahasiswa');
             $this->db->join('kategori_materi', 'tutor.id_kategori_materi = kategori_materi.id_kategori_materi');        
             $this->db->where(array('status'=>$status));
+            $this->db->order_by('id_tutor', 'DESC');
 
             $query = $this->db->get();
             return $query->result_array();
@@ -161,6 +163,7 @@
             $this->db->select('*');
             $this->db->from('kritik_saran');
             $this->db->join('mahasiswa', 'kritik_saran.id_user = mahasiswa.id_mahasiswa');
+            $this->db->order_by('id_kritiksaran', 'DESC');
 
             $query = $this->db->get();
             return $query->result_array();
@@ -259,6 +262,7 @@
             $this->db->from('forum');
             $this->db->join('mahasiswa', 'mahasiswa.id_mahasiswa = forum.id_mahasiswa');
             $this->db->join('kategori_materi', 'kategori_materi.id_kategori_materi = forum.id_kategori_Materi'); 
+            $this->db->order_by('created_at', 'DESC'); 
 
             $query = $this->db->get();
             return $query->result_array();
