@@ -35,7 +35,7 @@
                         </div>
                     <?php endif; ?>
                     <?php foreach($tutor as $t2):?>
-                    <form action="<?=base_url('Tutor/Edit_Profil/'.$t2['id_tutor'])?>" method="post" enctype="multipart/form-data">
+                    <form action="<?=base_url('Tutor/Edit_Profil/'.$t2['id_tutor'])?>" method="post" enctype="multipart/form-data" onsubmit="return validasi_input(this)">
                         <input type="hidden" id="id_mahasiswa" name="id_mahasiswa" value="<?= $this->session->userdata('id_mahasiswa');?>">
                         <div class="form-group">
                             <label for="nama">Nama</label>
@@ -66,6 +66,10 @@
                             <input type="text" class="form-control" id="tahun_masuk" name="tahun_masuk" readonly="true" value="<?=$t2['tahun_masuk'];?>">
                         </div>
                         <div class="form-group">
+                            <label for="github">Password</label>
+                            <input type="text" class="form-control" id="password" name="password" value="<?=$t2['password'];?>" autocomplete="off">
+                        </div>
+                        <div class="form-group">
                             <label for="github">Alamat Github</label>
                             <input type="text" class="form-control" id="github" name="github" value="<?=$t2['github'];?>" autocomplete="off" placeholder="Contoh: https://github.com/shevaputriw">
                         </div>
@@ -88,3 +92,20 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+function validasi_input(form){
+  var mincar = 9;
+  var maxchar = 16;
+  if (form.password.value.length < mincar){
+    alert("Password minimal 8 karakter!");
+    form.password.focus();
+    return (false);
+  }  
+  else if (form.password.value.length > maxchar){
+    alert("Password maksimal 16 karakter!");
+    form.password.focus();
+    return (false);
+  }  
+   return (true);
+}
+</script>

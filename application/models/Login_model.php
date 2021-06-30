@@ -6,13 +6,13 @@ class Login_model extends CI_Model {
 
     // function login tutor
     public function login_tutor($username, $password) {
-        $query=$this->db->query("SELECT * FROM tutor t JOIN mahasiswa m on t.id_mahasiswa = m.id_mahasiswa where m.nim = '$username' and m.nim = '$password' LIMIT 1 ");
+        $query=$this->db->query("SELECT * FROM tutor t JOIN mahasiswa m on t.id_mahasiswa = m.id_mahasiswa where m.nim = '$username' and m.password = '$password' LIMIT 1 ");
 		return $query;
     }
 
     // function login mahasiswa
     public function login_mahasiswa($username, $password) {
-        $query=$this->db->query("SELECT * FROM mahasiswa WHERE nim='$username' AND nim='$password' LIMIT 1");
+        $query=$this->db->query("SELECT * FROM mahasiswa WHERE nim='$username' AND password='$password' LIMIT 1");
         return $query;        
     }
 

@@ -515,6 +515,7 @@
                 "jurusan" => $this->input->post('jurusan', true),
                 "prodi" => $this->input->post('prodi', true),
                 "tahun_masuk" => $this->input->post('tahun_masuk', true),
+                "password" => $this->input->post('password', true),
                 "github" => $this->input->post('github', true),
                 "foto" => $this->upload_foto()
             ];
