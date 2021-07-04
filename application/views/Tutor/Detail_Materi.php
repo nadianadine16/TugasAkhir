@@ -1,4 +1,12 @@
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+<style>
+.Information {
+    background: #933EC5;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 3px;    
+}
+</style>
 <script type="text/javascript" language="JavaScript">
     function konfirmasi()
     {
@@ -67,7 +75,7 @@
                                 <center><p>Anda Belum Memiliki Konten. Segera Tambahkan Konten Anda :)</p></center>
                                     <?php }
                                     else {?>
-                                    <?php $no=1; $x=1; $t=1; foreach($konten as $k):?>
+                                    <?php $no=1; $x=1; $t=1; $y=1; $z=1; foreach($konten as $k):?>
                                 <div id="accordion2" style="margin-top:-15px;">
                                     <div class="panel panel-default">
                                         <div class="panel-heading accordion-head" style="background-color:#ffffff;">
@@ -118,10 +126,27 @@
                                                         } 
                                                     ?>
                                                     <?php foreach($materi as $m):?>
-                                                    <p><b>Soal Latihan</b><br><?=$k["soal"];?></p>
+                                                    <p><b>Soal Latihan</b><br></p>
+                                                    <div class="modal-bootstrap shadow-inner mg-tb-30 responsive-mg-b-0">                                                        
+                                                        <div class="modal-area-button">                                                            
+                                                            <a class="Information Information-color mg-b-10" href="#" data-toggle="modal" data-target="#InformationproModalalert<?php echo $y;?>" style="color:white;">Information</a>
+                                                            <?php $y++;?>                                                            
+                                                        </div>
+                                                    </div>
                                                     <a onclick="return konfirmasi()" style="float:right; margin-right:20px;" href="<?= base_url('Tutor/Hapus_Konten/'.$k['id_konten'].'/'.$m['id_materi'])?>" class="pd-setting-ed" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                     <a style="float:right; margin-right:5px;" href="<?= base_url('Tutor/Edit_Konten/'.$k['id_konten'].'/'.$m['id_materi'])?>" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                     <?php endforeach;?>
+                                            </div>
+                                            <div id="InformationproModalalert<?php echo $z; $z++;?>" class="modal modal-edu-general fullwidth-popup-InformationproModal fade" role="dialog">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">                                                        
+                                                        <div class="modal-body"  style="height:400px;display:block; overflow:auto;">
+                                                            <span class="educate-icon educate-info modal-check-pro information-icon-pro"></span>
+                                                            <h2>Information!</h2>
+                                                            <p style="float: left;margin-right: 20px;margin-bottom: 10px;border-radius: 0%;"><?=$k["soal"];?></p>
+                                                        </div>                                                        
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

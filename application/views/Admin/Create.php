@@ -1,3 +1,12 @@
+<style>
+.info{
+background-color: #e7f3fe;
+border-left: 6px solid #2196F3;
+padding-left: 10px;
+padding-top: 20px;
+padding-bottom: 20px;
+}
+</style>
 <div class="breadcome-area">
     <div class="container-fluid">
         <div class="row">
@@ -31,7 +40,18 @@
                 <div class="alert alert-danger" role="alert">
                     <?php echo validation_errors(); ?>
                 </div>
-                <?php endif; ?>
+                <?php endif; ?>                          
+                    <div class="info">
+                    <p><strong>Petunjuk Import File Excel.</strong></p>
+                    1. Download Template File Excel di bawah<br>
+                    2. Isikan Seluruh Data Mahasiswa yang akan di Import Sesuai Template<br>
+                    3. Upload File Excel<br>
+                    </div><br>  
+
+                    <label class="col-form-label text-md-left">Template Import Excel :</label><br>    
+                    <a href="<?= base_url('assets_admin/File/Template.xlsx')?>"><button type="button" class="btn btn-primary"><i class="fa fa-download edu-avatar" aria-hidden="true"></i>  Download </button></a><br><br>
+                    
+
                     <form method="POST" action="<?= site_url('Admin/excel') ?>" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="row">

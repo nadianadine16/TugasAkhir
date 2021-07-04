@@ -204,7 +204,7 @@
         var id_user = location.substring(location.lastIndexOf('/')+1);
         var baseUri = location.substring(location.lastIndexOf('/'));
         var arrayPath = window.location.pathname.split('/');
-        if(arrayPath[2]=="Chat") {
+        if(arrayPath[3]=="Chat") {
             setInterval(() => {
                 $.post("<?php echo base_url(); ?>User/bacaChat",{
                     id_user : id_user

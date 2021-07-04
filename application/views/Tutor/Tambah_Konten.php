@@ -74,8 +74,9 @@
                         <p style="color:#808080;">Format .pdf</p>
                 </div>
                 <div class="form-group">
-                    <label for="soal">Soal Latihan</label>
-                    <textarea name="soal"></textarea>
+                    <label for="soal">Soal Latihan (Required)</label>
+                    <textarea name="soal" id="summernoteSoal"></textarea>
+                    <!-- <textarea name="soal"></textarea> -->
                 </div>
                 <center><button type="submit" name="submit" class="btn btn-primary float-right">Tambah</button></center>
             </form>
