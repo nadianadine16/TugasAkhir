@@ -68,6 +68,10 @@
                         <input type="text" class="form-control" id="tahun_masuk" name="tahun_masuk" value="<?=$mahasiswa['tahun_masuk'];?>">
                 </div>
                 <div class="form-group">
+                    <label for="pwd">Password</label>
+                        <input type="text" class="form-control" id="password" name="password" value="<?=$mahasiswa['password'];?>">
+                </div>
+                <div class="form-group">
                     <label for="github">Alamat Github</label>
                         <input type="text" class="form-control" id="github" name="github" value="<?=$mahasiswa['github'];?>">
                 </div>
@@ -80,7 +84,19 @@
 <script type="text/javascript">
 function validasi_input(form){
   var mincar = 10;
-  if (form.nim.value.length > mincar){
+  var mincarpass = 8;
+  var maxcarpass = 16;
+  if (form.password.value.length > maxcarpass){
+        alert("Password maksimal 16 karakter");
+        form.password.focus();
+        return (false);
+    }
+    else if (form.password.value.length < mincarpass){
+        alert("Password minimal 8 karakter");
+        form.password.focus();
+        return (false);
+    }
+  else if (form.nim.value.length > mincar){
     alert("NIM maksimal 10 karakter!");
     form.nim.focus();
     return (false);
@@ -88,12 +104,12 @@ function validasi_input(form){
   else{
     if (form.nim.value != ""){
         var x = (form.nim.value);
-        var status = true;
+        var status = " ";
         var list = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
         for (i=0; i<=x.length-1; i++){
             if (x[i] in list) cek = true;
             else cek = false;
-        status = status && cek;
+        status = cek;
         }
         if (status == false){
             alert("NIM harus angka");

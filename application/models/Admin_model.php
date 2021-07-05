@@ -38,6 +38,7 @@
             $this->id_mahasiswa = uniqid();
             $data = [
                 "nim" => $this->input->post('nim', true),
+                "password" => $this->input->post('nim', true),
                 "nama" => $this->input->post('nama', true),
                 "jenis_kelamin" => $this->input->post('jenis_kelamin', true),
                 "jurusan" => $this->input->post('jurusan', true),
@@ -61,6 +62,7 @@
             $post=$this->input->post();
             $this->id_mahasiswa = $post["id_mahasiswa"];
             $this->nim = $post["nim"];
+            $this->password = $post["password"];
             $this->nama = $post["nama"];
             $this->jenis_kelamin = $post["jenis_kelamin"];
             $this->jurusan = $post["jurusan"];

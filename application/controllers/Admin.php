@@ -90,6 +90,7 @@ class Admin extends CI_Controller {
             $this->form_validation->set_rules('nama', 'Nama', 'required');
             $this->form_validation->set_rules('tahun_masuk', 'Tahun Masuk', 'required');
             $this->form_validation->set_rules('github', 'Github');
+            $this->form_validation->set_rules('password', 'Password', 'required');
 
             if($this->form_validation->run() == FALSE) {
                 $this->load->view('template/header2_admin',$data);
@@ -543,11 +544,12 @@ class Admin extends CI_Controller {
                 for($row=2; $row<=$highestRow; $row++){
     
                     $nim = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
-                    $nama = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-                    $jenis_kelamin = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-                    $jurusan = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
-                    $prodi = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-                    $tahun_masuk = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+                    $password = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+                    $nama = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+                    $jenis_kelamin = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+                    $jurusan = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+                    $prodi = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+                    $tahun_masuk = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
 
                     $cek_nim=$this->Admin_model->cek_nim($nim);
                     if($cek_nim->num_rows() > 0){
@@ -561,6 +563,7 @@ class Admin extends CI_Controller {
 
                     $data[] = array(
                         'nim'               => $nim,
+                        'password'               => $password,
                         'nama'              =>$nama,
                         'jenis_kelamin'     =>$jenis_kelamin,
                         'jurusan'           =>$jurusan,
