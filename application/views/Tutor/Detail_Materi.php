@@ -59,7 +59,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="user-comment">
+                            <div>
                                 <div class="comment-details">
                                 <?php foreach($materi as $m):?>
                                 <a href="<?=base_url('Tutor/Tambah_Konten/'.$m['id_materi'])?>" class="btn btn-primary btn-icon-split">
@@ -127,9 +127,9 @@
                                                     ?>
                                                     <?php foreach($materi as $m):?>
                                                     <p><b>Soal Latihan</b><br></p>
-                                                    <div class="modal-bootstrap shadow-inner mg-tb-30 responsive-mg-b-0">                                                        
+                                                    <div class="modal-bootstrap shadow-inner mg-tb-0 responsive-mg-b-0">                                                        
                                                         <div class="modal-area-button">                                                            
-                                                            <a class="Information Information-color mg-b-10" href="#" data-toggle="modal" data-target="#InformationproModalalert<?php echo $y;?>" style="color:white;">Information</a>
+                                                            <a class="Information Information-color mg-b-10" href="#" data-toggle="modal" data-target="#InformationproModalalert<?php echo $y;?>" style="color:white;">Detail Soal</a>
                                                             <?php $y++;?>                                                            
                                                         </div>
                                                     </div>
@@ -141,8 +141,8 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">                                                        
                                                         <div class="modal-body"  style="height:400px;display:block; overflow:auto;">
-                                                            <span class="educate-icon educate-info modal-check-pro information-icon-pro"></span>
-                                                            <h2>Information!</h2>
+                                                            <!-- <span class="educate-icon educate-info modal-check-pro"></span> -->
+                                                            <h2>Soal konten <?=$k["judul"];?></h2>
                                                             <p style="float: left;margin-right: 20px;margin-bottom: 10px;border-radius: 0%;"><?=$k["soal"];?></p>
                                                         </div>                                                        
                                                     </div>

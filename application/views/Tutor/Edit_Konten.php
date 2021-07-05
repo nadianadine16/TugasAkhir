@@ -60,6 +60,11 @@
                     <label for="video">Link Video Youtube Konten</label>
                         <input type="text" class="form-control" id="video" name="video" autocomplete="off" value="<?=$konten["video"];?>" placeholder="Contoh: https://youtu.be/dJjWjg4rwh0">
                 </div>
+                <div class="info">
+                    <p><strong>Tentang unggah file pendukung.</strong></p>
+                    1. File pendukung dapat berupa jobsheet<br>
+                    2. File pendukung  dapat berupa materi berupa text sebagai materi pendukung pada video
+                </div><br>
                 <div class="form-group">
                     <label for="file_pendukung">Unggah File Pendukung (Opsional)</label>
                         <input type="hidden" name="old_file" value="<?= $konten['file_pendukung'];?>" />
@@ -73,8 +78,9 @@
                         </p>
                 </div>
                 <div class="form-group">
-                    <label for="soal">Soal Latihan</label>
-                    <textarea name="soal"><?=$konten['soal'];?></textarea>
+                    <label for="soal">Soal Latihan (Required)</label>
+                    <!-- <textarea name="soal"><?=$konten['soal'];?></textarea> -->
+                    <textarea name="soal" id="summernoteSoal"><?=$konten['soal'];?></textarea>
                 </div>
                 <center><button type="submit" name="submit" class="btn btn-primary float-right">Edit</button></center>
             </form>

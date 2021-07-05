@@ -68,6 +68,11 @@
                     <label for="video">Link Video Youtube Konten</label>
                         <input type="url" class="form-control" id="video" name="video" autocomplete="off" placeholder="Contoh: https://youtu.be/dJjWjg4rwh0">
                 </div>
+                <div class="info">
+                    <p><strong>Tentang unggah file pendukung.</strong></p>
+                    1. File pendukung dapat berupa jobsheet<br>
+                    2. File pendukung  dapat berupa materi berupa text sebagai materi pendukung pada video
+                </div><br>
                 <div class="form-group">
                     <label for="file_pendukung">Unggah File Pendukung (Opsional)</label>
                         <input type="file" class="form-control" id="file_pendukung" name="file_pendukung">

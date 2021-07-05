@@ -59,7 +59,7 @@
             <?php if($konten == NULL) {?>
                 <center><p>Sayang sekali, sepertinya Tutor belum menambahkan konten :)</p></center>
             <?php } else { ?>
-                <?php $no=1; $x=1; $t=1; $jumlahTugas=-1; foreach($konten as $k):?> <!-- Start dari -1 agar mendapat jumlah lebih 1 dari total yang didapat -->
+                <?php $no=1; $x=1; $t=1;$y=1; $z=1; $jumlahTugas=-1; foreach($konten as $k):?> <!-- Start dari -1 agar mendapat jumlah lebih 1 dari total yang didapat -->
                 <?php if ($count>$jumlahTugas) { ?>
                 <div id="accordion">
                     <div class="card">
@@ -107,8 +107,29 @@
                                         } 
                                     ?>
                                     <?php foreach($materi as $m):?>
-                                    <p><b>Soal Latihan</b><br><?=$k["soal"];?></p>
-                                    <a href="<?= base_url();?>User/KumpulkanTugas/<?=$k['id_konten'];?>"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Kumpulkan Tugas Disini</a>
+                                    <!-- <p><b>Soal Latihan</b><br><?=$k["soal"];?></p> -->
+                                    <p><b>Soal Latihan</b><br></p>
+                                    <div class="modal-bootstrap shadow-inner mg-tb-0 responsive-mg-b-0">                                                        
+                                        <div class="modal-area-button">                                                            
+                                            <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#InformationproModalalert<?php echo $y;?>" style="color:white;">Detail Soal</a>
+                                            <?php $y++;?>                                                            
+                                        </div>
+                                    </div>                                    
+                                    <div id="InformationproModalalert<?php echo $z; $z++;?>" class="modal modal-edu-general fullwidth-popup-InformationproModal fade" role="dialog">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">                                                        
+                                                        <div class="modal-body"  style="height:400px;display:block; overflow:auto;">
+                                                            <!-- <span class="educate-icon educate-info modal-check-pro"></span> -->
+                                                            <h2>Soal konten <?=$k["judul"];?></h2>
+                                                            <p style="float: left;margin-right: 20px;margin-bottom: 10px;border-radius: 0%;"><?=$k["soal"];?></p>                                                            
+                                                            <div class="modal-footer info-md">                                                                
+                                                                <a href="<?= base_url();?>User/KumpulkanTugas/<?=$k['id_konten'];?>"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Kumpulkan Tugas Disini</a>
+                                                            </div>
+                                                            <!-- <a  style="position: absolute;right:15px;bottom:15px;" href="<?= base_url();?>User/KumpulkanTugas/<?=$k['id_konten'];?>"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Kumpulkan Tugas Disini</a> -->
+                                                        </div>                                                                                                                
+                                                    </div>                                                    
+                                                </div>
+                                            </div>
                                 <?php endforeach;?>
                             </div>
                         </div>
